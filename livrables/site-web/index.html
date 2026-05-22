@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hourglass — le recrutement, chronométré</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Sessions live. Revue de CV en 5 minutes. Entretien de 30 minutes. Le recrutement façon speed dating." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hourglass — le recrutement, chronométré" />
+  <meta property="og:description" content="Sessions live. Revue de CV en 5 minutes. Entretien de 30 minutes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hourglass — le recrutement, chronométré" />
+  <meta name="twitter:description" content="Sessions live. Revue de CV en 5 minutes. Entretien de 30 minutes." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!--
+    Formulaire caché pour la détection Netlify Forms au build.
+    React soumet via fetch() — ce bloc est requis pour que Netlify
+    enregistre le formulaire dans son tableau de bord.
+  -->
+  <form name="waitlist" netlify netlify-honeypot="bot-field" style="display:none">
+    <input name="bot-field" />
+    <input name="email" type="email" />
+    <input name="role" />
+    <input name="search" />
+  </form>
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
