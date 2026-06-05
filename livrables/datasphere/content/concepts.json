@@ -1,0 +1,3328 @@
+{
+  "concepts": [
+    {
+      "id": "regression-lineaire",
+      "titre": "Régression linéaire",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Débutant",
+      "emoji": "📈",
+      "description_courte": "Le modèle ML le plus simple pour prédire une valeur numérique continue en trouvant la droite qui passe le mieux à travers les données.",
+      "explication_simple": "Imagine que tu veux prédire le prix d'un appartement selon sa superficie. La régression linéaire trace la meilleure ligne droite à travers tous les exemples passés. Pour chaque m² supplémentaire, le prix augmente d'un certain montant. C'est cette relation simple que le modèle apprend.",
+      "exemple_concret": "Prédire le prix de vente d'une maison selon sa superficie, le nombre de pièces et le quartier. Avec 1 000 ventes passées, le modèle apprend que chaque m² vaut environ 4 200€ dans ce quartier.",
+      "formule": "y = a₀ + a₁x₁ + a₂x₂ + ... (où y est la valeur prédite, x les variables d'entrée, a les coefficients appris)",
+      "quand_utiliser": [
+        "Prédire un prix, un chiffre d'affaires, une consommation",
+        "Comprendre l'impact de chaque variable sur le résultat",
+        "Quand la relation entre les variables est approximativement linéaire"
+      ],
+      "avantages": [
+        "Très rapide à entraîner",
+        "Facile à interpréter (les coefficients expliquent le modèle)",
+        "Peu de données nécessaires"
+      ],
+      "inconvenients": [
+        "Ne capture pas les relations complexes et non linéaires",
+        "Sensible aux valeurs aberrantes (outliers)",
+        "Suppose une relation linéaire entre les variables"
+      ],
+      "outils": [
+        "Scikit-learn (Python)",
+        "statsmodels (Python)",
+        "R (lm())",
+        "Excel (DROITEREG)"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Prédiction",
+        "Régression"
+      ]
+    },
+    {
+      "id": "regression-logistique",
+      "titre": "Régression logistique",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Débutant",
+      "emoji": "🎯",
+      "description_courte": "Algorithme de classification qui prédit la probabilité qu'un exemple appartienne à une catégorie (oui/non, spam/pas spam, fraude/légitime).",
+      "explication_simple": "Malgré son nom, la régression logistique ne sert pas à prédire un nombre, mais à répondre à une question oui/non. Par exemple : « Ce client va-t-il partir ? » Le modèle calcule une probabilité entre 0 et 1, et on décide qu'au-dessus de 0.5 la réponse est oui. C'est comme une balance qui penche vers 'oui' ou 'non'.",
+      "exemple_concret": "Prédire si un email est du spam (1) ou non (0) selon le nombre de liens, les mots utilisés et l'expéditeur. Pour un email contenant 'GRATUIT',  '1000€' et 50 destinataires, le modèle pourrait prédire une probabilité de spam de 0.94.",
+      "formule": "P(y=1) = 1 / (1 + e^(-z)), où z = a₀ + a₁x₁ + ... (la fonction sigmoïde transforme un score en probabilité)",
+      "quand_utiliser": [
+        "Classification binaire (deux classes)",
+        "Quand on a besoin d'une probabilité interprétable",
+        "Détection de fraude, prédiction de churn, scoring crédit"
+      ],
+      "avantages": [
+        "Fournit une probabilité (pas juste une classe)",
+        "Très interprétable (les coefficients ont un sens)",
+        "Bonne baseline pour commencer"
+      ],
+      "inconvenients": [
+        "Limité aux relations linéaires entre variables et log-odds",
+        "Moins performant que XGBoost sur des données complexes"
+      ],
+      "outils": [
+        "Scikit-learn",
+        "Statsmodels",
+        "R (glm())",
+        "SAS (PROC LOGISTIC)"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Classification",
+        "Probabilité"
+      ]
+    },
+    {
+      "id": "arbre-de-decision",
+      "titre": "Arbre de décision",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Débutant",
+      "emoji": "🌳",
+      "description_courte": "Modèle qui prend des décisions par une série de questions oui/non, comme un jeu de 20 questions. Très lisible et explicable.",
+      "explication_simple": "Un arbre de décision ressemble à un arbre généalogique à l'envers. À chaque nœud, le modèle pose une question : 'L'âge est-il > 30 ans ?' Si oui, il va à droite, si non, à gauche. Il continue à poser des questions jusqu'à arriver à une feuille qui donne la réponse. Tu peux le dessiner sur une feuille de papier !",
+      "exemple_concret": "Décider si on approuve un crédit : Q1 'Revenu > 3000€ ?' → oui → Q2 « Durée de l'emploi > 1 an ? » → oui → Q3 'Endettement < 33% ?' → oui → ACCORDÉ. L'arbre reflète exactement la logique métier.",
+      "formule": "Critère de division : Gini = 1 - Σ(pᵢ²), où pᵢ est la proportion de chaque classe. On divise pour minimiser le Gini.",
+      "quand_utiliser": [
+        "Quand l'interprétabilité est essentielle (règles métier, conformité)",
+        "Données mixtes (numériques et catégorielles)",
+        "Première exploration des données"
+      ],
+      "avantages": [
+        "Visuellement explicable à n'importe qui",
+        "Pas de normalisation des données requise",
+        "Gère automatiquement les valeurs manquantes"
+      ],
+      "inconvenients": [
+        "Très sensible au bruit (surapprentissage facile)",
+        "Instable : un petit changement de données change tout l'arbre",
+        "Inférieur aux ensembles (Random Forest, XGBoost)"
+      ],
+      "outils": [
+        "Scikit-learn (DecisionTreeClassifier)",
+        "R (rpart)",
+        "SAS (PROC HPSPLIT)"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Classification",
+        "Régression",
+        "Interprétable"
+      ]
+    },
+    {
+      "id": "random-forest",
+      "titre": "Random Forest (Forêt aléatoire)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Intermédiaire",
+      "emoji": "🌲",
+      "description_courte": "Ensemble de centaines d'arbres de décision, chacun entraîné sur des données légèrement différentes. La décision finale est un vote majoritaire. Robuste et difficile à battre.",
+      "explication_simple": "Si un seul expert peut se tromper, 500 experts qui votent ensemble font moins d'erreurs. C'est exactement l'idée : Random Forest crée 500 arbres différents (chacun voit des données légèrement différentes, avec des variables différentes) puis fait voter tout ce monde. La classe qui remporte le plus de votes gagne. L'intelligence collective est plus fiable que l'individuel.",
+      "exemple_concret": "Pour prédire si un client va churner : 500 arbres sont créés, chacun avec un échantillon aléatoire de clients et de variables. 340 arbres disent « va partir », 160 disent 'reste'. Résultat : « va partir » (68% de probabilité de churn).",
+      "formule": "Prediction = Majority vote of N trees. Chaque arbre utilise un sous-échantillon bootstrap des données et √p variables aléatoires à chaque split.",
+      "quand_utiliser": [
+        "Classification ou régression avec peu de tuning requis",
+        "Quand on veut l'importance des variables",
+        "Bonne baseline robuste pour tout type de problème"
+      ],
+      "avantages": [
+        "Très robuste au surapprentissage",
+        "Gère bien les données manquantes",
+        "Fournit l'importance des variables gratuitement"
+      ],
+      "inconvenients": [
+        "Moins interprétable qu'un seul arbre",
+        "Long à prédire avec 500 arbres",
+        "Moins performant que XGBoost sur données tabulaires"
+      ],
+      "outils": [
+        "Scikit-learn",
+        "H2O.ai",
+        "Dataiku (intégré)",
+        "SAS Viya (Forest)"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Ensemble",
+        "Classification",
+        "Régression"
+      ]
+    },
+    {
+      "id": "xgboost",
+      "titre": "XGBoost / Gradient Boosting",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Intermédiaire",
+      "emoji": "🚀",
+      "description_courte": "L'algorithme qui gagne la majorité des compétitions ML sur données tabulaires. Construit des arbres en séquence, chacun corrigeant les erreurs du précédent.",
+      "explication_simple": "Imagine que tu apprends à jouer aux fléchettes. Au premier lancer tu rates. Au deuxième, tu corriges ton erreur de 5cm vers la gauche. Au troisième tu corriges encore. Progressivement tu converges vers le centre. XGBoost fait pareil : chaque arbre est spécialisé pour corriger les erreurs laissées par tous les arbres précédents. C'est pourquoi il est si puissant.",
+      "exemple_concret": "Détection de fraude sur 1 million de transactions : XGBoost obtient un AUC-ROC de 0.97 quand Random Forest plafonne à 0.92. Il capture des interactions complexes entre variables que les autres algorithmes manquent (ex: montant élevé + pays inhabituel + heure tardive = très suspect).",
+      "formule": "F(x) = Σ fₖ(x), où chaque fₖ est un arbre qui minimise la perte résiduelle des arbres précédents. Objective = L(y, ŷ) + Σ Ω(fₖ) (régularisation)",
+      "quand_utiliser": [
+        "Données tabulaires structurées",
+        "Quand la performance est prioritaire sur l'interprétabilité",
+        "Compétitions Kaggle, scoring, détection de fraude"
+      ],
+      "avantages": [
+        "Meilleure performance en général sur données tabulaires",
+        "Gère les données manquantes nativement",
+        "Régularisation intégrée (évite le surapprentissage)"
+      ],
+      "inconvenients": [
+        "Hyperparamètres nombreux à tuner",
+        "Peu interprétable (boîte noire)",
+        "Lent à entraîner sur de très grands datasets"
+      ],
+      "outils": [
+        "XGBoost (Python)",
+        "LightGBM (Microsoft, plus rapide)",
+        "CatBoost (Yandex, bon sur catégorielles)",
+        "Dataiku, SAS Viya"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Ensemble",
+        "Gradient Boosting",
+        "Compétitions"
+      ]
+    },
+    {
+      "id": "kmeans",
+      "titre": "K-Means (Clustering)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage non supervisé",
+      "niveau": "Débutant",
+      "emoji": "🎯",
+      "description_courte": "Algorithme qui groupe automatiquement des données similaires en K groupes (clusters), sans labels préalables. La base de la segmentation client.",
+      "explication_simple": "Imagine que tu dois organiser une fête et placer 100 invités à table en 5 tables (K=5) de façon que les gens qui se ressemblent soient ensemble. K-Means fait exactement ça : il place d'abord 5 centres aléatoires, puis assigne chaque invité à son centre le plus proche, puis bouge les centres vers le milieu de leur groupe, et répète. Au final, les groupes sont cohérents.",
+      "exemple_concret": "Segmentation des 50 000 clients d'une banque en 5 profils : 1) Jeunes emprunteurs (K1), 2) Familles établies (K2), 3) Seniors épargne (K3), 4) Entrepreneurs actifs (K4), 5) Premium (K5). Chaque profil reçoit des offres différentes.",
+      "formule": "Minimise : Σ Σ ||xᵢ - μₖ||² — la distance totale entre chaque point et son centroïde",
+      "quand_utiliser": [
+        "Segmentation client",
+        "Compression d'image (réduire le nombre de couleurs)",
+        "Première exploration de données sans labels"
+      ],
+      "avantages": [
+        "Simple et rapide",
+        "Fonctionne bien quand les clusters sont sphériques",
+        "Facile à interpréter : on regarde les centres pour comprendre chaque groupe"
+      ],
+      "inconvenients": [
+        "Faut choisir K à l'avance (méthode du coude pour aider)",
+        "Sensible aux outliers et à l'initialisation",
+        "Suppose des clusters de taille similaire et forme sphérique"
+      ],
+      "outils": [
+        "Scikit-learn",
+        "R (kmeans)",
+        "SAS (PROC FASTCLUS)",
+        "Dataiku (Clustering recipe)"
+      ],
+      "tags": [
+        "ML",
+        "Non supervisé",
+        "Clustering",
+        "Segmentation"
+      ]
+    },
+    {
+      "id": "pca",
+      "titre": "ACP / PCA (Analyse en Composantes Principales)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage non supervisé",
+      "niveau": "Intermédiaire",
+      "emoji": "🔭",
+      "description_courte": "Technique de réduction de dimension qui compresse des centaines de variables en quelques composantes, en gardant le maximum d'information.",
+      "explication_simple": "Imagine une ombre d'un cube projetée sur un mur. L'ombre en 2D capture l'essentiel de la forme 3D. PCA fait pareil : si tu as 200 variables très corrélées entre elles, PCA trouve les 5 « directions principales » qui résument le mieux toute l'information. Tu passes de 200 à 5 variables sans trop perdre.",
+      "exemple_concret": "En analyse génomique, on peut avoir 100 000 gènes par patient. PCA réduit ça à 20 composantes qui expliquent 95% de la variance, permettant de tracer les patients sur un graphique 2D et de voir des groupes naturels (populations, maladies similaires).",
+      "formule": "PCA calcule les vecteurs propres (eigenvectors) de la matrice de covariance. Les composantes principales sont les directions de variance maximale.",
+      "quand_utiliser": [
+        "Trop de variables corrélées entre elles (multicolinéarité)",
+        "Visualisation de données haute dimension",
+        "Compression avant d'appliquer un algorithme ML"
+      ],
+      "avantages": [
+        "Réduit le temps d'entraînement",
+        "Supprime la multicolinéarité",
+        "Permet la visualisation en 2D/3D"
+      ],
+      "inconvenients": [
+        "Les composantes ne sont pas interprétables (combinaison de toutes les variables)",
+        "La réduction d'information est irréversible",
+        "Suppose des relations linéaires"
+      ],
+      "outils": [
+        "Scikit-learn (PCA)",
+        "R (prcomp)",
+        "SAS (PROC PRINCOMP)",
+        "Dataiku (PCA recipe)"
+      ],
+      "tags": [
+        "ML",
+        "Non supervisé",
+        "Réduction de dimension",
+        "Visualisation"
+      ]
+    },
+    {
+      "id": "reseau-neurones",
+      "titre": "Réseaux de neurones (Deep Learning)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Intermédiaire",
+      "emoji": "🧠",
+      "description_courte": "Modèles inspirés du cerveau humain, composés de couches de neurones interconnectés. La base de l'IA moderne : images, texte, audio.",
+      "explication_simple": "Un neurone artificiel prend des valeurs en entrée, les multiplie par des poids (l'importance accordée à chaque entrée) et produit une valeur. Des milliers de neurones organisés en couches forment un réseau. La beauté : le réseau apprend tout seul les meilleurs poids en regardant des milliers d'exemples. Comme un enfant qui apprend à reconnaître un chat en en voyant des milliers.",
+      "exemple_concret": "Un réseau de neurones avec 3 couches cachées de 128 neurones chacune peut distinguer un chat d'un chien sur 100 000 photos avec 98% de précision, sans jamais qu'on lui dise « un chat a des moustaches ».",
+      "formule": "Output = σ(W₂ · σ(W₁ · x + b₁) + b₂), où σ est la fonction d'activation (ReLU, sigmoïde), W les poids appris",
+      "quand_utiliser": [
+        "Données images, audio, texte (le ML classique ne suffit plus)",
+        "Très grands volumes de données (>100K exemples)",
+        "Quand la performance prime sur tout"
+      ],
+      "avantages": [
+        "Excellent sur images, texte, audio",
+        "Apprend automatiquement les features complexes",
+        "Avec assez de données, surpasse tout autre algorithme"
+      ],
+      "inconvenients": [
+        "Nécessite beaucoup de données",
+        "Coûteux en calcul (GPU)",
+        "Difficile à interpréter (boîte noire)"
+      ],
+      "outils": [
+        "TensorFlow / Keras",
+        "PyTorch",
+        "FastAI",
+        "Hugging Face"
+      ],
+      "tags": [
+        "Deep Learning",
+        "Neural Network",
+        "IA",
+        "Images",
+        "Texte"
+      ]
+    },
+    {
+      "id": "transformers-llm",
+      "titre": "Transformers et LLMs",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "🤖",
+      "description_courte": "L'architecture qui a révolutionné le NLP et propulsé ChatGPT. Les Transformers comprennent le contexte d'une phrase en regardant tous les mots en même temps.",
+      "explication_simple": "Quand tu lis « La banque est fermée », tu comprends instantanément que 'banque' = institution financière et pas rive de rivière grâce au contexte. Les anciens modèles lisaient mot par mot. Les Transformers regardent tous les mots en même temps et calculent comment chaque mot est lié à tous les autres (mécanisme d'attention). C'est pourquoi ils comprennent le sens.",
+      "exemple_concret": "GPT-4 est un LLM (Large Language Model) basé sur l'architecture Transformer, entraîné sur des milliards de pages web. Il peut rédiger du code, traduire, analyser des contrats, répondre à des questions complexes. BERT (Google) est utilisé pour la recherche sémantique : il comprend que 'voiture' et 'automobile' sont synonymes.",
+      "formule": "Attention(Q,K,V) = softmax(QKᵀ/√d_k) · V — le mécanisme d'attention calcule un score entre chaque paire de mots",
+      "quand_utiliser": [
+        "NLP : génération de texte, classification, extraction d'info",
+        "Question-réponse sur documents",
+        "Code generation, traduction"
+      ],
+      "avantages": [
+        "Comprend le contexte à longue distance",
+        "Transfer Learning : un modèle pré-entraîné se fine-tune rapidement",
+        "Polyvalent : texte, image, code, audio"
+      ],
+      "inconvenients": [
+        "Très coûteux à entraîner (millions de dollars)",
+        "Hallucinations possibles",
+        "Difficile à contrôler et auditer"
+      ],
+      "outils": [
+        "Hugging Face Transformers",
+        "OpenAI API",
+        "Anthropic Claude",
+        "Google Gemini",
+        "LangChain"
+      ],
+      "tags": [
+        "Deep Learning",
+        "NLP",
+        "LLM",
+        "IA Générative",
+        "GPT",
+        "BERT"
+      ]
+    },
+    {
+      "id": "segmentation-rfm",
+      "titre": "Segmentation RFM",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Marketing Analytics",
+      "niveau": "Débutant",
+      "emoji": "📊",
+      "description_courte": "Méthode de segmentation client basée sur 3 dimensions : Récence (quand a-t-on acheté pour la dernière fois ?), Fréquence (combien de fois ?) et Montant (combien dépensé ?).",
+      "explication_simple": "Imagine que tu tiens un restaurant. Tes meilleurs clients sont ceux qui sont venus la semaine dernière (Récence élevée), qui viennent souvent (Fréquence élevée) et qui dépensent bien (Montant élevé). RFM classe tous tes clients en combinant ces 3 notes. Un client avec RFM 5-5-5 est un « Champion », un 1-1-1 est perdu.",
+      "exemple_concret": "Sur 50 000 clients : R = nombre de jours depuis le dernier achat (noté de 1 à 5), F = nombre de commandes sur 12 mois (1 à 5), M = CA total sur 12 mois (1 à 5). Segment « Champions » (5-5-5) = 3 200 clients qui génèrent 42% du CA total.",
+      "formule": "Score RFM = (Score_R × w_R) + (Score_F × w_F) + (Score_M × w_M). Souvent on note R, F, M de 1 à 5 indépendamment puis on combine.",
+      "quand_utiliser": [
+        "Segmentation client pour le marketing direct",
+        "Identifier les clients à risque de churn",
+        "Cibler des campagnes de réactivation"
+      ],
+      "avantages": [
+        "Simple à calculer et à expliquer",
+        "Ne requiert que les données transactionnelles",
+        "Directement actionnable par les équipes marketing"
+      ],
+      "inconvenients": [
+        "Ne prend pas en compte la valeur future (CLV)",
+        "Ignore les produits achetés et les préférences",
+        "Les 3 dimensions ont le même poids par défaut (pas forcément vrai)"
+      ],
+      "outils": [
+        "Python (Pandas)",
+        "SQL pur",
+        "Excel",
+        "Dataiku",
+        "Tableau"
+      ],
+      "tags": [
+        "Marketing",
+        "Segmentation",
+        "CRM",
+        "Analytics",
+        "Client"
+      ]
+    },
+    {
+      "id": "web-scraping",
+      "titre": "Web Scraping",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Collecte de données",
+      "niveau": "Intermédiaire",
+      "emoji": "🕷️",
+      "description_courte": "Technique pour extraire automatiquement des données de sites web. Transforme des pages HTML en données structurées exploitables.",
+      "explication_simple": "Imagine que tu veux comparer les prix de 100 smartphones sur 5 sites. Faire ça à la main prendrait des heures. Le web scraping envoie un robot qui visite chaque page, identifie où est le prix dans le code HTML, l'extrait et le stocke dans un tableau. Ce qui prenait 8h se fait en 3 minutes.",
+      "exemple_concret": "Scraper les offres d'emploi LinkedIn chaque jour pour analyser les tendances du marché data : quelles compétences sont demandées, dans quelles villes, à quel salaire. BeautifulSoup parse le HTML, Selenium clique sur « Voir plus » pour charger le contenu dynamique.",
+      "formule": "Pipeline : Requête HTTP → Parse HTML (BeautifulSoup / lxml) → Extraction XPath/CSS → Nettoyage → Stockage",
+      "quand_utiliser": [
+        "Collecter des données absentes en API",
+        "Veille concurrentielle (prix, promotions)",
+        "Agrégation de données publiques (offres emploi, annonces)"
+      ],
+      "avantages": [
+        "Accès à une quantité massive de données gratuites",
+        "Automatisable et répétable",
+        "Source de données unique pour des analyses concurrentielles"
+      ],
+      "inconvenients": [
+        "Zones grises légales (vérifier les CGU du site)",
+        "Sites qui changent leur structure = scripts à mettre à jour",
+        "Sites avec anti-bots (Cloudflare, CAPTCHA)"
+      ],
+      "outils": [
+        "BeautifulSoup (Python)",
+        "Scrapy (framework complet)",
+        "Selenium (sites dynamiques)",
+        "Playwright",
+        "Apify (service cloud)"
+      ],
+      "tags": [
+        "Data Collection",
+        "Python",
+        "ETL",
+        "Automatisation"
+      ]
+    },
+    {
+      "id": "feature-engineering",
+      "titre": "Feature Engineering",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Préparation des données",
+      "niveau": "Intermédiaire",
+      "emoji": "⚙️",
+      "description_courte": "L'art de créer de nouvelles variables à partir des données brutes pour améliorer les performances des modèles ML. Souvent plus impactant que le choix de l'algorithme.",
+      "explication_simple": "Si tu veux prédire les ventes d'une boulangerie, tu as la date. Mais 'date' brute ne dit rien à un modèle. Si tu crées 'est_samedi' (oui/non), 'mois_été' (oui/non), 'veille_ferie' (oui/non), là le modèle comprend tout. Feature Engineering, c'est transformer la matière première (données brutes) en ingrédients que le modèle peut vraiment utiliser.",
+      "exemple_concret": "Sur un dataset de fraude bancaire : la colonne 'montant' seule n'est pas très utile. Mais 'montant / montant_moyen_client_30j' (ratio par rapport à ses habitudes) est 10x plus prédictif. Cette nouvelle variable créée de zéro peut faire passer l'AUC de 0.82 à 0.91.",
+      "formule": "Variables courantes : log(x) pour les montants, différences temporelles, ratios, moyennes mobiles, comptages, encodage one-hot, target encoding",
+      "quand_utiliser": [
+        "Avant d'entraîner tout modèle ML",
+        "Quand les performances stagnent malgré le tuning",
+        "Quand on a une connaissance métier à encoder"
+      ],
+      "avantages": [
+        "Souvent plus impactant que changer d'algorithme",
+        "Permet d'intégrer la connaissance métier dans le modèle",
+        "Réduit la complexité requise du modèle"
+      ],
+      "inconvenients": [
+        "Demande du temps et de la créativité",
+        "Risque de data leakage si on utilise des infos futures",
+        "Les features doivent être recalculables en production"
+      ],
+      "outils": [
+        "Pandas / NumPy (Python)",
+        "Feature Store (Feast, Databricks)",
+        "Dataiku (Prepare recipe)",
+        "dbt (transformations SQL)"
+      ],
+      "tags": [
+        "ML",
+        "Data Preparation",
+        "Preprocessing",
+        "Feature Store"
+      ]
+    },
+    {
+      "id": "data-gouvernance",
+      "titre": "Data Gouvernance",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Gouvernance",
+      "niveau": "Intermédiaire",
+      "emoji": "🏛️",
+      "description_courte": "L'ensemble des règles, processus et responsabilités qui garantissent que les données d'une organisation sont fiables, sécurisées et utilisées de façon éthique et conforme.",
+      "explication_simple": "Imagine une bibliothèque où n'importe qui peut déposer des livres n'importe où, les renommer comme il veut, et les détruire. Personne ne trouve rien. La data gouvernance, c'est mettre en place les règles de cette bibliothèque : cataloguer les données, définir qui peut y accéder, qui est responsable de leur qualité, comment les archiver.",
+      "exemple_concret": "Une banque met en place une gouvernance data : chaque donnée client a un « Data Owner » (un responsable métier), est cataloguée dans un Data Catalog (avec définition, source, qualité), a des règles de conservation (RGPD : 5 ans), et son accès est contrôlé par rôle (le commercial voit les données produit, pas les données de crédit).",
+      "formule": "Piliers : Data Ownership (responsabilité), Data Catalog (inventaire), Data Lineage (traçabilité), Data Quality (qualité), Access Control (sécurité), Data Policies (règles)",
+      "quand_utiliser": [
+        "Projets IA/ML qui doivent être auditables",
+        "Conformité RGPD, BCBS 239, Bâle III, taxonomie ESG",
+        "Quand plusieurs équipes utilisent les mêmes données"
+      ],
+      "avantages": [
+        "Données fiables = décisions fiables",
+        "Conformité réglementaire",
+        "Réduction du temps passé à chercher et corriger les données"
+      ],
+      "inconvenients": [
+        "Long à mettre en place (projet de 12 à 24 mois)",
+        "Nécessite un changement culturel (résistances)",
+        "Coûteux sans ROI immédiat visible"
+      ],
+      "outils": [
+        "Collibra",
+        "Alation",
+        "Microsoft Purview",
+        "Atlan",
+        "Apache Atlas (open source)",
+        "Dataiku (Catalog)"
+      ],
+      "tags": [
+        "Gouvernance",
+        "RGPD",
+        "Conformité",
+        "Data Quality",
+        "Data Catalog"
+      ]
+    },
+    {
+      "id": "data-lineage",
+      "titre": "Data Lineage (Lignage de données)",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Gouvernance",
+      "niveau": "Intermédiaire",
+      "emoji": "🔗",
+      "description_courte": "La capacité à tracer le parcours d'une donnée de sa source jusqu'à son utilisation finale, en passant par toutes les transformations intermédiaires.",
+      "explication_simple": "Si un reporting financier affiche un chiffre faux, tu veux savoir d'où vient l'erreur. Le data lineage te montre : cette colonne vient de la table A, qui a été transformée par le job ETL B, qui lit les données du système source C. Tu remontes le fil comme un enquêteur, sans tâtonnement.",
+      "exemple_concret": "Dans une banque, le reporting Pilier 3 (réglementaire) utilise le « Total des expositions ». Le lineage montre : Exposition = Système de gestion des risques (source) → dbt model risk_exposures → Agrégation Synapse → Table PowerBI. Si le chiffre change, on sait exactement quel job a produit le changement.",
+      "formule": "Lineage = graphe orienté acyclique (DAG) : Nœuds = datasets/tables, Arêtes = transformations (SQL, jobs ETL, modèles dbt)",
+      "quand_utiliser": [
+        "Audit réglementaire",
+        "Débogage d'anomalies dans les données",
+        "Analyse d'impact avant de modifier une table source"
+      ],
+      "avantages": [
+        "Réduit le temps de débogage de jours à heures",
+        "Permet l'analyse d'impact (« si je modifie cette table, qu'est-ce que ça casse ? »)",
+        "Obligatoire pour certaines régulations (BCBS 239)"
+      ],
+      "inconvenients": [
+        "Complexe à maintenir dans des architectures hybrides (ETL + SQL + Python)",
+        "Nécessite une instrumentalisation de tous les pipelines",
+        "Peut devenir un graphe très complexe sur de grands SI"
+      ],
+      "outils": [
+        "dbt (lineage automatique)",
+        "OpenLineage",
+        "Marquez",
+        "Collibra",
+        "Microsoft Purview",
+        "Atlan"
+      ],
+      "tags": [
+        "Gouvernance",
+        "Audit",
+        "Data Quality",
+        "ETL",
+        "dbt"
+      ]
+    },
+    {
+      "id": "scoring",
+      "titre": "Scoring (Score décisionnel)",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Decision Analytics",
+      "niveau": "Débutant",
+      "emoji": "🏆",
+      "description_courte": "Technique qui attribue un score numérique à une entité (client, transaction, prospect) pour prioriser les actions ou prendre une décision automatique.",
+      "explication_simple": "Quand tu passes un examen, tu as une note. Le scoring, c'est pareil mais appliqué aux données : un client reçoit un score de risque de 720/1000 (score de crédit), une transaction reçoit un score de fraude de 0.94 (très suspect), un lead commercial reçoit un score de maturité de 78/100. Ce score permet de trier, prioriser et décider.",
+      "exemple_concret": "Score de propension à acheter : 100 000 clients reçoivent un score de 0 à 100 basé sur leur comportement sur le site (pages visitées, temps passé, historique). Les équipes commerciales ne contactent que les 5 000 avec un score > 75 pour la prochaine campagne. Taux de conversion : 12% vs 2% sans scoring.",
+      "formule": "Score = f(variables) → une valeur numérique. Peut être un modèle ML (XGBoost), un modèle scoring traditionnel (logistique), ou une somme pondérée de variables.",
+      "quand_utiliser": [
+        "Scoring crédit",
+        "Lead scoring (commercial)",
+        "Score de risque (fraude, churn)",
+        "Scoring ESG (investissement responsable)"
+      ],
+      "avantages": [
+        "Objective et reproductible",
+        "Automatisable à grande échelle",
+        "Permet une priorisation des ressources humaines"
+      ],
+      "inconvenients": [
+        "Le score peut être biaisé si les données d'entraînement sont biaisées",
+        "Nécessite validation régulière (les comportements changent)",
+        "Peut créer des injustices si utilisé sans garde-fous"
+      ],
+      "outils": [
+        "Python (Scikit-learn, XGBoost)",
+        "SAS (PROC LOGISTIC, PROC HPFOREST)",
+        "Dataiku (Scoring recipe)",
+        "SQL (règles de scoring simples)"
+      ],
+      "tags": [
+        "Analytics",
+        "ML",
+        "Décisionnel",
+        "Finance",
+        "CRM"
+      ]
+    },
+    {
+      "id": "amazon-s3",
+      "titre": "Amazon S3 (Simple Storage Service)",
+      "categorie": "Cloud",
+      "sous_categorie": "AWS - Stockage",
+      "niveau": "Débutant",
+      "emoji": "🪣",
+      "description_courte": "Le stockage objet d'AWS. Infinite, durable (99.999999999%), peu coûteux. Le point de départ de presque toute architecture data sur AWS.",
+      "explication_simple": "S3, c'est comme un disque dur externe infini dans le cloud. Tu y stockes n'importe quoi : fichiers CSV, Parquet, images, modèles ML, logs. Tu l'organises en 'buckets' (seaux) puis en dossiers. Le grand avantage : tu payes uniquement ce que tu stockes, et ça ne tombe presque jamais en panne.",
+      "exemple_concret": "Un Data Lake sur S3 : 'raw/' pour les données brutes, 'processed/' pour les données nettoyées, 'curated/' pour les données prêtes à l'analyse. AWS Glue ou dbt lit depuis « processed/ » et écrit dans « curated/ ». Athena fait du SQL directement sur les fichiers Parquet sans charger dans une base.",
+      "formule": "Coût = (GB stockés × $0.023/GB/mois) + (requêtes GET/PUT × $0.0004/1000). Format Parquet recommandé : ~80% moins cher que CSV.",
+      "quand_utiliser": [
+        "Data Lake",
+        "Archivage de logs",
+        "Source pour Athena, Glue, Redshift Spectrum",
+        "Stockage de modèles ML SageMaker"
+      ],
+      "avantages": [
+        "Pratiquement infini et très durable",
+        "S'intègre avec tous les services AWS",
+        "Classes de stockage (Glacier pour l'archivage à 0.004$/GB)"
+      ],
+      "inconvenients": [
+        "Pas de système de fichiers traditionnel (objet, pas dossiers réels)",
+        "Les petits fichiers sont coûteux en requêtes (mieux vaut compacter)",
+        "Latence trop élevée pour les bases transactionnelles"
+      ],
+      "outils": [
+        "AWS CLI",
+        "Boto3 (Python SDK)",
+        "AWS Console",
+        "S3 Select (SQL direct)"
+      ],
+      "tags": [
+        "AWS",
+        "Cloud",
+        "Stockage",
+        "Data Lake",
+        "Architecture"
+      ]
+    },
+    {
+      "id": "amazon-sagemaker",
+      "titre": "Amazon SageMaker",
+      "categorie": "Cloud",
+      "sous_categorie": "AWS - Machine Learning",
+      "niveau": "Avancé",
+      "emoji": "🔬",
+      "description_courte": "La plateforme MLOps d'AWS. Couvre tout le cycle ML : exploration (Studio), entraînement distribué, tuning automatique, déploiement d'endpoints, monitoring et MLOps.",
+      "explication_simple": "SageMaker, c'est l'atelier complet du Data Scientist sur AWS. Au lieu de configurer des serveurs, tu cliques : je veux entraîner un modèle XGBoost sur 100 000 lignes → SageMaker lance un serveur, entraîne, l'arrête automatiquement. Tu déploies ensuite le modèle en un clic, il est accessible via une API, et SageMaker surveille sa performance en production.",
+      "exemple_concret": "Pipeline complet : SageMaker Data Wrangler pour nettoyer les données (sans code), SageMaker AutoML pour trouver le meilleur modèle automatiquement, SageMaker Model Registry pour versionner, SageMaker Endpoint pour servir l'API. Tout sans gérer d'infrastructure.",
+      "formule": "Coût = instances EC2 (ml.m5.xlarge = ~0.23$/h) + stockage S3 + inférence endpoint (ml.t2.medium = ~0.05$/h)",
+      "quand_utiliser": [
+        "Projets ML AWS en production",
+        "Entraînement distribué sur grandes données",
+        "MLOps : versioning, CI/CD ML, monitoring de modèles"
+      ],
+      "avantages": [
+        "Environnement géré : pas de serveurs à configurer",
+        "Intégration native avec S3, Glue, Step Functions",
+        "SageMaker Autopilot pour le no-code ML"
+      ],
+      "inconvenients": [
+        "Coûteux si les instances ne sont pas arrêtées",
+        "Courbe d'apprentissage importante",
+        "Vendor lock-in AWS"
+      ],
+      "outils": [
+        "SageMaker Python SDK",
+        "SageMaker Studio (IDE web)",
+        "SageMaker Pipelines",
+        "SageMaker Feature Store"
+      ],
+      "tags": [
+        "AWS",
+        "ML",
+        "MLOps",
+        "Cloud",
+        "Deep Learning"
+      ]
+    },
+    {
+      "id": "google-bigquery",
+      "titre": "Google BigQuery",
+      "categorie": "Cloud",
+      "sous_categorie": "GCP - Data Warehouse",
+      "niveau": "Intermédiaire",
+      "emoji": "🔍",
+      "description_courte": "Le Data Warehouse serverless de Google. Fait du SQL sur des téraoctets de données en quelques secondes, sans gérer de serveurs. Facturation à la requête.",
+      "explication_simple": "BigQuery, c'est comme avoir une base de données géante mais sans avoir à la gérer. Tu uploades tes données, tu fais du SQL, tu obtiens le résultat en secondes même sur des milliards de lignes. Et tu payes seulement pour les données scannées par ta requête (5$ par TB scanné), pas pour un serveur qui tourne en permanence.",
+      "exemple_concret": "Analyser 3 milliards de transactions e-commerce sur 5 ans en 8 secondes avec un SELECT SQL classique. Même requête sur PostgreSQL classique : timeout ou 4 heures. BigQuery y arrive grâce à son architecture en colonnes et son traitement massivement parallèle sur des milliers de serveurs Google.",
+      "formule": "Coût = TB scannés × 5$/TB (mode à la demande) ou prix fixe (slots réservés). Format columnar (Parquet) réduit la consommation car seules les colonnes utilisées sont lues.",
+      "quand_utiliser": [
+        "Analytics sur de très grands volumes (des Go aux PB)",
+        "Reporting BI avec Looker Studio",
+        "ML avec BigQuery ML (SQL pour entraîner des modèles)"
+      ],
+      "avantages": [
+        "Serverless : aucune infrastructure à gérer",
+        "Très performant sur des requêtes analytiques",
+        "BigQuery ML : entraîner des modèles directement en SQL"
+      ],
+      "inconvenients": [
+        "Coûteux sur des requêtes fréquentes et gourmandes (sans slots réservés)",
+        "Pas adapté aux transactions OLTP (insertions/mises à jour fréquentes)",
+        "Latence de quelques secondes même sur petites données"
+      ],
+      "outils": [
+        "BigQuery Studio (Google Console)",
+        "BigQuery API (Python, Java)",
+        "Looker Studio",
+        "dbt (adapters BigQuery)",
+        "Vertex AI (ML pipeline)"
+      ],
+      "tags": [
+        "GCP",
+        "Data Warehouse",
+        "SQL",
+        "Analytics",
+        "Serverless"
+      ]
+    },
+    {
+      "id": "azure-synapse",
+      "titre": "Azure Synapse Analytics",
+      "categorie": "Cloud",
+      "sous_categorie": "Azure - Data Platform",
+      "niveau": "Intermédiaire",
+      "emoji": "⚡",
+      "description_courte": "La plateforme data analytics unifiée de Microsoft. Combine SQL serverless, Spark, Data Factory et Power BI dans un seul environnement.",
+      "explication_simple": "Synapse, c'est comme un couteau suisse pour la data sur Azure. Dans une seule interface, tu peux : faire du SQL sur des fichiers dans Azure Data Lake (sans les charger), lancer des jobs Spark pour transformer des données, créer des pipelines ETL (comme Data Factory), et connecter directement Power BI. C'est la réponse Microsoft à BigQuery + Databricks.",
+      "exemple_concret": "Pipeline Synapse : des données brutes arrivent dans Azure Data Lake Storage Gen2, Synapse Serverless SQL permet d'explorer ces données sans les bouger, Synapse Spark transforme et nettoie, les données propres sont chargées dans le Synapse Dedicated SQL Pool (Data Warehouse) pour les rapports Power BI.",
+      "formule": "Coût = SQL Serverless (1$/TB scannés) + Spark Pool (instances, pas de base) + Dedicated Pool (DWU, ~1.2$/DWH100/h)",
+      "quand_utiliser": [
+        "Architecture data complète sur Azure (ingestion → analytics)",
+        "Projets Azure avec Azure Data Lake Storage Gen2",
+        "Remplacement ou complément de SQL Server pour l'analytique"
+      ],
+      "avantages": [
+        "Environnement unifié : SQL, Spark, ETL dans une interface",
+        "Intégration native avec les services Azure (ADF, PowerBI, ML)",
+        "Synapse Link pour connecter directement Cosmos DB ou Dataverse"
+      ],
+      "inconvenients": [
+        "Interface parfois confuse (beaucoup de fonctionnalités)",
+        "Coûts Dedicated Pool élevés si le Data Warehouse est allumé en permanence",
+        "Moins mature que Databricks sur la partie Spark"
+      ],
+      "outils": [
+        "Synapse Studio",
+        "Azure Data Lake Storage Gen2",
+        "Azure Data Factory (pipeline)",
+        "Power BI",
+        "Azure ML"
+      ],
+      "tags": [
+        "Azure",
+        "Data Warehouse",
+        "Spark",
+        "Analytics",
+        "ETL"
+      ]
+    },
+    {
+      "id": "data-mesh",
+      "titre": "Data Mesh",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Architecture Data",
+      "niveau": "Avancé",
+      "emoji": "🕸️",
+      "description_courte": "Paradigme architectural qui décentralise la propriété des données : chaque domaine métier est responsable de ses propres données et les expose comme des « produits données ».",
+      "explication_simple": "Dans l'architecture classique, une seule équipe data centrale est responsable de toutes les données de l'entreprise. C'est un goulot d'étranglement : tout passe par eux. Data Mesh dit le contraire : que l'équipe Marketing gère ses données marketing, l'équipe Finance ses données financières, etc. Chaque équipe expose ses données comme un produit que les autres peuvent consommer. Comme Amazon : chaque service a son API.",
+      "exemple_concret": "Chez Zalando (pionnier du Data Mesh) : l'équipe 'Commandes' possède et publie le dataset 'orders' avec une SLA de qualité garantie (fraîcheur < 1h, 0 valeurs nulles sur order_id). L'équipe 'Recommandations' consomme ce dataset sans dépendre d'une équipe data centrale. Chacun est autonome.",
+      "formule": "4 principes : 1) Ownership décentralisé par domaine, 2) Données comme produit (qualité, SLA, documentation), 3) Infrastructure self-service, 4) Gouvernance fédérée (standards communs)",
+      "quand_utiliser": [
+        "Grandes organisations avec plusieurs domaines métier",
+        "Quand l'équipe data centrale est un bottleneck",
+        "Quand on veut scaler la culture data dans toute l'entreprise"
+      ],
+      "avantages": [
+        "Scalabilité : pas de goulot d'étranglement central",
+        "Responsabilisation des équipes métier",
+        "Meilleure qualité (les producteurs sont aussi les premiers utilisateurs)"
+      ],
+      "inconvenients": [
+        "Complexe à mettre en œuvre (nécessite une vraie maturité data)",
+        "Risque de silos si la gouvernance fédérée est mal faite",
+        "Investissement infrastructure et formation important"
+      ],
+      "outils": [
+        "Databricks (Unity Catalog)",
+        "AWS Lake Formation",
+        "Google Dataplex",
+        "Atlan",
+        "dbt"
+      ],
+      "tags": [
+        "Architecture",
+        "Gouvernance",
+        "Organisation",
+        "Data Platform"
+      ]
+    },
+    {
+      "id": "ab-testing",
+      "titre": "A/B Testing",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Expérimentation",
+      "niveau": "Intermédiaire",
+      "emoji": "🧪",
+      "description_courte": "Méthode d'expérimentation scientifique qui compare deux versions (A et B) d'une page, d'une fonctionnalité ou d'un message pour déterminer laquelle performe le mieux.",
+      "explication_simple": "Tu veux savoir si ton bouton d'achat en vert ou en rouge convertit mieux. Tu divises tes visiteurs en deux groupes aléatoires : 50% voient le bouton vert (A), 50% le rouge (B). Après assez de visites, les statistiques te disent si la différence observée est réelle ou due au hasard. C'est la méthode scientifique appliquée au business.",
+      "exemple_concret": "Amazon teste en permanence l'ordre des résultats de recherche. Version A : tri par popularité. Version B : tri par marge. Après 2 semaines sur 5% du trafic, la version B génère +2.3% de marge avec un p-value < 0.01 : la différence est statistiquement significative. Amazon déploie la version B à 100%.",
+      "formule": "p-value : probabilité d'observer un résultat aussi extrême par hasard. Si p < 0.05 : résultat significatif. Taille d'échantillon minimum : n = 2 × (z_α + z_β)² × σ² / Δ²",
+      "quand_utiliser": [
+        "Optimisation de pages web (CTR, conversion)",
+        "Test de fonctionnalités produit",
+        "Validation de l'impact d'un modèle ML avant déploiement total"
+      ],
+      "avantages": [
+        "Seul moyen de prouver la causalité (pas juste la corrélation)",
+        "Décisions basées sur des données, pas sur des opinions",
+        "Permet de tester sans risque sur un petit sous-ensemble"
+      ],
+      "inconvenients": [
+        "Nécessite beaucoup de trafic pour détecter de petits effets",
+        "Les tests doivent durer assez longtemps (biais du 'peek')",
+        "Ne teste qu'une chose à la fois (sinon, multivarié requis)"
+      ],
+      "outils": [
+        "Optimizely",
+        "Google Optimize (arrêté)",
+        "Split.io",
+        "Python (scipy.stats)",
+        "R"
+      ],
+      "tags": [
+        "Expérimentation",
+        "Statistiques",
+        "Produit",
+        "Conversion",
+        "Causalité"
+      ]
+    },
+    {
+      "id": "svm",
+      "titre": "SVM (Support Vector Machine)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Intermédiaire",
+      "emoji": "⚔️",
+      "description_courte": "Algorithme qui trouve la frontière optimale entre des classes en maximisant la marge entre les points les plus proches de chaque groupe.",
+      "explication_simple": "Imagine deux groupes de billes rouges et bleues mélangées sur une table. Tu veux tracer une ligne qui les sépare le mieux possible en laissant le plus d'espace de chaque côté. SVM fait exactement ça : il cherche la ligne (ou surface en plusieurs dimensions) qui maximise l'espace entre les deux groupes. Les billes les plus proches de cette ligne sont appelées « vecteurs de support ».",
+      "exemple_concret": "Classification de emails en spam/non-spam : SVM trouve la frontière dans un espace à 1000 dimensions (les 1000 mots les plus fréquents) qui sépare le mieux les emails spam des emails légitimes. Avec un noyau RBF, il peut capturer des séparations non linéaires que la régression logistique raterait.",
+      "formule": "Maximiser : 2/||w|| (la marge), sous contrainte : yᵢ(w·xᵢ + b) ≥ 1. Le noyau K(x,z) permet d'opérer dans un espace de grande dimension sans calcul explicite.",
+      "quand_utiliser": [
+        "Données de haute dimension (texte, génomique)",
+        "Quand les données sont peu nombreuses mais bien séparables",
+        "Classification binaire avec bonne marge naturelle"
+      ],
+      "avantages": [
+        "Très efficace en haute dimension",
+        "Robuste aux outliers (seuls les vecteurs de support comptent)",
+        "Polyvalent grâce aux noyaux (linéaire, RBF, polynomial)"
+      ],
+      "inconvenients": [
+        "Lent sur de très grands datasets",
+        "Choix du noyau et des hyperparamètres complexe",
+        "Peu interprétable"
+      ],
+      "outils": [
+        "Scikit-learn (SVC)",
+        "libSVM",
+        "LIBLINEAR"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Classification",
+        "Haute dimension"
+      ]
+    },
+    {
+      "id": "knn",
+      "titre": "K-Nearest Neighbors (KNN)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Apprentissage supervisé",
+      "niveau": "Débutant",
+      "emoji": "🏘️",
+      "description_courte": "Algorithme paresseux qui prédit en cherchant les K exemples les plus proches dans les données d'entraînement et vote à la majorité.",
+      "explication_simple": "Pour savoir si un nouveau point appartient à quelle classe, KNN regarde ses K voisins les plus proches dans les données connues. Si 4 voisins sur 5 sont de classe A, la prédiction est A. C'est littéralement 'dis-moi qui sont tes voisins, je te dirai qui tu es'. Aucun entraînement n'est nécessaire : l'algorithme stocke tout et cherche au moment de la prédiction.",
+      "exemple_concret": "Recommandation de films : pour prédire si tu vas aimer un film, on cherche les 10 utilisateurs qui ont les goûts les plus proches des tiens (K=10). Si 8 d'entre eux ont noté ce film 4/5 ou plus, on te le recommande.",
+      "formule": "Distance euclidienne : d(x, xᵢ) = √(Σ(xⱼ - xᵢⱼ)²). Prédiction : vote majoritaire des K voisins les plus proches.",
+      "quand_utiliser": [
+        "Petits datasets (< 50K exemples)",
+        "Systèmes de recommandation simples",
+        "Lorsqu'on veut comprendre l'analogie avec des exemples existants"
+      ],
+      "avantages": [
+        "Aucun entraînement (apprentissage 'paresseux')",
+        "Naturellement multi-classes",
+        "Simple à comprendre et implémenter"
+      ],
+      "inconvenients": [
+        "Lent à prédire sur grands datasets (calcule toutes les distances)",
+        "Sensible aux variables non pertinentes et aux échelles différentes",
+        "Mémoire importante (stocke tout le dataset)"
+      ],
+      "outils": [
+        "Scikit-learn (KNeighborsClassifier)",
+        "FAISS (pour les grandes dimensions)"
+      ],
+      "tags": [
+        "ML",
+        "Supervisé",
+        "Classification",
+        "Recommandation"
+      ]
+    },
+    {
+      "id": "roc-auc",
+      "titre": "ROC-AUC — Évaluation des modèles de classification",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Évaluation ML",
+      "niveau": "Intermédiaire",
+      "emoji": "📐",
+      "description_courte": "Métrique d'évaluation qui mesure la capacité d'un modèle à distinguer les classes positives des négatives, indépendamment du seuil de décision choisi.",
+      "explication_simple": "Imagine que tu cherches des fraudeurs parmi 1 million de transactions. Un bon modèle doit classer tous les fraudeurs en haut de sa liste de scores, et les non-fraudeurs en bas. L'AUC mesure exactement ça : si tu pioches au hasard une transaction frauduleuse et une légitime, l'AUC est la probabilité que le modèle donne un score plus élevé à la fraude. AUC = 1 est parfait, AUC = 0.5 est aussi bon qu'un tirage au sort.",
+      "exemple_concret": "Modèle de scoring crédit : AUC = 0.85 signifie que dans 85% des cas, le modèle attribue un score de risque plus élevé à quelqu'un qui va faire défaut plutôt qu'à quelqu'un qui va rembourser. C'est bien mieux qu'un modèle aléatoire (AUC=0.5) mais en deçà d'un modèle excellent (AUC > 0.95).",
+      "formule": "AUC = ∫₀¹ TPR(FPR) d(FPR). La courbe ROC trace TPR (sensibilité) vs FPR (1-spécificité) pour tous les seuils de décision possibles.",
+      "quand_utiliser": [
+        "Évaluation de modèles de classification binaire",
+        "Comparaison de plusieurs modèles",
+        "Quand les classes sont déséquilibrées (fraude, maladie rare)"
+      ],
+      "avantages": [
+        "Indépendant du seuil de décision",
+        "Robuste aux classes déséquilibrées",
+        "Comparable entre différents modèles"
+      ],
+      "inconvenients": [
+        "Ne distingue pas FP et FN (qui peuvent avoir des coûts très différents)",
+        "Peut être trompeur sur des datasets très déséquilibrés (préférer PR-AUC)",
+        "Ne donne pas d'information sur la calibration des probabilités"
+      ],
+      "outils": [
+        "Scikit-learn (roc_auc_score)",
+        "MLflow (tracking automatique)",
+        "Dataiku (métriques intégrées)"
+      ],
+      "tags": [
+        "ML",
+        "Évaluation",
+        "Métriques",
+        "Classification"
+      ]
+    },
+    {
+      "id": "cross-validation",
+      "titre": "Validation croisée (Cross-validation)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Évaluation ML",
+      "niveau": "Intermédiaire",
+      "emoji": "🔄",
+      "description_courte": "Technique d'évaluation qui divise le dataset en plusieurs sous-ensembles pour entraîner et tester le modèle plusieurs fois, donnant une estimation plus fiable des performances réelles.",
+      "explication_simple": "Au lieu d'une seule division données train/test (qui peut être chanceuse ou malchanceuse), la validation croisée à 5 folds divise les données en 5 groupes égaux. Elle entraîne 5 modèles différents, chacun testé sur un groupe différent. La performance finale est la moyenne des 5 résultats. C'est comme passer 5 examens différents plutôt qu'un seul pour évaluer ton niveau.",
+      "exemple_concret": "Entraînement d'un modèle de fraude sur 100 000 transactions : avec un simple train/test split, on obtient AUC = 0.88. Mais avec une validation croisée à 5 folds, on obtient AUC moyen = 0.84 ± 0.03. L'écart type nous dit que le modèle est stable (pas de surapprentissage sur un sous-ensemble particulier).",
+      "formule": "K-fold CV : Score = (1/K) Σ score(modèle entraîné sur K-1 folds, testé sur le fold k). K=5 ou K=10 sont les valeurs standard.",
+      "quand_utiliser": [
+        "Sélection de modèle et tuning d'hyperparamètres",
+        "Quand le dataset est petit (< 10 000 exemples)",
+        "Validation rigoureuse avant mise en production"
+      ],
+      "avantages": [
+        "Estimation plus fiable (moins de variance)",
+        "Utilise toutes les données pour l'entraînement ET le test",
+        "Détecte le surapprentissage"
+      ],
+      "inconvenients": [
+        "K fois plus lent à entraîner",
+        "Risque de data leakage si mal implémenté (features temporelles)",
+        "Pas adapté aux séries temporelles (utiliser TimeSeriesSplit)"
+      ],
+      "outils": [
+        "Scikit-learn (cross_val_score, KFold)",
+        "MLflow",
+        "Optuna"
+      ],
+      "tags": [
+        "ML",
+        "Évaluation",
+        "Validation",
+        "Bonnes pratiques"
+      ]
+    },
+    {
+      "id": "overfitting",
+      "titre": "Surapprentissage & Sous-apprentissage",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Concepts ML fondamentaux",
+      "niveau": "Débutant",
+      "emoji": "⚖️",
+      "description_courte": "Le surapprentissage (overfitting) se produit quand un modèle mémorise les données d'entraînement sans généraliser. Le sous-apprentissage (underfitting) quand il est trop simple pour capturer les patterns.",
+      "explication_simple": "Un élève qui révise uniquement les annales de l'examen et les apprend par cœur va échouer si les questions changent (surapprentissage). Mais s'il n'étudie que 2 heures, il n'en saura pas assez (sous-apprentissage). Un bon modèle ML doit apprendre les règles générales, pas les exceptions spécifiques au dataset d'entraînement.",
+      "exemple_concret": "Modèle de prédiction de prix immobilier : un arbre de décision à profondeur 50 mémorise chaque maison du dataset train (erreur 0%) mais prédit n'importe quoi sur les nouvelles maisons (erreur test = 45%). En limitant la profondeur à 8, on obtient erreur train = 12%, erreur test = 14%. Bien équilibré.",
+      "formule": "Biais-Variance tradeoff : Erreur totale = Biais² + Variance + Bruit irréductible. Surapprentissage = haute variance, faible biais. Sous-apprentissage = haut biais, faible variance.",
+      "quand_utiliser": [
+        "Diagnostic systématique lors de tout projet ML",
+        "Avant de déployer un modèle en production",
+        "Quand les performances train/test divergent"
+      ],
+      "avantages": [
+        "Comprendre ce concept est fondamental pour éviter les erreurs classiques",
+        "Permet de choisir la bonne complexité de modèle",
+        "Guide le choix des techniques de régularisation"
+      ],
+      "inconvenients": [
+        "Pas un algorithme mais un concept — l'équilibre est difficile à trouver",
+        "Dépend du volume et de la qualité des données",
+        "Le 'bon' équilibre est souvent empirique"
+      ],
+      "outils": [
+        "Courbes d'apprentissage (sklearn learning_curve)",
+        "Régularisation L1/L2",
+        "Dropout (deep learning)",
+        "Early Stopping"
+      ],
+      "tags": [
+        "ML",
+        "Concepts fondamentaux",
+        "Diagnostics",
+        "Régularisation"
+      ]
+    },
+    {
+      "id": "isolation-forest",
+      "titre": "Isolation Forest",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Détection d'anomalies",
+      "niveau": "Intermédiaire",
+      "emoji": "🌲",
+      "description_courte": "Algorithme de détection d'anomalies qui isole les points aberrants en construisant des arbres aléatoires — les anomalies sont plus faciles à isoler car elles sont rares et différentes.",
+      "explication_simple": "Pour trouver une aiguille dans une botte de foin, tu fais des coupes aléatoires jusqu'à isoler l'aiguille. Elle est isolée en très peu de coupes car il n'y en a qu'une. Isolation Forest fait pareil : il coupe aléatoirement les données plusieurs fois. Les points qui s'isolent rapidement (peu de coupes) sont les anomalies, car ils sont loin de la masse des données normales.",
+      "exemple_concret": "Détection de transactions frauduleuses : 99.9% des transactions sont normales, 0.1% sont des fraudes. Isolation Forest construit 100 arbres aléatoires. Une fraude typique (montant inhabituellement élevé à 3h du matin dans un pays étranger) s'isole en 3-4 coupes en moyenne vs 15-20 coupes pour une transaction normale.",
+      "formule": "Score d'anomalie = 2^(-E(h(x))/c(n)), où h(x) est le nombre moyen de coupes pour isoler x, et c(n) est la longueur de chemin moyenne pour un dataset de taille n.",
+      "quand_utiliser": [
+        "Détection d'anomalies sans labels (non supervisé)",
+        "Données haute dimension",
+        "Quand les anomalies sont rares et non définies a priori"
+      ],
+      "avantages": [
+        "Ne nécessite pas de labels (non supervisé)",
+        "Efficace sur des données haute dimension",
+        "Rapide à entraîner même sur de grands datasets"
+      ],
+      "inconvenients": [
+        "Sensible aux données avec beaucoup de variables corrélées",
+        "Le score d'anomalie est relatif, pas absolu (calibrage difficile)",
+        "Peut rater des anomalies « masquées » par d'autres"
+      ],
+      "outils": [
+        "Scikit-learn (IsolationForest)",
+        "PyOD (bibliothèque spécialisée)",
+        "H2O.ai"
+      ],
+      "tags": [
+        "ML",
+        "Non supervisé",
+        "Anomalies",
+        "Fraude"
+      ]
+    },
+    {
+      "id": "automl",
+      "titre": "AutoML (Machine Learning Automatisé)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Automatisation ML",
+      "niveau": "Débutant",
+      "emoji": "🤖",
+      "description_courte": "Technologies qui automatisent la sélection du modèle ML, le tuning des hyperparamètres et le feature engineering pour rendre le ML accessible sans expertise approfondie.",
+      "explication_simple": "Construire un modèle ML manuellement, c'est comme choisir un vêtement parmi 10 000 options : tu testes, tu ajustes, tu recommences. AutoML, c'est un styliste qui essaie automatiquement des centaines de combinaisons et te présente les 3 meilleures. Tu restes le décideur, mais l'exploration est faite pour toi.",
+      "exemple_concret": "Un Data Analyst sans expertise ML veut prédire les retards de livraison. Avec AutoML (H2O AutoML) : il importe le CSV, sélectionne la colonne cible, lance l'entraînement. En 30 minutes, AutoML a testé 50 modèles (GBM, Random Forest, XGBoost, stacking), et propose le meilleur avec AUC = 0.91. Le tout sans écrire une ligne de code.",
+      "formule": "AutoML = HPO (Hyperparameter Optimization) + NAS (Neural Architecture Search) + Feature Engineering automatique + Meta-learning",
+      "quand_utiliser": [
+        "Prototypage rapide avant investissement profond",
+        "Équipes sans experts ML",
+        "Benchmark pour mesurer le potentiel d'un problème"
+      ],
+      "avantages": [
+        "Accessible aux non-experts",
+        "Explore plus de combinaisons qu'un humain",
+        "Accélère considérablement les cycles d'itération"
+      ],
+      "inconvenients": [
+        "Résultats peuvent manquer d'interprétabilité",
+        "Coûteux en temps de calcul",
+        "Ne remplace pas la compréhension du problème métier"
+      ],
+      "outils": [
+        "H2O AutoML",
+        "Auto-sklearn",
+        "TPOT",
+        "Dataiku AutoML",
+        "SageMaker AutoPilot",
+        "Azure AutoML"
+      ],
+      "tags": [
+        "ML",
+        "AutoML",
+        "No-code",
+        "Productivité"
+      ]
+    },
+    {
+      "id": "transfer-learning",
+      "titre": "Transfer Learning (Apprentissage par transfert)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "🔄",
+      "description_courte": "Technique qui réutilise un modèle pré-entraîné sur une grande tâche générale pour l'adapter rapidement à une tâche spécifique avec peu de données.",
+      "explication_simple": "Un médecin qui apprend à lire des radios utilise sa connaissance générale de l'anatomie humaine (acquise en années d'étude) pour s'adapter rapidement à une nouvelle spécialité. Transfer Learning fait pareil : un modèle pré-entraîné sur 14 millions d'images (ImageNet) a déjà appris à reconnaître les formes, textures, contours. On réutilise ces connaissances pour reconnaître des tumeurs sur des radios avec seulement 5 000 exemples.",
+      "exemple_concret": "Reconnaissance de défauts de fabrication : fine-tuner ResNet-50 (pré-entraîné sur ImageNet) sur 2 000 photos de défauts annotées. Résultat : 94% de précision en 2 heures d'entraînement. Entraîner de zéro aurait nécessité 500 000 photos et plusieurs jours de GPU.",
+      "formule": "Fine-tuning : geler les couches initiales (features généraux), réentraîner les dernières couches (features spécifiques). θ_final = θ_pretrained + fine-tune(θ_last_layers, données_spécifiques)",
+      "quand_utiliser": [
+        "Peu de données labellisées disponibles",
+        "Domaines proches de la tâche originale",
+        "Réduction des coûts de calcul et de temps"
+      ],
+      "avantages": [
+        "Excellentes performances avec peu de données",
+        "Temps et coût d'entraînement fortement réduits",
+        "Bénéficie des milliards de paramètres appris sur de grandes tâches"
+      ],
+      "inconvenients": [
+        "Risque de negative transfer si les domaines sont trop différents",
+        "Complexité de choix du modèle source",
+        "Dépendance à des modèles tiers (conformité des licences)"
+      ],
+      "outils": [
+        "HuggingFace Transformers",
+        "PyTorch Hub",
+        "TensorFlow Hub",
+        "FastAI"
+      ],
+      "tags": [
+        "Deep Learning",
+        "NLP",
+        "Computer Vision",
+        "Efficacité"
+      ]
+    },
+    {
+      "id": "series-temporelles",
+      "titre": "Séries temporelles (ARIMA, Prophet, LSTM)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Prévision",
+      "niveau": "Intermédiaire",
+      "emoji": "📈",
+      "description_courte": "Famille de méthodes pour modéliser et prévoir des données ordonnées dans le temps, en capturant tendances, saisonnalités et cycles.",
+      "explication_simple": "Les données temporelles ont une propriété unique : hier influence aujourd'hui. Les ventes de décembre sont liées à novembre, et les décembres précédents. Les séries temporelles capturent ces dépendances. ARIMA est mathématique et classique. Prophet (Meta) est simple et gère automatiquement les saisonnalités et jours fériés. LSTM (deep learning) capte des patterns complexes sur de longues fenêtres.",
+      "exemple_concret": "Prévision des ventes hebdomadaires d'un supermarché : Prophet intègre automatiquement les effets du jour de la semaine, du mois, des vacances scolaires et des promotions planifiées. Erreur MAPE = 4.2% sur 12 semaines. ARIMA classique donnait 8.7% d'erreur sans la gestion native des saisonnalités multiples.",
+      "formule": "ARIMA(p,d,q) : p=termes autorégressifs, d=différenciation, q=termes de moyenne mobile. Prophet : y(t) = trend(t) + seasonality(t) + holidays(t) + error",
+      "quand_utiliser": [
+        "Prévision de ventes, de consommation, de trafic",
+        "Détection d'anomalies temporelles",
+        "Planification opérationnelle (stock, ressources humaines)"
+      ],
+      "avantages": [
+        "Prend en compte l'ordre et la dépendance temporelle",
+        "Prophet : très simple à utiliser, gère les jours fériés",
+        "LSTM : puissant sur de longues dépendances"
+      ],
+      "inconvenients": [
+        "Requiert une analyse préalable de stationnarité (ARIMA)",
+        "Sensibles aux changements structurels (COVID, crise)",
+        "LSTM nécessite beaucoup de données et GPU"
+      ],
+      "outils": [
+        "Prophet (Meta/Python)",
+        "statsmodels (ARIMA, SARIMA)",
+        "TensorFlow/Keras (LSTM)",
+        "Darts (librairie unifiée)"
+      ],
+      "tags": [
+        "ML",
+        "Prévision",
+        "Time Series",
+        "ARIMA",
+        "Prophet"
+      ]
+    },
+    {
+      "id": "gradient-descent",
+      "titre": "Descente de gradient",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Optimisation ML",
+      "niveau": "Intermédiaire",
+      "emoji": "⛷️",
+      "description_courte": "Algorithme d'optimisation fondamental qui ajuste itérativement les paramètres d'un modèle pour minimiser l'erreur, en suivant la pente de la fonction de perte.",
+      "explication_simple": "Imagine que tu es sur une montagne dans le brouillard et tu veux descendre dans la vallée (minimiser l'erreur). À chaque pas, tu tâtes le sol autour de toi et tu avances dans la direction où la pente descend le plus. C'est la descente de gradient : à chaque itération (epoch), on calcule dans quelle direction modifier les paramètres pour réduire l'erreur. Le 'learning rate' contrôle la taille de chaque pas.",
+      "exemple_concret": "Entraînement d'un réseau de neurones pour la reconnaissance d'images : à chaque batch de 32 images, on calcule l'erreur, puis le gradient (dérivée partielle de l'erreur par rapport à chaque poids). On ajuste les 50 millions de poids d'un petit pas (learning rate = 0.001). Après 100 000 étapes, l'erreur a convergé.",
+      "formule": "θ_t+1 = θ_t - α × ∇L(θ_t), où α est le learning rate et ∇L le gradient de la fonction de perte",
+      "quand_utiliser": [
+        "Entraînement de tous les modèles paramétriques (réseaux de neurones, régression)",
+        "Optimisation de fonctions différentiables",
+        "Au cœur de tous les algorithmes ML modernes"
+      ],
+      "avantages": [
+        "Converge vers un minimum local (global si la fonction est convexe)",
+        "Scalable à de très grands datasets (SGD, mini-batch)",
+        "Base de toutes les variantes modernes (Adam, RMSProp)"
+      ],
+      "inconvenients": [
+        "Peut rester bloqué dans des minima locaux",
+        "Sensible au learning rate (trop grand = divergence, trop petit = lent)",
+        "SGD peut osciller autour du minimum"
+      ],
+      "outils": [
+        "TensorFlow/Keras (optimizers)",
+        "PyTorch (torch.optim)",
+        "Scikit-learn (SGDClassifier)"
+      ],
+      "tags": [
+        "ML",
+        "Optimisation",
+        "Deep Learning",
+        "Fondamentaux"
+      ]
+    },
+    {
+      "id": "tfidf",
+      "titre": "TF-IDF — Pondération de termes textuels",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "NLP",
+      "niveau": "Intermédiaire",
+      "emoji": "📝",
+      "description_courte": "Méthode de représentation de texte qui attribue un poids à chaque mot en fonction de sa fréquence dans un document et de sa rareté dans la collection complète.",
+      "explication_simple": "Le mot 'le' apparaît partout et ne dit rien d'utile. Le mot 'machine learning' apparaît souvent dans cet article mais peu dans d'autres — il est donc très important pour caractériser cet article. TF-IDF calcule exactement ça : fréquence du mot dans le document (TF) × rareté dans tous les documents (IDF). Plus un mot est fréquent localement ET rare globalement, plus son poids est élevé.",
+      "exemple_concret": "Moteur de recherche d'articles data : si tu cherches 'Delta Lake', TF-IDF identifie les articles où ces mots apparaissent souvent (TF élevé) mais qui sont rares dans la collection générale (IDF élevé). Un article dédié à Delta Lake aura un score TF-IDF bien plus élevé pour ces termes qu'un article qui le mentionne juste une fois.",
+      "formule": "TF-IDF(t,d,D) = TF(t,d) × IDF(t,D) = (fréquence de t dans d) × log(N / nombre de docs contenant t)",
+      "quand_utiliser": [
+        "Recherche textuelle (moteurs de recherche)",
+        "Extraction de mots-clés",
+        "Première représentation de texte avant ML classique (pré-LLM)"
+      ],
+      "avantages": [
+        "Simple et efficace pour les tâches de recherche",
+        "Pas d'entraînement requis",
+        "Très rapide sur de grandes collections"
+      ],
+      "inconvenients": [
+        "Ignore le contexte et l'ordre des mots",
+        "Vocabulaire fixe (ne gère pas les synonymes)",
+        "Les embeddings (Word2Vec, BERT) le surpassent largement"
+      ],
+      "outils": [
+        "Scikit-learn (TfidfVectorizer)",
+        "spaCy",
+        "Elasticsearch (BM25 est une variante)"
+      ],
+      "tags": [
+        "NLP",
+        "Texte",
+        "Recherche",
+        "Représentation"
+      ]
+    },
+    {
+      "id": "word2vec",
+      "titre": "Word2Vec et Embeddings de mots",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "NLP",
+      "niveau": "Intermédiaire",
+      "emoji": "🔤",
+      "description_courte": "Technique qui représente chaque mot par un vecteur numérique dense, capturant les relations sémantiques : des mots similaires ont des vecteurs proches.",
+      "explication_simple": "Avec TF-IDF, 'voiture' et 'automobile' sont totalement différents (deux colonnes distinctes). Avec Word2Vec, ils ont presque le même vecteur car ils apparaissent dans les mêmes contextes dans des milliards de textes. La propriété magique : Roi - Homme + Femme ≈ Reine. Les relations mathématiques entre vecteurs reflètent les relations sémantiques du langage.",
+      "exemple_concret": "Système de recommandation d'articles : en vectorisant chaque article avec la moyenne des vecteurs Word2Vec de ses mots, on peut trouver les articles les plus similaires par distance cosinus. « Détection de fraude bancaire » sera proche de « Machine Learning en Finance » et de « XGBoost pour le risque crédit ».",
+      "formule": "Skip-gram : maximiser P(contexte | mot_cible). CBOW : maximiser P(mot_cible | contexte). Résultat : vecteurs de dimension 100-300.",
+      "quand_utiliser": [
+        "Représentation sémantique de textes",
+        "Similarité de documents",
+        "Pré-traitement NLP avant classification"
+      ],
+      "avantages": [
+        "Capture la sémantique (synonymes proches)",
+        "Vecteurs de taille fixe (utile pour ML)",
+        "Pré-entraîné sur des milliards de mots disponibles gratuitement"
+      ],
+      "inconvenients": [
+        "Un mot = un vecteur (pas de polysémie : 'banque' financière vs rivière)",
+        "Supplanté par les embeddings contextuels (BERT, GPT)",
+        "Requiert un large corpus pour de bons vecteurs"
+      ],
+      "outils": [
+        "Gensim (Word2Vec)",
+        "FastText (Meta)",
+        "HuggingFace (embeddings modernes)"
+      ],
+      "tags": [
+        "NLP",
+        "Embeddings",
+        "Sémantique",
+        "Représentation"
+      ]
+    },
+    {
+      "id": "analyse-cohorte",
+      "titre": "Analyse de cohortes",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Analytics Produit",
+      "niveau": "Intermédiaire",
+      "emoji": "👥",
+      "description_courte": "Méthode qui suit l'évolution de groupes d'utilisateurs partageant une caractéristique commune (date d'inscription, premier achat) dans le temps pour mesurer la rétention et le comportement.",
+      "explication_simple": "Au lieu de regarder tous tes utilisateurs ensemble (ce qui mélange les nouveaux et les anciens), l'analyse de cohortes les groupe par 'génération' : tous ceux qui se sont inscrits en janvier forment une cohorte, ceux de février une autre. Tu peux alors voir : la cohorte de janvier était-elle plus fidèle que celle de mars ? Est-ce que les utilisateurs recrutés via une pub particulière restaient plus longtemps ?",
+      "exemple_concret": "Application mobile de livraison : la cohorte de janvier (1 200 utilisateurs) avait encore 45% d'actifs après 3 mois. La cohorte de juin (1 800 utilisateurs) n'en avait que 22% après 3 mois. Cette différence révèle un problème d'onboarding apparu en avril — confirmé par un changement d'interface qui a augmenté la friction.",
+      "formule": "Taux de rétention = (utilisateurs actifs à la période N) / (utilisateurs de la cohorte à la période 0) × 100",
+      "quand_utiliser": [
+        "Mesure de la rétention et du churn",
+        "Évaluation de l'impact de changements produit",
+        "Segmentation des utilisateurs par comportement temporel"
+      ],
+      "avantages": [
+        "Révèle des tendances cachées dans les agrégats",
+        "Permet de mesurer l'impact de changements dans le temps",
+        "Standard de l'industrie pour les produits numériques"
+      ],
+      "inconvenients": [
+        "Requiert un historique suffisant",
+        "Peut être complexe à interpréter avec trop de cohortes",
+        "Ne donne pas de causalité (corrélation temporelle uniquement)"
+      ],
+      "outils": [
+        "Python (Pandas + Seaborn)",
+        "Amplitude",
+        "Mixpanel",
+        "Looker",
+        "SQL window functions"
+      ],
+      "tags": [
+        "Analytics",
+        "Produit",
+        "Rétention",
+        "SaaS",
+        "Mobile"
+      ]
+    },
+    {
+      "id": "analyse-entonnoir",
+      "titre": "Analyse d'entonnoir (Funnel Analysis)",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Analytics Produit",
+      "niveau": "Débutant",
+      "emoji": "🔽",
+      "description_courte": "Visualisation du parcours utilisateur à travers des étapes séquentielles (visite → inscription → achat) pour identifier les points de friction et d'abandon.",
+      "explication_simple": "Pense à un entonnoir de cuisine : beaucoup d'eau entre en haut, peu sort en bas. Un funnel e-commerce ressemble à ça : 10 000 visiteurs regardent un produit, 3 000 l'ajoutent au panier, 1 500 commencent le checkout, mais seulement 800 finalisent l'achat. Visualiser chaque étape révèle où les utilisateurs partent — et donc où améliorer l'expérience.",
+      "exemple_concret": "Application de streaming : Funnel inscription → première lecture → abonnement payant. Sur 100 visiteurs : 40 s'inscrivent (-60%), 25 regardent une vidéo complète (-37,5%), 8 s'abonnent (-68%). L'étape critique identifiée : le passage de 'premier visionnage' à l'abonnement. Test : ajouter un email automatique après le premier visionnage → conversion +35%.",
+      "formule": "Taux de conversion par étape = (utilisateurs à l'étape N+1) / (utilisateurs à l'étape N) × 100. Conversion globale = produit de tous les taux.",
+      "quand_utiliser": [
+        "Optimisation du parcours d'achat e-commerce",
+        "Analyse de l'onboarding d'une application",
+        "Identification des points de friction UX"
+      ],
+      "avantages": [
+        "Visuel et immédiatement compréhensible",
+        "Priorise les efforts d'optimisation",
+        "Mesure l'impact des améliorations"
+      ],
+      "inconvenients": [
+        "Ne montre pas pourquoi les utilisateurs partent (complémenter avec des entretiens)",
+        "Agrège des comportements très différents (utilisateurs mobiles vs desktop)",
+        "Peut être biaisé si les étapes ne sont pas définies correctement"
+      ],
+      "outils": [
+        "Google Analytics 4",
+        "Amplitude",
+        "Mixpanel",
+        "Heap",
+        "SQL"
+      ],
+      "tags": [
+        "Analytics",
+        "Produit",
+        "Conversion",
+        "UX",
+        "e-commerce"
+      ]
+    },
+    {
+      "id": "clv",
+      "titre": "Customer Lifetime Value (CLV / LTV)",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Marketing Analytics",
+      "niveau": "Intermédiaire",
+      "emoji": "💰",
+      "description_courte": "Valeur économique totale qu'un client va générer tout au long de sa relation avec l'entreprise. Métrique fondamentale pour arbitrer les investissements marketing et CRM.",
+      "explication_simple": "Un client qui dépense 50€ une fois est moins précieux qu'un autre qui dépense 30€ par mois pendant 3 ans (= 1 080€). La CLV permet de répondre à : combien puis-je me permettre de dépenser pour acquérir un nouveau client ? Quels clients méritent le plus d'attention ? La CLV transforme la vision court-terme (CA de ce mois) en vision long-terme (valeur économique de la relation).",
+      "exemple_concret": "Application SaaS B2B : CLV = 120€/mois (abonnement moyen) × 18 mois (durée moyenne avant churn) × 70% (marge) = 1 512€. Si le coût d'acquisition (CAC) est de 400€, le ratio CLV/CAC = 3.78. Règle : ratio > 3 = modèle économique sain.",
+      "formule": "CLV simple = (Revenu moyen par période × Marge) × Durée de vie client. CLV actualisée = Σ (marge_t / (1+r)^t) pour chaque période t.",
+      "quand_utiliser": [
+        "Définition du budget d'acquisition client",
+        "Segmentation par valeur (RFM + CLV)",
+        "Arbitrage entre rétention et acquisition"
+      ],
+      "avantages": [
+        "Oriente les décisions marketing sur le long terme",
+        "Permet de calculer un budget acquisition rationnel",
+        "Identifie les segments clients les plus précieux"
+      ],
+      "inconvenients": [
+        "Difficile à calculer avec précision (incertitude du churn futur)",
+        "Les hypothèses (durée, marge) ont un impact énorme sur le résultat",
+        "Moins pertinent pour les produits à achat unique"
+      ],
+      "outils": [
+        "Python (lifetimes — modèles BG/NBD, Pareto/NBD)",
+        "Tableau",
+        "Salesforce (Einstein Analytics)",
+        "SQL"
+      ],
+      "tags": [
+        "Marketing",
+        "Analytics",
+        "CRM",
+        "SaaS",
+        "Finance"
+      ]
+    },
+    {
+      "id": "etl-elt",
+      "titre": "ETL vs ELT — Architecture data",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Data Engineering",
+      "niveau": "Débutant",
+      "emoji": "🔄",
+      "description_courte": "ETL (Extract-Transform-Load) transforme les données avant chargement. ELT (Extract-Load-Transform) les charge d'abord, puis transforme directement dans l'entrepôt de données.",
+      "explication_simple": "ETL, c'est comme préparer un repas en cuisine avant de servir : tu laves, coupes, cuisines avant que les convives voient quoi que ce soit. ELT, c'est apporter tous les ingrédients bruts à table et cuisiner directement là-bas. Dans le monde data : ELT charge les données brutes dans BigQuery ou Snowflake, puis les transforme avec du SQL ou dbt. ELT est devenu dominant grâce à la puissance des entrepôts cloud modernes.",
+      "exemple_concret": "Architecture moderne avec dbt : données brutes chargées depuis Salesforce dans Snowflake (EL via Fivetran), puis transformées avec dbt (T) — modèles SQL définis dans des fichiers .sql versionnés sur GitHub. Résultat : pipeline traçable, testable et documenté. Vs ETL classique (Informatica) : transformations en boîte noire, difficile à déboguer.",
+      "formule": "ETL : données source → transformation (en mémoire) → chargement entrepôt. ELT : données source → chargement raw → transformation (SQL in-warehouse).",
+      "quand_utiliser": [
+        "ELT : entrepôts cloud modernes (Snowflake, BigQuery, Redshift)",
+        "ETL : données sensibles ne pouvant pas être stockées brutes, systèmes legacy",
+        "ELT préféré aujourd'hui grâce au coût de calcul cloud réduit"
+      ],
+      "avantages": [
+        "ELT : données brutes disponibles pour reprocessing",
+        "ELT : transformations versionables et testables (dbt)",
+        "ETL : réduit le volume stocké en entrepôt"
+      ],
+      "inconvenients": [
+        "ELT : coût de stockage des données brutes",
+        "ETL : transformations difficiles à modifier après déploiement",
+        "ELT : requiert un entrepôt cloud puissant"
+      ],
+      "outils": [
+        "ELT : Fivetran, Airbyte + dbt + Snowflake/BigQuery",
+        "ETL : Talend, Informatica, Azure Data Factory",
+        "Les deux : Apache Spark"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Architecture",
+        "dbt",
+        "Pipelines",
+        "Fondamentaux"
+      ]
+    },
+    {
+      "id": "apache-kafka",
+      "titre": "Apache Kafka",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Streaming & Messagerie",
+      "niveau": "Avancé",
+      "emoji": "⚡",
+      "description_courte": "Plateforme de streaming distribué qui permet de publier, stocker et consommer des flux de données en temps réel à très haute échelle.",
+      "explication_simple": "Imagine un journal d'entreprise ultra-rapide : chaque transaction, chaque clic, chaque événement est écrit dans ce journal (le 'topic'). N'importe quelle application peut s'abonner et lire les dernières nouvelles en temps réel. LinkedIn Kafka (créé chez LinkedIn) traite 7 000 milliards de messages par jour. C'est le chef d'orchestre du streaming moderne.",
+      "exemple_concret": "Architecture d'une banque : chaque transaction carte est publiée dans le topic Kafka 'transactions'. Trois consommateurs lisent en parallèle : le système de fraude (alerte en < 50ms), le système de comptabilité (mises à jour du solde) et le data lake (archivage pour analyse). Kafka garantit que personne ne manque un message, même si un consommateur est temporairement hors ligne.",
+      "formule": "Architecture : Producers → Topics (partitions) → Brokers → Consumer Groups. Offset = position du consommateur dans une partition.",
+      "quand_utiliser": [
+        "Streaming d'événements en temps réel",
+        "Découplage de microservices (event-driven architecture)",
+        "Pipeline de données haute disponibilité"
+      ],
+      "avantages": [
+        "Débit extrêmement élevé (millions de messages/seconde)",
+        "Rétention des messages configurable (relecture possible)",
+        "Fault-tolerant et distribué"
+      ],
+      "inconvenients": [
+        "Complexité opérationnelle (à moins d'utiliser Confluent Cloud)",
+        "Latence non nulle (quelques ms minimum)",
+        "Surpuissant pour des cas d'usage simples (utiliser RabbitMQ pour ça)"
+      ],
+      "outils": [
+        "Apache Kafka (open source)",
+        "Confluent Cloud (géré)",
+        "AWS MSK (Kafka managé)",
+        "Kafka Streams",
+        "ksqlDB"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Streaming",
+        "Event-Driven",
+        "Temps réel"
+      ]
+    },
+    {
+      "id": "apache-spark",
+      "titre": "Apache Spark",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Traitement distribué",
+      "niveau": "Intermédiaire",
+      "emoji": "🔥",
+      "description_courte": "Moteur de calcul distribué qui traite des données à grande échelle (téraoctets) en parallèle sur un cluster, 100x plus vite que Hadoop MapReduce.",
+      "explication_simple": "Trier 1 million de livres tout seul prendrait des années. Avec 100 personnes qui travaillent en parallèle sur des sous-ensembles différents, ça prend quelques heures. Spark fait pareil avec tes données : il les distribue sur des dizaines ou centaines de machines, les traite en parallèle, et agrège les résultats. La magie : tout ça se fait avec du Python ou SQL familier, Spark gère la distribution.",
+      "exemple_concret": "Calcul de statistiques sur 2 milliards de logs applicatifs (2 TB) : avec Python classique, impossible (mémoire insuffisante). Avec PySpark sur un cluster de 20 nœuds : 8 minutes. Le code ressemble à du Pandas/SQL mais s'exécute en distribué automatiquement.",
+      "formule": "RDD (Resilient Distributed Dataset) → transformations lazy (map, filter, groupBy) → action (collect, count, write) qui déclenche l'exécution.",
+      "quand_utiliser": [
+        "Données trop grandes pour la mémoire d'une seule machine",
+        "Transformations complexes à grande échelle",
+        "Feature Engineering ML sur de grands datasets"
+      ],
+      "avantages": [
+        "Très rapide (in-memory processing)",
+        "APIs Python (PySpark), SQL (Spark SQL), R, Java",
+        "Écosystème riche (Streaming, MLlib, GraphX)"
+      ],
+      "inconvenients": [
+        "Overhead pour les petits datasets (Pandas est plus rapide < 10 Go)",
+        "Gestion du cluster complexe (Kubernetes ou cloud managé recommandé)",
+        "Débogage difficile sur les erreurs distribuées"
+      ],
+      "outils": [
+        "Apache Spark (PySpark)",
+        "Databricks (Spark managé)",
+        "AWS EMR",
+        "Azure Synapse (Spark Pool)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Big Data",
+        "Distribué",
+        "PySpark"
+      ]
+    },
+    {
+      "id": "delta-lake",
+      "titre": "Delta Lake",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Lakehouse Architecture",
+      "niveau": "Intermédiaire",
+      "emoji": "🌊",
+      "description_courte": "Couche de stockage open-source qui apporte les transactions ACID (fiabilité des bases relationnelles) aux fichiers Parquet du Data Lake.",
+      "explication_simple": "Un Data Lake classique, c'est une salle des archives où tout le monde jette ses documents. Personne ne sait si un fichier est incomplet, corrompu ou en cours de modification. Delta Lake, c'est mettre en place un système de registre : chaque modification est journalisée, et si une écriture échoue en cours de route, les données restent cohérentes. Tu peux aussi « voyager dans le temps » pour voir l'état de tes données il y a 7 jours.",
+      "exemple_concret": "Pipeline de données de transactions bancaires : sans Delta Lake, si le job Spark tombe au milieu d'une écriture, les données sont corrompues (fichiers partiels). Avec Delta Lake, la transaction est atomique (tout ou rien), la table peut être lue pendant l'écriture (isolation), et on peut annuler si nécessaire. Le 'Time Travel' : SELECT * FROM transactions VERSION AS OF 5 relit les données d'il y a 5 commits.",
+      "formule": "ACID = Atomicité (tout ou rien) + Cohérence (intégrité) + Isolation (lectures simultanées sûres) + Durabilité (données persistées). Transaction log JSON journalise chaque opération.",
+      "quand_utiliser": [
+        "Data Lakehouse (remplace le Data Warehouse ET le Data Lake)",
+        "Pipelines avec mise à jour ou suppression de données (MERGE, UPDATE, DELETE)",
+        "Données réglementées nécessitant audit trail"
+      ],
+      "avantages": [
+        "ACID sur le Data Lake (impossible avec Parquet pur)",
+        "Time Travel (rollback, audit)",
+        "Schema evolution (ajout de colonnes sans casser les lectures)"
+      ],
+      "inconvenients": [
+        "Principalement optimisé pour Spark/Databricks",
+        "Overhead du transaction log sur de très nombreux petits fichiers",
+        "Alternatives : Apache Iceberg (neutre) et Apache Hudi"
+      ],
+      "outils": [
+        "Delta Lake (open source)",
+        "Databricks (Delta Engine)",
+        "Apache Spark",
+        "AWS Glue (support Delta)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Lakehouse",
+        "ACID",
+        "Databricks"
+      ]
+    },
+    {
+      "id": "apache-airflow",
+      "titre": "Apache Airflow — Orchestration de pipelines",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "Orchestration",
+      "niveau": "Intermédiaire",
+      "emoji": "🌬️",
+      "description_courte": "Plateforme d'orchestration qui permet de définir, planifier et monitorer des pipelines de données sous forme de graphes acycliques dirigés (DAGs) en Python.",
+      "explication_simple": "Un pipeline data complexe ressemble à une recette : d'abord extraire les données (étape 1), les nettoyer (étape 2 et 3 en parallèle), entraîner le modèle (étape 4 qui attend les étapes 2 et 3), puis envoyer un email de rapport (étape 5). Airflow définit ces recettes (DAGs) en Python, les planifie (chaque nuit à 2h), gère les dépendances et relance automatiquement les étapes qui échouent.",
+      "exemple_concret": "Pipeline daily de scoring client : DAG Airflow — Task 1: extraction SQL (30 min) → Task 2a: feature engineering (15 min) en parallèle avec Task 2b: chargement du modèle (2 min) → Task 3: scoring de 500K clients (45 min) → Task 4: chargement des scores dans le CRM → Task 5: envoi du rapport email. Planifié à 1h du matin, résultats disponibles à 3h15.",
+      "formule": "DAG = Directed Acyclic Graph : nœuds = Tasks, arêtes = dépendances. Airflow Scheduler lit les DAGs, le Worker exécute les Tasks via des Executors (Local, Celery, Kubernetes).",
+      "quand_utiliser": [
+        "Orchestration de pipelines data complexes",
+        "Planification de jobs avec dépendances",
+        "Monitoring et alerting de pipelines de production"
+      ],
+      "avantages": [
+        "Code Python = versionnable, testable, réutilisable",
+        "Interface web pour monitorer les exécutions",
+        "Ecosystème riche de providers (AWS, GCP, Databricks, dbt, Spark)"
+      ],
+      "inconvenients": [
+        "Complexité opérationnelle (Kubernetes recommandé en production)",
+        "Pas conçu pour le streaming (utiliser Kafka/Flink)",
+        "Airflow 2.x améliore la performance mais la migration peut être complexe"
+      ],
+      "outils": [
+        "Apache Airflow (open source)",
+        "Astronomer Cloud (géré)",
+        "Google Cloud Composer (Airflow managé GCP)",
+        "MWAA (Airflow managé AWS)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Orchestration",
+        "Pipelines",
+        "Automatisation"
+      ]
+    },
+    {
+      "id": "aws-glue",
+      "titre": "AWS Glue",
+      "categorie": "Cloud",
+      "sous_categorie": "AWS - Data Engineering",
+      "niveau": "Intermédiaire",
+      "emoji": "🔧",
+      "description_courte": "Service ETL serverless d'AWS qui découvre, catalogue et transforme les données sans gérer de serveurs. Intégré nativement avec S3, Redshift, RDS et Athena.",
+      "explication_simple": "AWS Glue, c'est un ETL en location. Au lieu d'acheter et maintenir un serveur pour transformer tes données, tu décris ce que tu veux faire (Python ou Spark), AWS Glue lance les machines le temps du traitement et les éteint ensuite. Tu payes à la seconde d'exécution. Le Data Catalog Glue est un catalogue centralisé qui liste toutes tes tables S3 comme si elles étaient dans une vraie base de données.",
+      "exemple_concret": "Pipeline de données e-commerce : les logs JSON bruts arrivent dans S3 chaque heure. AWS Glue Crawler découvre automatiquement le schéma. Un job Glue PySpark les convertit en Parquet partitionné et les charge dans Redshift. Coût pour 1h de traitement de 50GB : ~0.44$ (2 DPUs × 1h × 0.44$/DPU-h).",
+      "formule": "Coût = DPU-heures × $0.44/DPU-h. 1 DPU = 4 vCPU + 16 GB RAM. Job minimum : 2 DPUs.",
+      "quand_utiliser": [
+        "Pipelines ETL sur données S3 sans serveur",
+        "Catalogage automatique de données (Data Catalog)",
+        "Transformations Spark sans cluster EMR à maintenir"
+      ],
+      "avantages": [
+        "Serverless (zéro gestion infrastructure)",
+        "Data Catalog intégré avec Athena, Redshift Spectrum",
+        "Support PySpark natif"
+      ],
+      "inconvenients": [
+        "Coûteux pour des jobs fréquents et courts (minimum 1 minute facturé)",
+        "Démarrage lent (cold start de 2-5 minutes)",
+        "Moins flexible que Databricks pour les pipelines complexes"
+      ],
+      "outils": [
+        "AWS Glue Studio (UI visuelle)",
+        "AWS Glue Data Catalog",
+        "AWS Glue DataBrew (no-code)"
+      ],
+      "tags": [
+        "AWS",
+        "ETL",
+        "Serverless",
+        "Data Engineering"
+      ]
+    },
+    {
+      "id": "aws-kinesis",
+      "titre": "Amazon Kinesis Data Streams",
+      "categorie": "Cloud",
+      "sous_categorie": "AWS - Streaming",
+      "niveau": "Avancé",
+      "emoji": "🌊",
+      "description_courte": "Service de streaming AWS permettant d'ingérer et traiter des flux de données en temps réel à très haute échelle, compatible avec Flink et Spark Streaming.",
+      "explication_simple": "Imagine un tapis roulant en usine : les produits (données) arrivent en continu, sans interruption. Kinesis est ce tapis roulant pour les données : les capteurs IoT, clics web, logs serveur envoient leurs données dans Kinesis qui les distribue à plusieurs applications en temps réel. Contrairement à S3 (stockage batch), Kinesis traite les données dans les secondes suivant leur production.",
+      "exemple_concret": "Monitoring temps réel d'un site e-commerce : chaque clic est envoyé dans Kinesis Data Streams. Trois consommateurs lisent en parallèle : la détection de fraude (alerte en < 2s), le système de recommandation (mise à jour en temps réel) et Kinesis Firehose qui archive dans S3 pour l'analyse batch.",
+      "formule": "Débit = 1 MB/s ou 1 000 enregistrements/s par shard. Coût ≈ $0.015/shard-heure + $0.014/million d'enregistrements.",
+      "quand_utiliser": [
+        "Streaming d'événements temps réel sur AWS",
+        "Monitoring et alerting en temps réel",
+        "Ingestion avant traitement Flink ou Lambda"
+      ],
+      "avantages": [
+        "Intégration native avec tous les services AWS",
+        "Serverless avec Kinesis Data Firehose",
+        "Rétention des données jusqu'à 365 jours"
+      ],
+      "inconvenients": [
+        "Coût par shard (prévoir la capacité à l'avance)",
+        "Plus cher que Kafka auto-hébergé à grande échelle",
+        "Latence légèrement supérieure à Kafka"
+      ],
+      "outils": [
+        "Kinesis Data Streams",
+        "Kinesis Data Firehose (S3/Redshift)",
+        "Kinesis Data Analytics (Flink managé)"
+      ],
+      "tags": [
+        "AWS",
+        "Streaming",
+        "Temps réel",
+        "IoT"
+      ]
+    },
+    {
+      "id": "aws-redshift",
+      "titre": "Amazon Redshift",
+      "categorie": "Cloud",
+      "sous_categorie": "AWS - Data Warehouse",
+      "niveau": "Intermédiaire",
+      "emoji": "🏪",
+      "description_courte": "Data Warehouse cloud d'AWS en architecture colonnaire, permettant des analyses SQL rapides sur des pétaoctets de données structurées.",
+      "explication_simple": "Redshift est une base de données spécialisée pour l'analytique, pas pour les transactions. Sa particularité : il stocke les données par colonne plutôt que par ligne. Pour analyser « le chiffre d'affaires total de 2024 », il ne lit que la colonne CA et la colonne date, pas les milliers d'autres colonnes. C'est 10 à 100x plus rapide pour les requêtes analytiques.",
+      "exemple_concret": "Entrepôt de données d'un retailer : 3 milliards de transactions de 5 ans (12 TB). Une requête complexe avec 8 jointures sur des tables de plusieurs millions de lignes retourne en 8 secondes sur un cluster ra3.4xlarge à 2 nœuds. Même requête sur PostgreSQL : timeout.",
+      "formule": "Architecture MPP (Massively Parallel Processing) : Leader Node distribue les requêtes sur N Compute Nodes. Chaque nœud traite une partition des données. Coût ≈ $0.25/heure pour ra3.xlplus.",
+      "quand_utiliser": [
+        "Data Warehouse SQL pour le reporting et la BI",
+        "Requêtes analytiques complexes sur données structurées",
+        "Intégration avec QuickSight, Tableau, Power BI"
+      ],
+      "avantages": [
+        "Excellent rapport performance/prix pour SQL analytique",
+        "Redshift Spectrum : SQL direct sur fichiers S3 sans chargement",
+        "Pause automatique (Serverless) pour optimiser les coûts"
+      ],
+      "inconvenients": [
+        "Moins adapté aux mises à jour fréquentes (OLTP)",
+        "Vacuuming et maintenance nécessaires",
+        "Concurrence limitée (recommander Snowflake pour > 50 utilisateurs simultanés)"
+      ],
+      "outils": [
+        "Amazon Redshift",
+        "Redshift Serverless",
+        "AWS QuickSight",
+        "dbt (adapter Redshift)"
+      ],
+      "tags": [
+        "AWS",
+        "Data Warehouse",
+        "SQL",
+        "Analytics",
+        "MPP"
+      ]
+    },
+    {
+      "id": "azure-data-factory",
+      "titre": "Azure Data Factory (ADF)",
+      "categorie": "Cloud",
+      "sous_categorie": "Azure - Orchestration",
+      "niveau": "Intermédiaire",
+      "emoji": "🏭",
+      "description_courte": "Service d'orchestration et d'intégration de données Azure. Crée des pipelines ETL visuellement pour déplacer et transformer des données entre des centaines de sources.",
+      "explication_simple": "ADF est un chef d'orchestre data sur Azure : il sait parler à 90+ systèmes différents (SQL Server, Oracle, Salesforce, SAP, Dynamics, Snowflake, etc.) et peut automatiser le déplacement des données entre eux. Tu dessines le pipeline visuellement (drag & drop), tu planifies l'exécution, et ADF gère la connectivité, les erreurs et le monitoring.",
+      "exemple_concret": "Migration d'un ERP SAP vers Azure Synapse : ADF copie 200 tables SAP chaque nuit (Copy Activity), transforme les données avec Data Flow (Spark managé), charge dans Azure Data Lake, puis déclenche un refresh Power BI. Pipeline créé en 3 semaines vs 6 mois avec un ETL classique.",
+      "formule": "Coût = (Data movement: $0.25/DIU-h) + (Pipelines exécutés: $1/1000 runs) + (Data Flow: $0.274/vCore-h)",
+      "quand_utiliser": [
+        "Intégration de données d'entreprise sur Azure (on-premise vers cloud)",
+        "Pipelines ETL visuels sans code",
+        "Orchestration de jobs Databricks ou HDInsight"
+      ],
+      "avantages": [
+        "90+ connecteurs natifs (SAP, Oracle, Salesforce...)",
+        "Interface visuelle drag-and-drop",
+        "Integration Runtime pour accéder aux données on-premise"
+      ],
+      "inconvenients": [
+        "Data Flows (Spark managé) coûteux pour des transformations fréquentes",
+        "Moins flexible que dbt pour les transformations SQL complexes",
+        "Monitoring limité vs Airflow"
+      ],
+      "outils": [
+        "Azure Data Factory",
+        "Azure Synapse Analytics (inclut ADF)",
+        "Azure Integration Runtime"
+      ],
+      "tags": [
+        "Azure",
+        "ETL",
+        "Orchestration",
+        "Data Engineering"
+      ]
+    },
+    {
+      "id": "gcp-dataflow",
+      "titre": "Google Cloud Dataflow",
+      "categorie": "Cloud",
+      "sous_categorie": "GCP - Traitement",
+      "niveau": "Avancé",
+      "emoji": "🌊",
+      "description_courte": "Service de traitement de données en flux et par batch entièrement géré sur GCP, basé sur Apache Beam. Unifie le traitement batch et streaming avec le même code.",
+      "explication_simple": "Dataflow résout un problème classique : le code pour traiter les données en lot (batch) et en temps réel (streaming) était complètement différent. Avec Apache Beam (la technologie derrière Dataflow), tu écris le code une seule fois et il fonctionne dans les deux modes. GCP gère automatiquement les serveurs, l'autoscaling et la haute disponibilité.",
+      "exemple_concret": "Pipeline d'analyse des logs d'une application mobile : le même code Beam lit depuis Pub/Sub (streaming, pour les alertes temps réel) et depuis GCS (batch, pour les rapports quotidiens). Dataflow autoscale de 2 à 50 workers selon la charge, puis redescend automatiquement.",
+      "formule": "Architecture Apache Beam : PCollection (données immuables) → PTransforms (transformations) → Runner (Dataflow, Flink, Spark). Fenêtrage temporel pour le streaming.",
+      "quand_utiliser": [
+        "Traitement batch ET streaming avec un seul codebase",
+        "Pipelines ETL complexes sur GCP",
+        "Traitement de données à très grande échelle avec autoscaling"
+      ],
+      "avantages": [
+        "Autoscaling automatique (zéro gestion cluster)",
+        "Unification batch/streaming (même code)",
+        "Intégration native BigQuery, Pub/Sub, GCS"
+      ],
+      "inconvenients": [
+        "Courbe d'apprentissage Beam importante",
+        "Plus cher que Spark géré pour du batch pur",
+        "Latence de démarrage (2-3 min)"
+      ],
+      "outils": [
+        "Google Cloud Dataflow",
+        "Apache Beam SDK (Python, Java)",
+        "Apache Flink (alternative open source)"
+      ],
+      "tags": [
+        "GCP",
+        "Streaming",
+        "Batch",
+        "Apache Beam",
+        "Data Engineering"
+      ]
+    },
+    {
+      "id": "master-data-management",
+      "titre": "Master Data Management (MDM)",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Gouvernance",
+      "niveau": "Avancé",
+      "emoji": "👑",
+      "description_courte": "Discipline qui consiste à créer et maintenir une version unique, fiable et partagée des données de référence d'une entreprise (clients, produits, fournisseurs, employés).",
+      "explication_simple": "Dans une grande entreprise, le client « Renault » peut s'appeler 'RENAULT SA' dans le CRM, 'Renault Group' dans la comptabilité et 'R. France' dans la logistique. Ces 3 entrées désignent la même entité mais sont invisiblement liées. MDM crée un « golden record » — la version officielle et unique de chaque entité — et synchronise cette donnée de référence dans tous les systèmes. Plus de doublons, plus d'incohérences.",
+      "exemple_concret": "Banque : le même client physique avait 7 identifiants différents dans 7 systèmes (prêt, épargne, assurance, carte, conseil, mobile, web). Après un projet MDM de 18 mois : 1 identifiant client unique, vision 360° consolidée. Impact : offres personnalisées cross-produit, réduction des risques réglementaires (RGPD : un seul point de suppression).",
+      "formule": "MDM = déduplication (algorithmes de matching flou : Jaro-Winkler, Soundex) + golden record (règles de survivance) + distribution (API ou réplication) + gouvernance.",
+      "quand_utiliser": [
+        "Fusion-acquisition (consolider deux référentiels clients)",
+        "Conformité réglementaire (vue client unique pour RGPD, KYC)",
+        "Amélioration de la qualité des données à l'échelle de l'entreprise"
+      ],
+      "avantages": [
+        "Élimine les doublons et incohérences (Single Source of Truth)",
+        "Améliore la qualité de toutes les analyses",
+        "Facilite la conformité réglementaire"
+      ],
+      "inconvenients": [
+        "Projets longs et coûteux (18-36 mois typiquement)",
+        "Nécessite un sponsorship C-level fort",
+        "Résistance au changement des équipes métier (propriété des données)"
+      ],
+      "outils": [
+        "Informatica MDM",
+        "SAP Master Data Governance",
+        "Reltio",
+        "Profisee",
+        "Open source : OpenMDM"
+      ],
+      "tags": [
+        "Gouvernance",
+        "MDM",
+        "Qualité des données",
+        "Référentiel",
+        "Entreprise"
+      ]
+    },
+    {
+      "id": "data-contract",
+      "titre": "Data Contract",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Gouvernance",
+      "niveau": "Intermédiaire",
+      "emoji": "📋",
+      "description_courte": "Accord formel entre le producteur de données et ses consommateurs qui définit le schéma, la qualité attendue, la fréquence de mise à jour et les responsabilités.",
+      "explication_simple": "Quand tu commandes un repas au restaurant, tu as un contrat implicite : tu recevras ce qui est décrit sur la carte, dans un délai raisonnable. En data, un Data Contract formalise la même chose entre l'équipe qui produit une table et les équipes qui l'utilisent : 'Cette table sera mise à jour toutes les heures, ne contiendra jamais de valeurs nulles sur client_id, et si le schéma change, je vous préviens 2 semaines à l'avance.' Fini les surprises en production.",
+      "exemple_concret": "Équipe « Commandes » (productrice) signe un data contract pour la table orders : fraîcheur < 30 minutes, order_id non nul, montant > 0, schéma versionné. L'équipe 'Fraude' (consommatrice) reçoit une alerte automatique si une violation est détectée. En cas de rupture du contrat, le producteur est responsable de la correction sous 2 heures.",
+      "formule": "Contenu d'un Data Contract : schéma (colonnes, types), qualité (règles de validation, SLA de fraîcheur), sémantique (définition des colonnes), responsabilités (owner, contact), versioning (semantic versioning 1.0.0).",
+      "quand_utiliser": [
+        "Architecture Data Mesh (chaque domaine expose ses données)",
+        "Réduction des incidents production liés aux changements de schéma",
+        "Amélioration de la confiance dans les données"
+      ],
+      "avantages": [
+        "Clarification des responsabilités (qui fixe quoi en cas de problème)",
+        "Moins d'incidents production non anticipés",
+        "Documentation vivante et exécutable"
+      ],
+      "inconvenients": [
+        "Nécessite une maturité data organisationnelle élevée",
+        "Coût de maintenance des contrats (ils doivent rester à jour)",
+        "Résistance des équipes productrices (nouvelles responsabilités)"
+      ],
+      "outils": [
+        "Soda (data quality + contracts)",
+        "Great Expectations",
+        "dbt (tests comme contrats légers)",
+        "Acryl DataHub"
+      ],
+      "tags": [
+        "Gouvernance",
+        "Data Mesh",
+        "Qualité",
+        "Data Product",
+        "Organisation"
+      ]
+    },
+    {
+      "id": "bcbs-239",
+      "titre": "BCBS 239 — Agrégation des données de risque bancaire",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Réglementation",
+      "niveau": "Avancé",
+      "emoji": "🏦",
+      "description_courte": "Norme réglementaire du Comité de Bâle qui exige que les banques systémiques puissent agréger leurs données de risque de façon précise, rapide et automatisée.",
+      "explication_simple": "Lors de la crise de 2008, plusieurs grandes banques n'étaient pas capables de connaître leur exposition totale au risque en temps réel parce que leurs données étaient éparpillées dans des centaines de systèmes incompatibles. BCBS 239 oblige les grandes banques à construire des architectures data qui permettent de consolider TOUTES les données de risque en moins de 24h. En cas de crise, le directeur des risques doit pouvoir avoir une image complète de l'exposition de la banque le lendemain matin.",
+      "exemple_concret": "BNP Paribas (G-SIB = Global Systemically Important Bank) doit pouvoir agréger en <24h son exposition sur 200+ pays, 50+ devises et tous les instruments financiers. Projet de 3 ans : unification du data lineage, création d'un référentiel de données de risque (RDR), automatisation des rapports réglementaires. Coût estimé : 150-300M€ pour une grande banque.",
+      "formule": "11 principes BCBS 239 : Gouvernance (P1-P2), Capacité d'agrégation (P3-P6), Reporting risque (P7-P11). Indicateurs clés : fréquence maximale d'agrégation, couverture des positions, délai de production des rapports.",
+      "quand_utiliser": [
+        "Banques systémiques (G-SIBs, D-SIBs) soumises à la réglementation",
+        "Projets d'architecture data dans les banques",
+        "Audit de conformité réglementaire"
+      ],
+      "avantages": [
+        "Force une architecture data cohérente et robuste",
+        "Améliore la qualité des données de gestion au-delà de la conformité",
+        "Réduit le risque systémique bancaire"
+      ],
+      "inconvenients": [
+        "Projets très coûteux et longs (3-5 ans pour les grandes banques)",
+        "Frontière floue entre conformité stricte et bonne pratique",
+        "Difficile à implémenter dans les architectures legacy"
+      ],
+      "outils": [
+        "Collibra (data lineage réglementaire)",
+        "Axiom (reporting réglementaire)",
+        "Cloudera (data platform bancaire)",
+        "Semarchy (MDM)"
+      ],
+      "tags": [
+        "Réglementation",
+        "Banque",
+        "Risque",
+        "Gouvernance",
+        "Conformité"
+      ]
+    },
+    {
+      "id": "esg-data",
+      "titre": "Données ESG et Taxonomie européenne",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Finance Durable",
+      "niveau": "Intermédiaire",
+      "emoji": "🌱",
+      "description_courte": "Cadre réglementaire européen qui définit quelles activités économiques sont 'durables' et impose aux entreprises et investisseurs de reporter leur performance environnementale, sociale et de gouvernance.",
+      "explication_simple": "L'Europe a créé un 'dictionnaire' officiel de la finance durable : la Taxonomie. Il définit quelles activités contribuent vraiment aux objectifs climatiques (produire de l'énergie solaire : oui. Fabriquer des voitures essence : non pour l'objectif climatique). Les entreprises cotées et les fonds d'investissement doivent maintenant publier le % de leur activité qui est 'taxonomie-alignée'. Calculer ce % nécessite un travail data massif.",
+      "exemple_concret": "Un fonds d'investissement (Article 9 SFDR) : pour chaque entreprise du portefeuille, collecter les indicateurs PAI (Principal Adverse Impact) : émissions CO₂ scope 1/2/3, intensité carbone, exposition aux combustibles fossiles, gender pay gap... Données provenant des rapports ESG (NLP pour l'extraction), de fournisseurs de données (MSCI, Sustainalytics) et de l'entreprise directement. Volume : 500+ indicateurs × 200 entreprises.",
+      "formule": "Taxonomie alignment % = (CA/Capex/Opex de l'entreprise dans des activités éligibles ET alignées) / (CA/Capex/Opex total). Tests DNSH (Do No Significant Harm) pour chaque objectif environnemental.",
+      "quand_utiliser": [
+        "Fonds d'investissement soumis à SFDR",
+        "Entreprises cotées soumises à CSRD (Corporate Sustainability Reporting Directive)",
+        "ESG analytics et scoring"
+      ],
+      "avantages": [
+        "Standardisation des critères durabilité (moins de greenwashing)",
+        "Opportunité d'améliorer la qualité des données non-financières",
+        "Avantage concurrentiel pour les acteurs précoces"
+      ],
+      "inconvenients": [
+        "Données souvent indisponibles ou de mauvaise qualité",
+        "Taxonomie en évolution constante (critères techniques changent)",
+        "Coût élevé de collecte et validation des données ESG"
+      ],
+      "outils": [
+        "Bloomberg ESG Data",
+        "MSCI ESG Ratings",
+        "Sustainalytics",
+        "Python (NLP sur rapports)",
+        "Snowflake (stockage)"
+      ],
+      "tags": [
+        "ESG",
+        "Finance durable",
+        "SFDR",
+        "Taxonomie",
+        "Reporting réglementaire"
+      ]
+    },
+    {
+      "id": "rag",
+      "titre": "RAG — Retrieval-Augmented Generation",
+      "categorie": "Machine Learning",
+      "sous_categorie": "IA Générative",
+      "niveau": "Avancé",
+      "emoji": "🔍",
+      "description_courte": "Architecture qui augmente un LLM en lui donnant accès à une base documentaire externe au moment de la génération, pour réduire les hallucinations et ancrer les réponses dans des faits.",
+      "explication_simple": "Un LLM comme GPT-4 connaît tout ce qu'on lui a appris pendant son entraînement, mais pas tes documents internes. RAG, c'est lui donner un accès en temps réel à ta bibliothèque : quand tu poses une question, le système recherche d'abord les passages pertinents dans tes documents, les montre au LLM, et lui dit « réponds en t'appuyant sur ces extraits ». Le LLM ne parle plus de mémoire, il lit avant de répondre.",
+      "exemple_concret": "Un cabinet d'avocats dispose de 15 000 contrats. Avec RAG : la question 'Quelle est la clause de résiliation du contrat Acme ?' déclenche une recherche vectorielle qui retrouve les 5 passages les plus similaires dans les contrats, les injecte dans le prompt GPT-4, qui répond avec citation exacte. Précision validée : 91%.",
+      "formule": "Pipeline RAG : Query → Embedding de la question → Recherche vectorielle (top-K chunks) → Augmentation du prompt (context + question) → LLM → Réponse avec sources",
+      "quand_utiliser": [
+        "Question-réponse sur documents internes confidentiels",
+        "Chatbot de support technique avec documentation produit",
+        "Assistance réglementaire (contrats, lois, normes)"
+      ],
+      "avantages": [
+        "Réduit drastiquement les hallucinations (ancre dans les faits)",
+        "Pas besoin de fine-tuner le LLM (moins coûteux)",
+        "Sources citables et auditables"
+      ],
+      "inconvenients": [
+        "Qualité dépend de la stratégie de chunking et de retrieval",
+        "Latence additionnelle (recherche + génération)",
+        "Peut rater des informations si le retrieval est imprécis"
+      ],
+      "outils": [
+        "LangChain",
+        "LlamaIndex",
+        "ChromaDB / Pinecone / Qdrant (vector stores)",
+        "Databricks Vector Search",
+        "Azure AI Search"
+      ],
+      "tags": [
+        "LLM",
+        "IA Générative",
+        "NLP",
+        "Vector Search",
+        "Chatbot"
+      ]
+    },
+    {
+      "id": "vector-database",
+      "titre": "Base de données vectorielle",
+      "categorie": "Machine Learning",
+      "sous_categorie": "IA Générative",
+      "niveau": "Intermédiaire",
+      "emoji": "🗄️",
+      "description_courte": "Base de données spécialisée dans le stockage et la recherche par similarité de vecteurs numériques représentant des textes, images ou sons.",
+      "explication_simple": "Dans une base SQL, tu cherches par valeur exacte ('WHERE nom = Dupont'). Dans une base vectorielle, tu cherches par similarité sémantique : « trouve-moi les 5 textes qui ressemblent le plus à cette phrase ». Chaque document est transformé en un vecteur de 1536 nombres (un embedding). La base compare ces vecteurs géométriquement — les textes similaires ont des vecteurs proches dans l'espace.",
+      "exemple_concret": "Moteur de recherche d'articles data : l'article 'XGBoost pour la détection de fraude' est encodé en vecteur. La recherche 'algorithme pour détecter les anomalies financières' trouve cet article en top 1 malgré aucun mot en commun — parce que les sens sont proches.",
+      "formule": "Similarité cosinus : cos(θ) = (A·B) / (||A|| × ||B||). HNSW (Hierarchical Navigable Small World) : algorithme d'indexation permettant la recherche approximative du voisin le plus proche en O(log n).",
+      "quand_utiliser": [
+        "Recherche sémantique (moteur de recherche IA)",
+        "Composante retrieval d'une architecture RAG",
+        "Recommandation par similarité de contenu"
+      ],
+      "avantages": [
+        "Recherche par sens, pas par mots-clés exacts",
+        "Haute performance sur des millions de vecteurs (ANN)",
+        "Compatible avec tous les types de données embarquables"
+      ],
+      "inconvenients": [
+        "Nécessite de générer les embeddings au préalable (coût API)",
+        "Pas de requêtes relationnelles classiques (pas de JOIN SQL)",
+        "Gestion des mises à jour (reindexation nécessaire)"
+      ],
+      "outils": [
+        "Pinecone",
+        "ChromaDB (open source)",
+        "Qdrant",
+        "Weaviate",
+        "Databricks Vector Search",
+        "pgvector (PostgreSQL)"
+      ],
+      "tags": [
+        "Vector Search",
+        "Embeddings",
+        "RAG",
+        "IA Générative",
+        "Similarité"
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "titre": "Prompt Engineering",
+      "categorie": "Machine Learning",
+      "sous_categorie": "IA Générative",
+      "niveau": "Intermédiaire",
+      "emoji": "✏️",
+      "description_courte": "L'art de formuler des instructions précises pour guider un LLM vers la sortie désirée, en utilisant des techniques comme le few-shot, chain-of-thought ou le role prompting.",
+      "explication_simple": "Parler à un LLM, c'est comme briefer un consultant très compétent mais littéral. Si tu lui dis 'fais un résumé', il fait n'importe quel résumé. Si tu lui dis 'tu es un analyste financier senior, rédige un résumé de 3 bullet points pour un CFO, en insistant sur les risques', tu obtiens exactement ce qu'il faut. Le prompt engineering, c'est maîtriser ce briefing.",
+      "exemple_concret": "Extraction d'informations ESG dans des rapports : sans technique → précision 65%. Avec chain-of-thought ('d'abord identifie si le passage parle d'environnement, puis extrait les chiffres, puis valide la pertinence') → précision 89%. Avec few-shot (3 exemples annotés dans le prompt) → précision 93%.",
+      "formule": "Techniques clés : Zero-shot (direct), Few-shot (exemples), Chain-of-Thought (raisonnement étape par étape), Role prompting (persona), Output format (JSON, markdown), System prompt (contexte global)",
+      "quand_utiliser": [
+        "Extraction d'information structurée depuis du texte libre",
+        "Classification de documents sans fine-tuning",
+        "Génération de contenu contrôlée et répétable"
+      ],
+      "avantages": [
+        "Améliore significativement les performances sans entraînement",
+        "Itérations rapides (pas de GPU requis)",
+        "Applicable à tout LLM accessible via API"
+      ],
+      "inconvenients": [
+        "Fragile : un changement de modèle peut casser les prompts",
+        "Longueur limitée par la fenêtre de contexte",
+        "Difficile à tester et versionner systématiquement"
+      ],
+      "outils": [
+        "OpenAI Playground",
+        "Anthropic Console",
+        "LangChain (prompt templates)",
+        "PromptLayer (suivi des prompts)",
+        "LangSmith"
+      ],
+      "tags": [
+        "LLM",
+        "IA Générative",
+        "GPT",
+        "NLP",
+        "Optimisation"
+      ]
+    },
+    {
+      "id": "fine-tuning-llm",
+      "titre": "Fine-tuning de LLM",
+      "categorie": "Machine Learning",
+      "sous_categorie": "IA Générative",
+      "niveau": "Avancé",
+      "emoji": "🎛️",
+      "description_courte": "Technique d'adaptation d'un LLM pré-entraîné à une tâche ou un domaine spécifique en le réentraînant sur un dataset ciblé, pour un coût bien inférieur à l'entraînement from scratch.",
+      "explication_simple": "Un LLM généraliste comme GPT-4 sait tout sur tout, mais de façon superficielle. Le fine-tuning, c'est comme prendre un médecin généraliste et le spécialiser en cardiologie : on lui montre des milliers d'exemples de cas cardiaques, et il devient expert dans ce domaine précis. La connaissance générale reste, mais la spécialité est renforcée.",
+      "exemple_concret": "Un assureur fine-tune Mistral-7B sur 50 000 paires (question client / réponse expert). Résultat : le modèle répond avec le vocabulaire métier de l'assurance, respecte les contraintes réglementaires, et obtient une satisfaction client de 87% vs 61% pour le modèle de base.",
+      "formule": "LoRA (Low-Rank Adaptation) : au lieu de modifier tous les poids W, on ajoute une décomposition de bas rang ΔW = BA (B et A petites matrices). Réduit le nombre de paramètres entraînables de 99%.",
+      "quand_utiliser": [
+        "Adapter le style et le ton du modèle (voix de marque)",
+        "Apprentissage d'un vocabulaire métier très spécifique",
+        "Quand le prompt engineering ne suffit plus à maintenir le format"
+      ],
+      "avantages": [
+        "Meilleures performances sur la tâche cible vs prompt engineering",
+        "Modèle plus petit et plus rapide (distillation possible)",
+        "Comportement plus stable et prévisible"
+      ],
+      "inconvenients": [
+        "Nécessite un dataset de qualité (minimum 500-1000 exemples annotés)",
+        "Coût GPU (même avec LoRA)",
+        "Risque d'oublier les capacités générales (catastrophic forgetting)"
+      ],
+      "outils": [
+        "HuggingFace PEFT (LoRA, QLoRA)",
+        "Axolotl",
+        "Unsloth",
+        "OpenAI Fine-tuning API",
+        "Databricks Mosaic AI"
+      ],
+      "tags": [
+        "LLM",
+        "Deep Learning",
+        "LoRA",
+        "IA Générative",
+        "Transfer Learning"
+      ]
+    },
+    {
+      "id": "lakehouse-architecture",
+      "titre": "Lakehouse Architecture",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Lakehouse Architecture",
+      "niveau": "Intermédiaire",
+      "emoji": "🏠",
+      "description_courte": "Paradigme qui combine les avantages du Data Lake (stockage brut bas coût) et du Data Warehouse (ACID, performance SQL) dans une architecture unifiée.",
+      "explication_simple": "Le Data Lake stocke tout à bas coût mais sans fiabilité ni performance. Le Data Warehouse est rapide et fiable mais coûteux et rigide. Le Lakehouse dit : gardons les fichiers ouverts dans le cloud (comme un Data Lake) mais ajoutons une couche de transactions ACID et d'optimisation (Delta Lake, Iceberg) pour avoir la performance d'un Data Warehouse. Un seul endroit pour tout : données brutes, analytique et ML.",
+      "exemple_concret": "Architecture Databricks Lakehouse : données brutes dans S3/ADLS (Bronze), transformées avec Delta Lake (Silver), agrégées pour le reporting (Gold). Le même dataset sert à la fois pour Tableau (SQL analytique), les modèles ML (Spark) et les rapports réglementaires (requêtes complexes). Avant : 3 systèmes séparés, 3 équipes distinctes.",
+      "formule": "Lakehouse = Cloud Object Storage + Format de Table Ouvert (Delta/Iceberg) + Couche de Métadonnées + Moteur de Requêtes (Spark/Trino) + Gouvernance (Unity Catalog)",
+      "quand_utiliser": [
+        "Remplacer une architecture Data Lake + Data Warehouse séparés",
+        "Unifier les workloads BI et ML sur la même plateforme",
+        "Réduire les coûts de copie de données entre systèmes"
+      ],
+      "avantages": [
+        "Une seule copie des données (pas de duplication Lake → Warehouse)",
+        "Format ouvert : pas de vendor lock-in complet",
+        "Supporte BI, ML et streaming sur la même plateforme"
+      ],
+      "inconvenients": [
+        "Performance SQL parfois inférieure aux DW spécialisés pour des workloads purement BI",
+        "Complexité opérationnelle des formats de table (compaction, vacuuming)",
+        "Maturité encore inférieure aux DW établis (Snowflake, Redshift)"
+      ],
+      "outils": [
+        "Databricks (Delta Lake)",
+        "Apache Iceberg + Trino/Spark",
+        "Microsoft Fabric",
+        "AWS Lake Formation + S3 Tables"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Architecture",
+        "Delta Lake",
+        "Lakehouse",
+        "Big Data"
+      ]
+    },
+    {
+      "id": "apache-iceberg",
+      "titre": "Apache Iceberg",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Lakehouse Architecture",
+      "niveau": "Avancé",
+      "emoji": "🧊",
+      "description_courte": "Format de table ouvert pour les Data Lakes qui apporte des transactions ACID, le time travel et l'évolution de schéma, compatible avec Spark, Trino, Flink et Hive.",
+      "explication_simple": "Iceberg est l'alternative open-source et neutre à Delta Lake. Là où Delta Lake est très lié à Databricks/Spark, Iceberg fonctionne avec n'importe quel moteur (Spark, Trino, Flink, Presto). Il résout les mêmes problèmes : transactions ACID sur des fichiers Parquet, suivi des versions, lecture pendant l'écriture. C'est le choix des entreprises qui veulent éviter le lock-in sur un moteur.",
+      "exemple_concret": "AWS propose S3 Tables basé sur Iceberg. Netflix, Apple et LinkedIn ont adopté Iceberg pour leurs Data Lakes de plusieurs pétaoctets. Un même dataset Iceberg peut être lu par Spark pour le ML, par Trino pour le SQL analytique, et par Flink pour le streaming — sans copie.",
+      "formule": "Architecture Iceberg : Catalog (REST, Glue, Hive Metastore) → Metadata layer (snapshot, manifest lists) → Data files (Parquet/ORC/Avro). Chaque écriture crée un nouveau snapshot atomique.",
+      "quand_utiliser": [
+        "Data Lakes multi-moteurs (Spark + Trino + Flink)",
+        "Éviter le vendor lock-in sur Databricks",
+        "Requêtes time-travel et audit sur grands volumes"
+      ],
+      "avantages": [
+        "Indépendant du moteur de calcul (standard ouvert)",
+        "Performances d'écriture supérieures à Delta sur certains workloads",
+        "Support natif AWS (S3 Tables), GCP (BigLake) et Azure"
+      ],
+      "inconvenients": [
+        "Ecosystem moins mature que Delta Lake pour les écritures de streaming",
+        "Compaction et maintenance à gérer manuellement",
+        "Moins intégré nativement dans Databricks que Delta"
+      ],
+      "outils": [
+        "Apache Iceberg (open source)",
+        "Spark, Trino, Flink (moteurs)",
+        "AWS Glue Data Catalog",
+        "Dremio",
+        "Snowflake Iceberg Tables"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Lakehouse",
+        "Open Table Format",
+        "ACID",
+        "Big Data"
+      ]
+    },
+    {
+      "id": "data-vault-2",
+      "titre": "Data Vault 2.0",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Modélisation data",
+      "niveau": "Avancé",
+      "emoji": "🔐",
+      "description_courte": "Méthodologie de modélisation de Data Warehouse orientée audit, agilité et chargement parallèle, basée sur 3 types de tables : Hubs (entités), Links (relations) et Satellites (attributs).",
+      "explication_simple": "Un schéma en étoile classique est difficile à modifier quand le métier change. Data Vault sépare radicalement les entités (Hubs), leurs relations (Links) et leurs attributs (Satellites). Si le schéma de la table clients change, tu ajoutes un Satellite — le Hub et les Links restent intacts. C'est modulaire, versionnable et auditable : chaque ligne garde la date de chargement et la source.",
+      "exemple_concret": "Banque avec 12 systèmes sources : le Hub_Client contient uniquement la clé métier (numéro client) et la date de chargement. Le Satellite_Client_Identite contient les attributs (nom, prénom, adresse), versionnés par date. Quand le CRM change son format d'adresse, seul le Satellite est modifié. Aucun impact sur les Hubs ni les 200 Links existants.",
+      "formule": "Hub = {hash_key, business_key, load_date, record_source}. Satellite = {hub_hash_key, load_date, end_date, attributes...}. Link = {link_hash_key, hub1_hash_key, hub2_hash_key, load_date}.",
+      "quand_utiliser": [
+        "Data Warehouses devant absorber de nombreux systèmes sources hétérogènes",
+        "Environnements réglementés nécessitant un audit trail complet",
+        "Projets agiles où le modèle va évoluer souvent"
+      ],
+      "avantages": [
+        "Chargements parallèles et hautement performants",
+        "Audit trail natif (date, source pour chaque ligne)",
+        "Résistant aux changements de schéma (ajout de Satellites sans impact)"
+      ],
+      "inconvenients": [
+        "Complexité : 3-5x plus de tables qu'un schéma en étoile",
+        "Requêtes plus complexes (nombreuses jointures)",
+        "Courbe d'apprentissage importante pour les équipes"
+      ],
+      "outils": [
+        "dbt (très compatible avec Data Vault via dbtvault)",
+        "WhereScape",
+        "TimeXtender",
+        "Snowflake (performances adaptées)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Modélisation",
+        "Data Warehouse",
+        "Audit",
+        "Agilité"
+      ]
+    },
+    {
+      "id": "scd",
+      "titre": "Slowly Changing Dimension (SCD)",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Modélisation data",
+      "niveau": "Intermédiaire",
+      "emoji": "⏳",
+      "description_courte": "Technique de modélisation de Data Warehouse qui gère les changements d'attributs dans les dimensions au fil du temps, avec plusieurs stratégies (Type 1, 2, 3).",
+      "explication_simple": "Un client déménage de Paris à Lyon. Dans ton Data Warehouse, tu veux savoir : toutes ses commandes passées étaient-elles à Paris ou à Lyon ? La SCD Type 2 répond : on garde l'ancienne ligne (Paris, actif jusqu'au 15/03/2024) ET on crée une nouvelle ligne (Lyon, actif à partir du 15/03/2024). Les analyses historiques voient Paris, les analyses actuelles voient Lyon. Chaque type de SCD fait un choix différent.",
+      "exemple_concret": "Retailer avec 5M clients : SCD Type 2 sur la dimension Client. Un client change de région : nouvelle ligne créée avec is_current = 1, l'ancienne passe à is_current = 0. Les rapports de ventes historiques par région restent exacts, et les analyses actuelles utilisent la dernière adresse. La table Client passe de 5M à 5.8M lignes sur 3 ans (800K déménagements).",
+      "formule": "Type 1 : écrasement (pas d'historique). Type 2 : nouvelle ligne (is_current, start_date, end_date). Type 3 : colonne ajoutée (old_value, new_value). Type 6 : combinaison 1+2+3.",
+      "quand_utiliser": [
+        "Type 1 : corrections d'erreurs ou attributs sans valeur historique",
+        "Type 2 : suivi de l'historique des changements (région, segment, manager)",
+        "Type 3 : uniquement 1 niveau d'historique nécessaire"
+      ],
+      "avantages": [
+        "Préserve l'historique des analyses (Type 2)",
+        "Standard bien connu et supporté par tous les outils DW",
+        "Permet de reconstruire l'état à n'importe quelle date"
+      ],
+      "inconvenients": [
+        "Type 2 : croissance exponentielle de la table si beaucoup de changements",
+        "Complexifie les requêtes (jointures avec filtres is_current)",
+        "Risque d'oubli du filtre is_current = erreurs dans les rapports"
+      ],
+      "outils": [
+        "dbt (snapshots = SCD Type 2 automatique)",
+        "SQL pur",
+        "Informatica, Talend (gestion native)",
+        "Delta Lake / Iceberg (MERGE pour SCD)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Modélisation",
+        "Data Warehouse",
+        "Historique",
+        "Dimensions"
+      ]
+    },
+    {
+      "id": "star-schema-snowflake-schema",
+      "titre": "Star Schema et Snowflake Schema",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Modélisation data",
+      "niveau": "Débutant",
+      "emoji": "⭐",
+      "description_courte": "Modèles de conception de Data Warehouse : le schéma en étoile avec une table de faits centrale et des dimensions dénormalisées, le schéma en flocon avec des dimensions normalisées.",
+      "explication_simple": "Un Data Warehouse, c'est comme un rapport de gestion. Au centre, la table des faits : chaque ligne est une vente (quantité, montant, date_id, produit_id, client_id). Autour, les dimensions : la table Produit (nom, catégorie, marque), la table Client (nom, région, segment). Tu joins les tables pour analyser les ventes par région et catégorie. Le schéma en étoile dénormalise pour la performance, le schéma en flocon normalise pour économiser l'espace.",
+      "exemple_concret": "Data Warehouse d'un retailer : FAIT_Ventes (10 milliards de lignes) au centre. DIM_Produit, DIM_Client, DIM_Temps, DIM_Magasin autour. Une requête « CA par région et mois » = jointure FAIT_Ventes + DIM_Magasin + DIM_Temps. Sans schéma en étoile (base normalisée 3NF), la même requête nécessiterait 8 jointures au lieu de 2.",
+      "formule": "Cardinalité : Table de faits (milliards de lignes, peu de colonnes) × Dimensions (milliers à millions de lignes, nombreuses colonnes descriptives). Grain = niveau de détail de chaque ligne de fait.",
+      "quand_utiliser": [
+        "Conception de tout Data Warehouse analytique",
+        "Reporting BI (Power BI, Tableau, Looker)",
+        "Modèles sémantiques pour requêtes OLAP"
+      ],
+      "avantages": [
+        "Performance des requêtes analytiques (peu de jointures)",
+        "Simple à comprendre pour les utilisateurs métier",
+        "Standard universel des DW depuis Kimball (années 90)"
+      ],
+      "inconvenients": [
+        "Redondance des données (dénormalisation)",
+        "Moins flexible aux changements fréquents de structure",
+        "Peut mal s'adapter aux hiérarchies complexes (géographie)"
+      ],
+      "outils": [
+        "dbt (modélisation marts)",
+        "Power BI (modèle de données), Tableau",
+        "Snowflake, Redshift, BigQuery, Synapse"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Modélisation",
+        "Data Warehouse",
+        "Kimball",
+        "BI"
+      ]
+    },
+    {
+      "id": "olap-vs-oltp",
+      "titre": "OLAP vs OLTP",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Architecture data",
+      "niveau": "Débutant",
+      "emoji": "⚖️",
+      "description_courte": "OLTP (Online Transaction Processing) optimise les transactions rapides et fréquentes. OLAP (Online Analytical Processing) optimise les requêtes analytiques complexes sur de grands volumes.",
+      "explication_simple": "Le caissier d'un supermarché traite des milliers de ventes par seconde : chaque passage en caisse est une transaction rapide et précise (OLTP). Le directeur des achats analyse les tendances de ventes sur 5 ans par catégorie et région : une requête lente sur des milliards de lignes (OLAP). Ce ne sont pas les mêmes besoins, pas les mêmes bases de données. OLTP = PostgreSQL/MySQL. OLAP = Snowflake/BigQuery/Redshift.",
+      "exemple_concret": "Banque : le système de paiement traite 50 000 transactions/seconde avec une latence de 5ms (OLTP sur PostgreSQL). Le reporting de risque agrège 2 milliards de transactions sur 3 ans pour calculer l'exposition par secteur (OLAP sur Redshift). Essayer de faire de l'OLAP sur PostgreSQL = timeouts. Essayer de faire de l'OLTP sur Redshift = latence de plusieurs secondes.",
+      "formule": "OLTP : optimisé pour lecture/écriture de lignes (row-store). OLAP : optimisé pour lecture de colonnes spécifiques sur de nombreuses lignes (column-store). Column-store = lit uniquement les colonnes requises = 10-100x plus rapide en analytique.",
+      "quand_utiliser": [
+        "OLTP : applications transactionnelles (e-commerce, ERP, CRM)",
+        "OLAP : reporting, dashboarding, analyses décisionnelles",
+        "HTAP : systèmes hybrides (BigQuery BQML, Oracle, SAP HANA)"
+      ],
+      "avantages": [
+        "Séparation claire des usages = optimisation maximale de chaque système",
+        "OLAP column-store : très performant pour les agrégations",
+        "OLTP row-store : optimal pour les mises à jour fréquentes"
+      ],
+      "inconvenients": [
+        "Nécessite de synchroniser les données entre OLTP et OLAP (ETL/ELT)",
+        "Latence de fraîcheur des données dans le DW (batch vs temps réel)",
+        "Coût de maintenance de deux systèmes distincts"
+      ],
+      "outils": [
+        "OLTP : PostgreSQL, MySQL, Oracle, SQL Server",
+        "OLAP : Snowflake, BigQuery, Redshift, Synapse Analytics",
+        "Synchro : Airbyte, Fivetran, dbt"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Architecture",
+        "Data Warehouse",
+        "Bases de données",
+        "Performance"
+      ]
+    },
+    {
+      "id": "change-data-capture",
+      "titre": "Change Data Capture (CDC)",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Ingestion de données",
+      "niveau": "Intermédiaire",
+      "emoji": "📡",
+      "description_courte": "Technique qui capture en temps quasi-réel tous les changements (INSERT, UPDATE, DELETE) dans une base de données source et les propage vers les systèmes cibles.",
+      "explication_simple": "Au lieu de copier toute une base de données chaque nuit (batch), le CDC écoute le journal de transactions de la base (transaction log / WAL) et capture chaque changement au moment où il se produit. C'est comme avoir un greffier qui note chaque modification de registre en temps réel, plutôt que de refaire l'inventaire complet chaque soir.",
+      "exemple_concret": "E-commerce avec 50M clients : sans CDC, le chargement nightly dans Snowflake prend 4 heures. Avec CDC (Debezium sur PostgreSQL) : chaque INSERT/UPDATE/DELETE est capturé et envoyé dans Kafka en < 1 seconde. Le Data Warehouse est mis à jour en quasi-temps réel. Latence de fraîcheur : de 4 heures à 30 secondes.",
+      "formule": "CDC modes : Log-based (lit le WAL PostgreSQL/binlog MySQL — le plus performant), Query-based (polling sur timestamp_updated — simple mais polluant), Trigger-based (déclencheurs SQL — lourd en production).",
+      "quand_utiliser": [
+        "Synchronisation temps réel entre bases OLTP et DW/Data Lake",
+        "Alimentation de pipelines Kafka/streaming depuis des bases relationnelles",
+        "Replication de bases de données avec latence minimale"
+      ],
+      "avantages": [
+        "Fraîcheur des données proche du temps réel",
+        "Charge minimale sur la base source (log-based = lecture du journal)",
+        "Capture les suppressions (impossible avec les approches classiques timestamp)"
+      ],
+      "inconvenients": [
+        "Configuration complexe (droits WAL requis)",
+        "Gestion des changements de schéma (schema evolution)",
+        "Besoin d'une infrastructure de messaging (Kafka recommandé)"
+      ],
+      "outils": [
+        "Debezium (open source)",
+        "Airbyte CDC",
+        "AWS DMS (Database Migration Service)",
+        "Fivetran Log-based CDC",
+        "Oracle GoldenGate"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Streaming",
+        "ETL",
+        "Temps réel",
+        "Bases de données"
+      ]
+    },
+    {
+      "id": "data-quality-great-expectations",
+      "titre": "Data Quality et Great Expectations",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Data Quality",
+      "niveau": "Intermédiaire",
+      "emoji": "✅",
+      "description_courte": "La qualité des données désigne leur aptitude à être utilisées. Great Expectations est le framework Python de référence pour définir, tester et documenter des règles de qualité comme des tests automatisés.",
+      "explication_simple": "Imaginer livrer un rapport financier avec des montants négatifs, des dates dans le futur ou des doublons. La data quality, c'est définir des règles explicites (« le montant doit être positif », « l'identifiant est unique », « la date ne peut pas dépasser aujourd'hui ») et les tester automatiquement à chaque chargement. Great Expectations, c'est le framework Python qui transforme ces règles en tests exécutables, comme des tests unitaires pour ta donnée.",
+      "exemple_concret": "Pipeline de facturation : Great Expectations vérifie avant chaque chargement que montant > 0 (99.8% des lignes), client_id n'est pas null (100%), date_facture <= today (100%), montant_total = SUM(lignes). Si un test échoue, le pipeline est bloqué et une alerte est envoyée. Avant GE : erreurs découvertes par les métiers 2 jours plus tard. Après : en 5 minutes.",
+      "formule": "Expectation suite = ensemble de règles. Validation = exécution des règles sur un batch de données. Data Docs = documentation HTML auto-générée du résultat. Checkpoint = orchestration automatique des validations.",
+      "quand_utiliser": [
+        "Validation de données avant chargement dans un DW",
+        "Monitoring de la qualité des données en production",
+        "Documentation des règles de qualité comme code"
+      ],
+      "avantages": [
+        "« Tests as Code » : versionnable et intégrable en CI/CD",
+        "Documentation auto-générée des règles (Data Docs)",
+        "Intégration Airflow, dbt, Spark"
+      ],
+      "inconvenients": [
+        "Courbe d'apprentissage (configuration YAML/Python)",
+        "Overhead de calcul sur très grands datasets (GE lit les données)",
+        "Version 1.x vs 2.x avec des changements API importants"
+      ],
+      "outils": [
+        "Great Expectations (Python)",
+        "Soda (alternative SaaS)",
+        "dbt tests (intégré)",
+        "Monte Carlo (observabilité data)"
+      ],
+      "tags": [
+        "Data Quality",
+        "Tests",
+        "Gouvernance",
+        "Python",
+        "Pipelines"
+      ]
+    },
+    {
+      "id": "shap-xai",
+      "titre": "SHAP — Explainabilité des modèles ML",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Explainabilité IA",
+      "niveau": "Intermédiaire",
+      "emoji": "🔦",
+      "description_courte": "Framework d'explainabilité qui quantifie la contribution de chaque variable à une prédiction individuelle, basé sur la théorie des jeux de Shapley.",
+      "explication_simple": "Un modèle XGBoost prédit qu'un client risque de partir (churn = 0.82). Pourquoi ? SHAP te répond : 'son score est 0.82 parce que : +0.25 (4 appels au service client ce mois), +0.18 (contrat arrivant à échéance dans 2 semaines), +0.12 (baisse de consommation data de -40%), -0.08 (client depuis 5 ans, facteur de fidélité).' Chaque variable a une contribution chiffrée, positive ou négative.",
+      "exemple_concret": "Scoring crédit : le conseiller voit que le dossier Dupont est refusé (score 0.82 = risque élevé). SHAP explique : +0.30 (3 incidents de paiement dans les 12 mois), +0.22 (endettement à 48%), +0.15 (ancienneté emploi < 6 mois), -0.10 (propriétaire = facteur positif). Le conseiller peut expliquer le refus au client — obligation RGPD remplie.",
+      "formule": "SHAP value φᵢ = Σ [|S|!(|F|-|S|-1)!/|F|!] × [f(S∪{i}) - f(S)], pour tous les sous-ensembles S. En pratique : TreeSHAP pour les arbres (O(TL²) exact), LinearSHAP pour les modèles linéaires.",
+      "quand_utiliser": [
+        "Explicabilité réglementaire (scoring crédit, assurance)",
+        "Compréhension des features importants (feature selection)",
+        "Débogage de modèles (feature à corriger identifié)"
+      ],
+      "avantages": [
+        "Cohérent mathématiquement (propriétés Shapley)",
+        "Applicable à tout modèle (boîte noire ou non)",
+        "Explications locales (par prédiction) ET globales (importance globale)"
+      ],
+      "inconvenients": [
+        "Coûteux en calcul sur les modèles complexes (SHAP naïf est exponentiel)",
+        "Valeurs SHAP pas toujours intuitives à interpréter",
+        "Peut être manipulé pour produire de fausses explications"
+      ],
+      "outils": [
+        "SHAP (Python)",
+        "LIME (alternative)",
+        "Dataiku (SHAP intégré)",
+        "Azure ML Explainability",
+        "Vertex AI Explainability"
+      ],
+      "tags": [
+        "ML",
+        "Explainabilité",
+        "IA Responsable",
+        "Scoring",
+        "RGPD"
+      ]
+    },
+    {
+      "id": "mlflow",
+      "titre": "MLflow — Gestion du cycle de vie ML",
+      "categorie": "Machine Learning",
+      "sous_categorie": "MLOps",
+      "niveau": "Intermédiaire",
+      "emoji": "🔬",
+      "description_courte": "Plateforme open-source de gestion du cycle de vie ML : tracking des expériences, packaging des modèles, registre de modèles et déploiement.",
+      "explication_simple": "Sans MLflow, les Data Scientists font leurs expériences dans des notebooks sans trace : 'le modèle de jeudi dernier avec le learning rate 0.01 était meilleur, mais je ne retrouve plus les paramètres.' MLflow enregistre automatiquement chaque expérience : les paramètres, les métriques, les artefacts (modèle sauvegardé). Comme un carnet de laboratoire numérique qui ne perd rien.",
+      "exemple_concret": "Projet de prédiction de churn : 50 expériences testées. MLflow compare automatiquement : XGBoost (lr=0.1, AUC=0.87), LightGBM (lr=0.05, AUC=0.91), Random Forest (AUC=0.83). Le meilleur modèle est enregistré dans le Model Registry avec le tag 'production-ready'. Le CI/CD récupère ce modèle pour le déployer en API. Traçabilité complète de l'entraînement au déploiement.",
+      "formule": "Tracking : mlflow.log_param('lr', 0.1) + mlflow.log_metric('auc', 0.91) + mlflow.log_artifact('model.pkl'). Model Registry : Staging → Production → Archived. Model URI : 'models:/churn-model/Production'.",
+      "quand_utiliser": [
+        "Comparer des expériences ML de façon structurée",
+        "Versioning et gouvernance des modèles en production",
+        "Standardisation des pratiques ML dans une équipe"
+      ],
+      "avantages": [
+        "Open-source et indépendant du cloud",
+        "S'intègre avec Scikit-learn, TensorFlow, PyTorch, XGBoost",
+        "Databricks MLflow géré en production (sans infrastructure)"
+      ],
+      "inconvenients": [
+        "Interface web limitée vs outils commerciaux (Weights & Biases)",
+        "Recherche dans les expériences moins puissante qu'une base de données",
+        "Gestion du stockage des artefacts à configurer"
+      ],
+      "outils": [
+        "MLflow (open source)",
+        "Databricks MLflow",
+        "Weights & Biases (W&B, alternative)",
+        "Neptune.ai",
+        "ClearML"
+      ],
+      "tags": [
+        "MLOps",
+        "ML",
+        "Tracking",
+        "Modèles",
+        "Python"
+      ]
+    },
+    {
+      "id": "feature-store",
+      "titre": "Feature Store",
+      "categorie": "Machine Learning",
+      "sous_categorie": "MLOps",
+      "niveau": "Avancé",
+      "emoji": "🏪",
+      "description_courte": "Référentiel centralisé pour stocker, calculer, versioner et servir des features ML, garantissant la cohérence entre l'entraînement et la production.",
+      "explication_simple": "Chaque équipe ML recalcule les mêmes features (transactions_30j, score_rfm, nb_incidents_paiement) de son côté, avec des définitions légèrement différentes. Quand le modèle passe en production, la feature calculée en temps réel est différente de celle utilisée pour l'entraînement. Feature Store résout ça : une seule définition, une seule implémentation, consommable par n'importe quelle équipe et garantissant que la feature de prod = la feature d'entraînement.",
+      "exemple_concret": "Banque avec 20 modèles ML : sans Feature Store, 20 fois le même calcul 'ratio_endettement_30j' avec 20 définitions légèrement différentes. Avec Databricks Feature Store : 1 définition officielle, calculée une fois, accessible par tous. Le modèle accède à la feature par nom ('ratio_endettement_30j') en entraînement ET en production — zéro risque de training/serving skew.",
+      "formule": "Training : model.fit(feature_store.get_historical_features(['ratio_endettement_30j', 'score_rfm'], start_date, end_date)). Serving : feature_store.get_online_features(['ratio_endettement_30j'], entity_ids=[client_id]).",
+      "quand_utiliser": [
+        "Plusieurs modèles ML réutilisant les mêmes features",
+        "Éliminer le training/serving skew en production",
+        "Centraliser et documenter les features ML d'une organisation"
+      ],
+      "avantages": [
+        "Élimination du training/serving skew (source principale d'erreurs ML production)",
+        "Réutilisabilité : une feature développée une fois utilisée par 10 modèles",
+        "Documentation et découvrabilité des features"
+      ],
+      "inconvenients": [
+        "Infrastructure supplémentaire à maintenir (store online + offline)",
+        "Adoption nécessite un changement de pratiques des équipes",
+        "Latence de la couche online à surveiller"
+      ],
+      "outils": [
+        "Databricks Feature Store",
+        "Feast (open source)",
+        "Hopsworks",
+        "AWS SageMaker Feature Store",
+        "Vertex AI Feature Store"
+      ],
+      "tags": [
+        "MLOps",
+        "ML",
+        "Feature Engineering",
+        "Production",
+        "Cohérence"
+      ]
+    },
+    {
+      "id": "model-drift-data-drift",
+      "titre": "Model Drift et Data Drift",
+      "categorie": "Machine Learning",
+      "sous_categorie": "MLOps",
+      "niveau": "Intermédiaire",
+      "emoji": "📉",
+      "description_courte": "Phénomène par lequel la performance d'un modèle ML se dégrade en production parce que les données réelles ont changé par rapport aux données d'entraînement.",
+      "explication_simple": "Un modèle de scoring crédit entraîné en 2019 commence à se tromper en 2022. Pourquoi ? Le monde a changé : COVID, inflation, nouveaux comportements de consommation. Les données d'entrée ont dérivé (data drift) et la relation entre les features et le résultat n'est plus la même (concept drift). Un modèle ML n'est jamais 'fini' : sans monitoring, il se dégrade silencieusement.",
+      "exemple_concret": "Modèle de prédiction de churn télécom entraîné avant le lancement de la 5G. Après le lancement : les clients qui consomment peu de données (feature importante = « churner probable ») ne le sont plus — ils ont upgradé. L'AUC passe de 0.85 à 0.71 en 6 mois. Seul un monitoring des distributions de features et de la performance détecte cette dégradation.",
+      "formule": "Data drift : mesure PSI (Population Stability Index) ou KS test entre distribution actuelle et distribution de référence. PSI < 0.1 : stable. 0.1-0.25 : alerte. > 0.25 : retraining requis. Concept drift : suivi de la métrique métier (AUC, F1) sur les données récentes labellisées.",
+      "quand_utiliser": [
+        "Monitoring de tout modèle ML en production",
+        "Système d'alerte pour détecter le moment du retraining",
+        "Audit de la robustesse des modèles avant déploiement"
+      ],
+      "avantages": [
+        "Détection précoce avant que le modèle cause des erreurs métier",
+        "Automatisation possible du retraining déclenché par drift",
+        "Justifiable pour la conformité réglementaire (modèles bancaires)"
+      ],
+      "inconvenients": [
+        "Nécessite des données labellisées récentes pour mesurer le concept drift",
+        "Seuils d'alerte à calibrer (trop sensible = fausses alarmes)",
+        "Coût de monitoring et d'infrastructure"
+      ],
+      "outils": [
+        "Evidently AI (open source)",
+        "WhyLabs",
+        "Arize AI",
+        "Databricks Lakehouse Monitoring",
+        "Azure ML Model Monitor"
+      ],
+      "tags": [
+        "MLOps",
+        "ML",
+        "Production",
+        "Monitoring",
+        "Qualité modèles"
+      ]
+    },
+    {
+      "id": "hyperparameter-tuning-optuna",
+      "titre": "Hyperparameter Tuning — Optuna et Bayesian Optimization",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Optimisation ML",
+      "niveau": "Intermédiaire",
+      "emoji": "🎛️",
+      "description_courte": "Techniques automatisées pour trouver les meilleurs hyperparamètres d'un modèle ML, remplaçant la grid search par des méthodes intelligentes qui apprennent des essais précédents.",
+      "explication_simple": "Un modèle XGBoost a des dizaines d'hyperparamètres : learning_rate, max_depth, n_estimators, subsample... Tester toutes les combinaisons (grid search) prendrait des semaines. La Bayesian Optimization est intelligente : après chaque essai, elle construit un modèle de substitution qui prédit quelle combinaison essayer ensuite. Comme un chercheur qui apprend de ses expériences au lieu de tout tester aveuglément.",
+      "exemple_concret": "Optimisation d'un XGBoost pour la détection de fraude : Grid Search classique sur 5 paramètres × 10 valeurs = 100 000 combinaisons (impossible). Optuna avec 200 essais en 2 heures : AUC = 0.94 avec learning_rate=0.05, max_depth=6, n_estimators=500. Grid Search sur le même espace : estimerait 3 semaines pour trouver mieux. Gain : 99%+ du temps économisé.",
+      "formule": "Bayesian Optimization : Surrogate model (Gaussian Process ou Tree Parzen Estimator) + Acquisition function (Expected Improvement : EI(x) = E[max(f(x) - f(x+), 0)]). Optuna utilise TPE (Tree-structured Parzen Estimator).",
+      "quand_utiliser": [
+        "Tout projet ML où les hyperparamètres ont un impact significatif",
+        "Budget de calcul limité (vs grid search)",
+        "Pipelines ML automatisés (AutoML)"
+      ],
+      "avantages": [
+        "Bien plus efficace que Grid Search ou Random Search",
+        "Gestion des essais paralèles sur plusieurs GPU/CPU",
+        "Pruning : abandon précoce des essais peu prometteurs"
+      ],
+      "inconvenients": [
+        "Ne garantit pas l'optimalité globale",
+        "Overhead de temps pour les modèles rapides (random search peut suffire)",
+        "Hyperparamètres continus vs discrets : sensibilité au type d'espace"
+      ],
+      "outils": [
+        "Optuna (Python, open source)",
+        "Ray Tune",
+        "Hyperopt",
+        "Scikit-learn RandomizedSearchCV",
+        "Databricks AutoML"
+      ],
+      "tags": [
+        "ML",
+        "Optimisation",
+        "AutoML",
+        "Performance",
+        "Hyperparamètres"
+      ]
+    },
+    {
+      "id": "reinforcement-learning",
+      "titre": "Reinforcement Learning (Apprentissage par renforcement)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "🎮",
+      "description_courte": "Paradigme d'apprentissage où un agent apprend en interagissant avec un environnement, en recevant des récompenses (ou pénalités) pour ses actions, sans données labellisées.",
+      "explication_simple": "Imagine apprendre à conduire : tu fais des erreurs, tu reçois des feedbacks (coup de klaxon = pénalité, arriver à destination = récompense), et tu ajustes ton comportement. Le RL, c'est ça : un agent qui explore, reçoit des signaux de récompense de l'environnement, et apprend la politique optimale par essais-erreurs. ChatGPT utilise RLHF (RL from Human Feedback) pour apprendre à donner des réponses appréciées par les humains.",
+      "exemple_concret": "Trading algorithmique : l'agent observe l'état du marché (prix, volumes, indicateurs), prend une action (acheter, vendre, ne rien faire), reçoit une récompense (profit/perte). Après des millions de simulations sur données historiques (backtesting), l'agent apprend une stratégie de trading. DeepMind AlphaGo utilise RL pour battre les champions mondiaux au jeu de Go.",
+      "formule": "Q-Learning : Q(s,a) = r + γ × max_a' Q(s', a'). Policy Gradient : ∇θ J(θ) = E[∇θ log π_θ(a|s) × R]. Deep RL : approximation de Q ou π par un réseau de neurones.",
+      "quand_utiliser": [
+        "Optimisation de processus avec décisions séquentielles (supply chain, pricing dynamique)",
+        "RLHF pour aligner les LLMs",
+        "Contrôle autonome (robotique, véhicules autonomes)"
+      ],
+      "avantages": [
+        "Pas de données labellisées requises (apprend par interaction)",
+        "Peut dépasser les performances humaines dans des environnements définis",
+        "Optimise des objectifs à long terme (pas juste la prochaine action)"
+      ],
+      "inconvenients": [
+        "Très coûteux en calcul (millions d'itérations requises)",
+        "Difficile à déployer dans des environnements réels complexes (sécurité)",
+        "Reward hacking : l'agent exploite des failles dans la fonction de récompense"
+      ],
+      "outils": [
+        "Stable-Baselines3 (Python)",
+        "Ray RLlib",
+        "OpenAI Gym (environnements)",
+        "TensorFlow Agents"
+      ],
+      "tags": [
+        "ML",
+        "Deep Learning",
+        "IA",
+        "Optimisation",
+        "Décision séquentielle"
+      ]
+    },
+    {
+      "id": "graph-neural-networks",
+      "titre": "Graph Neural Networks (GNN)",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "🕸️",
+      "description_courte": "Famille de réseaux de neurones conçus pour traiter des données structurées en graphe (nœuds, arêtes), capturant les relations entre entités interconnectées.",
+      "explication_simple": "Les réseaux de neurones classiques traitent des données indépendantes (chaque image, chaque ligne CSV). Mais certains problèmes ont des relations importantes : les transactions bancaires forment un réseau (qui envoie de l'argent à qui), les molécules chimiques sont des graphes. Les GNN intègrent ces relations dans l'apprentissage : chaque nœud apprend en tenant compte de ses voisins.",
+      "exemple_concret": "Détection de blanchiment d'argent (AML) : les transactions forment un graphe. Un compte isolé semble normal, mais un GNN détecte qu'il est au centre d'un réseau circulaire de 15 entités qui se transfèrent de l'argent. GraphSAGE entraîné sur ce graphe détecte 35% de schémas frauduleux supplémentaires vs les modèles traditionnels.",
+      "formule": "Message Passing : h_v^(k) = UPDATE(h_v^(k-1), AGGREGATE({h_u^(k-1) : u ∈ N(v)})), où N(v) = voisins de v. k = couche du réseau.",
+      "quand_utiliser": [
+        "Détection de fraude sur réseaux de transactions",
+        "Recommandation sociale (graphe d'amis)",
+        "Drug discovery (molécules = graphes)"
+      ],
+      "avantages": [
+        "Capture les relations structurelles entre entités (impossible avec ML classique)",
+        "Peut traiter des graphes de taille variable",
+        "État de l'art pour les problèmes de graphe"
+      ],
+      "inconvenients": [
+        "Scalabilité difficile sur de très grands graphes (milliards de nœuds)",
+        "Interprétabilité faible (comme tous les deep learning)",
+        "Peu d'outils matures en production vs ML classique"
+      ],
+      "outils": [
+        "PyTorch Geometric",
+        "DGL (Deep Graph Library)",
+        "Spektral (Keras)",
+        "Neo4j GDS (Graph Data Science)"
+      ],
+      "tags": [
+        "Deep Learning",
+        "Graphes",
+        "Fraud Detection",
+        "Recommandation",
+        "GNN"
+      ]
+    },
+    {
+      "id": "multimodal-ai",
+      "titre": "IA Multimodale",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "🌐",
+      "description_courte": "Systèmes d'IA capables de traiter et raisonner sur plusieurs types de données simultanément : texte, images, audio, vidéo et données structurées.",
+      "explication_simple": "Un humain comprend une situation en combinant ce qu'il voit, entend et lit. Pendant longtemps, l'IA avait des modèles séparés pour chaque modalité. GPT-4 Vision, Gemini et Claude 3 peuvent maintenant analyser une image ET répondre à des questions textuelles dessus en même temps. C'est ça l'IA multimodale : un seul modèle qui comprend plusieurs types d'information simultanément.",
+      "exemple_concret": "Contrôle qualité industriel multimodal : le système reçoit une photo de la pièce (Computer Vision) + les données capteurs (tabular) + le rapport d'inspection précédent (texte). Le modèle multimodal combine les trois sources pour décider si la pièce est conforme, avec une précision de 97% vs 89% pour le modèle vision seul.",
+      "formule": "Architecture type : encodeurs spécialisés par modalité (ViT pour images, Transformer pour texte) → projection dans un espace latent commun → fusion (cross-attention ou concatenation) → décodeur (texte ou classification).",
+      "quand_utiliser": [
+        "Analyse de documents (texte + images/graphiques)",
+        "Diagnostic médical (imagerie + notes cliniques + biologie)",
+        "Surveillance industrielle (caméras + capteurs + historique)"
+      ],
+      "avantages": [
+        "Raisonnement plus riche en combinant plusieurs sources d'information",
+        "Un seul modèle remplace plusieurs pipelines spécialisés",
+        "Capacités émergentes (raisonner sur un graphique PDF)"
+      ],
+      "inconvenients": [
+        "Très coûteux à entraîner et à inférer",
+        "Gestion des modalities manquantes (si image absente)",
+        "Hallucinations visuelles parfois plus graves que textuelles"
+      ],
+      "outils": [
+        "GPT-4 Vision (OpenAI)",
+        "Gemini 1.5 (Google)",
+        "Claude 3 (Anthropic)",
+        "LLaVA (open source)"
+      ],
+      "tags": [
+        "Deep Learning",
+        "LLM",
+        "Computer Vision",
+        "NLP",
+        "IA Générative"
+      ]
+    },
+    {
+      "id": "attention-mechanism",
+      "titre": "Mécanisme d'Attention",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Deep Learning",
+      "niveau": "Avancé",
+      "emoji": "👁️",
+      "description_courte": "Composant clé des Transformers qui permet au modèle de pondérer dynamiquement l'importance de chaque élément d'une séquence par rapport aux autres lors du traitement.",
+      "explication_simple": "Quand tu lis « Le chat mange la souris qu'il a chassée », pour comprendre 'qu'il' tu regardes le reste de la phrase et tu décides que 'il' réfère à 'chat' (pas souris). Le mécanisme d'attention fait pareil : pour chaque mot, il calcule un score d'importance avec tous les autres mots de la phrase, et pondère les représentations en conséquence. C'est ce qui permet aux Transformers de comprendre le contexte à longue distance.",
+      "exemple_concret": "Traduction automatique : pour traduire le mot 'bank' en français, le mécanisme d'attention regarde tous les autres mots de la phrase. Si 'money', 'account', 'deposit' ont des scores d'attention élevés → 'banque'. Si 'river', 'swim', 'shore' ont des scores élevés → 'rive'. La même architecture gère les deux sens.",
+      "formule": "Attention(Q,K,V) = softmax(QKᵀ / √d_k) × V. Q=requêtes, K=clés, V=valeurs. Multi-head : concatène h têtes d'attention en parallèle pour capturer différents types de relations.",
+      "quand_utiliser": [
+        "Toute architecture Transformer (LLM, BERT, Vision Transformer)",
+        "Compréhension de séquences avec dépendances longues",
+        "Traduction, résumé, question-réponse"
+      ],
+      "avantages": [
+        "Capture les dépendances à longue distance (impossible avec RNN)",
+        "Parallélisable (contrairement aux RNN séquentiels)",
+        "Interprétable : visualiser les poids d'attention révèle ce que le modèle 'regarde'"
+      ],
+      "inconvenients": [
+        "Coût quadratique O(n²) par rapport à la longueur de séquence",
+        "Longues séquences coûteuses en mémoire GPU",
+        "Attention locale pour contourner : sliding window, sparse attention"
+      ],
+      "outils": [
+        "HuggingFace Transformers",
+        "PyTorch (torch.nn.MultiheadAttention)",
+        "BertViz (visualisation des attentions)"
+      ],
+      "tags": [
+        "Deep Learning",
+        "Transformers",
+        "NLP",
+        "LLM",
+        "Architecture"
+      ]
+    },
+    {
+      "id": "bert",
+      "titre": "BERT — Représentations bidirectionnelles",
+      "categorie": "Machine Learning",
+      "sous_categorie": "NLP",
+      "niveau": "Avancé",
+      "emoji": "🤖",
+      "description_courte": "Modèle NLP pré-entraîné de Google qui comprend le contexte bidirectionnel des phrases. La base de la plupart des systèmes de compréhension de texte modernes.",
+      "explication_simple": "Les anciens modèles NLP lisaient de gauche à droite. BERT lit le mot 'banque' en regardant à la fois les mots qui le précèdent ET ceux qui le suivent, en même temps. C'est ce 'bidirectionnel' qui lui permet de comprendre la désambiguïsation contextuelle. BERT est pré-entraîné sur Wikipedia et BooksCorpus : il comprend déjà le langage. On le fine-tune ensuite sur sa tâche spécifique avec peu de données.",
+      "exemple_concret": "Extraction d'entités nommées dans des contrats : BERT fine-tuné sur 5 000 contrats annotés identifie les parties, montants, dates et clauses clés avec une précision de 94% F1. CamemBERT (BERT en français) extrait les indicateurs ESG de rapports annuels avec 87% de précision, là où BERT anglais plafonnait à 71% sur les textes français.",
+      "formule": "Pré-entraînement : MLM (Masked Language Modeling : prédire les mots masqués) + NSP (Next Sentence Prediction). Fine-tuning : ajouter une tête de classification sur le token [CLS].",
+      "quand_utiliser": [
+        "Classification de texte (sentiment, intention)",
+        "Extraction d'entités nommées (NER)",
+        "Question-réponse sur documents"
+      ],
+      "avantages": [
+        "Excellent en few-shot : fine-tuning avec 1 000 exemples donne de bons résultats",
+        "Modèles multilingues (mBERT, XLM-R)",
+        "Encodeur idéal pour les embeddings sémantiques"
+      ],
+      "inconvenients": [
+        "Encodeur seulement (pas de génération de texte — utiliser GPT pour ça)",
+        "Fenêtre de contexte limitée à 512 tokens (vs 128K pour GPT-4)",
+        "Supplanté par des modèles plus récents (DeBERTa, RoBERTa) pour la performance"
+      ],
+      "outils": [
+        "HuggingFace Transformers (bert-base-french-cased, CamemBERT)",
+        "sentence-transformers (embeddings BERT)",
+        "LangChain (intégration BERT embeddings)"
+      ],
+      "tags": [
+        "NLP",
+        "Deep Learning",
+        "Embeddings",
+        "Transfer Learning",
+        "Texte"
+      ]
+    },
+    {
+      "id": "semantic-search",
+      "titre": "Recherche Sémantique",
+      "categorie": "Techniques Analytics",
+      "sous_categorie": "NLP",
+      "niveau": "Intermédiaire",
+      "emoji": "🔍",
+      "description_courte": "Moteur de recherche qui comprend le sens de la requête plutôt que les mots-clés exacts, en comparant les embeddings vectoriels de la requête et des documents.",
+      "explication_simple": "Un moteur de recherche classique cherche les mots exacts. Tu cherches « voiture rapide » et il trouve les documents contenant ces mots. La recherche sémantique comprend que « automobile sportive » est la même chose. Elle encode ta requête en vecteur numérique, cherche les documents dont les vecteurs sont les plus proches géométriquement. « Détection d'anomalies financières » retrouve des articles sur « fraude bancaire » même sans mot en commun.",
+      "exemple_concret": "Hub de documentation interne DataSphère : 5 000 articles. Recherche classique de « machine learning non supervisé » ne trouve que les articles avec ces mots exacts. Recherche sémantique trouve aussi « clustering », « détection d'outliers », « Isolation Forest » — les articles sémantiquement proches. Satisfaction utilisateurs : +65% vs recherche par mots-clés.",
+      "formule": "Pipeline : Requête → Embedding (ex: text-embedding-3-small) → Vecteur 1536D → Similarité cosinus avec index vectoriel (HNSW) → Top-K documents → Reranking (optionnel).",
+      "quand_utiliser": [
+        "Moteurs de recherche interne documentaire",
+        "Composant retrieval d'une architecture RAG",
+        "Recommandation de contenu par similarité sémantique"
+      ],
+      "avantages": [
+        "Robuste aux synonymes et formulations différentes",
+        "Gère le multilinguisme (modèles multilingues)",
+        "Aucune indexation manuelle de mots-clés requise"
+      ],
+      "inconvenients": [
+        "Coût d'encodage de tous les documents (temps et argent API)",
+        "Résultats parfois surprenants pour les requêtes très spécifiques",
+        "Moins précis que BM25 pour les termes techniques exacts (hybrid search recommandé)"
+      ],
+      "outils": [
+        "OpenAI Embeddings API",
+        "sentence-transformers (open source)",
+        "Elasticsearch (vector search + BM25 hybrid)",
+        "Pinecone, Qdrant, ChromaDB"
+      ],
+      "tags": [
+        "NLP",
+        "Vector Search",
+        "RAG",
+        "Recherche",
+        "Embeddings"
+      ]
+    },
+    {
+      "id": "dbt-data-build-tool",
+      "titre": "dbt (Data Build Tool)",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Transformation de données",
+      "niveau": "Intermédiaire",
+      "emoji": "🔧",
+      "description_courte": "Framework de transformation de données qui permet d'écrire des transformations SQL versionables, testées et documentées directement dans le Data Warehouse.",
+      "explication_simple": "Avant dbt, les transformations SQL étaient dans des scripts non versionnés, sans tests, sans documentation. dbt apporte les bonnes pratiques du développement logiciel à la data : les transformations sont des modèles .sql dans Git, testés automatiquement (not_null, unique), documentés avec des descriptions, et déployés en CI/CD. C'est de l'ingénierie logicielle appliquée à la transformation de données.",
+      "exemple_concret": "Pipeline de reporting financier : 50 modèles dbt organisés en couches (staging → intermediate → marts). dbt run exécute tous les modèles dans le bon ordre (DAG automatique). dbt test vérifie 200 règles de qualité. dbt docs generate crée une documentation interactive avec lineage visuel. Toute l'équipe travaille dans le même projet Git.",
+      "formule": "Modèle dbt = fichier .sql avec SELECT + materialization (table, view, incremental, ephemeral). Ref : {{ ref('stg_orders') }} crée la dépendance et le lineage automatiquement.",
+      "quand_utiliser": [
+        "Remplacement des ETL classiques pour la couche transformation",
+        "Standardisation des pratiques SQL dans une équipe data",
+        "Quand on a besoin de tests, documentation et versioning des transformations"
+      ],
+      "avantages": [
+        "SQL versionné dans Git (code review, CI/CD)",
+        "Tests automatiques sur les données (qualité intégrée)",
+        "Lineage automatique (découverte des dépendances entre modèles)"
+      ],
+      "inconvenients": [
+        "Limité au SQL (pas de Python pur pour les transformations complexes)",
+        "Courbe d'apprentissage pour les concepts dbt (refs, macros, packages)",
+        "Moins adapté aux transformations non-SQL (ML, traitement d'images)"
+      ],
+      "outils": [
+        "dbt Core (open source)",
+        "dbt Cloud (SaaS avec orchestration)",
+        "Adapters : Snowflake, BigQuery, Redshift, Databricks, Synapse"
+      ],
+      "tags": [
+        "Data Engineering",
+        "SQL",
+        "ELT",
+        "Analytics Engineering",
+        "Git"
+      ]
+    },
+    {
+      "id": "medallion-architecture",
+      "titre": "Architecture Medallion (Bronze / Silver / Gold)",
+      "categorie": "Data Engineering",
+      "sous_categorie": "Architecture data",
+      "niveau": "Intermédiaire",
+      "emoji": "🥇",
+      "description_courte": "Pattern d'architecture Lakehouse qui organise les données en 3 couches progressives : Bronze (brut), Silver (nettoyé) et Gold (agrégé pour la consommation).",
+      "explication_simple": "Les données arrivent brutes (Bronze) : elles sont dans le format source, avec les erreurs, les doublons, les valeurs manquantes. La couche Silver nettoie et standardise : les colonnes sont renommées, les doublons supprimés, les types validés. La couche Gold agrège pour les besoins métier : le reporting directeur reçoit des KPIs précalculés, les modèles ML reçoivent des features prêtes. Chaque couche est indépendante et reproductible.",
+      "exemple_concret": "Data platform d'une banque sur Azure : Bronze = tables sources copiées depuis les systèmes (transactions, contrats, clients) au format brut dans ADLS Gen2. Silver = tables normalisées, jointures résolues, données nettoyées. Gold = modèles agrégés (exposition risque par client, scoring journalier, reporting réglementaire). dbt orchestre les 3 couches.",
+      "formule": "Bronze (Raw) : COPY AS-IS depuis source, pas de transformation. Silver (Curated) : déduplication, typage, nettoyage, enrichissement. Gold (Serving) : agrégats, métriques métier, modèles optimisés pour la consommation.",
+      "quand_utiliser": [
+        "Toute architecture Lakehouse (Databricks, Fabric, Iceberg+Spark)",
+        "Organisation des tables dans un Data Lake",
+        "Séparation claire entre ingestion, transformation et serving"
+      ],
+      "avantages": [
+        "Reproductibilité : le Gold est toujours recalculable depuis le Bronze",
+        "Isolation : une erreur en Silver n'affecte pas le Bronze",
+        "Debugging facilité : on peut rejouer n'importe quelle couche"
+      ],
+      "inconvenients": [
+        "Multiplication des tables (3x le nombre de tables)",
+        "Latence additionnelle (3 couches à traverser)",
+        "Définition des frontières Silver/Gold parfois floue selon les équipes"
+      ],
+      "outils": [
+        "Databricks (Lakehouse natif)",
+        "Microsoft Fabric (OneLake + Medallion)",
+        "dbt (Silver → Gold)",
+        "Apache Spark (Bronze → Silver)"
+      ],
+      "tags": [
+        "Data Engineering",
+        "Architecture",
+        "Lakehouse",
+        "Databricks",
+        "Data Lake"
+      ]
+    },
+    {
+      "id": "dataops",
+      "titre": "DataOps",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Organisation data",
+      "niveau": "Intermédiaire",
+      "emoji": "⚙️",
+      "description_courte": "Pratiques qui appliquent les principes DevOps (CI/CD, automatisation, collaboration) aux pipelines de données pour accélérer les livraisons et améliorer la qualité.",
+      "explication_simple": "Les développeurs logiciels ont leurs bonnes pratiques : versionner le code (Git), le tester automatiquement (CI), le déployer en continu (CD). DataOps applique ces mêmes principes aux pipelines data : les transformations SQL sont versionnées, les pipelines sont testés avant déploiement, les changements sont validés automatiquement. Résultat : moins d'incidents en production, livraisons plus rapides.",
+      "exemple_concret": "Avant DataOps : un Data Engineer modifie un modèle dbt, l'exécute en prod directement, le reporting du lendemain matin est cassé. Avec DataOps : une Pull Request dans Git déclenche automatiquement les tests dbt (200 règles de qualité), une revue de code, un déploiement en environment de dev, puis en prod seulement après validation. Incidents de production réduits de 78%.",
+      "formule": "DataOps = Data + DevOps. Pilliers : Version Control (Git pour SQL/code), CI/CD (GitHub Actions, dbt Cloud), Testing (Great Expectations, dbt tests), Monitoring (alertes, observabilité), Collaboration (code review, documentation).",
+      "quand_utiliser": [
+        "Industrialisation des pipelines de données (sortir du mode artisanal)",
+        "Équipes data de plus de 3 personnes",
+        "Projets avec des rapports critiques (réglementaires, finance)"
+      ],
+      "avantages": [
+        "Réduction des incidents de production",
+        "Livraisons plus fréquentes et plus sûres",
+        "Traçabilité complète des changements"
+      ],
+      "inconvenients": [
+        "Investissement initial important (mise en place de la chaîne CI/CD)",
+        "Changement culturel requis (les Data Engineers doivent adopter les pratiques Dev)",
+        "Overhead pour les petites équipes et projets exploratoires"
+      ],
+      "outils": [
+        "Git + GitHub/GitLab",
+        "dbt (CI/CD natif dans dbt Cloud)",
+        "Great Expectations",
+        "Airflow + CI/CD",
+        "Monte Carlo (observabilité)"
+      ],
+      "tags": [
+        "Gouvernance",
+        "Data Engineering",
+        "CI/CD",
+        "Qualité",
+        "Organisation"
+      ]
+    },
+    {
+      "id": "responsible-ai",
+      "titre": "IA Responsable (Responsible AI)",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Éthique IA",
+      "niveau": "Intermédiaire",
+      "emoji": "⚖️",
+      "description_courte": "Ensemble de principes, pratiques et techniques pour concevoir des systèmes IA qui sont équitables, transparents, explicables, robustes et respectueux de la vie privée.",
+      "explication_simple": "Un modèle ML entraîné sur des données historiques peut reproduire et amplifier les biais existants : si les recruteurs hommes favorisaient les candidats hommes dans le passé, un modèle de scoring RH apprend ce biais et le perpétue à grande échelle. L'IA Responsable impose de détecter ces biais, d'expliquer les décisions, de tester la robustesse et de maintenir une surveillance humaine sur les décisions à fort impact.",
+      "exemple_concret": "Modèle de scoring de crédit : une analyse SHAP révèle que le code postal est la variable la plus prédictive. Or, dans certaines zones, le code postal est un proxy de l'origine ethnique (discrimination indirecte illégale). L'équipe retire le code postal, remplace par des indicateurs socio-économiques sans proxy, et valide la parité du taux d'acceptation par groupe.",
+      "formule": "Fairness metrics : Statistical Parity Difference (SPD = P(ŷ=1|A=0) - P(ŷ=1|A=1), proche de 0 = équitable), Equal Opportunity Difference (EOD), Disparate Impact (DI > 0.8 = acceptable selon US law).",
+      "quand_utiliser": [
+        "Tout système IA prenant des décisions à fort impact (crédit, recrutement, santé)",
+        "Conformité avec l'AI Act européen",
+        "Déploiements dans des secteurs réglementés (finance, santé, RH)"
+      ],
+      "avantages": [
+        "Conformité légale (AI Act, RGPD, DSA)",
+        "Réduction du risque réputationnel",
+        "Meilleure qualité des modèles (les biais cachent souvent des erreurs de données)"
+      ],
+      "inconvenients": [
+        "Équité et performance peuvent être en tension (améliorer la fairness réduit parfois l'AUC)",
+        "Définition de 'équitable' dépend du contexte et est parfois controversée",
+        "Requiert des données démographiques sensibles pour mesurer les biais"
+      ],
+      "outils": [
+        "Fairlearn (Microsoft)",
+        "AI Fairness 360 (IBM)",
+        "SHAP + Lime (explicabilité)",
+        "Azure Responsible AI Dashboard",
+        "Google Responsible AI Toolkit"
+      ],
+      "tags": [
+        "Gouvernance",
+        "Éthique",
+        "IA",
+        "Conformité",
+        "Biais"
+      ]
+    },
+    {
+      "id": "rgpd-data",
+      "titre": "RGPD appliqué à la Data",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Réglementation",
+      "niveau": "Intermédiaire",
+      "emoji": "🔒",
+      "description_courte": "Règlement Général sur la Protection des Données : cadre légal européen qui encadre la collecte, le traitement et la conservation des données personnelles, avec des impacts concrets sur l'architecture data.",
+      "explication_simple": "Le RGPD donne des droits aux individus sur leurs données : droit d'accès, de rectification, d'effacement (droit à l'oubli), de portabilité. Pour une équipe data, ça signifie : savoir où est stockée chaque donnée personnelle, pouvoir la modifier ou la supprimer à la demande, avoir une base légale pour chaque traitement, minimiser les données collectées au strict nécessaire.",
+      "exemple_concret": "E-commerce : le client Dupont demande l'effacement de ses données. L'équipe data doit identifier toutes les occurrences : table clients, historique commandes, logs serveur, données analytics, backup S3, modèle ML entraîné incluant ses données (pseudonymisation requise). Un Data Catalog avec lineage permet de retrouver tous les endroits en 2 heures vs 3 jours sans gouvernance.",
+      "formule": "RGPD data : Inventaire des traitements (registre CNIL), Minimisation (collecter le minimum), Pseudonymisation/Anonymisation, Durées de conservation, Privacy by Design (intégrer dès la conception), Impact Assessment (DPIA) pour les traitements à risque.",
+      "quand_utiliser": [
+        "Tout projet data traitant des données personnelles de résidents UE",
+        "Conception d'architectures data (Privacy by Design)",
+        "Audit de conformité des systèmes existants"
+      ],
+      "avantages": [
+        "Renforce la confiance des clients et partenaires",
+        "Force une meilleure gouvernance data (inventaire, qualité)",
+        "Réduit les risques juridiques et financiers (amendes jusqu'à 4% du CA mondial)"
+      ],
+      "inconvenients": [
+        "Complexité de mise en conformité sur des architectures legacy",
+        "Droit à l'oubli difficile dans les Data Lakes (données partout)",
+        "Tension avec la valeur analytique (moins de données = moins de signal)"
+      ],
+      "outils": [
+        "Microsoft Purview (Data Catalog + classification)",
+        "AWS Macie (détection de données sensibles)",
+        "Privitar",
+        "DataGrail",
+        "OneTrust"
+      ],
+      "tags": [
+        "Gouvernance",
+        "RGPD",
+        "Conformité",
+        "Sécurité",
+        "Données personnelles"
+      ]
+    },
+    {
+      "id": "taxonomie-esg",
+      "titre": "Taxonomie ESG et Finance Durable",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Finance Durable",
+      "niveau": "Avancé",
+      "emoji": "🌱",
+      "description_courte": "La Taxonomie européenne est un système de classification officiel qui définit quelles activités économiques sont durables, imposant aux entreprises et investisseurs de mesurer et reporter leur alignement.",
+      "explication_simple": "L'Europe a créé un dictionnaire officiel de la durabilité : la Taxonomie. Elle liste les activités qui contribuent à 6 objectifs environnementaux (dont l'atténuation du changement climatique). Pour chaque activité, des seuils techniques définissent si elle est « alignée ». Les fonds d'investissement Article 8/9 (SFDR) doivent calculer le % de leurs investissements alignés et le publier. C'est un travail data massif sur des données souvent indisponibles ou fragmentées.",
+      "exemple_concret": "Fonds immobilier Article 9 : pour chaque immeuble en portefeuille, calculer si sa performance énergétique (kWh/m²/an) respecte le seuil EPC-A exigé par la Taxonomie pour l'objectif 'atténuation changement climatique'. Sur 500 immeubles : 60% des données DPE manquantes, récupérées via des APIs registres nationaux + estimation ML sur les caractéristiques physiques disponibles.",
+      "formule": "Alignement Taxonomie = % CA (ou Capex/Opex) d'activités qui sont : 1) Eligibles (dans la liste officielle), 2) Substantiellement contributives (seuil technique respecté), 3) DNSH (Do No Significant Harm aux 5 autres objectifs), 4) Conformes aux garanties sociales minimales.",
+      "quand_utiliser": [
+        "Fonds d'investissement soumis à SFDR (Sustainable Finance Disclosure Regulation)",
+        "Grandes entreprises soumises à CSRD (reporting ESG obligatoire dès 2024)",
+        "Banques calculant leur Green Asset Ratio (GAR)"
+      ],
+      "avantages": [
+        "Standard commun qui réduit le greenwashing",
+        "Opportunité de compétitivité (labels vert = accès à des investisseurs)",
+        "Améliore la qualité des données non-financières"
+      ],
+      "inconvenients": [
+        "Données sources souvent indisponibles ou de mauvaise qualité",
+        "Critères techniques évoluent régulièrement (actes délégués)",
+        "Coût de collecte et de validation des données ESG très élevé"
+      ],
+      "outils": [
+        "Bloomberg ESG",
+        "MSCI ESG Ratings",
+        "Clarity AI",
+        "Python (NLP sur rapports)",
+        "Snowflake (data platform ESG)"
+      ],
+      "tags": [
+        "ESG",
+        "Finance durable",
+        "SFDR",
+        "Taxonomie",
+        "Reporting réglementaire"
+      ]
+    },
+    {
+      "id": "pilier-3-reporting",
+      "titre": "Pilier 3 — Reporting réglementaire bancaire",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Réglementation",
+      "niveau": "Avancé",
+      "emoji": "🏦",
+      "description_courte": "Volet du cadre de Bâle III qui impose aux banques de publier des informations détaillées sur leurs risques (crédit, marché, opérationnel) pour discipliner le marché par la transparence.",
+      "explication_simple": "Bâle III a 3 piliers : Pilier 1 = les exigences minimales de fonds propres, Pilier 2 = la supervision bancaire, Pilier 3 = la discipline de marché par la transparence. Les banques doivent publier chaque trimestre des dizaines de tableaux standardisés (templates EBA) sur leur exposition aux risques, leurs ratios de solvabilité, leur levier. Ces publications nécessitent d'agréger des données de risque provenant de systèmes disparates — un challenge de data engineering énorme.",
+      "exemple_concret": "Template OV1 (Pilier 3) : une banque publie ses RWA (Risk-Weighted Assets) par type de risque. Ce tableau agrège des données de 15 systèmes différents : système de crédit corporate, portefeuille retail, book de trading, risque opérationnel. Sans Data Warehouse unifié et lineage traçable, la réconciliation prend 3 semaines de travail manuel. Avec une plateforme data gouvernée : 2 jours.",
+      "formule": "RWA = Σ (Exposition × Pondération de risque). Ratio CET1 = Tier 1 Capital / Total RWA ≥ 4.5% (minimum réglementaire). Leverage Ratio = Tier 1 Capital / Total Exposure ≥ 3%.",
+      "quand_utiliser": [
+        "Banques soumises à la CRR/CRD (Capital Requirements Regulation)",
+        "Projets d'automatisation du reporting réglementaire",
+        "Architecture data pour les fonctions Finance/Risques d'une banque"
+      ],
+      "avantages": [
+        "Discipline de marché : transparence qui renforce la confiance",
+        "Harmonisation européenne (templates EBA standardisés)",
+        "Levier pour améliorer la gouvernance data interne"
+      ],
+      "inconvenients": [
+        "Volume de données et de templates croissant (Pilier 3 révisé 2023)",
+        "Réconciliation complexe entre reporting prudentiel et reporting IFRS",
+        "Pénalités sévères en cas d'erreurs ou de retards"
+      ],
+      "outils": [
+        "Axiom SL (reporting réglementaire)",
+        "Wolters Kluwer (OneSumX)",
+        "IBM OpenPages",
+        "Snowflake + dbt (data platform)",
+        "Python (automatisation)"
+      ],
+      "tags": [
+        "Réglementation",
+        "Banque",
+        "Risque",
+        "Bâle III",
+        "Reporting"
+      ]
+    },
+    {
+      "id": "monte-carlo-data-quality",
+      "titre": "Monte Carlo — Observabilité des données",
+      "categorie": "Gouvernance & Qualité",
+      "sous_categorie": "Data Quality",
+      "niveau": "Avancé",
+      "emoji": "🎲",
+      "description_courte": "Plateforme d'observabilité des données qui monitore automatiquement la fraîcheur, le volume, la distribution et le schéma des tables pour détecter les incidents data avant que les utilisateurs ne les signalent.",
+      "explication_simple": "Quand une table qui se charge habituellement à 7h n'est pas à jour à 9h, les équipes métier s'en aperçoivent quand elles arrivent au bureau. Monte Carlo, c'est l'équivalent d'une alarme incendie pour tes données : il surveille automatiquement si les données arrivent à l'heure (fraîcheur), si les volumes sont normaux, si les distributions statistiques ont changé, et alerte avant que les utilisateurs soient impactés.",
+      "exemple_concret": "Plateforme data d'un retailer : Monte Carlo surveille 2 000 tables. À 6h15, il détecte que la table 'commandes' a 40% de lignes en moins que d'habitude (volume anomalie). Alerte Slack envoyée à l'équipe data à 6h20. L'équipe identifie un problème dans le connecteur Shopify et le corrige avant l'ouverture des tableaux de bord à 8h. Avant Monte Carlo : le directeur marketing découvrait le problème à 9h30.",
+      "formule": "ML-based anomaly detection : Monte Carlo apprend les patterns normaux de chaque table (saisonnalité, tendances) et détecte les déviations statistiques. MTTD (Mean Time To Detect) et MTTR (Mean Time To Repair) sont les métriques clés.",
+      "quand_utiliser": [
+        "Data platforms avec des dizaines de pipelines en production",
+        "Quand les incidents data impactent des décisions métier critiques",
+        "Pour SLA de fraîcheur sur les données (accords avec les métiers)"
+      ],
+      "avantages": [
+        "Détection automatique sans règles manuelles (ML-based)",
+        "Lineage intégré pour identifier la cause racine rapidement",
+        "Réduction du MTTD de jours à minutes"
+      ],
+      "inconvenients": [
+        "Coûteux (SaaS premium)",
+        "Configuration initiale et période d'apprentissage (2-4 semaines)",
+        "Alternative open source limitée : Great Expectations + alertes custom"
+      ],
+      "outils": [
+        "Monte Carlo Data",
+        "Bigeye",
+        "Acceldata",
+        "Soda (alternative plus accessible)",
+        "Great Expectations + Airflow (DIY)"
+      ],
+      "tags": [
+        "Data Quality",
+        "Observabilité",
+        "MLOps",
+        "Monitoring",
+        "Gouvernance"
+      ]
+    },
+    {
+      "id": "conformal-prediction",
+      "titre": "Conformal Prediction",
+      "categorie": "Machine Learning",
+      "sous_categorie": "Évaluation ML",
+      "niveau": "Avancé",
+      "emoji": "📊",
+      "description_courte": "Framework statistique qui produit des intervalles de prédiction avec des garanties de couverture théoriques, contrairement aux modèles classiques qui donnent une prédiction ponctuelle sans incertitude fiable.",
+      "explication_simple": "Un modèle prédit que ton appartement vaut 350 000€. Combien peut-il se tromper ? La plupart des modèles ne savent pas répondre à ça de façon fiable. Conformal Prediction dit : 'Je prédit 350 000€, et je garantis statistiquement (avec 95% de probabilité) que le vrai prix est entre 320 000€ et 385 000€'. Ces intervalles ont des garanties théoriques rigoureuses, pas juste des estimations heuristiques.",
+      "exemple_concret": "Scoring crédit avec Conformal Prediction : au lieu de 'risque de défaut = 0.73', le modèle dit 'risque entre 0.65 et 0.81 avec 90% de confiance'. Pour les dossiers avec un intervalle large (incertitude élevée), le conseiller examine manuellement. Résultat : réduction de 23% des erreurs de décision sur les cas ambigus.",
+      "formule": "Score de non-conformité (NC score) : s_i = |y_i - ŷ_i| pour la régression. Quantile empirique : q = (1-α)(1+1/n)-quantile des NC scores sur un calibration set. Intervalle de prédiction : [ŷ - q, ŷ + q].",
+      "quand_utiliser": [
+        "Systèmes critiques nécessitant des garanties d'incertitude (médical, financier)",
+        "Remplacement des intervalles de confiance heuristiques",
+        "Détection des données out-of-distribution (entrées inhabituelles)"
+      ],
+      "avantages": [
+        "Garanties théoriques (couverture marginale garantie sans hypothèses distribution)",
+        "Applicable à tout modèle (post-hoc, model-agnostic)",
+        "Applicable à la classification (prediction sets) et régression (intervals)"
+      ],
+      "inconvenients": [
+        "Intervalles conservateurs sur certaines distributions",
+        "Nécessite un jeu de calibration (10-20% des données)",
+        "Peu connu dans l'industrie (adoption encore limitée)"
+      ],
+      "outils": [
+        "MAPIE (Python)",
+        "Crepes (Python)",
+        "Conformal Prediction Python library",
+        "Scikit-learn (split conformal)"
+      ],
+      "tags": [
+        "ML",
+        "Incertitude",
+        "Statistiques",
+        "Production",
+        "Fiabilité"
+      ]
+    }
+  ],
+  "categories": [
+    "Machine Learning",
+    "Techniques Analytics",
+    "Cloud",
+    "Gouvernance & Qualité"
+  ],
+  "sous_categories": {
+    "Machine Learning": [
+      "Apprentissage supervisé",
+      "Apprentissage non supervisé",
+      "Deep Learning",
+      "IA Générative",
+      "MLOps",
+      "Explainabilité IA"
+    ],
+    "Techniques Analytics": [
+      "Collecte de données",
+      "Decision Analytics",
+      "Préparation des données",
+      "NLP",
+      "Expérimentation",
+      "Marketing Analytics"
+    ],
+    "Cloud": [
+      "AWS - Stockage",
+      "AWS - Machine Learning",
+      "GCP - Data Warehouse",
+      "Azure - Data Platform"
+    ],
+    "Gouvernance & Qualité": [
+      "Data Quality",
+      "Gouvernance",
+      "Éthique IA",
+      "Finance Durable",
+      "Architecture Data",
+      "Réglementation",
+      "Organisation data"
+    ],
+    "Data Engineering": [
+      "Architecture data",
+      "Transformation de données",
+      "Ingestion de données",
+      "Modélisation data",
+      "Lakehouse Architecture"
+    ]
+  },
+  "niveaux": [
+    "Débutant",
+    "Intermédiaire",
+    "Avancé"
+  ]
+}

@@ -1,0 +1,1812 @@
+[
+  {
+    "slug": "snowflake",
+    "name": "Snowflake",
+    "tagline": "Le cloud data warehouse multi-cloud de référence",
+    "category": "Data Warehouse",
+    "emoji": "❄️",
+    "website": "https://www.snowflake.com",
+    "pricing": "Pay-per-use (crédits Snowflake)",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Snowflake est le cloud data warehouse qui s'est imposé comme standard entre 2018 et 2024. Son architecture révolutionnaire sépare le stockage du compute, permettant une scalabilité élastique. Disponible sur AWS, Azure et GCP, il s'est imposé comme le standard pour les entreprises mid-market et enterprise en France.",
+    "features": [
+      "Séparation compute/storage",
+      "Multi-cloud natif",
+      "Zero-copy cloning",
+      "Time Travel (90 jours)",
+      "Data Sharing natif",
+      "Snowpark (Python/Java/Scala)",
+      "Auto-suspend et auto-resume",
+      "Marketplace de données"
+    ],
+    "pros": [
+      "Zéro gestion d'infrastructure",
+      "Performances analytiques excellentes",
+      "SQL standard étendu très complet",
+      "Partage de données entre organisations simplifié",
+      "Scalabilité instantanée",
+      "Excellent support et documentation"
+    ],
+    "cons": [
+      "Coût élevé en cas de mauvaise gestion du compute",
+      "Moins adapté aux workloads ML que Databricks",
+      "Vendor lock-in modéré",
+      "Pas open source"
+    ],
+    "best_for": "Équipes analytics et data engineering cherchant un warehouse managé performant, sans gestion d'infrastructure. Idéal pour les entreprises avec des besoins SQL importants.",
+    "not_for": "Workloads ML/IA intensifs, organisations très coût-sensibles sans expertise pour optimiser le compute.",
+    "pieges_prod": [
+      "Auto-suspend mal configuré : oublier de régler l'auto-suspend (ou le mettre trop long) fait exploser la facture. Règle de base : 60s sur les warehouses interactifs.",
+      "Spillage sur disque silencieux : les requêtes qui spillent sur disque sont 10-50x plus lentes sans warning visible. Surveiller BYTES_SPILLED_TO_REMOTE_STORAGE dans QUERY_HISTORY.",
+      "Clustering keys sur haute cardinalité : créer des clustering keys sur des colonnes à haute cardinalité déclenche une reclustering automatique coûteuse.",
+      "Time Travel sur tables très volatiles : le Time Travel à 90 jours sur des tables avec des millions d'UPDATEs journaliers peut multiplier le coût de stockage par 5."
+    ],
+    "alternatives": [
+      "databricks",
+      "bigquery",
+      "redshift"
+    ],
+    "score": {
+      "performance": 92,
+      "facilite": 80,
+      "ecosysteme": 88,
+      "cout": 62,
+      "support": 90
+    },
+    "tags": [
+      "cloud",
+      "sql",
+      "analytics",
+      "enterprise",
+      "multi-cloud"
+    ],
+    "launched": "2012",
+    "french_clients": [
+      "BNP Paribas",
+      "Decathlon",
+      "Total Energies"
+    ]
+  },
+  {
+    "slug": "databricks",
+    "name": "Databricks",
+    "tagline": "La plateforme Lakehouse unifiée pour la data et l'IA",
+    "category": "Lakehouse / ML Platform",
+    "emoji": "🧱",
+    "website": "https://www.databricks.com",
+    "pricing": "Pay-per-use (DBUs) — Community Edition gratuite (limitée)",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Avancé",
+    "description": "Databricks a inventé le concept de Lakehouse et construit Delta Lake. Plateforme unifiée couvrant data engineering, ML et analytics sur une seule interface. Forte adoption dans les équipes data + science qui veulent éviter les silos entre ces deux disciplines.",
+    "features": [
+      "Delta Lake (ACID sur S3)",
+      "Apache Spark managé",
+      "MLflow intégré",
+      "Unity Catalog (gouvernance)",
+      "Delta Live Tables (pipelines déclaratifs)",
+      "Notebooks collaboratifs",
+      "DBSQL (BI sur Lakehouse)",
+      "Vector Search pour RAG"
+    ],
+    "pros": [
+      "Meilleur de sa catégorie pour les workloads ML",
+      "Delta Lake + Spark : combo puissant",
+      "Notebooks collaboratifs excellents",
+      "Unity Catalog : gouvernance unifiée",
+      "Open source au cœur (Spark, MLflow, Delta)"
+    ],
+    "cons": [
+      "Courbe d'apprentissage Spark élevée",
+      "Coût difficile à prévoir et à optimiser",
+      "Interface moins intuitive que Snowflake pour le SQL pur",
+      "Nécessite des compétences avancées",
+      "Community Edition très limitée (15 Go RAM, pas de jobs schedulés, pas d'accès Unity Catalog)"
+    ],
+    "best_for": "Équipes Data Engineering + Data Science qui veulent une plateforme unique. Workloads mixtes SQL + Python + ML. Organisations avec un volume massif de données.",
+    "not_for": "Équipes purement analytiques/SQL sans compétences Spark. PMEs cherchant simplicité.",
+    "pieges_prod": [
+      "Shuffle partitions par défaut : Spark démarre avec 200 partitions de shuffle (spark.sql.shuffle.partitions). Sur de petits datasets, ça crée 200 tâches inutiles. Ajuster selon la taille réelle des données.",
+      "Delta VACUUM trop agressif : un VACUUM avec RETAIN 0 HOURS peut supprimer des fichiers encore référencés par des transactions concurrentes. Ne jamais descendre sous 7 jours en production.",
+      "Jobs clusters vs All-purpose clusters : utiliser un All-purpose cluster pour les jobs automatisés coûte 2-4x plus cher qu'un Jobs cluster. Réserver les All-purpose aux notebooks interactifs.",
+      "Unity Catalog et droits hérités : les permissions Unity Catalog ne se propagent pas automatiquement aux objets créés avant la migration. Auditer les droits après migration depuis l'ancien Hive metastore."
+    ],
+    "alternatives": [
+      "snowflake",
+      "bigquery",
+      "spark"
+    ],
+    "score": {
+      "performance": 94,
+      "facilite": 65,
+      "ecosysteme": 91,
+      "cout": 58,
+      "support": 85
+    },
+    "tags": [
+      "cloud",
+      "spark",
+      "ml",
+      "lakehouse",
+      "open-source"
+    ],
+    "launched": "2013",
+    "french_clients": [
+      "Société Générale",
+      "Michelin",
+      "Air France"
+    ]
+  },
+  {
+    "slug": "bigquery",
+    "name": "BigQuery",
+    "tagline": "Le data warehouse serverless de Google Cloud",
+    "category": "Data Warehouse",
+    "emoji": "🔵",
+    "website": "https://cloud.google.com/bigquery",
+    "pricing": "Pay-per-query + stockage",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "BigQuery est le data warehouse serverless de Google. Aucune infrastructure à gérer, facturation à la requête. Moteur Dremel extrêmement performant sur les requêtes analytiques complexes. Intégration native avec Looker, Vertex AI et tout l'écosystème Google Cloud.",
+    "features": [
+      "Serverless (zéro infra)",
+      "BigQuery ML (SQL → modèles ML)",
+      "Capacité de réservation flexible",
+      "BigQuery Omni (multi-cloud)",
+      "Streaming inserts",
+      "Row-level security",
+      "Connected Sheets (Google Sheets)",
+      "Intégration Looker native"
+    ],
+    "pros": [
+      "Zéro gestion de cluster ou warehouse",
+      "Très rapide sur les grosses requêtes",
+      "BigQuery ML : entraîner des modèles en SQL",
+      "Tarification prévisible avec slots réservés",
+      "Excellente intégration écosystème Google"
+    ],
+    "cons": [
+      "Coûts de requêtes non optimisées élevés",
+      "Vendor lock-in Google Cloud fort",
+      "Moins de fonctionnalités que Snowflake pour le partage de données",
+      "Syntaxe SQL légèrement différente du standard"
+    ],
+    "best_for": "Organisations sur Google Cloud. Équipes voulant éviter toute gestion d'infrastructure. Cas d'usage analytics à grande échelle.",
+    "not_for": "Organisations multi-cloud ou sur AWS/Azure. Workloads transactionnels.",
+    "alternatives": [
+      "snowflake",
+      "redshift",
+      "databricks"
+    ],
+    "score": {
+      "performance": 90,
+      "facilite": 85,
+      "ecosysteme": 83,
+      "cout": 68,
+      "support": 82
+    },
+    "tags": [
+      "google-cloud",
+      "serverless",
+      "sql",
+      "analytics"
+    ],
+    "launched": "2010",
+    "french_clients": [
+      "L'Oréal",
+      "Renault",
+      "Leboncoin"
+    ]
+  },
+  {
+    "slug": "redshift",
+    "name": "Amazon Redshift",
+    "tagline": "Le data warehouse natif AWS pour l'analytique à grande échelle",
+    "category": "Data Warehouse",
+    "emoji": "🔴",
+    "website": "https://aws.amazon.com/redshift",
+    "pricing": "Instances réservées ou Serverless",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Amazon Redshift est le data warehouse d'AWS, dérivé de PostgreSQL. Fortement intégré à l'écosystème AWS (S3, Glue, SageMaker). Redshift Serverless (2022) simplifie l'opération. Moins performant que Snowflake/BigQuery mais s'inscrit naturellement dans une stack AWS.",
+    "features": [
+      "Redshift Serverless",
+      "Redshift Spectrum (requêtes S3)",
+      "Redshift ML (SageMaker intégré)",
+      "Materialized Views",
+      "Auto-scaling",
+      "Intégration native S3/Glue/QuickSight",
+      "AQUA (cache distribué accéléré)"
+    ],
+    "pros": [
+      "Intégration AWS native excellente",
+      "PostgreSQL-compatible (migration facile)",
+      "Coût compétitif avec instances réservées",
+      "Redshift Serverless simplifie l'opération"
+    ],
+    "cons": [
+      "Moins performant que Snowflake/BigQuery sur les requêtes complexes",
+      "Gestion du VACUUM nécessaire",
+      "Moins de fonctionnalités avancées que ses concurrents",
+      "Interface d'administration moins moderne"
+    ],
+    "best_for": "Organisations fortement investies sur AWS qui veulent minimiser les outils tiers. Migrations depuis PostgreSQL.",
+    "not_for": "Organisations multi-cloud. Projets où la performance pure est prioritaire.",
+    "alternatives": [
+      "snowflake",
+      "bigquery",
+      "databricks"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 72,
+      "ecosysteme": 80,
+      "cout": 75,
+      "support": 80
+    },
+    "tags": [
+      "aws",
+      "sql",
+      "analytics",
+      "postgresql"
+    ],
+    "launched": "2012",
+    "french_clients": [
+      "Canal+",
+      "Cdiscount",
+      "Veepee"
+    ]
+  },
+  {
+    "slug": "dbt",
+    "name": "dbt (data build tool)",
+    "tagline": "Le standard de la transformation SQL dans le warehouse",
+    "category": "Transformation",
+    "emoji": "🔧",
+    "website": "https://www.getdbt.com",
+    "pricing": "Open source gratuit / Cloud à partir de 100$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "dbt a révolutionné la façon de transformer les données en appliquant les principes software engineering (versioning, tests, CI/CD) aux transformations SQL. Devenu le standard de facto en moins de 5 ans. Chaque data engineer et analytics engineer se doit de le maîtriser.",
+    "features": [
+      "Modèles SQL modulaires et versionnés",
+      "Tests automatiques (unicité, non-null, relations)",
+      "Documentation auto-générée",
+      "Lineage graph visuel",
+      "dbt Semantic Layer",
+      "Macros Jinja pour la réutilisabilité",
+      "CI/CD natif",
+      "Snapshots pour l'historisation"
+    ],
+    "pros": [
+      "Courbe d'apprentissage très douce (SQL pur)",
+      "Documentation auto-générée de qualité",
+      "Communauté immense et très active",
+      "dbt Core totalement gratuit et open source",
+      "Intégration avec tous les warehouses majeurs"
+    ],
+    "cons": [
+      "dbt Cloud (collaboration, scheduling) payant",
+      "Pas de traitement Python natif (sauf dbt-python models)",
+      "Limité à la couche transformation (pas d'ingestion)",
+      "Orchestration externe nécessaire pour dbt Core"
+    ],
+    "best_for": "Tout data/analytics engineer travaillant sur un warehouse SQL. Incontournable pour structurer la couche transformation.",
+    "not_for": "Ingestion de données (utiliser Fivetran/Airbyte), traitement Spark/Python intensif.",
+    "alternatives": [
+      "dataform",
+      "sqlmesh"
+    ],
+    "score": {
+      "performance": 85,
+      "facilite": 90,
+      "ecosysteme": 92,
+      "cout": 88,
+      "support": 85
+    },
+    "tags": [
+      "open-source",
+      "sql",
+      "transformation",
+      "analytics-engineering"
+    ],
+    "launched": "2016",
+    "french_clients": [
+      "Doctolib",
+      "BlaBlaCar",
+      "Alan"
+    ]
+  },
+  {
+    "slug": "airflow",
+    "name": "Apache Airflow",
+    "tagline": "L'orchestrateur de pipelines data open source de référence",
+    "category": "Orchestration",
+    "emoji": "🌊",
+    "website": "https://airflow.apache.org",
+    "pricing": "Open source gratuit / Services managés payants",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Apache Airflow est l'orchestrateur de workflows data le plus utilisé au monde. Créé par Airbnb en 2014, il permet de définir, planifier et surveiller des pipelines (DAGs) en Python. Très puissant mais complexe à opérer et à scaler.",
+    "features": [
+      "DAGs Python (Directed Acyclic Graphs)",
+      "Interface web de monitoring",
+      "1000+ opérateurs disponibles",
+      "Connexions et variables sécurisées",
+      "Retry automatique et alertes",
+      "Backfill et réexécution",
+      "Dynamic DAGs",
+      "TaskFlow API (Python moderne)"
+    ],
+    "pros": [
+      "Standard de facto, immense écosystème",
+      "Extrêmement flexible et personnalisable",
+      "1000+ intégrations (opérateurs)",
+      "Communauté très large",
+      "Services managés disponibles (Astronomer, MWAA, Cloud Composer)"
+    ],
+    "cons": [
+      "Complexe à installer, configurer et maintenir",
+      "Interface UI vieillissante",
+      "Debugging parfois difficile",
+      "Scalabilité complexe (scheduler monolithique)",
+      "Courbe d'apprentissage élevée"
+    ],
+    "best_for": "Équipes data engineering expérimentées avec des pipelines complexes. Organisations nécessitant une personnalisation poussée.",
+    "not_for": "Équipes débutantes ou petites équipes sans DevOps dédié. Pipelines simples.",
+    "alternatives": [
+      "prefect",
+      "dagster",
+      "kestra"
+    ],
+    "score": {
+      "performance": 80,
+      "facilite": 52,
+      "ecosysteme": 95,
+      "cout": 85,
+      "support": 78
+    },
+    "tags": [
+      "open-source",
+      "orchestration",
+      "python",
+      "data-engineering"
+    ],
+    "launched": "2014",
+    "french_clients": [
+      "OVH",
+      "BNP Paribas",
+      "SNCF"
+    ]
+  },
+  {
+    "slug": "prefect",
+    "name": "Prefect",
+    "tagline": "L'orchestrateur Python moderne, plus simple qu'Airflow",
+    "category": "Orchestration",
+    "emoji": "🌀",
+    "website": "https://www.prefect.io",
+    "pricing": "Open source gratuit / Cloud à partir de 19$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Prefect est la réponse moderne aux frustrations d'Airflow. Définition des workflows en Python pur (décorateurs), déploiement simplifié, interface plus moderne. Prefect Cloud gère l'orchestration, le compute reste local ou dans le cloud.",
+    "features": [
+      "Flows Python avec décorateurs (@flow, @task)",
+      "Prefect Cloud (scheduling managé)",
+      "Work pools et workers flexibles",
+      "Notifications (Slack, email)",
+      "Caching automatique des résultats",
+      "Visualisation dynamique des runs",
+      "Blocks pour la gestion des credentials",
+      "Artefacts (stocker résultats visuels)"
+    ],
+    "pros": [
+      "Beaucoup plus simple à démarrer qu'Airflow",
+      "Python pur, pas de XML ni de YAML complexe",
+      "Prefect Cloud genereux en free tier",
+      "Debugging et observabilité excellents",
+      "Workflows dynamiques natifs"
+    ],
+    "cons": [
+      "Communauté plus petite qu'Airflow",
+      "Moins d'opérateurs natifs qu'Airflow",
+      "Moins mature sur les déploiements enterprise complexes",
+      "Changements d'API fréquents (v1 → v2 → v3)"
+    ],
+    "best_for": "Data engineers Python cherchant une alternative plus agréable à Airflow. Pipelines ML et data science.",
+    "not_for": "Environnements avec investissement Airflow fort. Besoins de centaines d'opérateurs natifs.",
+    "alternatives": [
+      "airflow",
+      "dagster",
+      "kestra"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 80,
+      "ecosysteme": 72,
+      "cout": 85,
+      "support": 75
+    },
+    "tags": [
+      "open-source",
+      "orchestration",
+      "python"
+    ],
+    "launched": "2018",
+    "french_clients": [
+      "Datadog France",
+      "Back Market"
+    ]
+  },
+  {
+    "slug": "dagster",
+    "name": "Dagster",
+    "tagline": "L'orchestrateur orienté assets pour les équipes data modernes",
+    "category": "Orchestration",
+    "emoji": "💎",
+    "website": "https://dagster.io",
+    "pricing": "Open source gratuit / Cloud à partir de 25$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Dagster introduit le concept d'orchestration orientée assets (tables, fichiers, modèles) plutôt que tâches. Offre une meilleure observabilité du lineage et permet de raisonner sur l'état des données, pas seulement sur l'exécution des tâches.",
+    "features": [
+      "Asset-based orchestration",
+      "Software-defined assets",
+      "Asset checks (validation)",
+      "Sensors et schedules",
+      "Partitions temporelles natives",
+      "Dagster UI (très moderne)",
+      "Intégration dbt, Spark, Airbyte native",
+      "Dagster+ (Cloud)"
+    ],
+    "pros": [
+      "Paradigme asset-centric très puissant",
+      "Interface la plus moderne des trois (Airflow/Prefect/Dagster)",
+      "Intégration dbt excellente",
+      "Observabilité et lineage des données natifs",
+      "Typage fort des inputs/outputs"
+    ],
+    "cons": [
+      "Courbe d'apprentissage conceptuelle (changer de paradigme)",
+      "Communauté plus petite qu'Airflow",
+      "Moins d'opérateurs disponibles",
+      "Moins adapté aux pipelines purement task-based"
+    ],
+    "best_for": "Équipes data engineering modernes qui pensent en termes d'assets (tables, fichiers, modèles). Projets dbt + Spark.",
+    "not_for": "Orchestration d'événements purement opérationnels. Équipes déjà fortement investies Airflow.",
+    "alternatives": [
+      "airflow",
+      "prefect",
+      "kestra"
+    ],
+    "score": {
+      "performance": 80,
+      "facilite": 72,
+      "ecosysteme": 75,
+      "cout": 85,
+      "support": 78
+    },
+    "tags": [
+      "open-source",
+      "orchestration",
+      "python",
+      "assets"
+    ],
+    "launched": "2019",
+    "french_clients": [
+      "Contentsquare",
+      "ManoMano"
+    ]
+  },
+  {
+    "slug": "kafka",
+    "name": "Apache Kafka",
+    "tagline": "La plateforme de streaming d'événements distribuée",
+    "category": "Streaming",
+    "emoji": "⚡",
+    "website": "https://kafka.apache.org",
+    "pricing": "Open source gratuit / Confluent Cloud payant",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Apache Kafka est la plateforme de streaming d'événements de référence. Créée par LinkedIn, elle permet de publier, stocker et consommer des flux de données à très grande échelle et faible latence. Standard pour les architectures événementielles.",
+    "features": [
+      "Topics et partitions distribuées",
+      "Réplication haute disponibilité",
+      "Kafka Streams (traitement léger)",
+      "Kafka Connect (connecteurs source/sink)",
+      "Schema Registry (Avro/Protobuf)",
+      "Kafka UI (monitoring)",
+      "Exactly-once semantics",
+      "Rétention configurable des messages"
+    ],
+    "pros": [
+      "Throughput extrêmement élevé (millions de messages/sec)",
+      "Durabilité et haute disponibilité",
+      "Écosystème immense (Connect, Streams, ksqlDB)",
+      "Standard de facto pour l'event streaming",
+      "Rétention des messages (replay possible)"
+    ],
+    "cons": [
+      "Complexité opérationnelle élevée (ZooKeeper/KRaft)",
+      "Configuration et tuning expert nécessaires",
+      "Pas adapté aux petits volumes ou faibles budgets",
+      "Debugging difficile"
+    ],
+    "best_for": "Architectures événementielles à fort volume, pipelines temps réel, découplage de microservices.",
+    "not_for": "Petites équipes sans expertise ops. Besoins de faible latence ultra (préférer Redis Streams).",
+    "alternatives": [
+      "redpanda",
+      "aws-kinesis",
+      "google-pubsub"
+    ],
+    "score": {
+      "performance": 96,
+      "facilite": 45,
+      "ecosysteme": 92,
+      "cout": 70,
+      "support": 78
+    },
+    "tags": [
+      "open-source",
+      "streaming",
+      "events",
+      "enterprise"
+    ],
+    "launched": "2011",
+    "french_clients": [
+      "Criteo",
+      "OVH",
+      "Leboncoin"
+    ]
+  },
+  {
+    "slug": "spark",
+    "name": "Apache Spark",
+    "tagline": "Le moteur de traitement distribué Big Data",
+    "category": "Processing",
+    "emoji": "🔥",
+    "website": "https://spark.apache.org",
+    "pricing": "Open source gratuit / Services managés payants",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Apache Spark est le moteur de traitement distribué le plus utilisé pour le Big Data. Jusqu'à 100x plus rapide que Hadoop MapReduce grâce au traitement in-memory. Supporte batch, streaming, SQL (Spark SQL), ML (MLlib) et graph processing.",
+    "features": [
+      "Traitement in-memory (RDD, DataFrame, Dataset)",
+      "Spark SQL",
+      "Structured Streaming",
+      "MLlib (ML distribué)",
+      "GraphX",
+      "PySpark (Python API)",
+      "Spark Connect",
+      "Delta Lake natif sur Databricks"
+    ],
+    "pros": [
+      "Performances exceptionnelles sur les gros volumes",
+      "Polyvalent (batch, streaming, ML, SQL)",
+      "APIs Python/Scala/Java/R",
+      "Écosystème très riche",
+      "Standard Big Data mondial"
+    ],
+    "cons": [
+      "Complexe à configurer et optimiser",
+      "Coût infra élevé si mal dimensionné",
+      "Debugging des jobs distribués difficile",
+      "Overkill pour les petits volumes"
+    ],
+    "best_for": "Traitement de données à grande échelle (>100 Go), pipelines ML distribués, transformations complexes.",
+    "not_for": "Petits datasets (Pandas suffit), latence ultra-faible, équipes sans expertise distributed computing.",
+    "alternatives": [
+      "databricks",
+      "flink",
+      "dask"
+    ],
+    "score": {
+      "performance": 95,
+      "facilite": 48,
+      "ecosysteme": 90,
+      "cout": 65,
+      "support": 82
+    },
+    "tags": [
+      "open-source",
+      "big-data",
+      "processing",
+      "ml"
+    ],
+    "launched": "2010",
+    "french_clients": [
+      "BNP Paribas",
+      "Orange",
+      "AXA"
+    ]
+  },
+  {
+    "slug": "fivetran",
+    "name": "Fivetran",
+    "tagline": "L'intégration de données managée, clé en main",
+    "category": "Intégration (EL)",
+    "emoji": "🔌",
+    "website": "https://www.fivetran.com",
+    "pricing": "Par volume de MAR (Monthly Active Rows)",
+    "free_tier": false,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Fivetran est la référence des outils EL (Extract-Load) managés. 500+ connecteurs prêts à l'emploi, CDC natif, gestion automatique des changements de schéma. Zéro maintenance, mais coût élevé à grande échelle.",
+    "features": [
+      "500+ connecteurs (Salesforce, HubSpot, PostgreSQL, S3...)",
+      "CDC natif",
+      "Gestion automatique des schémas",
+      "Transformations dbt intégrées",
+      "Fivetran HVR (haute volumétrie)",
+      "Fivetran Lite (connecteurs simples gratuits)",
+      "Monitoring et alertes",
+      "SOC 2 / ISO 27001"
+    ],
+    "pros": [
+      "Mise en place en minutes (vraiment)",
+      "Zéro maintenance opérationnelle",
+      "CDC fiable et éprouvé",
+      "Intégration dbt Cloud native",
+      "Support enterprise de qualité"
+    ],
+    "cons": [
+      "Prix très élevé à grande échelle",
+      "Peu de flexibilité sur la logique d'extraction",
+      "Pas open source",
+      "Certains connecteurs moins maintenus"
+    ],
+    "best_for": "Équipes data qui veulent se concentrer sur la transformation, pas l'ingestion. Budgets permettant un investissement SaaS.",
+    "not_for": "Startups avec budget limité. Besoins de logique d'extraction très personnalisée.",
+    "alternatives": [
+      "airbyte",
+      "stitch",
+      "singer"
+    ],
+    "score": {
+      "performance": 85,
+      "facilite": 95,
+      "ecosysteme": 80,
+      "cout": 45,
+      "support": 90
+    },
+    "tags": [
+      "saas",
+      "integration",
+      "elt",
+      "no-code"
+    ],
+    "launched": "2012",
+    "french_clients": [
+      "Qonto",
+      "Spendesk",
+      "Swile"
+    ]
+  },
+  {
+    "slug": "airbyte",
+    "name": "Airbyte",
+    "tagline": "L'alternative open source à Fivetran pour l'intégration de données",
+    "category": "Intégration (EL)",
+    "emoji": "🛫",
+    "website": "https://airbyte.com",
+    "pricing": "Open source gratuit / Cloud à partir de 250$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Airbyte est l'alternative open source à Fivetran. 350+ connecteurs, auto-hébergeable ou cloud, possibilité de créer des connecteurs custom. Moins clé en main que Fivetran mais beaucoup plus flexible et moins cher.",
+    "features": [
+      "350+ connecteurs (communauté + certifiés)",
+      "Airbyte OSS (self-hosted)",
+      "Airbyte Cloud (managé)",
+      "No-code Connector Builder",
+      "CDC natif sur les sources majeures",
+      "dbt transformations intégrées",
+      "Kubernetes deployment",
+      "API pour l'automatisation"
+    ],
+    "pros": [
+      "Gratuit en self-hosted",
+      "Connecteurs personnalisables (Connector Builder)",
+      "Communauté très active et en croissance",
+      "Transparence open source",
+      "Flexibilité de déploiement"
+    ],
+    "cons": [
+      "Gestion opérationnelle si self-hosted",
+      "Qualité des connecteurs communautaires variable",
+      "Moins stable que Fivetran sur certains connecteurs",
+      "Support moins réactif sur OSS"
+    ],
+    "best_for": "Équipes budget-conscientes ou avec des besoins de connecteurs custom. Organisations préférant l'open source.",
+    "not_for": "Équipes sans capacité à opérer l'infra (préférer Airbyte Cloud ou Fivetran). Connecteurs très spécifiques non disponibles.",
+    "alternatives": [
+      "fivetran",
+      "stitch",
+      "meltano"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 72,
+      "ecosysteme": 82,
+      "cout": 88,
+      "support": 65
+    },
+    "tags": [
+      "open-source",
+      "integration",
+      "elt",
+      "self-hosted"
+    ],
+    "launched": "2020",
+    "french_clients": [
+      "Contentsquare",
+      "Deezer",
+      "Mirakl"
+    ]
+  },
+  {
+    "slug": "power-bi",
+    "name": "Power BI",
+    "tagline": "L'outil BI Microsoft, standard des entreprises françaises",
+    "category": "Business Intelligence",
+    "emoji": "📊",
+    "website": "https://powerbi.microsoft.com",
+    "pricing": "Pro 10€/mois/user, Premium P1 ~5000€/mois",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Power BI est l'outil BI de Microsoft, dominant dans les entreprises françaises grâce à son intégration avec Office 365/Teams et son prix compétitif. Très complet pour la création de rapports et dashboards, avec DAX comme langage de mesures.",
+    "features": [
+      "Connecteurs natifs 100+",
+      "DAX (langage de mesures)",
+      "Power Query (ETL léger)",
+      "Rapports paginés",
+      "Power BI Embedded",
+      "Intégration Teams/SharePoint",
+      "AI Insights natifs",
+      "Dataflows (réutilisation de données)"
+    ],
+    "pros": [
+      "Prix très compétitif (inclus dans M365)",
+      "Adoption massive en France (formation facile)",
+      "Excellent pour les utilisateurs Excel",
+      "Microsoft Fabric (vision unifiée)",
+      "Partage facilité avec Teams"
+    ],
+    "cons": [
+      "DAX complexe pour les calculs avancés",
+      "Limitations sur les grand volumes non Premium",
+      "Interface moins moderne que Tableau",
+      "Refresh limité sans Premium",
+      "Dépendance à l'écosystème Microsoft"
+    ],
+    "best_for": "Entreprises sur l'écosystème Microsoft. Équipes analytics de taille moyenne. Utilisateurs venant d'Excel.",
+    "not_for": "Organisations cherchant la meilleure expérience de dataviz. Analyses très complexes nécessitant la flexibilité de Tableau.",
+    "alternatives": [
+      "tableau",
+      "looker",
+      "metabase"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 82,
+      "ecosysteme": 85,
+      "cout": 88,
+      "support": 80
+    },
+    "tags": [
+      "microsoft",
+      "bi",
+      "no-code",
+      "enterprise"
+    ],
+    "launched": "2014",
+    "french_clients": [
+      "SNCF",
+      "Société Générale",
+      "Carrefour"
+    ]
+  },
+  {
+    "slug": "tableau",
+    "name": "Tableau",
+    "tagline": "La référence de la dataviz pour les analyses complexes",
+    "category": "Business Intelligence",
+    "emoji": "📈",
+    "website": "https://www.tableau.com",
+    "pricing": "Creator 70€/mois, Explorer 42€/mois, Viewer 15€/mois",
+    "free_tier": false,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Tableau (Salesforce) est la référence pour la dataviz avancée. Interface drag-and-drop intuitive, capacités visuelles inégalées, calculs table calculations puissants. Plus cher que Power BI mais reconnu comme plus flexible visuellement.",
+    "features": [
+      "Drag-and-drop évolué",
+      "Table Calculations complexes",
+      "Tableau Prep (data prep)",
+      "Tableau Server/Cloud",
+      "Embedded Analytics",
+      "Hyper engine (performances)",
+      "Ask Data (NL to viz)",
+      "Salesforce intégration native"
+    ],
+    "pros": [
+      "Dataviz la plus puissante et flexible du marché",
+      "Table calculations sans équivalent",
+      "Communauté Tableau très active (Tableau Public)",
+      "Adoption enterprise mondiale",
+      "Tableau Prep bien pensé"
+    ],
+    "cons": [
+      "Prix élevé, surtout pour les viewers",
+      "Rachat par Salesforce a complexifié la roadmap",
+      "Courbe d'apprentissage pour les fonctions avancées",
+      "Calculs complexes nécessitent des workarounds"
+    ],
+    "best_for": "Équipes analytics avec besoins de visualisations complexes et personnalisées. Organisations Salesforce.",
+    "not_for": "Équipes avec budget limité (Power BI ou Metabase). Organisations non-Salesforce cherchant simplicité.",
+    "alternatives": [
+      "power-bi",
+      "looker",
+      "metabase"
+    ],
+    "score": {
+      "performance": 82,
+      "facilite": 75,
+      "ecosysteme": 83,
+      "cout": 52,
+      "support": 80
+    },
+    "tags": [
+      "salesforce",
+      "bi",
+      "dataviz",
+      "enterprise"
+    ],
+    "launched": "2003",
+    "french_clients": [
+      "L'Oréal",
+      "Orange",
+      "AXA"
+    ]
+  },
+  {
+    "slug": "looker",
+    "name": "Looker",
+    "tagline": "La BI sémantique de Google, axée sur la gouvernance des métriques",
+    "category": "Business Intelligence",
+    "emoji": "🔍",
+    "website": "https://looker.com",
+    "pricing": "Sur devis (à partir de ~30k€/an)",
+    "free_tier": false,
+    "open_source": false,
+    "learning_curve": "Avancé",
+    "description": "Looker (Google Cloud) se distingue par son approche sémantique via LookML : définir les métriques une seule fois, les réutiliser partout. Intégration BigQuery native, Embedded Analytics puissant. Cible les entreprises avec des besoins de gouvernance des métriques forts.",
+    "features": [
+      "LookML (modélisation sémantique)",
+      "Looker Studio (gratuit, basique)",
+      "Embedded Analytics avancé",
+      "API Looker complète",
+      "Looker Blocks (templates sectoriels)",
+      "Intégration BigQuery native",
+      "Actions Looker (écriture reverse ETL)",
+      "Looker Components (SDK React)"
+    ],
+    "pros": [
+      "Meilleure gouvernance des métriques du marché",
+      "Embedded Analytics exceptionnel",
+      "Consistance des métriques garantie",
+      "Intégration Google Cloud parfaite",
+      "API très complète pour l'intégration"
+    ],
+    "cons": [
+      "LookML : courbe d'apprentissage élevée",
+      "Tarif le plus élevé de la catégorie",
+      "Moins bon pour l'exploration ad hoc",
+      "Dépendant Google Cloud pour le meilleur usage"
+    ],
+    "best_for": "Grandes organisations cherchant une source de vérité unique pour les métriques. Équipes sur Google Cloud. Embedded Analytics.",
+    "not_for": "PMEs. Explorations data ad hoc sans modèle sémantique. Budgets limités.",
+    "alternatives": [
+      "power-bi",
+      "tableau",
+      "metabase"
+    ],
+    "score": {
+      "performance": 82,
+      "facilite": 55,
+      "ecosysteme": 78,
+      "cout": 35,
+      "support": 82
+    },
+    "tags": [
+      "google-cloud",
+      "bi",
+      "semantic-layer",
+      "enterprise"
+    ],
+    "launched": "2012",
+    "french_clients": [
+      "BlaBlaCar",
+      "Doctolib",
+      "Ledger"
+    ]
+  },
+  {
+    "slug": "metabase",
+    "name": "Metabase",
+    "tagline": "La BI open source accessible à toute l'équipe",
+    "category": "Business Intelligence",
+    "emoji": "🟡",
+    "website": "https://www.metabase.com",
+    "pricing": "Open source gratuit / Cloud à partir de 500$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Metabase est l'outil BI open source le plus simple à déployer et utiliser. Interface intuitive permettant aux équipes non-techniques de créer des dashboards et explorer les données sans écrire de SQL. Idéal pour les startups et PMEs.",
+    "features": [
+      "Questions visuelles (sans SQL)",
+      "SQL editor pour les avancés",
+      "Dashboards interactifs",
+      "Sharing public des questions",
+      "Alertes email/Slack",
+      "Embedding simplifié",
+      "LDAP/SSO intégré",
+      "API REST"
+    ],
+    "pros": [
+      "Prise en main en 30 minutes",
+      "Gratuit et open source",
+      "Accessible aux non-développeurs",
+      "Self-hosted simple (Docker)",
+      "Très adapté aux startups"
+    ],
+    "cons": [
+      "Fonctionnalités avancées limitées par rapport à Tableau/Looker",
+      "Performances sur les gros volumes moins bonnes",
+      "Pas de semantic layer structuré",
+      "Enterprise features payantes (SSO avancé, audit)"
+    ],
+    "best_for": "Startups et PMEs. Équipes avec utilisateurs non-techniques. Budget limité.",
+    "not_for": "Grandes entreprises avec besoins de gouvernance métriques. Analyses statistiques complexes.",
+    "alternatives": [
+      "power-bi",
+      "tableau",
+      "redash"
+    ],
+    "score": {
+      "performance": 65,
+      "facilite": 95,
+      "ecosysteme": 68,
+      "cout": 95,
+      "support": 65
+    },
+    "tags": [
+      "open-source",
+      "bi",
+      "no-code",
+      "startup"
+    ],
+    "launched": "2015",
+    "french_clients": [
+      "Alan",
+      "Pennylane",
+      "Spendesk"
+    ]
+  },
+  {
+    "slug": "dataiku",
+    "name": "Dataiku",
+    "tagline": "La plateforme data science et MLOps enterprise française",
+    "category": "ML Platform",
+    "emoji": "🚀",
+    "website": "https://www.dataiku.com",
+    "pricing": "Sur devis (>50k€/an)",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Dataiku est une fierté française : plateforme collaborative couvrant l'ensemble du cycle ML de l'ingestion jusqu'au déploiement. Accessible aux profils non-experts via son interface visuelle, tout en offrant la flexibilité du code (Python, R, Spark) pour les experts.",
+    "features": [
+      "Recipes visuelles et code (Python/R/SQL/Spark)",
+      "Flow de données visuel",
+      "MLflow intégré",
+      "Dataiku Govern (gouvernance ML)",
+      "Collaboration data scientist/analyste",
+      "API serving de modèles",
+      "Intégrations cloud majeures",
+      "Dataiku Generative AI"
+    ],
+    "pros": [
+      "Interface visuelle pour les non-experts",
+      "Très bien adapté à la collaboration pluridisciplinaire",
+      "Support français de qualité",
+      "Bon équilibre no-code/code",
+      "Très présent dans les grandes entreprises françaises"
+    ],
+    "cons": [
+      "Prix très élevé",
+      "Moins performant que Databricks sur les workloads Spark intensifs",
+      "Roadmap parfois lente",
+      "Dépendance vendor fort"
+    ],
+    "best_for": "Grandes entreprises françaises voulant démocratiser la data science. Équipes mixtes experts/non-experts.",
+    "not_for": "Startups (trop cher). Équipes Spark experts (Databricks plus performant).",
+    "alternatives": [
+      "databricks",
+      "sas-viya",
+      "vertex-ai"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 82,
+      "ecosysteme": 75,
+      "cout": 38,
+      "support": 88
+    },
+    "tags": [
+      "french",
+      "ml-platform",
+      "enterprise",
+      "no-code"
+    ],
+    "launched": "2013",
+    "french_clients": [
+      "BNP Paribas",
+      "Société Générale",
+      "EDF",
+      "Crédit Agricole"
+    ]
+  },
+  {
+    "slug": "mlflow",
+    "name": "MLflow",
+    "tagline": "Le standard open source pour le tracking des expériences ML",
+    "category": "MLOps",
+    "emoji": "🧪",
+    "website": "https://mlflow.org",
+    "pricing": "Open source gratuit / Databricks MLflow inclus",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "MLflow est devenu le standard de facto pour le suivi des expériences ML. Créé par Databricks, il couvre le tracking (métriques, paramètres, artefacts), le packaging des modèles, le registry et le déploiement. Agnostique au framework (Scikit-learn, PyTorch, TensorFlow...).",
+    "features": [
+      "MLflow Tracking (expériences, métriques)",
+      "MLflow Models (packaging standard)",
+      "MLflow Model Registry (cycle de vie)",
+      "MLflow Projects (reproductibilité)",
+      "UI de comparaison d'expériences",
+      "Autologging (Scikit-learn, XGBoost...)",
+      "Plugins pour cloud providers",
+      "Intégration Databricks native"
+    ],
+    "pros": [
+      "Gratuit et open source",
+      "Agnostique framework et cloud",
+      "Standard de facto adopté massivement",
+      "Prise en main rapide",
+      "Autologging très pratique"
+    ],
+    "cons": [
+      "UI basique comparé aux plateformes MLOps complètes",
+      "Pas de feature store natif",
+      "Scalabilité à travailler en self-hosted",
+      "Moins complet que Dataiku/SageMaker pour le cycle complet"
+    ],
+    "best_for": "Tout data scientist ou ML engineer. Point de départ pour le tracking ML avant d'investir dans une plateforme MLOps complète.",
+    "not_for": "Remplacement d'une plateforme MLOps complète (Dataiku, SageMaker) seul.",
+    "alternatives": [
+      "wandb",
+      "neptune",
+      "comet"
+    ],
+    "score": {
+      "performance": 78,
+      "facilite": 85,
+      "ecosysteme": 88,
+      "cout": 95,
+      "support": 75
+    },
+    "tags": [
+      "open-source",
+      "mlops",
+      "tracking",
+      "databricks"
+    ],
+    "launched": "2018",
+    "french_clients": [
+      "Criteo",
+      "Dailymotion",
+      "Back Market"
+    ]
+  },
+  {
+    "slug": "hugging-face",
+    "name": "Hugging Face",
+    "tagline": "Le GitHub des modèles et datasets ML open source",
+    "category": "IA & ML",
+    "emoji": "🤗",
+    "website": "https://huggingface.co",
+    "pricing": "Gratuit / Pro 9$/mois / Enterprise sur devis",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Hugging Face est devenu la plateforme de référence pour les modèles ML open source. Son Hub héberge 500k+ modèles et 100k+ datasets. La bibliothèque Transformers est le standard pour fine-tuner et déployer des LLMs.",
+    "features": [
+      "Hub (500k+ modèles, 100k+ datasets)",
+      "Transformers library (Python)",
+      "Inference Endpoints (déploiement managé)",
+      "Spaces (démo interactives)",
+      "Datasets library",
+      "Accelerate (entraînement distribué)",
+      "PEFT (fine-tuning efficace)",
+      "Text Generation Inference (TGI)"
+    ],
+    "pros": [
+      "Modèles open source de qualité (Mistral, Llama, BERT...)",
+      "Communauté très active",
+      "Transformers library : standard absolu",
+      "Spaces : démos très simples à déployer",
+      "Accès aux derniers modèles SOTA"
+    ],
+    "cons": [
+      "Modèles lourds à déployer en production sans GPU",
+      "Inference Endpoints coûteux pour la production",
+      "Qualité des modèles communautaires variable",
+      "Nécessite des GPU pour les LLMs"
+    ],
+    "best_for": "Recherche, expérimentation et fine-tuning de LLMs. Accès aux meilleurs modèles open source.",
+    "not_for": "Production à grande échelle sans GPU. Organisations cherchant des solutions clés en main sans expertise ML.",
+    "alternatives": [
+      "openai-api",
+      "vertex-ai",
+      "aws-bedrock"
+    ],
+    "score": {
+      "performance": 85,
+      "facilite": 72,
+      "ecosysteme": 95,
+      "cout": 82,
+      "support": 70
+    },
+    "tags": [
+      "open-source",
+      "llm",
+      "nlp",
+      "ml",
+      "community"
+    ],
+    "launched": "2016",
+    "french_clients": [
+      "BNP Paribas IA",
+      "Ekimetrics",
+      "Illuin Technology"
+    ]
+  },
+  {
+    "slug": "duckdb",
+    "name": "DuckDB",
+    "tagline": "Le moteur SQL analytique embarqué le plus rapide pour les petits volumes",
+    "category": "Query Engine",
+    "emoji": "🦆",
+    "website": "https://duckdb.org",
+    "pricing": "Gratuit",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Facile",
+    "description": "DuckDB est un moteur SQL analytique embarqué (in-process), conçu pour fonctionner directement dans Python, R, Node.js ou via CLI sans serveur. Il lit nativement Parquet, CSV, JSON et les DataFrames Pandas/Polars. En 2024-2025, DuckDB s'impose comme l'outil de référence pour les équipes data de petite et moyenne taille qui veulent des performances analytiques sans infrastructure.",
+    "features": [
+      "Moteur SQL OLAP in-process",
+      "Lecture directe Parquet/CSV/JSON/Iceberg",
+      "Intégration native Pandas et Polars",
+      "Vectorized query engine",
+      "Parallel query execution",
+      "Zero dependency (pas de serveur)",
+      "Compatible ADBC et Arrow Flight"
+    ],
+    "pros": [
+      "Zéro infrastructure à déployer",
+      "Extrêmement rapide sur les fichiers locaux (souvent plus que Spark pour <50 Go)",
+      "Intégration Python triviale (import duckdb)",
+      "Open source, 100% gratuit",
+      "SQL complet avec window functions et CTEs",
+      "Lit directement S3 sans téléchargement"
+    ],
+    "cons": [
+      "Limité aux données tenant en mémoire ou sur un seul nœud (pas distribué)",
+      "Pas adapté aux workloads temps réel",
+      "Pas de gestion des utilisateurs/permissions",
+      "Moins adapté que Spark pour les volumes >100 Go sur cluster"
+    ],
+    "best_for": "Analyses locales sur fichiers Parquet/CSV, remplacement de Pandas pour les transformations SQL, prototypage rapide, pipelines ELT sur données <50 Go.",
+    "not_for": "Données distribuées multi-nœuds, workloads temps réel, applications transactionnelles (OLTP).",
+    "alternatives": [
+      "pandas",
+      "spark",
+      "bigquery"
+    ],
+    "score": {
+      "performance": 95,
+      "facilite": 92,
+      "ecosysteme": 78,
+      "cout": 100,
+      "support": 72
+    },
+    "tags": [
+      "open-source",
+      "sql",
+      "analytics",
+      "python",
+      "embedded",
+      "parquet"
+    ],
+    "launched": "2018",
+    "french_clients": [
+      "Ekimetrics",
+      "Artefact",
+      "Alan"
+    ]
+  },
+  {
+    "slug": "polars",
+    "name": "Polars",
+    "tagline": "DataFrame ultra-rapide en Rust pour remplacer Pandas",
+    "category": "Data Processing",
+    "emoji": "🐻‍❄️",
+    "website": "https://www.pola.rs",
+    "pricing": "Gratuit",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Polars est une bibliothèque DataFrame écrite en Rust, conçue comme alternative moderne à Pandas. Sa vraie différenciation n'est pas juste la vitesse brute : c'est son moteur d'exécution lazy (LazyFrames) qui optimise et fusionne les opérations avant de les exécuter, à la façon d'un query planner SQL. En 2024-2025, Polars est devenu le choix standard pour les pipelines de transformation Python dépassant les limites de Pandas.",
+    "features": [
+      "LazyFrames (exécution différée et optimisée)",
+      "Multithreading natif sur tous les cœurs",
+      "Zero-copy avec Apache Arrow",
+      "API expressive (expressions chaînables)",
+      "Lecture native Parquet, CSV, JSON, Iceberg",
+      "Interopérabilité Pandas (to_pandas())",
+      "Support streaming pour données dépassant la RAM"
+    ],
+    "pros": [
+      "5-10x plus rapide que Pandas sur la plupart des workloads",
+      "API cohérente et plus prévisible que Pandas",
+      "Gestion des données dépassant la RAM via le mode streaming",
+      "Open source, 100% gratuit",
+      "Intégration DuckDB et Arrow Flight"
+    ],
+    "cons": [
+      "API différente de Pandas (courbe d'apprentissage)",
+      "Écosystème moins mature que Pandas (moins de librairies compatibles)",
+      "LazyFrames peuvent surprendre les débutants Pandas",
+      "Moins de ressources d'apprentissage en français"
+    ],
+    "best_for": "Remplacement de Pandas pour les transformations sur datasets >1 Go, pipelines ELT Python haute performance, projets qui démarrent sans legacy Pandas.",
+    "not_for": "Petits datasets (<100 Mo) où Pandas suffit, projets avec fort legacy Pandas, cas où la compatibilité bibliothèques tierces est prioritaire.",
+    "alternatives": [
+      "pandas",
+      "spark",
+      "duckdb"
+    ],
+    "score": {
+      "performance": 96,
+      "facilite": 70,
+      "ecosysteme": 72,
+      "cout": 100,
+      "support": 68
+    },
+    "tags": [
+      "open-source",
+      "python",
+      "dataframe",
+      "rust",
+      "analytics",
+      "pandas-alternative"
+    ],
+    "launched": "2020",
+    "french_clients": [
+      "Alan",
+      "Artefact",
+      "Ekimetrics"
+    ]
+  },
+  {
+    "slug": "apache-flink",
+    "name": "Apache Flink",
+    "tagline": "Le moteur de traitement streaming de référence pour les pipelines temps réel à haute volumétrie",
+    "category": "Stream Processing",
+    "emoji": "⚡",
+    "website": "https://flink.apache.org",
+    "pricing": "Open source (gratuit) / managé sur AWS, GCP, Azure",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Apache Flink est le moteur de traitement de flux distribué le plus mature du marché. Contrairement à Spark Structured Streaming, Flink est nativement orienté streaming (pas un batch adapté). Il excelle sur les cas d'usage nécessitant des garanties exactly-once, des fenêtres temporelles complexes et une latence inférieure à la seconde. Adopté massivement par des entreprises traitant des volumes massifs d'événements : Uber, Alibaba, Netflix.",
+    "features": [
+      "Traitement streaming natif (pas batch adapté)",
+      "Garanties exactly-once bout en bout",
+      "Fenêtres temporelles (tumbling, sliding, session)",
+      "State backends configurables (RocksDB, heap)",
+      "Flink SQL (requêtes SQL sur streams)",
+      "Checkpointing et savepoints pour tolérance aux pannes",
+      "Intégration native Kafka, Kinesis, Pulsar",
+      "Scalabilité horizontale jusqu'à des milliers de nœuds"
+    ],
+    "pros": [
+      "Le meilleur sur les garanties de consistance (exactly-once)",
+      "Latence sub-seconde réelle",
+      "Flink SQL très puissant pour les cas analytiques streaming",
+      "Gestion d'état robuste avec RocksDB",
+      "Écosystème Kafka + Flink = combo industriel éprouvé"
+    ],
+    "cons": [
+      "Courbe d'apprentissage très élevée",
+      "Opérationnel complexe en self-hosted (tuning JVM, state management)",
+      "Debugging difficile en production",
+      "Documentation dense, moins accessible que Spark",
+      "Ressources rares en France (profils Flink peu nombreux)"
+    ],
+    "best_for": "Équipes traitant des flux d'événements à haute volumétrie avec des contraintes de latence strictes : détection de fraude temps réel, alerting sur logs, dashboards live, streaming ETL.",
+    "not_for": "Petites équipes sans expertise JVM/streaming. Cas d'usage batch ou analytiques purs. Budgets limités en expertise.",
+    "alternatives": ["spark", "databricks"],
+    "score": {
+      "performance": 95,
+      "facilite": 35,
+      "ecosysteme": 78,
+      "cout": 80,
+      "support": 65
+    },
+    "tags": ["streaming", "open-source", "temps-réel", "kafka", "enterprise"],
+    "launched": "2011",
+    "french_clients": ["BNP Paribas", "Société Générale", "Criteo"]
+  },
+  {
+    "slug": "great-expectations",
+    "name": "Great Expectations",
+    "tagline": "Le framework open source de référence pour la qualité et la validation des données en pipeline",
+    "category": "Data Quality",
+    "emoji": "✅",
+    "website": "https://greatexpectations.io",
+    "pricing": "Open source (gratuit) / GX Cloud (payant)",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Great Expectations (GX) est le standard open source pour tester la qualité des données dans les pipelines. Il permet de définir des 'expectations' (règles métier) sur les données, de les exécuter automatiquement et de générer une documentation de qualité ('Data Docs'). S'intègre nativement avec Airflow, Spark, dbt, Pandas et la majorité des warehouses cloud.",
+    "features": [
+      "Expectations prêtes à l'emploi (400+ règles)",
+      "Data Docs : documentation qualité auto-générée",
+      "Checkpoints : orchestration des suites de validation",
+      "Intégration native Airflow, Spark, dbt",
+      "Connecteurs Pandas, Spark, SQL (Snowflake, BigQuery, Redshift)",
+      "Profiling automatique des données",
+      "GX Cloud : version managée avec UI et collaboration"
+    ],
+    "pros": [
+      "Standard de facto pour les tests de qualité data",
+      "Documentation Data Docs très bien faite",
+      "S'intègre dans tout pipeline existant",
+      "400+ expectations prêtes à l'emploi",
+      "Communauté active et bonne documentation"
+    ],
+    "cons": [
+      "Configuration initiale verbeuse (YAML + Python)",
+      "GX version 1.x a cassé la compatibilité avec 0.x",
+      "GX Cloud payant pour les fonctionnalités avancées",
+      "Moins performant que dbt tests sur Snowflake/BigQuery",
+      "Courbe de montée en charge non triviale sur gros volumes Spark"
+    ],
+    "best_for": "Équipes data engineering qui veulent tester automatiquement la qualité des données dans leurs pipelines CI/CD. Particulièrement adapté aux pipelines Pandas/Spark et aux équipes qui n'utilisent pas encore dbt.",
+    "not_for": "Équipes déjà full dbt (dbt tests couvre l'essentiel). Cas d'usage très simples avec quelques règles basiques.",
+    "alternatives": ["dbt", "databricks"],
+    "score": {
+      "performance": 72,
+      "facilite": 58,
+      "ecosysteme": 80,
+      "cout": 88,
+      "support": 70
+    },
+    "tags": ["data-quality", "open-source", "testing", "pipeline", "observabilite"],
+    "launched": "2017",
+    "french_clients": ["Decathlon", "Contentsquare", "Dataiku (intégration native)"]
+  },
+  {
+    "slug": "scikit-learn",
+    "name": "Scikit-learn",
+    "tagline": "La bibliothèque ML Python incontournable pour les modèles classiques",
+    "category": "Frameworks ML",
+    "emoji": "🔬",
+    "website": "https://scikit-learn.org",
+    "pricing": "Gratuit",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Scikit-learn est la bibliothèque de référence pour le machine learning classique en Python. Elle couvre toute la chaîne : preprocessing, classification, régression, clustering, réduction de dimension, validation et pipelines reproductibles. C'est le point de départ de tout Data Scientist ou ML Engineer.",
+    "features": [
+      "Modèles supervisés (RandomForest, SVM, LogisticRegression...)",
+      "Modèles non supervisés (KMeans, PCA, DBSCAN...)",
+      "Pipeline et ColumnTransformer",
+      "GridSearchCV et cross-validation",
+      "Métriques d'évaluation complètes",
+      "Preprocessing (StandardScaler, OneHotEncoder...)",
+      "Intégration Pandas et NumPy native",
+      "Compatible joblib pour la parallélisation"
+    ],
+    "pros": [
+      "API cohérente et simple (fit/predict/transform)",
+      "Documentation de référence absolue",
+      "Standard universel — tous les cours s'appuient dessus",
+      "Couvre 95% des cas d'usage ML classique",
+      "Intégration parfaite avec Pandas, NumPy, MLflow"
+    ],
+    "cons": [
+      "Pas conçu pour le deep learning (utiliser PyTorch ou TensorFlow)",
+      "Pas de GPU natif",
+      "Moins performant que XGBoost/LightGBM sur les données tabulaires en compétition",
+      "Pas de support natif des séries temporelles"
+    ],
+    "best_for": "Tout Data Scientist qui commence le ML, projets de classification/régression sur données tabulaires, prototypage rapide.",
+    "not_for": "Deep learning, NLP avancé, vision par ordinateur, modèles massifs nécessitant GPU.",
+    "alternatives": ["pytorch", "hugging-face", "mlflow"],
+    "score": {
+      "performance": 75,
+      "facilite": 95,
+      "ecosysteme": 95,
+      "cout": 100,
+      "support": 92
+    },
+    "tags": ["open-source", "python", "ml", "classification", "regression"],
+    "launched": "2007",
+    "french_clients": ["BNP Paribas", "Decathlon", "Ekimetrics"]
+  },
+  {
+    "slug": "pytorch",
+    "name": "PyTorch",
+    "tagline": "Le framework deep learning de référence pour la recherche et la production",
+    "category": "Frameworks ML",
+    "emoji": "🔥",
+    "website": "https://pytorch.org",
+    "pricing": "Gratuit",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "PyTorch (Meta) est devenu le standard du deep learning, dépassant TensorFlow en adoption dans la recherche et rattrapant son retard en production. Son API pythonique (eager execution, autograd dynamique) le rend plus intuitif pour expérimenter. L'écosystème PyTorch couvre le NLP (Transformers), la vision (torchvision) et les LLMs (llama.cpp, vLLM).",
+    "features": [
+      "Autograd dynamique (define-by-run)",
+      "Modules nn.Module composables",
+      "torch.distributed (multi-GPU, multi-node)",
+      "TorchScript pour la production",
+      "PyTorch Lightning (entraînement structuré)",
+      "ONNX export pour la portabilité",
+      "Intégration Hugging Face native",
+      "TorchServe pour le model serving"
+    ],
+    "pros": [
+      "Standard de facto en recherche ML/IA",
+      "API Pythonique et debugging facile",
+      "Écosystème LLM immense (LLaMA, Mistral, etc.)",
+      "Intégration Hugging Face parfaite",
+      "Communauté très active"
+    ],
+    "cons": [
+      "Courbe d'apprentissage steep sans bases en algèbre linéaire",
+      "Verbeux pour les cas simples (préférer Scikit-learn)",
+      "Inférence production complexe sans TorchServe ou ONNX",
+      "Nécessite GPU pour les vrais workloads deep learning"
+    ],
+    "best_for": "Deep learning, NLP, LLMs, vision par ordinateur, recherche en IA, fine-tuning de modèles fondationaux.",
+    "not_for": "ML classique sur données tabulaires (Scikit-learn), débutants sans base mathématique.",
+    "alternatives": ["scikit-learn", "hugging-face", "mlflow"],
+    "score": {
+      "performance": 95,
+      "facilite": 58,
+      "ecosysteme": 96,
+      "cout": 100,
+      "support": 88
+    },
+    "tags": ["open-source", "deep-learning", "llm", "python", "gpu"],
+    "launched": "2016",
+    "french_clients": ["Criteo", "Illuin Technology", "Ekimetrics"]
+  },
+  {
+    "slug": "langchain",
+    "name": "LangChain",
+    "tagline": "Le framework Python pour orchestrer des applications LLM et des agents IA",
+    "category": "IA Générative",
+    "emoji": "⛓️",
+    "website": "https://www.langchain.com",
+    "pricing": "Open source gratuit / LangSmith à partir de 39$/mois",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "LangChain est le framework le plus populaire pour construire des applications LLM : chatbots, agents, pipelines RAG, extraction d'information. Il abstrait les appels aux APIs (OpenAI, Anthropic, Mistral...) et fournit des outils pour chaîner des étapes, gérer la mémoire de conversation et connecter des bases vectorielles. LangSmith, son outil de monitoring, est devenu la référence pour l'observabilité des pipelines LLM.",
+    "features": [
+      "Chains (pipelines de prompts et LLMs)",
+      "Agents avec outils (recherche web, code, API)",
+      "RAG : document loaders, chunking, vector stores",
+      "Memory (conversation history)",
+      "Intégration 50+ LLMs (OpenAI, Anthropic, Mistral, Ollama...)",
+      "LangSmith : tracing et évaluation des pipelines",
+      "LangGraph : orchestration d'agents stateful",
+      "Support streaming natif"
+    ],
+    "pros": [
+      "Standard de facto pour les apps LLM",
+      "Intégration avec tous les LLMs majeurs",
+      "LangSmith : observabilité LLM en quelques lignes",
+      "LangGraph : agents complexes multi-steps",
+      "Communauté et documentation très riches"
+    ],
+    "cons": [
+      "Abstraction parfois trop opaque pour le debugging",
+      "Breaking changes fréquents entre versions",
+      "LangSmith payant pour un usage sérieux",
+      "Peut être over-engineering pour des cas simples"
+    ],
+    "best_for": "Applications RAG, chatbots sur documents, agents IA, pipelines LLM complexes nécessitant mémoire et outils.",
+    "not_for": "Appels LLM simples one-shot (utiliser directement l'API), projets sans besoin de chaînage.",
+    "alternatives": ["hugging-face", "openai-api"],
+    "score": {
+      "performance": 78,
+      "facilite": 68,
+      "ecosysteme": 90,
+      "cout": 82,
+      "support": 75
+    },
+    "tags": ["llm", "rag", "agents", "open-source", "python", "ia-generative"],
+    "launched": "2022",
+    "french_clients": ["BNP Paribas IA", "Ekimetrics", "Illuin Technology"]
+  },
+  {
+    "slug": "openai-api",
+    "name": "OpenAI API",
+    "tagline": "L'API des modèles GPT-4o, o1 et Whisper pour vos applications IA",
+    "category": "IA Générative",
+    "emoji": "🤖",
+    "website": "https://platform.openai.com",
+    "pricing": "Pay-per-token (GPT-4o : ~2.5$/M tokens entrée)",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "L'API OpenAI donne accès aux modèles les plus capables du marché : GPT-4o, o1 (raisonnement), DALL-E (images), Whisper (transcription), Embeddings. C'est le chemin le plus rapide pour intégrer de l'IA générative dans une application. La Responses API et les Assistants API permettent de construire des agents avec mémoire, outils et file management sans infrastructure custom.",
+    "features": [
+      "GPT-4o, o1, o3 (text, vision, code)",
+      "Embeddings (text-embedding-3-large)",
+      "DALL-E 3 (génération d'images)",
+      "Whisper (transcription audio)",
+      "Responses API (agents avec outils natifs)",
+      "Structured outputs (JSON schema garanti)",
+      "Fine-tuning des modèles",
+      "Batch API (50% de réduction sur le traitement en lot)"
+    ],
+    "pros": [
+      "Modèles les plus capables du marché",
+      "Intégration en 5 lignes de code",
+      "Structured outputs très fiables",
+      "Écosystème d'outils immense",
+      "Documentation exemplaire"
+    ],
+    "cons": [
+      "Coût peut devenir élevé à grande échelle",
+      "Vendor lock-in OpenAI",
+      "Données envoyées vers les serveurs OpenAI (problème de conformité pour certains secteurs)",
+      "Pas open source — impossible à héberger soi-même"
+    ],
+    "best_for": "Prototypage rapide d'applications LLM, extraction d'information structurée, génération de contenu, chatbots, transcription.",
+    "not_for": "Organisations avec contraintes de souveraineté des données (banques, santé, défense) — préférer Mistral en self-hosted ou AWS Bedrock.",
+    "alternatives": ["hugging-face", "langchain"],
+    "score": {
+      "performance": 96,
+      "facilite": 92,
+      "ecosysteme": 92,
+      "cout": 55,
+      "support": 85
+    },
+    "tags": ["llm", "ia-generative", "api", "gpt", "openai"],
+    "launched": "2020",
+    "french_clients": ["Doctolib", "BlaBlaCar", "Contentsquare"]
+  },
+  {
+    "slug": "wandb",
+    "name": "Weights & Biases",
+    "tagline": "La plateforme MLOps de référence pour le tracking et la visualisation d'expériences ML",
+    "category": "MLOps",
+    "emoji": "📊",
+    "website": "https://wandb.ai",
+    "pricing": "Gratuit (usage personnel) / Team 50$/mois / Enterprise sur devis",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Weights & Biases (W&B) est devenu la référence pour le suivi d'expériences ML en 2024-2025, surpassant MLflow en popularité dans les équipes deep learning et LLM. En quelques lignes de code, W&B logue métriques, hyperparamètres, artefacts et visualisations. Son interface web collaborative, ses sweeps (hyperparameter search) et son module d'évaluation LLM (Weave) en font la plateforme la plus complète de sa catégorie.",
+    "features": [
+      "Experiment tracking (métriques, paramètres, graphiques)",
+      "Artifacts (versioning des datasets et modèles)",
+      "Sweeps (hyperparameter search automatisé)",
+      "Reports (rapports ML collaboratifs)",
+      "W&B Weave (observabilité LLM, traces, évaluations)",
+      "Intégration PyTorch, TensorFlow, Hugging Face, LangChain",
+      "Model Registry",
+      "Launch (orchestration d'entraînements sur GPU cloud)"
+    ],
+    "pros": [
+      "Interface la plus riche et la plus moderne du marché",
+      "Sweeps : recherche d'hyperparamètres en quelques lignes",
+      "W&B Weave : observabilité LLM de référence",
+      "Gratuit pour usage individuel",
+      "Intégration triviale (3 lignes de code)"
+    ],
+    "cons": [
+      "Données envoyées vers les serveurs W&B (cloud only par défaut)",
+      "Plan Team payant pour les équipes",
+      "Moins adopté en entreprise française que MLflow (Databricks intégré)",
+      "Vendor lock-in progressif"
+    ],
+    "best_for": "Data Scientists et ML Engineers qui entraînent des modèles DL ou fine-tunent des LLMs, équipes de recherche.",
+    "not_for": "Équipes full Databricks (MLflow intégré suffit), organisations avec contraintes de souveraineté des données.",
+    "alternatives": ["mlflow", "hugging-face"],
+    "score": {
+      "performance": 88,
+      "facilite": 88,
+      "ecosysteme": 85,
+      "cout": 72,
+      "support": 80
+    },
+    "tags": ["mlops", "experiment-tracking", "deep-learning", "llm", "monitoring"],
+    "launched": "2018",
+    "french_clients": ["Criteo", "Ekimetrics", "Artefact"]
+  },
+  {
+    "slug": "evidently",
+    "name": "Evidently AI",
+    "tagline": "Le framework open source pour le monitoring et l'évaluation des modèles ML en production",
+    "category": "MLOps",
+    "emoji": "📈",
+    "website": "https://www.evidentlyai.com",
+    "pricing": "Open source gratuit / Cloud à partir de 0$ (freemium)",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Evidently AI est le framework Python de référence pour détecter la dégradation des modèles ML en production : data drift, concept drift, qualité des prédictions, biais. Il génère des rapports visuels HTML et des métriques intégrables dans des tableaux de bord. En 2025, il a étendu sa couverture aux LLMs avec des évaluations de qualité des réponses.",
+    "features": [
+      "Data drift et concept drift detection",
+      "Rapports HTML interactifs",
+      "Test suites (seuils d'alerte configurables)",
+      "Monitoring de modèles en production",
+      "Évaluation LLM (qualité, pertinence, toxicité)",
+      "Intégration Grafana, Prometheus",
+      "Compatible sklearn, XGBoost, LightGBM",
+      "Evidently Cloud (dashboard monitoring)"
+    ],
+    "pros": [
+      "Le plus simple pour démarrer le monitoring ML",
+      "Open source, 100% gratuit pour l'essentiel",
+      "Rapports HTML clé en main",
+      "Extension LLM très bien faite",
+      "Intégration pipeline Airflow/Prefect facile"
+    ],
+    "cons": [
+      "Moins complet que des solutions enterprise (Arize, Fiddler)",
+      "Pas de gestion native des alertes en temps réel",
+      "Dashboard Evidently Cloud encore jeune",
+      "Documentation parfois en retard sur les nouvelles features"
+    ],
+    "best_for": "Équipes ML qui veulent surveiller leurs modèles en production sans infrastructure complexe. Idéal en complément de MLflow ou W&B.",
+    "not_for": "Monitoring temps réel à très haute fréquence, organisations avec SLA strict nécessitant des outils enterprise.",
+    "alternatives": ["mlflow", "wandb"],
+    "score": {
+      "performance": 75,
+      "facilite": 80,
+      "ecosysteme": 72,
+      "cout": 95,
+      "support": 70
+    },
+    "tags": ["open-source", "mlops", "monitoring", "drift", "llm"],
+    "launched": "2021",
+    "french_clients": ["Ekimetrics", "Artefact", "BNP Paribas IA"]
+  },
+  {
+    "slug": "dataflow",
+    "name": "Google Cloud Dataflow",
+    "tagline": "Le service managé de traitement de données en flux et en batch sur GCP",
+    "category": "Stream Processing",
+    "emoji": "🌊",
+    "website": "https://cloud.google.com/dataflow",
+    "pricing": "Pay-per-use (vCPU + RAM + stockage réseau)",
+    "free_tier": false,
+    "open_source": false,
+    "learning_curve": "Avancé",
+    "description": "Google Cloud Dataflow est le service managé GCP basé sur Apache Beam pour le traitement en flux (streaming) et en batch. Il se distingue par son autoscaling natif et son modèle de programmation unifié (même code pour le batch et le streaming). C'est la solution de référence pour les organisations sur GCP qui veulent éviter d'opérer Flink ou Spark.",
+    "features": [
+      "Apache Beam SDK (Java, Python)",
+      "Autoscaling horizontal natif",
+      "Traitement batch et streaming avec la même API",
+      "Intégration native Pub/Sub, BigQuery, Cloud Storage",
+      "Windowing et watermarks pour le streaming",
+      "Dataflow SQL (requêtes sur les streams)",
+      "Monitoring via Cloud Monitoring",
+      "Templates managés (réutilisation)"
+    ],
+    "pros": [
+      "Zéro gestion d'infrastructure (fully managed)",
+      "Autoscaling transparent",
+      "Intégration GCP parfaite (BigQuery, Pub/Sub)",
+      "Modèle de programmation Beam très expressif",
+      "Facturation à la ressource consommée"
+    ],
+    "cons": [
+      "SDK Apache Beam : courbe d'apprentissage élevée",
+      "Plus cher que Flink self-hosted à grande échelle",
+      "Latence de démarrage des jobs (cold start)",
+      "Debugging complexe sur les pipelines streaming"
+    ],
+    "best_for": "Organisations sur GCP nécessitant du streaming ou du batch managé sans gérer Spark/Flink. Ingestion BigQuery en temps réel.",
+    "not_for": "Organisations hors GCP, cas d'usage nécessitant une latence sub-seconde très fine (préférer Flink).",
+    "alternatives": ["spark", "apache-flink", "databricks"],
+    "score": {
+      "performance": 88,
+      "facilite": 55,
+      "ecosysteme": 78,
+      "cout": 60,
+      "support": 85
+    },
+    "tags": ["gcp", "streaming", "batch", "managed", "apache-beam"],
+    "launched": "2015",
+    "french_clients": ["L'Oréal", "Renault", "Leboncoin"]
+  },
+  {
+    "slug": "pubsub",
+    "name": "Google Pub/Sub",
+    "tagline": "Le service de messagerie événementielle serverless de Google Cloud",
+    "category": "Streaming",
+    "emoji": "📨",
+    "website": "https://cloud.google.com/pubsub",
+    "pricing": "Pay-per-use (~0.04$ par Go de données)",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Google Cloud Pub/Sub est le service de messagerie asynchrone serverless de GCP. Il joue le rôle de Kafka dans une stack GCP : découplage de microservices, ingestion d'événements en temps réel, déclenchement de pipelines Dataflow ou Cloud Functions. Beaucoup plus simple à opérer que Kafka avec des garanties de livraison at-least-once natives.",
+    "features": [
+      "Topics et Subscriptions (pull et push)",
+      "At-least-once delivery garanti",
+      "Exactly-once delivery (Pub/Sub Lite)",
+      "Retention configurable (7 jours par défaut)",
+      "Intégration native Dataflow, BigQuery, Cloud Functions",
+      "Dead Letter Topics pour la gestion des erreurs",
+      "Snapshots et replay de messages",
+      "Chiffrement at-rest et in-transit"
+    ],
+    "pros": [
+      "Zéro opérationnel (serverless)",
+      "Autoscaling transparent jusqu'aux millions de messages/s",
+      "Prix très compétitif vs Kafka managé",
+      "Intégration GCP native parfaite",
+      "Prise en main en 30 minutes"
+    ],
+    "cons": [
+      "Limité à GCP (fort vendor lock-in)",
+      "Moins de fonctionnalités avancées que Kafka (pas de compaction, partitions limitées)",
+      "Exactly-once uniquement via Pub/Sub Lite (plus cher)",
+      "Pas adapté comme event store long terme"
+    ],
+    "best_for": "Découplage de services sur GCP, ingestion d'événements vers Dataflow ou BigQuery, déclenchement de Cloud Functions.",
+    "not_for": "Organisations multi-cloud, cas nécessitant un replay à long terme ou une compaction de log.",
+    "alternatives": ["kafka", "dataflow"],
+    "score": {
+      "performance": 90,
+      "facilite": 85,
+      "ecosysteme": 72,
+      "cout": 78,
+      "support": 88
+    },
+    "tags": ["gcp", "streaming", "events", "serverless", "messaging"],
+    "launched": "2015",
+    "french_clients": ["L'Oréal", "Renault", "Leboncoin"]
+  }
+]

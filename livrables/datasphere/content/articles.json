@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "llm-entreprise-2025",
+    "title": "LLM en entreprise : ce qui fonctionne vraiment en 2026",
+    "excerpt": "Après deux ans d'expérimentations, les DSI françaises commencent à savoir ce qui tient la route. Retour sur les patterns qui émergent.",
+    "category": "IA Générative",
+    "categoryColor": "indigo",
+    "author": "Équipe DataSphère",
+    "date": "2026-06-02",
+    "readTime": "6 min",
+    "featured": true,
+    "content": "Les grands modèles de langage (LLM) ont envahi les roadmaps des DSI françaises en 2023-2024. Deux ans plus tard, les retours terrain sont plus nuancés qu'espéré — mais aussi plus instructifs.\n\n## Ce qui fonctionne\n\n**La génération de code** reste le cas d'usage le plus fiable. Les équipes data qui utilisent GitHub Copilot ou des solutions internes rapportent des gains de productivité de 20 à 40% sur l'écriture de SQL, Python et documentation.\n\n**La synthèse documentaire** est le deuxième grand succès. Les outils RAG (Retrieval-Augmented Generation) permettent d'interroger des bases documentaires internes — normes, processus, historiques de tickets — avec une pertinence qui dépasse les anciens moteurs de recherche.\n\n**L'extraction structurée** depuis des documents non structurés (PDF, emails, comptes-rendus) est devenue industrialisable grâce aux function calling des modèles récents.\n\n## Ce qui déçoit\n\n**L'autonomie des agents** est encore surestimée. Les workflows multi-agents fonctionnent en démo, mais en production la supervision humaine reste indispensable pour tout processus critique.\n\n**La cohérence sur les données métier** est un point de friction majeur. Les LLMs généralistes ne connaissent pas vos référentiels internes, vos définitions comptables ou vos conventions de nommage. La phase de contextualisation est souvent sous-estimée.\n\n## Ce qui émerge\n\nLe pattern \"LLM + données structurées\" via des outils comme Dataiku ou des architectures Text-to-SQL maison est en train de s'imposer comme la voie la plus réaliste pour les analytics augmentés. La clé : garder l'humain dans la boucle de validation."
+  },
+  {
+    "slug": "dataiku-vs-sas-viya-2025",
+    "title": "Dataiku vs SAS Viya : comparatif terrain 2026",
+    "excerpt": "Deux plateformes MLOps qui s'adressent aux grandes entreprises françaises. Ce guide compare leur positionnement, leurs forces et leurs limites réelles.",
+    "category": "Outils",
+    "categoryColor": "teal",
+    "author": "Équipe DataSphère",
+    "date": "2026-05-28",
+    "readTime": "8 min",
+    "featured": true,
+    "content": "Dataiku et SAS Viya dominent les appels d'offres MLOps dans les grandes entreprises françaises — banques, assurances, utilities. Voici un comparatif basé sur des retours terrain.\n\n## Dataiku\n\n**Points forts :** Interface visuelle accessible aux profils non-tech, collaboration forte entre data scientists et data engineers, intégrations natives avec le cloud (AWS, Azure, GCP), communauté active.\n\n**Points faibles :** Coût élevé pour les grandes installations, certaines fonctionnalités avancées nécessitent des plugins tiers, courbe d'apprentissage sur la partie MLOps avancée.\n\n**Cas d'usage idéal :** Équipes data mixtes (data scientists + métier), projets nécessitant de la collaboration, organisations en transformation digitale.\n\n## SAS Viya\n\n**Points forts :** Maturité sur les données massives, gouvernance et auditabilité de classe enterprise, écosystème SAS historique très riche, support PMML et standards ouverts.\n\n**Points faibles :** Moins adapté aux workflows Python/open source modernes, coût de licence très élevé, adoption plus lente par les nouvelles générations de data scientists.\n\n**Cas d'usage idéal :** Secteurs très régulés (banque, assurance, pharma), organisations avec un legacy SAS important, besoins forts de gouvernance.\n\n## Notre verdict\n\nDataiku gagne sur l'accessibilité et la modernité. SAS Viya gagne sur la gouvernance et la robustesse en environnement critique. En pratique, les deux coexistent souvent dans les grandes organisations."
+  },
+  {
+    "slug": "dbt-guide-debutants",
+    "title": "dbt pour les débutants : transformer vos données comme un pro",
+    "excerpt": "dbt (data build tool) est devenu incontournable dans les stacks data modernes. Ce guide explique le concept, la prise en main et les bonnes pratiques.",
+    "category": "Tutoriel",
+    "categoryColor": "amber",
+    "author": "Équipe DataSphère",
+    "date": "2026-05-20",
+    "readTime": "10 min",
+    "featured": false,
+    "content": "dbt (data build tool) a révolutionné la façon dont les data engineers et analysts transforment les données dans leur warehouse. Voici pourquoi et comment l'adopter.\n\n## Qu'est-ce que dbt ?\n\ndbt est un outil de transformation de données qui permet d'écrire des transformations SQL modulaires, testables et documentées. Il s'intègre avec tous les warehouses modernes : Snowflake, BigQuery, Redshift, Databricks, DuckDB.\n\n## Le concept central : les modèles\n\nUn modèle dbt est simplement un fichier `.sql` qui contient un SELECT. dbt se charge de créer la table ou la vue correspondante dans votre warehouse.\n\n## Les tests intégrés\n\ndbt permet de tester vos données avec des assertions simples : unicité, non-nullité, valeurs acceptées, relations entre tables. Ces tests s'exécutent automatiquement dans votre CI/CD.\n\n## La documentation automatique\n\nChaque modèle peut être documenté via des fichiers YAML. dbt génère un site de documentation interactif avec le lineage complet de vos données.\n\n## Par où commencer ?\n\n1. Installez dbt Core (open source) ou utilisez dbt Cloud\n2. Connectez votre warehouse\n3. Écrivez votre premier modèle en SQL\n4. Ajoutez des tests et de la documentation\n5. Intégrez dans votre CI/CD"
+  },
+  {
+    "slug": "metier-data-engineer-2025",
+    "title": "Data Engineer en 2026 : salaires, compétences et perspectives",
+    "excerpt": "Le métier de Data Engineer est l'un des plus demandés du marché. Tour d'horizon des salaires pratiqués, des compétences attendues et de l'évolution de la fonction.",
+    "category": "Carrière",
+    "categoryColor": "rose",
+    "author": "Équipe DataSphère",
+    "date": "2026-05-15",
+    "readTime": "7 min",
+    "featured": false,
+    "content": "Le Data Engineer est devenu l'une des ressources les plus recherchées sur le marché de l'emploi tech en France. Mais le profil attendu a évolué significativement ces dernières années.\n\n## Le profil attendu en 2025\n\nLa stack moderne du Data Engineer tourne autour de : Python, SQL, Spark, un orchestrateur (Airflow, Prefect ou Dagster), un warehouse cloud (Snowflake, BigQuery ou Databricks), et de plus en plus dbt pour les transformations.\n\n## Les salaires en France\n\n- Junior (0-2 ans) : 38-48k€\n- Confirmé (2-5 ans) : 48-65k€\n- Senior (5+ ans) : 60-85k€\n- Lead / Architecte Data : 75-100k€+\n\n## Les villes qui recrutent\n\nParis concentre 60% des offres, mais Lyon, Bordeaux et Nantes ont des marchés dynamiques avec un coût de la vie plus favorable.\n\n## Les certifications qui font la différence\n\nAWS Data Engineer, Google Professional Data Engineer, Databricks Certified Data Engineer — ces certifications sont de plus en plus demandées dans les JD."
+  },
+  {
+    "slug": "snowflake-architecture-moderne",
+    "title": "Architecture Snowflake : les patterns qui tiennent en production",
+    "excerpt": "Snowflake s'est imposé comme le warehouse de référence. Mais une architecture mal pensée peut coûter très cher. Voici les patterns validés en production.",
+    "category": "Architecture",
+    "categoryColor": "teal",
+    "author": "Équipe DataSphère",
+    "date": "2026-05-08",
+    "readTime": "9 min",
+    "featured": false,
+    "content": "Snowflake est aujourd'hui le cloud data warehouse le plus adopté par les entreprises françaises mid-market et enterprise. Mais son modèle de tarification à la consommation peut surprendre si l'architecture n'est pas bien pensée.\n\n## Le principe fondamental : séparer compute et storage\n\nContrairement aux architectures on-premise, Snowflake dissocie le stockage (S3 sous le capot) du compute (les virtual warehouses). Cette séparation permet une scalabilité élastique mais nécessite une discipline forte sur la gestion des warehouses.\n\n## Les patterns essentiels\n\n**Multi-warehouse strategy :** Ne jamais utiliser un seul warehouse pour tous les workloads. Séparez au minimum : ingestion, transformation, BI/requêtes ad hoc, data science.\n\n**Auto-suspend aggressif :** Configurez un auto-suspend à 1-2 minutes maximum sur les warehouses non-critiques. C'est la principale source d'économies.\n\n**Zero-copy cloning :** L'une des features les plus puissantes et sous-utilisées. Permet de cloner tables et databases instantanément pour les environnements de dev/test sans coût de stockage supplémentaire.\n\n**Time Travel :** Configurez un data retention de 7-14 jours sur vos tables critiques. Cela permet de récupérer des données supprimées par erreur ou d'analyser l'état historique."
+  },
+  {
+    "slug": "ia-act-impact-equipes-data",
+    "title": "AI Act : ce que les équipes data doivent préparer dès maintenant",
+    "excerpt": "L'AI Act européen entre progressivement en vigueur. Les équipes data sont en première ligne pour la mise en conformité. Ce qu'il faut anticiper.",
+    "category": "Réglementation",
+    "categoryColor": "rose",
+    "author": "Équipe DataSphère",
+    "date": "2026-04-30",
+    "readTime": "8 min",
+    "featured": false,
+    "content": "L'AI Act européen, entré en application progressive depuis août 2024, impose de nouvelles obligations aux organisations qui développent ou déploient des systèmes d'IA. Les équipes data sont directement concernées.\n\n## La classification par risque\n\nL'AI Act classe les systèmes d'IA en quatre niveaux de risque : inacceptable (interdit), élevé (obligations strictes), limité (transparence obligatoire) et minimal (peu de contraintes).\n\n## Ce qui concerne les équipes data\n\n**Systèmes à risque élevé :** Les modèles utilisés dans les RH (recrutement, évaluation), le crédit, les assurances, ou la gestion d'infrastructures critiques entrent dans cette catégorie. Ils nécessitent une documentation technique détaillée, des tests de robustesse et un suivi post-déploiement.\n\n**Traçabilité et explicabilité :** Les équipes MLOps doivent mettre en place des logs détaillés sur les décisions automatisées et être capables d'expliquer les prédictions des modèles.\n\n**Gouvernance des données d'entraînement :** La qualité, la représentativité et l'absence de biais dans les données d'entraînement doivent être documentées et auditables.\n\n## Par où commencer ?\n\n1. Inventorier tous les systèmes IA en production\n2. Les classifier selon la grille de risque\n3. Prioriser la mise en conformité des systèmes à risque élevé\n4. Mettre en place une gouvernance MLOps adaptée"
+  }
+]

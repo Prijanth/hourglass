@@ -1,0 +1,1872 @@
+{
+  "cas": [
+    {
+      "id": "detection-fraude-bancaire",
+      "titre": "Détection de fraude bancaire en temps réel",
+      "secteur": "Finance",
+      "type": "Détection d'anomalies",
+      "featured": true,
+      "tags": [
+        "ML",
+        "Streaming",
+        "XGBoost",
+        "Temps réel"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "Apache Kafka",
+        "Apache Spark Streaming",
+        "Redis",
+        "PostgreSQL"
+      ],
+      "probleme": "Une grande banque française traitait 2 millions de transactions par jour. Son système de détection de fraude basé sur des règles manuelles bloquait trop de transactions légitimes (faux positifs) et laissait passer des fraudes sophistiquées.",
+      "solution": "Mise en place d'un pipeline de détection en temps réel : les transactions sont ingérées via Kafka, scorées en moins de 50ms par un modèle XGBoost entraîné sur 18 mois d'historique, puis les cas suspects sont envoyés à une équipe de révision. Le modèle utilise 120 features : comportement historique, géolocalisation, montant relatif, heure, fréquence.",
+      "resultats": [
+        "Réduction de 38% des fraudes non détectées",
+        "Faux positifs réduits de 52%",
+        "Temps de traitement par transaction : 45ms en moyenne",
+        "Économie annuelle estimée : 12M€"
+      ],
+      "points_cles": [
+        "La variable la plus prédictive était l'écart entre le montant et le montant moyen habituel du client",
+        "Le retraining du modèle se fait chaque semaine sur les nouvelles données labellisées",
+        "Un seuil de score différent est appliqué selon le type de transaction (virement, CB, paiement en ligne)"
+      ]
+    },
+    {
+      "id": "scoring-credit",
+      "titre": "Scoring crédit pour les PME",
+      "secteur": "Finance",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "ML",
+        "Régression logistique",
+        "Risk scoring",
+        "Explicabilité"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "Scikit-learn",
+        "SHAP",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "probleme": "Un établissement de crédit souhaitait automatiser et objectiver l'évaluation de la solvabilité des PME. Le processus manuel prenait 3 à 5 jours et reposait largement sur le jugement des conseillers.",
+      "solution": "Développement d'un modèle de scoring qui prédit la probabilité de défaut à 12 mois. Le modèle combine des données financières (bilans, compte de résultat), des données comportementales (historique bancaire) et des données sectorielles. SHAP est utilisé pour expliquer chaque décision au conseiller.",
+      "resultats": [
+        "Temps de décision réduit à 4 heures",
+        "Gini coefficient : 72 (vs 55 pour le score précédent)",
+        "Acceptation des explications par les équipes crédit : 89%",
+        "Conformité réglementaire assurée grâce à l'explicabilité SHAP"
+      ],
+      "points_cles": [
+        "L'explicabilité était un prérequis réglementaire (RGPD, directive CRR)",
+        "Les données sectorielles (taux de défaut du secteur NAF) ont été les plus impactantes",
+        "Un modèle de régression logistique a été préféré à XGBoost pour sa meilleure interprétabilité"
+      ]
+    },
+    {
+      "id": "segmentation-rfm-ecommerce",
+      "titre": "Segmentation RFM pour un site e-commerce",
+      "secteur": "Retail / E-commerce",
+      "type": "Clustering",
+      "featured": true,
+      "tags": [
+        "RFM",
+        "Clustering",
+        "K-means",
+        "CRM",
+        "Marketing"
+      ],
+      "difficulte": "Débutant",
+      "stack": [
+        "Python",
+        "Pandas",
+        "Scikit-learn",
+        "Tableau",
+        "Google BigQuery"
+      ],
+      "probleme": "Un pure player e-commerce mode envoyait les mêmes emails promotionnels à tous ses clients. Le taux d'ouverture stagnait à 12% et les désabonnements augmentaient. Les équipes marketing manquaient d'une vision claire de la valeur réelle de chaque client.",
+      "solution": "Calcul des scores RFM (Récence, Fréquence, Montant) pour chaque client sur 12 mois glissants. Application de K-means pour créer 6 segments : Champions, Fidèles, Potentiels, À risque, Endormis, Perdus. Chaque segment reçoit des communications différenciées.",
+      "resultats": [
+        "Taux d'ouverture email : +34% pour le segment Champions",
+        "Réduction du churn : -18% sur 6 mois",
+        "CA additionnel attribué aux campagnes ciblées : +220K€/trimestre",
+        "Les clients « À risque » recontactés ont été retenus à 31%"
+      ],
+      "points_cles": [
+        "Le score RFM le plus difficile à calculer est la Fréquence : il faut définir précisément ce qui compte comme une 'commande'",
+        "6 segments K-means ont été retenus après analyse de la courbe d'inertie (méthode du coude)",
+        "La mise à jour des segments se fait automatiquement chaque semaine via un pipeline BigQuery"
+      ]
+    },
+    {
+      "id": "prevision-stocks-retail",
+      "titre": "Prévision de stocks pour une chaîne de supermarchés",
+      "secteur": "Retail / E-commerce",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "Prévision",
+        "Prophet",
+        "Time Series",
+        "Supply Chain"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "Prophet (Meta)",
+        "Apache Airflow",
+        "Snowflake",
+        "Grafana"
+      ],
+      "probleme": "Une chaîne de 180 supermarchés faisait face à deux problèmes simultanés : 30% de produits frais jetés en fin de journée (surstock), et 8% de ruptures de stock sur les références phares (sous-stock). Les prévisions étaient faites manuellement par les directeurs de magasin.",
+      "solution": "Modèle Prophet par référence produit et par magasin, incorporant les effets de saisonnalité (quotidienne, hebdomadaire, annuelle), les jours fériés français, les météo locales (via API) et les événements promotionnels. Pipeline automatisé via Airflow qui génère les commandes suggérées chaque soir.",
+      "resultats": [
+        "Gaspillage produits frais : -24%",
+        "Taux de rupture : réduit de 8% à 3.2%",
+        "Économie annuelle sur les achats : estimée à 1.8M€",
+        "Adoption par les directeurs de magasin : 92% utilisent les suggestions"
+      ],
+      "points_cles": [
+        "Les jours de grande chaleur (>30°C) multiplient par 3 les ventes de boissons fraîches : un feature météo était indispensable",
+        "Prophet gère nativement les valeurs manquantes et les jours fériés",
+        "L'enjeu majeur était l'adoption : les directeurs devaient comprendre pourquoi le modèle recommandait telle quantité"
+      ]
+    },
+    {
+      "id": "maintenance-predictive-industrielle",
+      "titre": "Maintenance prédictive sur lignes de production",
+      "secteur": "Industrie",
+      "type": "Classification",
+      "featured": true,
+      "tags": [
+        "IoT",
+        "Maintenance prédictive",
+        "Time Series",
+        "Random Forest",
+        "Alertes"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Scikit-learn",
+        "InfluxDB",
+        "Grafana",
+        "MQTT",
+        "Azure IoT Hub"
+      ],
+      "probleme": "Un constructeur automobile avait 12 lignes de production générant chaque minute 500 capteurs de données (vibrations, température, pression, courant). Les pannes non planifiées coûtaient en moyenne 45 000€/heure d'arrêt. La maintenance était préventive (calendaire) et souvent inutile.",
+      "solution": "Collecte des données capteurs via MQTT et Azure IoT Hub. Feature engineering sur fenêtres glissantes (moyennes mobiles, écarts types, FFT pour les vibrations). Modèle Random Forest qui prédit la probabilité de panne à 24h, 48h et 72h. Alertes automatiques envoyées aux techniciens via application mobile.",
+      "resultats": [
+        "Réduction des arrêts non planifiés : -67%",
+        "Temps moyen entre pannes (MTBF) : +40%",
+        "Coûts de maintenance : -22% (moins d'interventions inutiles)",
+        "ROI du projet atteint en 8 mois"
+      ],
+      "points_cles": [
+        "La FFT (Transformée de Fourier Rapide) sur les données de vibration était le feature le plus prédictif des pannes mécaniques",
+        "Un modèle distinct a été entraîné pour chaque type de machine",
+        "Le seuil d'alerte a été calibré pour favoriser les faux positifs (mieux intervenir pour rien que rater une panne)"
+      ]
+    },
+    {
+      "id": "churn-prediction-telecom",
+      "titre": "Prédiction du churn clients dans la téléphonie",
+      "secteur": "Télécommunications",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Churn",
+        "Rétention",
+        "LightGBM",
+        "CRM"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "Airflow",
+        "dbt",
+        "Salesforce CRM"
+      ],
+      "probleme": "Un opérateur télécom perdait 2.8% de ses abonnés chaque mois. Le coût d'acquisition d'un nouveau client étant 5x supérieur au coût de rétention, l'objectif était d'identifier les clients susceptibles de partir 30 jours avant leur résiliation.",
+      "solution": "Modèle LightGBM entraîné sur 24 mois d'historique. Features : consommation data/voix/SMS sur 1, 3 et 6 mois glissants, historique des appels au service client, délai de paiement, durée du contrat restante, offres concurrentes consultées (via données CRM). Score calculé chaque semaine pour chaque client.",
+      "resultats": [
+        "Rappel à 30 jours : 68% des churners détectés",
+        "Taux de rétention suite à une offre commerciale ciblée : 34%",
+        "Économie annuelle estimée : 4.2M€ sur le CA perdu",
+        "Réduction du budget rétention de 28% (ciblage précis)"
+      ],
+      "points_cles": [
+        "Le nombre d'appels au service client dans les 30 derniers jours était le meilleur indicateur de départ imminent",
+        "Le modèle doit être recalibré à chaque changement tarifaire majeur",
+        "L'équipe commerciale a été formée à interpréter le score et ne pas contacter les clients avec un score trop bas (effet rebond négatif)"
+      ]
+    },
+    {
+      "id": "systeme-recommandation",
+      "titre": "Système de recommandation produits e-commerce",
+      "secteur": "Retail / E-commerce",
+      "type": "Filtrage collaboratif",
+      "featured": false,
+      "tags": [
+        "Recommandation",
+        "Collaborative Filtering",
+        "ALS",
+        "Personnalisation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Spark ALS",
+        "Feast (Feature Store)",
+        "Redis",
+        "FastAPI",
+        "A/B Testing"
+      ],
+      "probleme": "Un marketplace en ligne de 800 000 produits affichait des recommandations génériques (« Meilleures ventes »). Le taux de clic sur les recommandations était de 1.2% et la valeur du panier moyen stagnait.",
+      "solution": "Système de recommandation hybride combinant filtrage collaboratif (ALS avec Spark) pour les utilisateurs connus et filtrage basé sur le contenu pour les nouveaux visiteurs (cold start). Les recommandations sont calculées chaque nuit et servies en temps réel via Redis avec une API FastAPI.",
+      "resultats": [
+        "Taux de clic sur les recommandations : +3.1% (+158%)",
+        "Valeur panier moyen : +12%",
+        "Taux de conversion : +8.4%",
+        "CA additionnel attribué : +1.1M€/mois sur le trafic concerné"
+      ],
+      "points_cles": [
+        "Le problème du cold start (nouveaux utilisateurs sans historique) a nécessité une approche hybride",
+        "Un A/B test solide sur 3 semaines était indispensable pour valider l'impact réel",
+        "La fraîcheur des données est critique : les comportements d'achat du jour influencent fortement les recommandations"
+      ]
+    },
+    {
+      "id": "detection-tumeurs-ia",
+      "titre": "Détection de tumeurs sur imagerie médicale",
+      "secteur": "Santé",
+      "type": "Computer Vision",
+      "featured": true,
+      "tags": [
+        "Deep Learning",
+        "CNN",
+        "Computer Vision",
+        "Santé",
+        "ResNet"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PyTorch",
+        "ResNet-50",
+        "MONAI",
+        "Docker",
+        "AWS SageMaker"
+      ],
+      "probleme": "Un CHU cherchait à assister les radiologues dans la détection de nodules pulmonaires sur des scanners thoraciques. La détection manuelle prenait 20 à 40 minutes par patient et le taux de détection précoce restait insuffisant pour les nodules < 6mm.",
+      "solution": "Réseau de neurones convolutif (CNN) basé sur ResNet-50, fine-tuné sur 45 000 scanners annotés par des radiologues experts. Le modèle génère une carte de chaleur (heatmap) superposée au scanner, indiquant les zones suspectes. Le radiologue prend la décision finale, le modèle ne fait que prioriser.",
+      "resultats": [
+        "Sensibilité (rappel) : 94.2% pour les nodules > 4mm",
+        "Spécificité : 89.7%",
+        "Temps de lecture réduit de 40 à 12 minutes en moyenne",
+        "Taux de détection précoce : +31%"
+      ],
+      "points_cles": [
+        "Le modèle ne remplace pas le médecin, il priorise sa liste de travail",
+        "La qualité des annotations est critique : les masques ont été réalisés par 3 radiologues seniors avec un consensus",
+        "MONAI (bibliothèque PyTorch spécialisée imagerie médicale) a accéléré significativement le preprocessing"
+      ]
+    },
+    {
+      "id": "prevision-consommation-energie",
+      "titre": "Prévision de consommation électrique nationale",
+      "secteur": "Énergie",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "LSTM",
+        "Énergie",
+        "Prévision",
+        "Deep Learning",
+        "Séries temporelles"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "TensorFlow/Keras",
+        "LSTM",
+        "Apache Airflow",
+        "InfluxDB",
+        "Grafana"
+      ],
+      "probleme": "Un opérateur de réseau électrique devait prévoir la consommation nationale à J+1 et J+7 pour optimiser la production et éviter les déséquilibres réseau. Les erreurs de prévision pouvaient entraîner des coûts d'équilibrage de plusieurs millions d'euros.",
+      "solution": "Réseau LSTM multi-variate prenant en entrée : consommation historique (2 ans), prévisions météo (température, nuages, vent) pour 200 stations, données calendaires (jour, heure, jours fériés), événements exceptionnels (confinements, grèves). Horizon de prévision : 48h avec pas de 30 minutes.",
+      "resultats": [
+        "MAPE (erreur relative moyenne) : 1.8% sur J+1",
+        "Amélioration vs modèle précédent : -35% d'erreur",
+        "Économie sur les coûts d'équilibrage : estimée à 8M€/an",
+        "Déploiement en production depuis 18 mois sans interruption majeure"
+      ],
+      "points_cles": [
+        "La température est la variable la plus corrélée à la consommation (corrélation de -0.85 en hiver)",
+        "Les jours fériés ont un profil de consommation très différent selon le jour de la semaine sur lequel ils tombent",
+        "Un LSTM est adapté car il « mémorise » des patterns sur plusieurs jours (ex: le dimanche après un samedi chargé)"
+      ]
+    },
+    {
+      "id": "nlp-avis-clients",
+      "titre": "Analyse automatique des avis clients",
+      "secteur": "Retail / E-commerce",
+      "type": "NLP / Traitement du langage",
+      "featured": false,
+      "tags": [
+        "NLP",
+        "BERT",
+        "Sentiment Analysis",
+        "Verbatims",
+        "CRM"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "HuggingFace Transformers",
+        "FastAPI",
+        "PostgreSQL",
+        "Metabase"
+      ],
+      "probleme": "Une enseigne de grande distribution recevait 4 000 avis clients par semaine sur différents canaux (site, app, Google, emails). Les équipes Quality n'avaient pas le temps de les lire tous et les problèmes critiques remontaient trop lentement.",
+      "solution": "Pipeline NLP avec CamemBERT (modèle BERT adapté au français) pour : 1) Classifier le sentiment (positif, négatif, neutre), 2) Extraire les thèmes automatiquement (livraison, qualité produit, service client, prix), 3) Détecter les avis urgents (mentions légales, sécurité alimentaire). Dashboard Metabase mis à jour quotidiennement.",
+      "resultats": [
+        "Couverture des avis lus : 100% vs 15% avant",
+        "Temps de détection des problèmes critiques : < 2 heures vs 3-5 jours",
+        "Score NPS amélioré de +12 points en 6 mois",
+        "Économie en temps humain : 3 ETP redirigés vers la résolution de problèmes"
+      ],
+      "points_cles": [
+        "CamemBERT (vs BERT anglais) était indispensable pour la précision sur le français avec ses expressions idiomatiques",
+        "Les sarcasmes et l'humour dans les avis ont nécessité des règles spéciales et beaucoup d'exemples d'entraînement",
+        "Un dashboard sans alerte automatique ne suffit pas : des notifications Slack ont été ajoutées pour les sujets urgents"
+      ]
+    },
+    {
+      "id": "optimisation-itineraires-logistique",
+      "titre": "Optimisation des tournées de livraison",
+      "secteur": "Transport / Logistique",
+      "type": "Optimisation",
+      "featured": false,
+      "tags": [
+        "Optimisation",
+        "OR-Tools",
+        "Logistique",
+        "Routing",
+        "Algorithmes"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Google OR-Tools",
+        "OpenRouteService",
+        "PostgreSQL",
+        "React"
+      ],
+      "probleme": "Une entreprise de livraison du dernier kilomètre avait 50 véhicules et 800 points de livraison quotidiens. Le routage manuel par les dispatchers prenait 2 heures chaque matin et les tournées n'étaient pas optimales (km inutiles, heures sup).",
+      "solution": "Résolution du problème CVRPTW (Capacitated Vehicle Routing Problem with Time Windows) avec Google OR-Tools. Le programme intègre les contraintes : capacité des véhicules, fenêtres horaires des clients, durée de service, temps de conduite légaux. Résolution en 8-12 minutes pour 800 points.",
+      "resultats": [
+        "Kilométrage total réduit de 18%",
+        "Carburant économisé : 23 000€/mois",
+        "Temps de dispatching : 2h → 15 minutes",
+        "Taux de livraisons dans les créneaux promis : 94% vs 78%"
+      ],
+      "points_cles": [
+        "OR-Tools utilise des méta-heuristiques (LNS - Large Neighborhood Search) pour trouver une bonne solution sans garantie d'optimalité absolue",
+        "L'intégration des données temps réel (bouchons) via l'API HERE Maps a été l'amélioration la plus impactante",
+        "L'outil a dû être expliqué aux dispatchers : les anciens ne faisaient pas confiance à un 'algorithme'"
+      ]
+    },
+    {
+      "id": "controle-qualite-vision",
+      "titre": "Contrôle qualité automatique par vision artificielle",
+      "secteur": "Industrie",
+      "type": "Computer Vision",
+      "featured": false,
+      "tags": [
+        "Computer Vision",
+        "YOLO",
+        "Qualité",
+        "Industrie",
+        "Temps réel"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "YOLOv8",
+        "OpenCV",
+        "NVIDIA Jetson",
+        "InfluxDB",
+        "Grafana"
+      ],
+      "probleme": "Une usine de packaging contrôlait visuellement 100% de sa production manuellement (12 opérateurs à 3x8). La cadence était de 2 000 unités/heure avec un taux d'erreur de 0.8% (produits défectueux non détectés passant chez les clients).",
+      "solution": "Système de vision industrielle avec 3 caméras par ligne et un modèle YOLOv8 inférant en temps réel sur GPU embarqué (NVIDIA Jetson). Détection de 14 types de défauts : déchirures, mauvais positionnement d'étiquette, corps étranger visible, mauvaise soudure. Rejet automatique des produits non conformes.",
+      "resultats": [
+        "Cadence atteinte : 3 500 unités/heure (+75%)",
+        "Taux de défauts non détectés : réduit à 0.05%",
+        "Réduction des réclamations clients : -91%",
+        "Retour sur investissement : 14 mois"
+      ],
+      "points_cles": [
+        "L'éclairage industriel contrôlé était aussi important que le modèle lui-même (bruit ambiant, reflets)",
+        "YOLOv8 a été fine-tuné sur 15 000 images annotées par les experts qualité",
+        "Un tableau de bord temps réel affiche le taux de conformité par ligne pour les chefs d'équipe"
+      ]
+    },
+    {
+      "id": "prediction-depart-employes",
+      "titre": "Prédiction du départ des employés (HR Analytics)",
+      "secteur": "RH",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "RH",
+        "Churn employés",
+        "LightGBM",
+        "People Analytics"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "Power BI",
+        "HR API Workday",
+        "SHAP"
+      ],
+      "probleme": "Un groupe de 8 000 employés connaissait un turnover annuel de 18%, coûtant en moyenne 25 000€ par départ (recrutement, formation, perte de compétences). Les RH n'avaient aucun signal avancé pour agir avant les démissions.",
+      "solution": "Modèle LightGBM entraîné sur 3 ans d'historique RH : ancienneté, évolution salariale vs marché, nombre d'entretiens de feedback, absences, promotions reçues, satisfaction enquête annuelle. Score de risque calculé chaque trimestre par manager. Les managers reçoivent une alerte quand un employé dépasse 70% de probabilité de départ à 6 mois.",
+      "resultats": [
+        "Taux de rétention amélioré de +12% en 18 mois",
+        "67% des « hauts risques » identifiés retenus grâce à des actions ciblées",
+        "Économie annuelle estimée : 1.4M€ sur le coût du turnover",
+        "Adoption des managers : 78% consultent le tableau de bord mensuel"
+      ],
+      "points_cles": [
+        "La variable la plus prédictive était l'écart entre le salaire de l'employé et le salaire médian du marché pour son poste",
+        "SHAP a été indispensable : les managers voulaient comprendre POURQUOI un employé était à risque, pas juste un score",
+        "Le projet a nécessité un accord avec les représentants du personnel sur l'utilisation éthique des données RH"
+      ]
+    },
+    {
+      "id": "conformite-aml",
+      "titre": "Monitoring de transactions suspects (Anti-Money Laundering)",
+      "secteur": "Finance",
+      "type": "Détection d'anomalies",
+      "featured": true,
+      "tags": [
+        "AML",
+        "Compliance",
+        "Graph Analytics",
+        "Banque",
+        "Réglementation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Apache Spark",
+        "Neo4j",
+        "Isolation Forest",
+        "GraphSAGE",
+        "Elasticsearch"
+      ],
+      "probleme": "Une banque régionale générait 45 000 alertes AML par mois avec ses règles métier. 95% étaient des faux positifs, mobilisant 30 analystes à temps plein. Le régulateur demandait une amélioration de la détection avec moins de bruit.",
+      "solution": "Approche hybride : les règles métier détectent les patterns connus (seuils, pays à risque) et un modèle d'anomalies (Isolation Forest) détecte les comportements inhabituels. Un graphe de relations clients (Neo4j + GraphSAGE) identifie les réseaux de transactions circulaires (typiques du blanchiment). Les alertes sont priorisées par un score composite.",
+      "resultats": [
+        "Faux positifs réduits de 95% à 72% (-23 points)",
+        "Détection de 15 nouveaux schémas de fraude non couverts par les règles",
+        "Temps d'investigation par alerte réduit de 45 à 18 minutes",
+        "Rapport au régulateur validé sans réserve majeure"
+      ],
+      "points_cles": [
+        "L'analyse par graphe était la clé : les fraudes AML impliquent rarement une seule transaction isolée, mais des réseaux d'entités",
+        "La conformité réglementaire impose une explicabilité totale — chaque alerte doit être justifiable à un auditeur humain",
+        "Le projet a pris 14 mois (dont 6 de validation légale) avant mise en production"
+      ]
+    },
+    {
+      "id": "scoring-esg",
+      "titre": "Scoring ESG automatisé pour fonds d'investissement",
+      "secteur": "Finance",
+      "type": "NLP / Traitement du langage",
+      "featured": false,
+      "tags": [
+        "ESG",
+        "NLP",
+        "Finance durable",
+        "Taxonomie",
+        "Rapports"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "HuggingFace",
+        "dbt",
+        "Snowflake",
+        "Tableau"
+      ],
+      "probleme": "Un asset manager gérant 4 Mds€ devait noter les entreprises en portefeuille selon 120 critères ESG (taxonomie européenne) pour se conformer à SFDR. La notation manuelle des 200 entreprises prenait 3 mois à 4 analystes ESG.",
+      "solution": "Pipeline NLP qui extrait automatiquement les informations ESG des rapports annuels, déclarations RSE et communiqués de presse (400 à 1200 pages par entreprise). CamemBERT identifie les passages pertinents par critère, les note avec un niveau de confiance. Les analystes valident les extraits incertains. Le scoring complet d'une entreprise passe de 2 semaines à 4 heures.",
+      "resultats": [
+        "Temps de scoring réduit de 3 mois à 2 semaines pour 200 entreprises",
+        "Couverture des documents passée de 35% à 100%",
+        "Niveau de confiance moyen des extractions : 82%",
+        "Conformité SFDR article 9 certifiée par l'auditeur externe"
+      ],
+      "points_cles": [
+        "Les rapports ESG sont souvent très longs et peu structurés : la chunking strategy (découpage en sections) était critique",
+        "Le modèle doit distinguer les engagements ESG réels des déclarations marketing vagues (greenwashing)",
+        "Une base de vérité de 5 000 extraits annotés manuellement était nécessaire pour le fine-tuning"
+      ]
+    },
+    {
+      "id": "personnalisation-email-nlp",
+      "titre": "Personnalisation d'emails marketing par NLP",
+      "secteur": "Marketing",
+      "type": "NLP / Traitement du langage",
+      "featured": false,
+      "tags": [
+        "Email Marketing",
+        "NLP",
+        "Personnalisation",
+        "CamemBERT",
+        "A/B Testing"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "Braze",
+        "Segment",
+        "BigQuery",
+        "Google Optimize"
+      ],
+      "probleme": "Une marque de grande consommation envoyait les mêmes emails à 500 000 abonnés. Taux d'ouverture moyen : 14%. Les lignes d'objet étaient écrites manuellement par l'équipe marketing (5 versions différentes maximum par campagne).",
+      "solution": "Modèle de génération d'objets d'email personnalisés : pour chaque client, le modèle considère son historique d'achats, ses catégories préférées, sa sensibilité aux promotions et son comportement d'ouverture. GPT-4 fine-tuné génère 10 variantes d'objet. Le meilleur objet est sélectionné par un modèle de prédiction d'ouverture entraîné sur l'historique.",
+      "resultats": [
+        "Taux d'ouverture : +38% (de 14% à 19.3%)",
+        "Taux de clic : +52%",
+        "Chiffre d'affaires attribué aux emails : +890K€/trimestre",
+        "Réduction du temps de création des campagnes : -60%"
+      ],
+      "points_cles": [
+        "La longueur optimale d'un objet varie par segment : les clients seniors préfèrent des objets courts et clairs, les millennials acceptent plus d'emojis et de dynamisme",
+        "Le test A/B sur 3 semaines était obligatoire avant déploiement total pour valider l'impact causal",
+        "La réglementation RGPD imposait un opt-in explicite pour la personnalisation avancée"
+      ]
+    },
+    {
+      "id": "prevision-demande-hoteliere",
+      "titre": "Prévision de la demande hôtelière",
+      "secteur": "Tourisme",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "Hôtellerie",
+        "Prophet",
+        "Revenue Management",
+        "Pricing dynamique"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "Prophet",
+        "PySpark",
+        "Apache Airflow",
+        "Tableau",
+        "Snowflake"
+      ],
+      "probleme": "Un groupe hôtelier avec 45 établissements fixait ses prix manuellement, 30 jours à l'avance. Les taux d'occupation variaient de 45% à 98% selon les établissements, et les prix n'étaient pas optimisés en fonction des événements locaux et des tendances de réservation.",
+      "solution": "Modèle Prophet par hôtel incorporant : saisonnalité (saison, jour de la semaine), événements locaux (concerts, conférences, fériés), météo, concurrence (scraping des prix sur Booking.com), nombre de recherches Google Trends pour la destination. Prix recommandé calculé chaque matin pour J+1 à J+90 et envoyé aux revenue managers.",
+      "resultats": [
+        "RevPAR (revenu par chambre disponible) : +17%",
+        "Taux d'occupation optimisé : +8 points en moyenne",
+        "Réduction des surréservations : -42%",
+        "Adoption des recommandations : 84% acceptées sans modification"
+      ],
+      "points_cles": [
+        "Les événements locaux non planifiés (manifestations, incidents) restaient la principale source d'erreur",
+        "La scraping des prix concurrents en temps réel (via Bright Data) avait plus d'impact que la météo pour les villes d'affaires",
+        "Les revenue managers n'acceptaient les recommandations que si l'explication accompagnait le prix suggéré"
+      ]
+    },
+    {
+      "id": "analyse-sinistres-cv",
+      "titre": "Évaluation automatique des dommages auto par IA visuelle",
+      "secteur": "Assurance",
+      "type": "Computer Vision",
+      "featured": false,
+      "tags": [
+        "Assurance",
+        "Computer Vision",
+        "YOLOv8",
+        "Claims",
+        "Automatisation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "YOLOv8",
+        "Segment Anything (Meta)",
+        "FastAPI",
+        "AWS S3",
+        "PostgreSQL"
+      ],
+      "probleme": "Un assureur automobile recevait 8 000 déclarations de sinistres par mois. L'expertise manuelle des dommages prenait 5 à 10 jours et coûtait 180€ par sinistre. 60% des sinistres concernaient des dommages mineurs (< 2 000€) pouvant être traités sans déplacement d'un expert.",
+      "solution": "Application mobile permettant aux assurés de photographier leur véhicule (6 angles imposés). Le modèle YOLOv8 identifie et localise chaque zone endommagée. Segment Anything segmente précisément les zones abîmées pour estimer la surface. Un modèle de régression estime le coût de réparation en fonction des dommages détectés et des tarifs de la région.",
+      "resultats": [
+        "60% des sinistres traités sans expert humain en < 2h (vs 7 jours avant)",
+        "Coût par sinistre automatisé : 12€ vs 180€ manuel",
+        "Satisfaction client : NPS passé de 28 à 61",
+        "Fraude détectée : photos retouchées ou réutilisées identifiées dans 2.3% des cas"
+      ],
+      "points_cles": [
+        "L'éclairage des photos était un problème majeur : des instructions précises avec exemples ont dû être fournies aux assurés dans l'app",
+        "Le modèle a été entraîné sur 120 000 photos de véhicules annotées par des experts en carrosserie",
+        "La détection de fraude (photos de sinistres antérieurs) était un bénéfice non anticipé mais très valorisé"
+      ]
+    },
+    {
+      "id": "chatbot-juridique-rag",
+      "titre": "Chatbot juridique sur documents contractuels (RAG)",
+      "secteur": "Services professionnels",
+      "type": "NLP / Traitement du langage",
+      "featured": true,
+      "tags": [
+        "LLM",
+        "RAG",
+        "LangChain",
+        "GPT-4",
+        "Juridique",
+        "IA Générative"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LangChain",
+        "GPT-4 (Azure OpenAI)",
+        "ChromaDB",
+        "FastAPI",
+        "React"
+      ],
+      "probleme": "Un cabinet d'avocats d'affaires gérait 15 000 contrats actifs (baux commerciaux, CDI, NDA, SLA). Répondre à une question simple (« Quelle est la clause de résiliation du contrat Acme ? ») nécessitait de retrouver manuellement le bon contrat dans l'ERP et de le lire. 2h de travail en moyenne par requête.",
+      "solution": "Architecture RAG (Retrieval Augmented Generation) : tous les contrats sont découpés en chunks, vectorisés (OpenAI embeddings) et stockés dans ChromaDB. À chaque question, les 5 chunks les plus similaires sont récupérés et injectés dans le contexte de GPT-4 qui génère une réponse précise avec citation du passage source. Interface React pour les juristes.",
+      "resultats": [
+        "Temps de réponse moyen : < 30 secondes vs 2 heures",
+        "Précision des réponses validée par les juristes : 91%",
+        "Utilisateurs actifs : 87% des juristes du cabinet après 2 mois",
+        "Économie estimée : 180 heures de travail/mois soit ~45K€/mois"
+      ],
+      "points_cles": [
+        "La stratégie de chunking des contrats est critique : couper en milieu d'une clause rend la réponse incorrecte — il faut détecter les sections logiques",
+        "Le modèle répond « je ne sais pas » quand la confiance est faible : forcer une réponse risquait des hallucinations dangereuses dans un contexte juridique",
+        "La gestion des droits d'accès était essentielle : un juriste junior ne doit pas accéder à des contrats confidentiels seniors"
+      ]
+    },
+    {
+      "id": "optimisation-menu-ab-testing",
+      "titre": "Optimisation du menu par A/B testing bayésien",
+      "secteur": "Restauration",
+      "type": "A/B Testing",
+      "featured": false,
+      "tags": [
+        "A/B Testing",
+        "Bayésien",
+        "Restauration",
+        "Menu Engineering",
+        "Python"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "PyMC",
+        "Looker Studio",
+        "Lightspeed POS API",
+        "Google Sheets"
+      ],
+      "probleme": "Une chaîne de 12 restaurants souhaitait optimiser la présentation de son menu digital. L'ordre des plats, les photos, les descriptions et les prix influençaient les choix mais aucun test rigoureux n'avait été mené. Marge brute moyenne : 62%, objectif d'atteindre 67%.",
+      "solution": "Tests A/B bayésiens sur l'application de commande : pour chaque restaurant, des variantes de menu sont testées en rotation (ordre des plats, présentation des recommandations, mise en avant des marges élevées). L'approche bayésienne permet de conclure plus tôt que les tests fréquentistes classiques, et d'allouer plus de trafic aux variantes gagnantes en temps réel (bandit multi-bras).",
+      "resultats": [
+        "Marge brute passée de 62% à 68% (+6 points)",
+        "Ticket moyen : +14% grâce à la mise en avant des plats à forte marge",
+        "Réduction du temps de décision des tests : 40% plus rapide (bayésien vs fréquentiste)",
+        "3 insights non anticipés : les photos de plats augmentent les commandes de 28%"
+      ],
+      "points_cles": [
+        "L'approche multi-bras bayésienne (Thompson Sampling) permet d'optimiser en temps réel sans attendre la fin du test",
+        "L'effet 'heure du repas' était fort : la même variante performait différemment le midi vs le soir",
+        "Les tests portaient sur un seul élément à la fois pour isoler l'effet causal"
+      ]
+    },
+    {
+      "id": "detection-fake-news",
+      "titre": "Détection de fake news par analyse NLP",
+      "secteur": "Médias",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Fake News",
+        "BERT",
+        "NLP",
+        "Médias",
+        "Fact-checking"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "HuggingFace",
+        "FastAPI",
+        "Neo4j",
+        "Elasticsearch"
+      ],
+      "probleme": "Un groupe média souhaitait pré-filtrer les contenus soumis par des agences de presse partenaires pour détecter automatiquement les articles potentiellement inexacts ou trompeurs, afin d'orienter les fact-checkers sur les articles les plus à risque.",
+      "solution": "Modèle multi-tâches basé sur CamemBERT : classification du ton (alarmiste/neutre), vérification des sources citées, détection des formulations manipulatoires, comparaison avec la base d'articles fact-checkés (embeddings similaires). Chaque article reçoit un score de risque de 0 à 100 avec les passages suspects soulignés.",
+      "resultats": [
+        "Rappel sur les fake news connues : 79%",
+        "Priorisation correcte des articles nécessitant un fact-check : 71%",
+        "Temps économisé pour l'équipe fact-checking : 3h/jour",
+        "Faux positifs (articles neutres mal flaggés) : 18%"
+      ],
+      "points_cles": [
+        "La désinformation évolue vite : le modèle nécessite un retraining mensuel sur les nouveaux patterns détectés",
+        "Les articles satiriques étaient régulièrement confondus avec des fake news — un label 'satire' dans les métadonnées a été ajouté",
+        "Le modèle est un outil d'aide à la décision, pas un censeur automatique : toute décision finale reste humaine"
+      ]
+    },
+    {
+      "id": "supply-chain-disruption",
+      "titre": "Prédiction des ruptures supply chain",
+      "secteur": "Transport / Logistique",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Supply Chain",
+        "XGBoost",
+        "Données satellites",
+        "Alertes",
+        "Risque"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "API Orbital Insight (satellites)",
+        "Airflow",
+        "Snowflake",
+        "Slack API"
+      ],
+      "probleme": "Un distributeur industriel s'approvisionnait auprès de 380 fournisseurs dans 40 pays. Les ruptures de stock imprévues coûtaient 3.2M€/an en commandes urgentes et pertes de ventes. Les équipes achats ne savaient pas anticiper les problèmes chez les fournisseurs.",
+      "solution": "Modèle XGBoost qui agrège des signaux faibles pour chaque fournisseur : données satellites d'activité des usines (présence de camions, chaleur IR), météo extrême dans les zones de production, indices PMI du secteur, délais de paiement du fournisseur, historique de retards. Alertes envoyées dans Slack 4 à 8 semaines avant la rupture estimée.",
+      "resultats": [
+        "Ruptures non anticipées réduites de 64%",
+        "Lead time moyen de réapprovisionnement réduit de 3.5 à 2.1 semaines",
+        "Économie sur commandes urgentes : 1.8M€/an",
+        "Score de satisfaction fournisseurs : +12 (meilleure relation grâce à la proactivité)"
+      ],
+      "points_cles": [
+        "Les données satellites d'Orbital Insight permettaient de détecter une baisse d'activité d'une usine (moins de camions) 3 semaines avant l'annonce officielle du fournisseur",
+        "Le feature le plus prédictif était l'historique de délais : un fournisseur qui commence à livrer en retard de 1-2 jours anticipe souvent une rupture",
+        "Des faux positifs trop nombreux auraient tué l'adoption — le seuil d'alerte a été calibré pour < 20% de faux positifs"
+      ]
+    },
+    {
+      "id": "performance-sportive-iot",
+      "titre": "Monitoring de performance sportive par IoT",
+      "secteur": "Sport",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "IoT",
+        "Sport",
+        "LSTM",
+        "InfluxDB",
+        "Wearables",
+        "Biomécanique"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LSTM",
+        "InfluxDB",
+        "Grafana",
+        "BLE (capteurs)",
+        "FastAPI"
+      ],
+      "probleme": "Un club de football professionnel voulait réduire les blessures musculaires (coûtant en moyenne 250K€/blessure en soins et matchs ratés) et optimiser la charge d'entraînement. Les préparateurs physiques se basaient sur l'intuition et des tests hebdomadaires.",
+      "solution": "Capteurs portables (GPS, accéléromètre, cardiofréquencemètre) sur chaque joueur pendant les entraînements et matchs. Les données (500Hz) sont stockées dans InfluxDB. Un modèle LSTM prédit le risque de blessure à 7 jours en analysant l'accumulation de charge (charge aiguë vs chronique), la variabilité de la fréquence cardiaque et les patterns de mouvement. Tableau de bord temps réel sur iPad pour les préparateurs.",
+      "resultats": [
+        "Blessures musculaires réduites de 34% en une saison",
+        "Performance collective (ratio victoires) : +8% sur la saison",
+        "Charge d'entraînement optimisée : 12% de volume en moins, même résultat athlétique",
+        "Économie estimée sur les arrêts blessures : 780K€ sur la saison"
+      ],
+      "points_cles": [
+        "Le ratio charge aiguë/chronique (ACWR) était le prédicteur le plus robuste : un ratio > 1.5 en 7 jours multiplie par 4 le risque de blessure",
+        "La confiance des joueurs et des entraîneurs dans les données était critique — une phase de 4 semaines d'explication a précédé l'utilisation opérationnelle",
+        "Les données comportementales (sommeil, humeur) ajoutées via une app auto-déclarative ont significativement amélioré les prédictions"
+      ]
+    },
+    {
+      "id": "imagerie-satellitaire-agriculture",
+      "titre": "Analyse d'imagerie satellitaire pour l'agriculture de précision",
+      "secteur": "Environnement",
+      "type": "Computer Vision",
+      "featured": false,
+      "tags": [
+        "Satellite",
+        "U-Net",
+        "Agriculture",
+        "NDVI",
+        "Computer Vision"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PyTorch",
+        "U-Net",
+        "Sentinel-2 API",
+        "GeoPandas",
+        "FastAPI",
+        "Mapbox"
+      ],
+      "probleme": "Une coopérative agricole regroupant 600 exploitations souhaitait optimiser l'usage des engrais et pesticides. Les agriculteurs traitaient leurs parcelles uniformément, gaspillant en moyenne 30% des intrants sur des zones non déficitaires.",
+      "solution": "Pipeline d'analyse hebdomadaire : images Sentinel-2 (résolution 10m) téléchargées via l'API Copernicus, calcul du NDVI (indice de végétation) par parcelle, modèle U-Net de segmentation qui identifie les zones en stress hydrique ou nutritif. Recommandations d'épandage modulé générées par parcelle et envoyées directement aux équipements agricoles connectés (Agriculture 4.0).",
+      "resultats": [
+        "Réduction des intrants (engrais, eau, pesticides) : -28% en volume",
+        "Rendements maintenus ou améliorés (+4%)",
+        "Économie moyenne par exploitation : 3 200€/an",
+        "Empreinte carbone agricole de la coopérative : -21%"
+      ],
+      "points_cles": [
+        "La couverture nuageuse (fréquente) nécessitait une stratégie de remplacement d'images manquantes par interpolation temporelle",
+        "La résolution de 10m de Sentinel-2 est suffisante pour les grandes parcelles, mais des drones (résolution cm) étaient nécessaires pour les petites exploitations",
+        "La réglementation agricole française encadre l'utilisation des données parcellaires — une charte de données spécifique a été signée avec chaque agriculteur"
+      ]
+    },
+    {
+      "id": "prediction-delais-paiement",
+      "titre": "Prédiction des délais de paiement interentreprises",
+      "secteur": "Finance",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Finance B2B",
+        "DSO",
+        "XGBoost",
+        "Crédit interentreprises",
+        "Cash flow"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "dbt",
+        "Snowflake",
+        "Salesforce CRM",
+        "Power BI"
+      ],
+      "probleme": "Un fournisseur industriel avec 1 200 clients B2B avait un DSO (Days Sales Outstanding) de 62 jours vs 45 jours contractuels. Les équipes de recouvrement contactaient tous les retardataires indifféremment, perdant du temps sur les bons payeurs temporairement en retard.",
+      "solution": "Modèle XGBoost qui prédit, dès la facturation, la probabilité qu'une facture soit payée en retard de plus de 15 jours. Features : historique de paiement du client (12 mois), secteur d'activité, taille de la commande, période (fin de trimestre), ratio DSO actuel du client, derniers échanges email (NLP : sentiment négatif dans les échanges récents). Les relances sont priorisées automatiquement.",
+      "resultats": [
+        "DSO réduit de 62 à 49 jours en 6 mois (-13 jours)",
+        "Cash flow libéré : 4.2M€ supplémentaires en fonds de roulement",
+        "Temps de l'équipe recouvrement réduit de 35% (fini les relances inutiles)",
+        "Taux de paiement à l'échéance : 74% vs 61% avant (sur les clients contactés)"
+      ],
+      "points_cles": [
+        "Le sentiment des emails de communication avec le client dans les 30 derniers jours était un signal fort : les entreprises en difficulté envoient souvent des messages vagues ou retardés",
+        "Le modèle devait être recalibré après chaque crise macroéconomique (COVID, inflation 2022)",
+        "L'équipe recouvrement a été formée à lire les explications SHAP pour adapter leur approche : un client avec problème de trésorerie nécessite un traitement différent d'un mauvais payeur chronique"
+      ]
+    },
+    {
+      "id": "reporting-esg-taxonomie",
+      "titre": "Reporting ESG automatisé : Taxonomie verte et SFDR",
+      "secteur": "Finance",
+      "type": "Reporting réglementaire",
+      "featured": true,
+      "tags": [
+        "ESG",
+        "Taxonomie",
+        "SFDR",
+        "NLP",
+        "Réglementation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "HuggingFace",
+        "dbt",
+        "Snowflake",
+        "Power BI"
+      ],
+      "probleme": "Une société de gestion d'actifs gérant 8 Mds€ dans des fonds Article 8 et 9 (SFDR) devait calculer le taux d'alignement Taxonomie européenne pour 350 entreprises en portefeuille. Le processus manuel mobilisait 6 analystes ESG pendant 4 mois par an, avec des données souvent indisponibles ou contradictoires entre sources.",
+      "solution": "Pipeline NLP qui extrait automatiquement les indicateurs de la Taxonomie depuis les rapports annuels, déclarations RSE et données Bloomberg ESG. Un modèle CamemBERT fine-tuné classe les passages par objectif environnemental et calcule les taux d'éligibilité et d'alignement. Les données manquantes sont imputées par un modèle de régression entraîné sur les entreprises similaires. Un dashboard Power BI présente les résultats aux gérants de fonds.",
+      "resultats": [
+        "Réduction du temps de calcul de 4 mois à 3 semaines",
+        "Couverture documentaire passée de 40% à 95% des rapports analysés",
+        "Conformité SFDR Article 9 certifiée par l'auditeur externe",
+        "Économie de 4 ETP d'analystes redirectionnés vers l'engagement actionnarial"
+      ],
+      "points_cles": [
+        "La détection du greenwashing (engagements ESG non étayés par des chiffres) était la valeur ajoutée clé du NLP",
+        "Les données sur le critère DNSH (Do No Significant Harm) étaient les plus difficiles à trouver dans les rapports",
+        "Une base de vérité de 8 000 extraits annotés par secteur d'activité était nécessaire pour le fine-tuning"
+      ]
+    },
+    {
+      "id": "churn-telecom-nlp",
+      "titre": "Prédiction de churn Télécom enrichie par le NLP",
+      "secteur": "Télécommunications",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Churn",
+        "NLP",
+        "LightGBM",
+        "CRM",
+        "Sentiment Analysis"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "CamemBERT",
+        "dbt",
+        "Snowflake",
+        "Salesforce CRM"
+      ],
+      "probleme": "Un opérateur télécom B2C constatait que son modèle de churn basé sur les données comportementales (consommation, factures) détectait 62% des départs à 30 jours. Les retours d'expérience terrain indiquaient que les verbatims du service client contenaient des signaux forts non exploités.",
+      "solution": "Enrichissement du modèle existant avec une analyse NLP des verbatims du service client des 60 derniers jours (transcriptions d'appels, messages chat, emails). Un modèle CamemBERT extrait le sentiment, la catégorie du problème (réseau, facturation, service) et l'urgence. Ces features NLP sont combinées aux données comportementales dans un LightGBM qui prédit le churn.",
+      "resultats": [
+        "Rappel à 30 jours amélioré de 62% à 81% (+19 points)",
+        "Précision maintenue à 74% malgré la hausse du rappel",
+        "Taux de rétention des clients « à risque contactés » : 41% vs 34% avant",
+        "Économie additionnelle estimée : 2.1M€/an vs le modèle précédent"
+      ],
+      "points_cles": [
+        "Les verbatims contenant les mots « résilier », 'concurrent' ou 'offre' avaient un pouvoir prédictif de 3x supérieur aux données comportementales",
+        "La combinaison de features comportementales + NLP nécessitait une normalisation soigneuse pour éviter que le NLP domine trop",
+        "Les appels transcrits par IA (Whisper) avaient 8% d'erreur sur les noms propres — sans impact sur le sentiment"
+      ]
+    },
+    {
+      "id": "recommandation-ecommerce-collaborative",
+      "titre": "Recommandation produits e-commerce par Collaborative Filtering",
+      "secteur": "Retail",
+      "type": "Recommandation",
+      "featured": false,
+      "tags": [
+        "Collaborative Filtering",
+        "ALS",
+        "Spark",
+        "Personnalisation",
+        "Cold Start"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PySpark ALS",
+        "Redis",
+        "FastAPI",
+        "Feast Feature Store",
+        "A/B Testing"
+      ],
+      "probleme": "Un marketplace mode avec 1.2M de produits actifs affichait des recommandations « Meilleures ventes » identiques pour tous ses visiteurs. Le taux de clic sur les blocs recommandations était de 0.9% et la valeur du panier moyen stagnait à 67€. 80% des achats se concentraient sur les 5% des références les plus populaires.",
+      "solution": "Système de recommandation hybride : ALS (Alternating Least Squares) avec Spark pour les utilisateurs ayant un historique d'achat (>3 achats), content-based filtering sur les attributs produits (couleur, matière, style, marque) pour les nouveaux visiteurs (cold start), et bandit multi-bras pour l'exploitation/exploration. Serving en temps réel via Redis avec TTL de 24h.",
+      "resultats": [
+        "Taux de clic recommandations : +2.8% (+311% vs 0.9%)",
+        "Valeur panier moyen : +19€ (+28%)",
+        "Diversité des références vendues : 5% des produits représentent maintenant 62% du CA (vs 80%)",
+        "CA additionnel mensuel attribué : +680K€"
+      ],
+      "points_cles": [
+        "Le cold start était le problème principal : 45% des visiteurs n'ont pas d'historique — le content-based était indispensable",
+        "L'exploration via bandit multi-bras permettait de faire émerger de nouvelles tendances (articles saisonniers qui montent)",
+        "La filtration des produits en rupture de stock dans le serving temps réel était critique (Redis + stock API)"
+      ]
+    },
+    {
+      "id": "qualite-air-iot-time-series",
+      "titre": "Surveillance de la qualité de l'air par IoT",
+      "secteur": "Energie",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "IoT",
+        "Time Series",
+        "LSTM",
+        "Alertes",
+        "Capteurs",
+        "Environnement"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "InfluxDB",
+        "Grafana",
+        "Prophet",
+        "MQTT",
+        "FastAPI",
+        "AWS IoT Core"
+      ],
+      "probleme": "Un réseau de 120 capteurs de qualité de l'air déployés dans une métropole générait 2 To de données par mois. Les alertes déclenchées sur des seuils fixes généraient 70% de faux positifs (pics momentanés, erreurs capteurs) et les problèmes persistants de pollution n'étaient pas détectés rapidement.",
+      "solution": "Pipeline IoT : capteurs MQTT → AWS IoT Core → InfluxDB. Un modèle Prophet apprend la saisonnalité horaire et hebdomadaire de chaque capteur. La détection d'anomalies compare les valeurs actuelles à la prévision (écart > 3σ pendant > 15 minutes = vraie anomalie). Un LSTM multivarié prédit les pics de pollution à 4h pour prévenir les populations.",
+      "resultats": [
+        "Faux positifs d'alertes réduits de 70% à 12%",
+        "Détection des épisodes de pollution prolongés : 94% de rappel",
+        "Prévision à 4h des pics PM2.5 : MAPE = 8.2%",
+        "Économie sur la maintenance préventive des capteurs : 35% (maintenance conditionnelle vs calendaire)"
+      ],
+      "points_cles": [
+        "La gestion des pannes capteurs (valeurs nulles ou plates) nécessitait une imputation par les capteurs voisins (krigeage spatial)",
+        "Le modèle devait gérer des saisonnalités multiples : heure, jour, saison, événements locaux (feux d'artifice, manifestations)",
+        "L'architecture IoT temps réel nécessitait une latence bout-en-bout < 30s pour les alertes critiques"
+      ]
+    },
+    {
+      "id": "diagnostic-medical-imagerie",
+      "titre": "Diagnostic médical par imagerie — détection de rétinopathie diabétique",
+      "secteur": "Santé",
+      "type": "Computer Vision",
+      "featured": false,
+      "tags": [
+        "Computer Vision",
+        "CNN",
+        "EfficientNet",
+        "Santé",
+        "Transfer Learning"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PyTorch",
+        "EfficientNet-B4",
+        "MONAI",
+        "FastAPI",
+        "GCP Vertex AI"
+      ],
+      "probleme": "En France, 3,5 millions de diabétiques sont à risque de rétinopathie diabétique, première cause de cécité chez les adultes actifs. Le dépistage reposait uniquement sur les ophtalmologistes, avec des délais de rendez-vous de 3 à 8 mois. 30% des patients diabétiques ne bénéficiaient d'aucun suivi ophtalmologique régulier.",
+      "solution": "Système de télédépistage : un technicien (non-médecin) prend des clichés du fond d'oeil avec un rétinographe non-mydriatique. Le modèle EfficientNet-B4 fine-tuné sur 80 000 images annotées classifie la gravité de la rétinopathie (0 à 4 niveaux selon l'échelle ETDRS). Les cas négatifs sont validés automatiquement, les cas positifs envoyés à l'ophtalmologiste en urgence modulée.",
+      "resultats": [
+        "Sensibilité pour la rétinopathie sight-threatening : 96.3%",
+        "Spécificité : 91.8% (8.2% de faux positifs envoyés à l'ophtalmo)",
+        "Délai de retour résultat : < 2 minutes vs 3-8 mois",
+        "Couverture de dépistage : +140% de patients dépistés en 18 mois"
+      ],
+      "points_cles": [
+        "La qualité des images était le facteur critique : 18% des images jugées « non interprétables » sont retournées au technicien pour reprise",
+        "Le seuil de classification a été calibré pour favoriser la sensibilité (pas de faux négatifs) au détriment de la spécificité",
+        "La validation clinique (essai prospectif sur 12 000 patients) a précédé le déploiement — obligatoire en dispositif médical (CE marking)"
+      ]
+    },
+    {
+      "id": "optimisation-tournees-livraison",
+      "titre": "Optimisation des tournées logistique dernier kilomètre",
+      "secteur": "Transport",
+      "type": "Optimisation",
+      "featured": false,
+      "tags": [
+        "OR-Tools",
+        "Logistique",
+        "VRP",
+        "Routing",
+        "Algorithmes"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Google OR-Tools",
+        "HERE Maps API",
+        "PostgreSQL",
+        "React",
+        "FastAPI"
+      ],
+      "probleme": "Un réseau de messagerie gérait 80 véhicules de livraison et 1 200 points de livraison journaliers dans une grande ville. Le routage manuel par les dispatchers prenait 2h30 chaque matin, générait 22% de kilométrage inutile et un taux de livraisons hors créneau de 18%.",
+      "solution": "Résolution du CVRPTW (Capacitated Vehicle Routing Problem with Time Windows) par Google OR-Tools avec LNS (Large Neighborhood Search). Le système intègre : capacité et gabarit des véhicules, fenêtres horaires clients, temps de service par point, contraintes réglementaires (temps de conduite, pauses), trafic temps réel HERE Maps. Résolution en 12 minutes pour 1 200 points.",
+      "resultats": [
+        "Kilométrage total réduit de 22%",
+        "Carburant économisé : 31 000€/mois",
+        "Temps de dispatching : 2h30 → 18 minutes",
+        "Taux de livraisons dans les créneaux promis : 96% vs 82%",
+        "Empreinte carbone du réseau : -19%"
+      ],
+      "points_cles": [
+        "L'intégration du trafic temps réel avec recalcul dynamique en cours de tournée (re-optimisation à la volée) a été l'amélioration la plus impactante",
+        "OR-Tools ne garantit pas l'optimalité globale mais trouve une solution 5-8% du théorique optimal en 12 minutes — acceptable pour 1 200 points",
+        "La résistance des chauffeurs à « faire confiance à l'algorithme » a nécessité 6 semaines de formation et de co-construction avec les équipes"
+      ]
+    },
+    {
+      "id": "chatbot-rh-rag",
+      "titre": "Chatbot RH interne sur documentation avec RAG",
+      "secteur": "RH",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "RAG",
+        "LLM",
+        "LangChain",
+        "RH",
+        "IA Générative",
+        "GPT-4"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LangChain",
+        "Azure OpenAI (GPT-4)",
+        "Azure AI Search",
+        "ChromaDB",
+        "React"
+      ],
+      "probleme": "La DRH d'un groupe de 12 000 employés recevait 800 questions récurrentes par mois par email : congés, mutuelle, avantages, procédures de recrutement, politique de déplacements. 2 gestionnaires RH passaient 60% de leur temps à répondre aux mêmes questions depuis la documentation RH (700 pages de procédures et conventions collectives).",
+      "solution": "Chatbot RAG : tous les documents RH (CCN, accords d'entreprise, fiches pratiques, FAQ) sont découpés, vectorisés et indexés dans Azure AI Search. Quand un employé pose une question, le système retrouve les passages pertinents et GPT-4 génère une réponse avec citation de la source. Le chatbot escalade automatiquement les cas complexes ou sensibles à un gestionnaire RH.",
+      "resultats": [
+        "80% des questions traitées automatiquement sans intervention humaine",
+        "Temps de réponse : < 30 secondes vs 2-3 jours par email",
+        "Satisfaction employés : 4.3/5 sur les réponses automatiques",
+        "Temps libéré pour les gestionnaires RH : 2 jours/semaine redirectionnés vers des missions à valeur ajoutée"
+      ],
+      "points_cles": [
+        "La définition des cas d'escalade était critique : questions sur des situations personnelles, conflits, licenciements → toujours un humain",
+        "Le modèle répondait « je ne suis pas sûr » pour les questions ambiguës, avec un lien vers le contact RH : stratégie de confiance bien reçue",
+        "La mise à jour des documents (dès qu'un accord est signé) nécessitait une procédure de reindexation déclenchée par les RH en 5 minutes"
+      ]
+    },
+    {
+      "id": "analyse-sentiment-avis",
+      "titre": "Analyse de sentiment et thématiques des avis clients",
+      "secteur": "Retail",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "NLP",
+        "Sentiment Analysis",
+        "BERT",
+        "CRM",
+        "Verbatims",
+        "Topic Modeling"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "CamemBERT",
+        "BERTopic",
+        "FastAPI",
+        "BigQuery",
+        "Looker Studio"
+      ],
+      "probleme": "Une enseigne de grande distribution recevait 12 000 avis par semaine sur 5 canaux (site, app, Google, Trustpilot, formulaires). Moins de 20% étaient lus par les équipes Quality. Les problèmes systémiques mettaient 3 à 6 semaines à remonter aux responsables produit.",
+      "solution": "Pipeline NLP automatisé : CamemBERT fine-tuné pour l'analyse de sentiment (5 niveaux de 1 à 5 étoiles), BERTopic pour la détection automatique de thématiques (sans liste prédéfinie). Les 15 thématiques détectées (livraison, qualité produit, SAV, prix, application) sont suivies en dashboard Looker Studio avec alertes sur les variations significatives. Les avis urgents (notes < 2 + mentions sécurité/légal) déclenchent une alerte Slack immédiate.",
+      "resultats": [
+        "100% des avis analysés en moins de 5 minutes après dépôt",
+        "Temps de détection d'un problème systémique : 4h vs 3-6 semaines avant",
+        "NPS global amélioré de +18 points sur 12 mois",
+        "3 ETP redirigés de la lecture d'avis vers la résolution des problèmes identifiés"
+      ],
+      "points_cles": [
+        "BERTopic (approche non supervisée) a détecté des thématiques inattendues que l'équipe n'aurait pas définies manuellement",
+        "La pondération des avis par canal était nécessaire : Google reviews = clients insatisfaits sur-représentés vs formulaire post-achat",
+        "L'équipe produit n'acceptait les insights que si chaque thématique était illustrée par 3 verbatims réels en exemple"
+      ]
+    },
+    {
+      "id": "predictive-maintenance-machine",
+      "titre": "Prédiction de pannes machines dans l'industrie pharmaceutique",
+      "secteur": "Industrie",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Predictive Maintenance",
+        "IoT",
+        "XGBoost",
+        "FFT",
+        "Pharma",
+        "Capteurs"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "InfluxDB",
+        "Grafana",
+        "OPC-UA",
+        "Azure IoT Hub",
+        "Azure ML"
+      ],
+      "probleme": "Un laboratoire pharmaceutique opérait 45 lignes de remplissage aseptique. Chaque arrêt non planifié entraînait non seulement une perte de production (coût : 80 000€/heure) mais aussi la destruction du lot en cours (contamination potentielle) et des semaines de requalification GxP. Les maintenances préventives calendaires représentaient 35% du temps d'arrêt total.",
+      "solution": "Réseau de 1 200 capteurs (vibrations, température, pression, courant moteur) collectés via OPC-UA vers Azure IoT Hub. Feature engineering : moyennes mobiles, écarts-types, FFT (fréquences de vibration caractéristiques des pannes mécaniques). XGBoost entraîné sur 3 ans d'historique avec les labels 'panne < 48h' (positif) vs 'fonctionnement normal' (négatif). Alertes envoyées aux techniciens 24 à 72h avant la panne estimée.",
+      "resultats": [
+        "Pannes non planifiées réduites de 71% sur les équipements surveillés",
+        "MTTR (Mean Time To Repair) réduit de 40% (pièces commandées avant la panne)",
+        "Économie annuelle : 4.8M€ en arrêts évités et maintenances inutiles supprimées",
+        "Conformité GxP maintenue : zéro lot détruit pour cause de panne machine en 18 mois"
+      ],
+      "points_cles": [
+        "La FFT sur les données de vibration révélait les fréquences caractéristiques des roulements défaillants 2 à 3 semaines avant la panne",
+        "La validation du modèle par les techniciens (shadow mode pendant 3 mois) était indispensable avant déploiement dans un environnement GxP",
+        "L'environnement pharmaceutique imposait une traçabilité complète des décisions (21 CFR Part 11)"
+      ]
+    },
+    {
+      "id": "matching-cv-offres",
+      "titre": "Matching automatique CV / Offres d'emploi par NLP",
+      "secteur": "RH",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "NLP",
+        "Embeddings",
+        "Similarité",
+        "RH",
+        "Recrutement",
+        "BERT"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "sentence-transformers",
+        "FAISS",
+        "FastAPI",
+        "PostgreSQL",
+        "React"
+      ],
+      "probleme": "Une plateforme de recrutement recevait 2 000 candidatures par jour pour 500 offres actives. Les recruteurs passaient en moyenne 8 secondes par CV pour la présélection initiale. Le taux de « faux négatifs » (bons profils éliminés) était estimé à 25% selon les retours post-recrutement.",
+      "solution": "Système de matching sémantique : les CVs et offres sont vectorisés avec un modèle sentence-transformers multilingue (paraphrase-multilingual-mpnet-base-v2). FAISS indexe les vecteurs pour une recherche des k CVs les plus proches de chaque offre en < 100ms. Un reranker cross-encoder affine le top-20 pour chaque offre. Les recruteurs voient un score de matching et les compétences clés matchées.",
+      "resultats": [
+        "Temps de présélection initial réduit de 8s/CV à 15 minutes pour 100 candidats (tri automatique)",
+        "Taux de faux négatifs (bons profils éliminés) réduit de 25% à 9%",
+        "Diversité des profils présentés aux managers : +31% de profils 'atypiques' valorisés",
+        "Coût de recrutement réduit de 22% (moins de passages par des agences)"
+      ],
+      "points_cles": [
+        "Les embeddings sémantiques permettent de matcher « ingénieur data » avec « data engineer » et « analyste big data » sans règles manuelles",
+        "Un audit de biais mensuel sur les scores par genre, âge et origine était obligatoire pour la conformité légale",
+        "Le reranker cross-encoder était indispensable : le biencoder first stage avait 15% d'erreurs sur les profils très spécialisés"
+      ]
+    },
+    {
+      "id": "scoring-esg-portefeuille",
+      "titre": "Scoring ESG de portefeuille d'investissement",
+      "secteur": "Finance",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "ESG",
+        "Scoring",
+        "Finance durable",
+        "NLP",
+        "SFDR",
+        "Python"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "SHAP",
+        "dbt",
+        "Snowflake",
+        "Power BI",
+        "Bloomberg API"
+      ],
+      "probleme": "Un gestionnaire de portefeuille Private Equity (6 Mds€ sous gestion) devait évaluer 450 entreprises non cotées selon 80 critères ESG pour se conformer à SFDR et répondre aux demandes de ses investisseurs institutionnels (pensions funds). Les données ESG des entreprises non cotées sont fragmentaires, non standardisées et souvent auto-déclarées sans vérification.",
+      "solution": "Modèle de scoring ESG hybride : données structurées (Bloomberg, Refinitiv pour les sociétés partiellement couvertes), données NLP extraites des rapports RSE et bilans annuels, et questionnaires standardisés envoyés aux entreprises. XGBoost prédit les scores manquants par analogie avec des entreprises similaires (secteur, taille, géographie). SHAP explique chaque score aux analystes et aux investisseurs.",
+      "resultats": [
+        "Couverture du portefeuille : 100% vs 62% avant (les 38% manquants étaient imputés)",
+        "Temps de production du rapport ESG annuel : 3 semaines vs 5 mois",
+        "Confiance des investisseurs : 91% trouvent les explications SHAP suffisantes pour justifier leurs propres reportings",
+        "Identification de 12 entreprises à risque ESG élevé, cessions recommandées à 9 gérants de fonds"
+      ],
+      "points_cles": [
+        "L'imputation des données manquantes par similarité (k-NN sur le secteur + taille) introduit des biais à surveiller et documenter",
+        "Les questionnaires envoyés aux entreprises non cotées avaient un taux de réponse de seulement 34% — l'IA devait palier les manques",
+        "La regulatory watch (évolution des critères Taxonomie, PAI SFDR) nécessitait une mise à jour trimestrielle du modèle"
+      ]
+    },
+    {
+      "id": "dynamic-pricing",
+      "titre": "Tarification dynamique en temps réel",
+      "secteur": "Retail",
+      "type": "Optimisation",
+      "featured": false,
+      "tags": [
+        "Pricing Dynamique",
+        "ML",
+        "Optimisation",
+        "Revenu",
+        "Temps réel",
+        "Reinforcement Learning"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "FastAPI",
+        "Redis",
+        "Kafka",
+        "Snowflake",
+        "Grafana"
+      ],
+      "probleme": "Un opérateur de parkings urbains gérait 28 000 places dans 180 sites. Les tarifs étaient fixes par zone, mis à jour manuellement une fois par an. Le taux d'occupation variait de 35% à 98% selon l'heure et le jour, laissant des recettes considérables sur la table aux heures creuses et refusant des clients aux heures pleines.",
+      "solution": "Système de pricing dynamique temps réel : LightGBM prédit la demande à 30, 60 et 120 minutes pour chaque parking, en intégrant l'occupation actuelle, le trafic (HERE API), les événements locaux (agenda enrichi), la météo et l'historique. Un algorithme d'optimisation ajuste les prix toutes les 15 minutes pour maximiser le revenu tout en maintenant un taux d'occupation cible de 85%. Les tarifs sont poussés en temps réel sur les apps et bornes d'affichage.",
+      "resultats": [
+        "Revenu par place disponible (RevPAS) : +23%",
+        "Taux d'occupation moyen : de 68% à 82%",
+        "Pics saturés réduits de 40% (clients redirigés par le prix vers des parkings voisins)",
+        "Satisfaction clients : +0.4 point sur 5 (transparence des prix et disponibilité améliorée)"
+      ],
+      "points_cles": [
+        "Le contrainte d'acceptabilité sociale imposait un plafond : le prix ne pouvait pas dépasser 3x le tarif de base, même en période de forte demande",
+        "La latence end-to-end du système (demande → calcul → affichage) devait être < 5 secondes pour les bornes d'entrée",
+        "Les événements non planifiés (matchs annoncés au dernier moment) nécessitaient un mécanisme d'override manuel par les opérateurs"
+      ]
+    },
+    {
+      "id": "detection-deepfakes",
+      "titre": "Détection de deepfakes et manipulations visuelles",
+      "secteur": "Médias",
+      "type": "Computer Vision",
+      "featured": false,
+      "tags": [
+        "Deepfakes",
+        "Computer Vision",
+        "ViT",
+        "Médias",
+        "Sécurité",
+        "IA"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PyTorch",
+        "EfficientNet",
+        "Vision Transformer (ViT)",
+        "FastAPI",
+        "AWS Lambda"
+      ],
+      "probleme": "Un groupe de presse international devait valider l'authenticité des photos et vidéos reçues de sources extérieures avant publication. Les deepfakes et manipulations numériques devenaient indétectables à l'oeil humain. Un seul incident de publication d'un deepfake risquait d'ébranler la crédibilité éditoriale.",
+      "solution": "Ensemble de modèles de détection : EfficientNet pour la détection d'artefacts de compression GAN (patterns de bruit invisibles à l'oeil nu), Vision Transformer pour l'analyse des incohérences sémantiques (ombres, reflets, textures de peau), et analyse des métadonnées EXIF. Pour les vidéos, analyse frame par frame des incohérences de clignements et micro-expressions. Score de confiance de 0 à 100 avec les zones suspectes highlighted.",
+      "resultats": [
+        "Détection des deepfakes générés par Stable Diffusion et Midjourney : 89% de précision",
+        "Faux positifs (photos authentiques flaggées) : 7%",
+        "Temps d'analyse d'une image : 2 secondes, d'une vidéo de 30s : 45 secondes",
+        "3 publications de deepfakes évitées en 6 mois selon les vérifications a posteriori"
+      ],
+      "points_cles": [
+        "La course aux armements est permanente : un modèle entraîné sur les deepfakes de 2023 rate les deepfakes de 2024 générés par des modèles plus récents — retraining continu obligatoire",
+        "L'analyse des métadonnées EXIF (horodatage, GPS, appareil) était aussi précieuse que le modèle de vision",
+        "Le workflow imposait que l'humain ait toujours le dernier mot : le modèle alerte, le fact-checker décide"
+      ]
+    },
+    {
+      "id": "optimisation-energie-batiment",
+      "titre": "Optimisation de la consommation énergétique d'un bâtiment intelligent",
+      "secteur": "Energie",
+      "type": "Optimisation",
+      "featured": false,
+      "tags": [
+        "IoT",
+        "Smart Building",
+        "Optimisation",
+        "Energie",
+        "LSTM",
+        "Reinforcement Learning"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "TensorFlow",
+        "LSTM",
+        "InfluxDB",
+        "Grafana",
+        "BACnet",
+        "Azure IoT"
+      ],
+      "probleme": "Un campus d'entreprise de 45 000 m² consommait 8.2 GWh/an en électricité. Le système GTB (Gestion Technique du Bâtiment) actuel gérait le chauffage et la climatisation sur des plannings fixes, sans tenir compte de l'occupation réelle, de la météo, ni du coût de l'électricité qui variait de 50 à 400 €/MWh selon les heures.",
+      "solution": "Modèle LSTM qui prédit la consommation et l'occupation à 4h pour chaque zone. Algorithme d'optimisation (MPC — Model Predictive Control) qui planifie le chauffage/climatisation en tenant compte du prix spot de l'électricité (API RTE), des prévisions météo et de l'occupation prévue. Le bâtiment préchauffe quand l'électricité est bon marché et se restreint pendant les pics tarifaires.",
+      "resultats": [
+        "Réduction de la consommation électrique : -26% soit 2.1 GWh/an",
+        "Économie financière : 180 000€/an (coût de l'électricité et abonnement puissance)",
+        "Confort thermique maintenu : 96% des plages horaires dans les plages réglementaires 19-26°C",
+        "Empreinte carbone bâtiment : -31% (consommation décalée vers les heures bas-carbone du réseau)"
+      ],
+      "points_cles": [
+        "La prédiction d'occupation était le facteur le plus impactant : 35% d'économies supplémentaires vs un modèle météo seul",
+        "L'intégration des données de réservation salle (Outlook, badgeages) permettait d'anticiper l'occupation à 4h avec 87% de précision",
+        "La réglementation du travail imposait une température minimale de 19°C dans les espaces de travail — contrainte dure dans l'optimisation"
+      ]
+    },
+    {
+      "id": "risque-credit-immobilier-shap",
+      "titre": "Scoring de risque de crédit immobilier avec SHAP",
+      "secteur": "Finance",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Scoring crédit",
+        "SHAP",
+        "XGBoost",
+        "Réglementation",
+        "Immobilier",
+        "Explicabilité"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "XGBoost",
+        "SHAP",
+        "Scikit-learn",
+        "FastAPI",
+        "PostgreSQL",
+        "Power BI"
+      ],
+      "probleme": "Un établissement bancaire souhaitait moderniser son modèle de scoring crédit immobilier (65 000 dossiers/an). Le modèle de régression logistique en production depuis 10 ans avait un Gini coefficient de 48, en retrait de 20-25 points vs les meilleures pratiques marché. De plus, la directive européenne CRD imposait une explicabilité des décisions de refus.",
+      "solution": "Modèle XGBoost entraîné sur 5 ans d'historique de dossiers (150 000 crédits, 4 200 défauts). Features : apport, taux d'effort, reste à vivre, stabilité des revenus, ancienneté emploi, valeur du bien, loan-to-value, zone géographique. SHAP génère une explication individualisée pour chaque dossier, listant les 3 facteurs principaux favorables et défavorables.",
+      "resultats": [
+        "Gini coefficient : 71 vs 48 (+23 points soit +48% d'amélioration relative)",
+        "Taux de défaut à 12 mois sur les crédits accordés : -18%",
+        "Conformité réglementaire CRD : 100% des refus accompagnés d'une explication SHAP lisible",
+        "Accord de la Banque de France pour l'utilisation en modèle interne (IRB)"
+      ],
+      "points_cles": [
+        "L'audit réglementaire a imposé de retirer le code postal comme variable (proxy discriminatoire indirect) et de le remplacer par des indicateurs macro-économiques de la zone",
+        "Un modèle challenger (Light GBM) était maintenu en parallèle sur 20% du flux pour comparaison continue",
+        "La calibration des probabilités de défaut (Platt scaling) était indispensable pour l'utilisation dans les calculs de RWA prudentiels"
+      ]
+    },
+    {
+      "id": "pipeline-data-quality-automatise",
+      "titre": "Pipeline de Data Quality automatisé end-to-end",
+      "secteur": "Finance",
+      "type": "Reporting réglementaire",
+      "featured": false,
+      "tags": [
+        "Data Quality",
+        "Great Expectations",
+        "dbt",
+        "Airflow",
+        "DataOps",
+        "Monitoring"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "Great Expectations",
+        "dbt",
+        "Apache Airflow",
+        "Slack API",
+        "Snowflake",
+        "Grafana"
+      ],
+      "probleme": "Une direction financière produisant des reportings réglementaires (COREP, FINREP) découvrait les erreurs de données après livraison au régulateur (BNB/EBA). Les corrections tardives et les demandes d'explications régulateur consommaient 30% du temps de l'équipe de reporting et représentaient un risque opérationnel et réputationnel.",
+      "solution": "Pipeline DataOps avec contrôles qualité à chaque étape : Great Expectations vérifie 450 règles à l'ingestion (complétude, conformité des codes, cohérence des montants), dbt applique 120 règles de gestion dans les transformations SQL (avec dbt tests), un moteur de réconciliation compare les totaux contre les systèmes sources. Chaque violation bloque automatiquement le pipeline et envoie une alerte Slack avec contexte et valeur incriminée.",
+      "resultats": [
+        "Erreurs détectées en production (après livraison) : 0 sur les 18 derniers mois vs 8/trimestre avant",
+        "Temps de clôture reporting réduit de 5 jours à 2 jours (-60%)",
+        "Couverture des contrôles qualité : 100% des colonnes critiques vs 35% avant",
+        "MTTD (Mean Time To Detect) une anomalie : 15 minutes vs 3 jours"
+      ],
+      "points_cles": [
+        "Le catalogue des règles de qualité était maintenu par les experts métier via un fichier YAML versionné dans Git — les IT n'étaient plus le seul point d'accès",
+        "Les contrôles Great Expectations sur les données brutes (Bronze) stoppaient les erreurs avant qu'elles ne se propagent dans toutes les couches",
+        "Un 'quality score' hebdomadaire envoyé au RSSI et au DSI rendait la qualité des données visible au management"
+      ]
+    },
+    {
+      "id": "veille-concurrentielle-nlp",
+      "titre": "Veille concurrentielle automatisée par Web Scraping et NLP",
+      "secteur": "Marketing",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "Web Scraping",
+        "NLP",
+        "Veille",
+        "Marketing",
+        "LLM",
+        "Automatisation"
+      ],
+      "difficulte": "Intermédiaire",
+      "stack": [
+        "Python",
+        "Scrapy",
+        "Playwright",
+        "CamemBERT",
+        "GPT-4 API",
+        "Airflow",
+        "Elasticsearch"
+      ],
+      "probleme": "L'équipe marketing d'une banque de détail devait surveiller manuellement les offres de 12 concurrents (taux, produits, promotions, avis clients) sur 8 sources différentes. Un analyste y passait 3 jours par semaine. Les informations collectées avaient souvent 2 à 4 semaines de retard au moment de la synthèse.",
+      "solution": "Pipeline automatisé quotidien : Playwright scrape les pages tarifaires, Scrapy collecte les communiqués de presse et les avis Trustpilot/Google. Un pipeline NLP catégorise chaque article (nouveau produit, changement de taux, campagne marketing, avis clients). GPT-4 génère un briefing concurrentiel quotidien de 300 mots envoyé par email aux directeurs produit et marketing.",
+      "resultats": [
+        "Fraîcheur des informations concurrentielles : < 24h vs 2-4 semaines",
+        "Couverture : 100% des concurrents surveillés vs 70% avant (sources manquées)",
+        "Temps analyste libéré : 3 jours/semaine redirigés vers l'analyse stratégique",
+        "3 opportunités de réponse rapide à des offres concurrentes identifiées en 6 mois"
+      ],
+      "points_cles": [
+        "La gestion des sites anti-scraping (Cloudflare, rate limiting) nécessitait des proxies rotatifs et des délais aléatoires entre les requêtes",
+        "GPT-4 était indispensable pour synthétiser et contextualiser : la simple agrégation brute était illisible pour les directeurs",
+        "La conformité légale avait été vérifiée : scraping de pages publiques légal en Europe sous conditions (CJUE Viking/Ryanair)"
+      ]
+    },
+    {
+      "id": "classification-documents-cv-nlp",
+      "titre": "Classification automatique de documents multimodaux",
+      "secteur": "Finance",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "Computer Vision",
+        "NLP",
+        "OCR",
+        "Classification",
+        "Automatisation",
+        "Document"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LayoutLM",
+        "Tesseract OCR",
+        "PyTorch",
+        "FastAPI",
+        "AWS S3",
+        "PostgreSQL"
+      ],
+      "probleme": "Un service de gestion de crédits immobiliers recevait 350 documents par jour par scan/email : relevés bancaires, bulletins de salaire, avis d'imposition, titres de propriété, factures. Le tri et la classification manuelle mobilisait 4 gestionnaires à temps plein avant même le traitement des dossiers.",
+      "solution": "Modèle LayoutLM (Microsoft) qui combine le contenu textuel (OCR Tesseract) et la mise en page (position des éléments dans la page) pour classifier les documents. 14 catégories détectées. Le modèle extrait ensuite les champs clés de chaque type de document (revenus nets sur bulletin de salaire, solde moyen sur relevé bancaire). Les documents non reconnus sont routés vers un gestionnaire.",
+      "resultats": [
+        "Précision de classification : 94.5% sur les 14 catégories",
+        "Temps de tri et classification : < 5 secondes par document vs 2 minutes manuellement",
+        "Extraction automatique des champs clés : 91% de précision sur les documents bien scannés",
+        "4 ETP réaffectés à la relation client et au conseil"
+      ],
+      "points_cles": [
+        "LayoutLM était supérieur à un classifieur textuel pur : la mise en page d'un bulletin de salaire est distinctive même si le texte varie selon l'employeur",
+        "La qualité de scan était le facteur limitant : images < 150 DPI envoyées en re-scan automatique avec instruction à l'emprunteur",
+        "La RGPD imposait une suppression automatique des documents 30 jours après clôture du dossier — workflow de purge intégré"
+      ]
+    },
+    {
+      "id": "prevision-demande-transport",
+      "titre": "Prédiction de la demande de transport ferroviaire",
+      "secteur": "Transport",
+      "type": "Séries temporelles",
+      "featured": false,
+      "tags": [
+        "Prévision",
+        "Time Series",
+        "Prophet",
+        "Transport",
+        "Big Data",
+        "Revenue Management"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Prophet",
+        "LightGBM",
+        "Apache Spark",
+        "Apache Airflow",
+        "Databricks",
+        "Power BI"
+      ],
+      "probleme": "Un opérateur ferroviaire national cherchait à optimiser sa politique de yield management : prix des billets, nombre de trains, composition (nombre de voitures). Les prévisions de demande étaient faites sur des historiques agrégés par ligne, sans intégrer les événements externes et avec un horizon de 90 jours.",
+      "solution": "Modèle de prévision hiérarchique : Prophet par relation (origine-destination) × type de jour × saison, enrichi par des features exogènes : événements locaux (Ticketmaster API, agenda institutionnel), grèves annoncées, météo, disponibilité des vols concurrents (Skyscanner API). LightGBM modélise les effets non-linéaires (saturation aux grandes fêtes). Horizon : 180 jours.",
+      "resultats": [
+        "MAPE (erreur de prévision) : 6.2% à J+30 vs 12.8% avant (-52%)",
+        "Taux d'occupation moyen des trains : +7 points (moins de trains vides, moins de trains saturés)",
+        "Revenu par siège disponible : +14%",
+        "Économie opérationnelle : 8M€/an (optimisation de la composition des trains)"
+      ],
+      "points_cles": [
+        "La prévision hiérarchique (national → ligne → O/D) permettait d'assurer la cohérence entre les niveaux (somme des O/D = total ligne)",
+        "Les grèves étaient le principal facteur de perturbation : un mécanisme de correction post-événement recalibrait les modèles après chaque grève",
+        "L'intégration des données de recherche de billets (avant achat) améliorait la prévision à court terme (J+3 à J+14)"
+      ]
+    },
+    {
+      "id": "rag-juridique",
+      "titre": "Moteur de recherche juridique sur corpus réglementaire",
+      "secteur": "Finance",
+      "type": "NLP",
+      "featured": false,
+      "tags": [
+        "RAG",
+        "LLM",
+        "Juridique",
+        "LangChain",
+        "Vector Search",
+        "Réglementation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LangChain",
+        "Azure OpenAI",
+        "Azure AI Search",
+        "Pinecone",
+        "FastAPI",
+        "Next.js"
+      ],
+      "probleme": "Les juristes et compliance officers d'un groupe bancaire international passaient 40% de leur temps à rechercher et interpréter des textes réglementaires (directives européennes, instructions ACPR, normes EBA) répartis sur des centaines de documents mis à jour fréquemment. Les risques de conformité liés à des textes manqués ou mal interprétés étaient significatifs.",
+      "solution": "Architecture RAG sur un corpus de 8 000 documents réglementaires (CRR, CRD, SFDR, DORA, MiCA, AML directives, circulaires ACPR/BNB). Les documents sont découpés par article/paragraphe, vectorisés, et indexés dans Azure AI Search avec métadonnées riches (date, régulateur, thématique). GPT-4 génère des réponses avec citations exactes et numéros d'articles. Un graph de dépendances entre articles permet de naviguer dans les textes liés.",
+      "resultats": [
+        "Temps de recherche réglementaire : 45 minutes → 5 minutes (-89%)",
+        "Précision des réponses validée par les juristes seniors : 88%",
+        "100% des réponses livrées avec citations sources vérifiables",
+        "Adoption : 92% des juristes utilisent le système quotidiennement après 3 mois"
+      ],
+      "points_cles": [
+        "La fraîcheur du corpus était critique : un système de veille automatique (web crawling sur les sites régulateurs) déclenchait une reindexation à chaque nouvelle publication",
+        "Le modèle signalait explicitement quand plusieurs textes réglementaires étaient en tension ou contradiction — valeur ajoutée clé vs la recherche textuelle classique",
+        "Un mode « compare avec pays » permettait de comparer l'implémentation d'une directive entre pays membres — fonctionnalité plébiscitée par les équipes juridiques internationales"
+      ]
+    },
+    {
+      "id": "reporting-regulatoire-automatise",
+      "titre": "Automatisation du reporting réglementaire Pilier 3",
+      "secteur": "Finance",
+      "type": "Reporting réglementaire",
+      "featured": true,
+      "tags": [
+        "Pilier 3",
+        "Reporting réglementaire",
+        "dbt",
+        "Snowflake",
+        "Bâle III",
+        "Automatisation"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "dbt",
+        "Snowflake",
+        "Airflow",
+        "Power BI",
+        "Great Expectations",
+        "Axiom SL"
+      ],
+      "probleme": "Un groupe bancaire produisait ses 35 templates Pilier 3 trimestriels en 25 jours ouvrés avec 15 personnes impliquées. Le processus était largement manuel (Excel + requêtes SQL ad hoc non versionées), générant des risques d'erreur, des difficultés de réconciliation et une incapacité à répondre rapidement aux demandes ad hoc du régulateur.",
+      "solution": "Plateforme de reporting réglementaire en architecture Medallion sur Snowflake : Bronze (données sources agrégées en temps réel), Silver (données de gestion normalisées, réconciliées avec la comptabilité), Gold (tables reportings conformes aux templates EBA). dbt orchestre 180 modèles SQL testés et documentés. Great Expectations valide 600 règles de qualité. Airflow pilote les dépendances. Power BI génère les templates EBA.",
+      "resultats": [
+        "Délai de production Pilier 3 : 25 jours → 8 jours ouvrés (-68%)",
+        "Erreurs détectées par le régulateur : 0 sur 4 trimestres consécutifs",
+        "Effort humain de production : 15 personnes × 25 jours → 5 personnes × 8 jours (-73%)",
+        "Capacité ad hoc : n'importe quel cut des données disponible en 2 heures vs 2 semaines avant"
+      ],
+      "points_cles": [
+        "Le data lineage bout-en-bout (de la source comptable au chiffre publié) était une exigence réglementaire BCBS 239 — dbt le fournissait nativement",
+        "La réconciliation automatique entre le bilan comptable et les chiffres prudentiels détectait 95% des écarts avant que l'équipe prudentielle ne les découvre",
+        "Le projet a nécessité un fort sponsorship du directeur financier et du CRO pour aligner les systèmes sources (chaque système avait ses « propriétaires » qui résistaient au changement"
+      ]
+    },
+    {
+      "id": "segmentation-private-banking",
+      "titre": "Segmentation comportementale — Private Banking",
+      "secteur": "Finance",
+      "type": "Clustering",
+      "featured": false,
+      "tags": [
+        "Clustering",
+        "Segmentation",
+        "Private Banking",
+        "k-Means",
+        "UMAP",
+        "Wealth Management"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Scikit-learn",
+        "UMAP",
+        "K-Means",
+        "SHAP",
+        "dbt",
+        "Snowflake",
+        "Tableau"
+      ],
+      "probleme": "Une banque privée gérant 22 Mds€ de patrimoine classifiait ses 8 500 clients en 3 segments basés uniquement sur les encours (Standard, Premium, Prestige). Cette segmentation ignorait le comportement financier, le cycle de vie, la propension à investir et la diversification du patrimoine. Les offres de produits adressées ne correspondaient pas aux besoins réels des clients.",
+      "solution": "Segmentation comportementale multidimensionnelle : 45 features construites depuis les données transactionnelles (répartition des classes d'actifs, volatilité des arbitrages, utilisation des services, fréquence de contact, réactivité aux propositions). UMAP réduit à 3 dimensions pour la visualisation. K-Means (k=8 optimal selon silhouette score) crée 8 segments avec profils distincts.",
+      "resultats": [
+        "8 segments comportementaux identifiés (vs 3 segments encours avant)",
+        "Taux de souscription aux produits proposés : +34% (offres mieux ciblées)",
+        "Révélation de 420 clients « sous-équipés » avec 200M€ de potentiel non capté",
+        "Satisfaction des banquiers privés : 87% trouvent les segments plus actionnables"
+      ],
+      "points_cles": [
+        "UMAP était indispensable pour la visualisation : en 45 dimensions, K-Means fonctionnait mais était incompréhensible pour les équipes métier",
+        "Les 8 segments ont été co-construits avec les banquiers privés lors d'ateliers d'interprétation — garantissant l'adoption opérationnelle",
+        "Le recalcul des segments était trimestriel : les patrimoines évoluent, la segmentation devait rester fraîche"
+      ]
+    },
+    {
+      "id": "marketing-mix-modeling",
+      "titre": "Optimisation du mix marketing (MMM) avec Media Mix Modeling",
+      "secteur": "Marketing",
+      "type": "Régression",
+      "featured": false,
+      "tags": [
+        "MMM",
+        "Marketing",
+        "Attribution",
+        "Bayésien",
+        "ROI",
+        "Canaux"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "PyMC-Marketing",
+        "Stan",
+        "dbt",
+        "BigQuery",
+        "Looker Studio"
+      ],
+      "probleme": "Un retailer dépensait 12M€/an en publicité sur 8 canaux (TV, radio, digital, SEA, social, display, affichage, email). Les équipes marketing n'avaient aucune méthode rigoureuse pour attribuer les ventes aux canaux et optimiser l'allocation du budget. Les modèles d'attribution last-click surévaluaient le SEA et sous-évaluaient la TV.",
+      "solution": "Media Mix Model bayésien avec PyMC-Marketing : modèle de régression hiérarchique qui décompose le CA en base line (tendance + saisonnalité) + contribution de chaque canal media avec adstock (effet de carry-over) et saturation. L'approche bayésienne quantifie l'incertitude de chaque contribution. L'optimiseur calcule l'allocation budget optimale pour un objectif de CA donné.",
+      "resultats": [
+        "Attribution revenue réallouée : TV réévaluée de +45%, SEA réévalué de -30% vs last-click",
+        "Budget réalloué : +2M€ vers TV/affichage, -2M€ d'économies sur le digital saturé",
+        "CA attribué au mix optimisé : +9% avec le même budget total",
+        "ROI de l'investissement MMM estimé à 6x en 12 mois"
+      ],
+      "points_cles": [
+        "L'adstock (effet mémoire de la publicité) variait de 0.3 semaine pour le SEA à 4 semaines pour la TV — différence fondamentale pour l'attribution",
+        "L'approche bayésienne était indispensable : l'incertitude sur les contributions TV était très large (large confidence intervals), et le présenter honnêtement a renforcé la crédibilité du modèle",
+        "Les tests d'incrémentalité (geo-holdout tests sur 2 régions) ont servi de validation externe du modèle MMM"
+      ]
+    },
+    {
+      "id": "detection-anomalies-reseau-telecom",
+      "titre": "Détection d'anomalies réseau télécoms en temps réel",
+      "secteur": "Télécommunications",
+      "type": "Détection d'anomalies",
+      "featured": false,
+      "tags": [
+        "Anomalies",
+        "Réseau",
+        "Télécoms",
+        "Isolation Forest",
+        "Kafka",
+        "Temps réel"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "Isolation Forest",
+        "Apache Kafka",
+        "Apache Flink",
+        "Elasticsearch",
+        "Grafana",
+        "PagerDuty"
+      ],
+      "probleme": "Un opérateur national gérait 12 000 équipements réseau actifs générant 50 millions d'événements par jour. L'équipe NOC (Network Operations Center) recevait 800 alertes par jour dont 75% étaient de faux positifs générés par des seuils fixes. Les pannes réelles se noyaient dans le bruit, avec un MTTD (Mean Time To Detect) de 18 minutes.",
+      "solution": "Architecture streaming : événements réseau ingérés via Kafka, agrégés en fenêtres de 5 minutes par Flink. Isolation Forest entraîné sur 6 mois d'historique par type d'équipement détecte les anomalies multivariées (corrélation latence + erreurs + débit). Un moteur de corrélation d'alertes (AIOps) regroupe les anomalies liées en incidents uniques. Alertes PagerDuty envoyées avec contexte et équipements voisins affectés.",
+      "resultats": [
+        "Faux positifs réduits de 75% à 18% (-57 points)",
+        "MTTD (Mean Time To Detect) : 18 minutes → 4 minutes (-78%)",
+        "MTTR (Mean Time To Repair) : 45 minutes → 28 minutes (-38%)",
+        "SLA clients respectés : 99.95% vs 99.87% avant"
+      ],
+      "points_cles": [
+        "L'Isolation Forest multivarié était supérieur aux seuils univariés : une anomalie sur la latence seule peut être normale, mais latence élevée + perte de paquets + erreurs CRC simultanées = incident réel",
+        "La corrélation temporelle et topologique (équipements liés dans le graphe réseau) réduisait 800 alertes/jour à 50 incidents qualifiés",
+        "L'entraînement était reconduit mensuellement car la baseline du réseau évoluait avec les mises à jour logicielles et le trafic saisonnier"
+      ]
+    },
+    {
+      "id": "prediction-mortalite-hospitaliere",
+      "titre": "Prédiction de la mortalité hospitalière — Score de sévérité",
+      "secteur": "Santé",
+      "type": "Classification",
+      "featured": false,
+      "tags": [
+        "Santé",
+        "ML",
+        "Score de sévérité",
+        "SHAP",
+        "Soins intensifs",
+        "Clinique"
+      ],
+      "difficulte": "Avancé",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "SHAP",
+        "FastAPI",
+        "PostgreSQL",
+        "Tableau",
+        "HL7 FHIR"
+      ],
+      "probleme": "Un CHU souhaitait améliorer le triage et l'allocation des ressources en soins intensifs. Les scores traditionnels (SAPS II, SOFA) étaient calculés manuellement et ne prenaient pas en compte les données biologiques dynamiques ni le contexte historique du patient. L'objectif était de prédire la mortalité à 28 jours dès l'admission.",
+      "solution": "Modèle LightGBM entraîné sur 85 000 séjours en USI (4 hôpitaux, 8 ans). Features : constantes vitales (T, FC, PA, SpO2), données biologiques (lactate, créatinine, troponine, CRP), diagnostics codés CIM-10, traitements en cours, comorbidités et antécédents. Le score est calculé automatiquement toutes les 4h depuis les données du DPI (HL7 FHIR). SHAP explique au clinicien les facteurs aggravants principaux.",
+      "resultats": [
+        "AUC-ROC : 0.91 vs 0.83 pour SAPS II (modèle de référence)",
+        "Calibration excellente (Brier score : 0.08) : les probabilités sont fiables",
+        "Identification des patients à haut risque : sensibilité 84%, spécificité 88%",
+        "Étude pilote : réallocation de 12% des transferts en soins intensifs — sans dégradation des outcomes"
+      ],
+      "points_cles": [
+        "La validation clinique prospective (sur 3 mois, en double-aveugle avec SAPS II) était obligatoire avant tout usage clinique",
+        "SHAP était indispensable : les cliniciens n'acceptaient un score IA que s'ils pouvaient comprendre pourquoi (lactate élevé + PA basse = facteurs dominants)",
+        "La gestion du déséquilibre des classes (90% survivants vs 10% décès) via SMOTE + class weights était critique pour la sensibilité"
+      ]
+    }
+  ],
+  "secteurs": [
+    "Finance",
+    "Retail / E-commerce",
+    "Industrie",
+    "Santé",
+    "Télécommunications",
+    "Transport / Logistique",
+    "Énergie",
+    "Marketing",
+    "RH",
+    "Tourisme",
+    "Assurance",
+    "Médias",
+    "Logistique",
+    "Sport",
+    "Environnement",
+    "Services professionnels",
+    "Restauration",
+    "Energie",
+    "Immobilier",
+    "Transport"
+  ],
+  "types": [
+    "Classification",
+    "Détection d'anomalies",
+    "Clustering",
+    "Séries temporelles",
+    "Computer Vision",
+    "NLP / Traitement du langage",
+    "Filtrage collaboratif",
+    "Optimisation",
+    "A/B Testing",
+    "Reporting réglementaire",
+    "Recommandation",
+    "NLP",
+    "Régression"
+  ],
+  "niveaux": [
+    "Débutant",
+    "Intermédiaire",
+    "Avancé"
+  ]
+}
