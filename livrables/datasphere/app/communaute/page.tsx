@@ -1,413 +1,165 @@
-"use client";
-import { useState } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
-const CATEGORIES_FORUM = [
-  { id: "ml", label: "Machine Learning", emoji: "🤖", count: null },
-  { id: "data-eng", label: "Data Engineering", emoji: "⚙️", count: null },
-  { id: "cloud", label: "Cloud & Infra", emoji: "☁️", count: null },
-  { id: "carriere", label: "Carrière & Salaires", emoji: "💼", count: null },
-  { id: "certifs", label: "Certifications", emoji: "🎓", count: null },
-  { id: "outils", label: "Outils & Plateformes", emoji: "🛠️", count: null },
-  { id: "gouvernance", label: "Gouvernance & RGPD", emoji: "🏛️", count: null },
-  { id: "general", label: "Discussion générale", emoji: "💬", count: null },
+export const metadata: Metadata = {
+  title: "Communauté DataSphère — Le hub data francophone",
+  description: "La communauté DataSphère pour les professionnels de la data en France. Questions, retours d'expérience, partage de ressources.",
+};
+
+const THEMES = [
+  { emoji: "⚙️", label: "Data Engineering",   desc: "Pipelines, orchestration, lakehouse" },
+  { emoji: "🤖", label: "IA & LLMs",           desc: "RAG, agents, fine-tuning, évaluation" },
+  { emoji: "☁️", label: "Cloud & Infra",       desc: "AWS, Azure, GCP, architecture data" },
+  { emoji: "📊", label: "Analytics & BI",      desc: "Power BI, Tableau, dbt, SQL avancé" },
+  { emoji: "💼", label: "Carrière & Salaires", desc: "Certifications, reconversion, négociation" },
+  { emoji: "🏛️", label: "Gouvernance & RGPD",  desc: "AI Act, taxonomie ESG, Pilier 3" },
 ];
 
-const MOCK_QUESTIONS = [
+const FACONS = [
   {
-    id: "1",
-    titre: "XGBoost vs LightGBM : lequel choisir pour un dataset de 5M de lignes ?",
-    categorie: "Machine Learning",
-    emoji: "🤖",
-    auteur: "Marie C.",
-    avatar: "MC",
-    date: "Il y a 2h",
-    vues: 234,
-    reponses: 8,
-    tags: ["XGBoost", "LightGBM", "Performance"],
-    featured: true,
-    extrait: "Je travaille sur un projet de scoring crédit avec 5 millions de lignes et 80 features. J'hésite entre XGBoost et LightGBM pour les performances..."
+    emoji: "📬",
+    titre: "Newsletter hebdomadaire",
+    desc: "Reçois chaque semaine les actualités data, les nouvelles certifications, les retours d'expérience et les opportunités d'emploi. 2 400+ abonnés.",
+    cta: "S'abonner gratuitement",
+    href: "/newsletter",
+    color: "#7C3AED",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
   },
   {
-    id: "2",
-    titre: "Comment obtenir la certification AWS Data Engineer en 2 mois ?",
-    categorie: "Certifications",
-    emoji: "🎓",
-    auteur: "Karim B.",
-    avatar: "KB",
-    date: "Il y a 5h",
-    vues: 189,
-    reponses: 12,
-    tags: ["AWS", "Certification", "Plan d'étude"],
-    featured: true,
-    extrait: "J'ai 2 mois pour préparer la certification AWS Data Engineer Associate. Quelqu'un a des ressources ou un plan d'étude à partager ?"
+    emoji: "💬",
+    titre: "Discord — bientôt",
+    desc: "Un serveur Discord pour poser tes questions en temps réel, partager tes projets et te connecter avec d'autres data professionals francophones.",
+    cta: "Être notifié à l'ouverture",
+    href: "/newsletter",
+    color: "#5865F2",
+    bg: "#EEF0FF",
+    border: "#C5C8FF",
   },
   {
-    id: "3",
-    titre: "dbt + Snowflake : gestion des incremental models sur de grosses tables",
-    categorie: "Data Engineering",
-    emoji: "⚙️",
-    auteur: "Sophie L.",
-    avatar: "SL",
-    date: "Il y a 1j",
-    vues: 456,
-    reponses: 6,
-    tags: ["dbt", "Snowflake", "Incremental"],
-    featured: false,
-    extrait: "Je rencontre des problèmes de performance avec mes modèles incrementaux dbt sur une table de 2 milliards de lignes dans Snowflake..."
-  },
-  {
-    id: "4",
-    titre: "Quel salaire négocier pour un poste de ML Engineer à Paris (5 ans d'XP) ?",
-    categorie: "Carrière & Salaires",
-    emoji: "💼",
-    auteur: "Alex T.",
-    avatar: "AT",
-    date: "Il y a 2j",
-    vues: 892,
-    reponses: 23,
-    tags: ["Salaire", "ML Engineer", "Paris", "Négociation"],
-    featured: false,
-    extrait: "J'ai 5 ans d'expérience en ML (NLP, Computer Vision) et je reçois des offres entre 75k et 95k€. Est-ce que c'est le marché réel ?"
-  },
-  {
-    id: "5",
-    titre: "Dataiku vs Databricks : retour d'expérience après 6 mois",
-    categorie: "Outils & Plateformes",
-    emoji: "🛠️",
-    auteur: "Nora M.",
-    avatar: "NM",
-    date: "Il y a 3j",
-    vues: 612,
-    reponses: 15,
-    tags: ["Dataiku", "Databricks", "Comparatif"],
-    featured: false,
-    extrait: "Après avoir utilisé les deux plateformes sur deux projets différents, voici mon retour honnête sur les forces et faiblesses de chacun..."
+    emoji: "🤝",
+    titre: "Contribuer au contenu",
+    desc: "Tu travailles en data et tu veux partager ton expertise ? Propose un cas d'usage, un comparatif ou un retour d'expérience via la newsletter.",
+    cta: "Proposer une contribution",
+    href: "/newsletter",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
   },
 ];
-
-function AvatarCircle({ initiales, size = 36 }: { initiales: string; size?: number }) {
-  const colors = ["#6366F1", "#14B8A6", "#F59E0B", "#F43F5E", "#8B5CF6"];
-  const colorIndex = initiales.charCodeAt(0) % colors.length;
-  return (
-    <div style={{
-      width: size, height: size, borderRadius: "50%",
-      background: colors[colorIndex],
-      display: "flex", alignItems: "center", justifyContent: "center",
-      color: "#0F172A", fontSize: size * 0.35, fontWeight: 700, flexShrink: 0,
-    }}>
-      {initiales}
-    </div>
-  );
-}
 
 export default function CommunautePage() {
-  const [search, setSearch] = useState("");
-  const [categorieActive, setCategorieActive] = useState("Toutes");
-  const [showNewQuestion, setShowNewQuestion] = useState(false);
-  const [newQuestion, setNewQuestion] = useState({ titre: "", categorie: "", contenu: "", email: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const filtered = MOCK_QUESTIONS.filter(q => {
-    const matchSearch = !search || q.titre.toLowerCase().includes(search.toLowerCase()) || q.extrait.toLowerCase().includes(search.toLowerCase()) || q.tags.some(t => t.toLowerCase().includes(search.toLowerCase()));
-    const matchCat = categorieActive === "Toutes" || q.categorie === categorieActive;
-    return matchSearch && matchCat;
-  });
-
-  async function handleSubmitQuestion(e: React.FormEvent) {
-    e.preventDefault();
-    await new Promise(r => setTimeout(r, 800));
-    setSubmitted(true);
-  }
-
   return (
     <main>
       {/* Hero */}
       <section style={{
-        background: "linear-gradient(135deg, var(--navy) 0%, #0F1B35 100%)",
-        padding: "64px 24px 48px",
+        background: "linear-gradient(135deg, #0B0F29 0%, #0F1B35 100%)",
+        padding: "80px 24px 72px",
         position: "relative", overflow: "hidden",
       }}>
-        <div className="mesh-orb" style={{ width: 350, height: 350, background: "var(--indigo)", opacity: 0.12, top: -100, right: -50 }} />
-        <div className="mesh-orb" style={{ width: 250, height: 250, background: "var(--teal)", opacity: 0.08, bottom: -60, left: 100, animationDelay: "6s" }} />
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
-          <span className="badge badge-dark" style={{ marginBottom: 16 }}>💬 Communauté</span>
-          <h1 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "#0F172A", marginBottom: 12 }}>
-            La communauté{" "}
-            <span style={{ background: "linear-gradient(90deg, var(--indigo-light), var(--teal))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              data francophone
+        <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "rgba(124,58,237,0.12)", top: -150, right: -80, filter: "blur(80px)" }} />
+        <div style={{ position: "absolute", width: 350, height: 350, borderRadius: "50%", background: "rgba(88,101,242,0.08)", bottom: -80, left: "20%", filter: "blur(60px)" }} />
+
+        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative" }}>
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: 6,
+            padding: "5px 14px", borderRadius: 100,
+            background: "rgba(124,58,237,0.15)", border: "1px solid rgba(124,58,237,0.3)",
+            fontSize: 11, fontWeight: 700, color: "#A78BFA",
+            letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 24,
+          }}>
+            💬 Communauté data francophone
+          </span>
+
+          <h1 style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)",
+            fontWeight: 800, color: "#FFFFFF",
+            lineHeight: 1.1, letterSpacing: "-0.03em", marginBottom: 20,
+          }}>
+            2 400+ data professionals<br />
+            <span style={{ background: "linear-gradient(90deg, #A78BFA, #38BDF8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              en français
             </span>
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 17, maxWidth: 560, lineHeight: 1.6, marginBottom: 28 }}>
-            Pose tes questions, partage tes expériences et apprends des autres professionnels de la data en France.
+
+          <p style={{ fontSize: 17, color: "rgba(255,255,255,0.7)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 36px" }}>
+            La communauté DataSphère est en cours de construction. En attendant le lancement du Discord et du forum, rejoins la newsletter pour rester connecté.
           </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button
-              onClick={() => setShowNewQuestion(true)}
-              style={{
-                padding: "12px 24px", borderRadius: 10, border: "none", cursor: "pointer",
-                background: "var(--indigo)", color: "#0F172A", fontSize: 14, fontWeight: 700,
-                fontFamily: "var(--font-display)", transition: "opacity 0.15s",
-              }}
-            >
-              + Poser une question
-            </button>
-            <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-              {[
-                { val: "Bientôt", label: "membres" },
-                { val: "5", label: "questions exemple" },
-                { val: "Lancement", label: "en cours" },
-              ].map(({ val, label }) => (
-                <div key={label} className="card" style={{ padding: "10px 18px", display: "flex", alignItems: "center", gap: 8 }}>
-                  <span className="stat-num" style={{ fontSize: "1.4rem" }}>{val}</span>
-                  <span style={{ color: "#64748B", fontSize: 12 }}>{label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+
+          <Link href="/newsletter" className="btn-primary" style={{ fontSize: 15, padding: "13px 28px" }}>
+            Rejoindre la newsletter →
+          </Link>
         </div>
       </section>
 
-      {/* Layout principal */}
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px", display: "grid", gridTemplateColumns: "240px 1fr", gap: 32 }}>
-        {/* Sidebar catégories */}
-        <aside>
-          <h3 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--muted)", marginBottom: 12 }}>Catégories</h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {[{ id: "Toutes", label: "Toutes les questions", emoji: "📋", count: MOCK_QUESTIONS.length }, ...CATEGORIES_FORUM.map(c => ({ id: c.label, label: c.label, emoji: c.emoji, count: c.count }))].map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setCategorieActive(cat.id)}
-                style={{
-                  display: "flex", alignItems: "center", gap: 8, padding: "8px 12px",
-                  borderRadius: 8, border: "none", cursor: "pointer", textAlign: "left",
-                  background: categorieActive === cat.id ? "var(--indigo-tint)" : "transparent",
-                  color: categorieActive === cat.id ? "var(--indigo)" : "var(--muted)",
-                  fontFamily: "inherit", fontSize: 13.5, fontWeight: categorieActive === cat.id ? 600 : 400,
-                  transition: "all 0.15s", width: "100%",
-                }}
-              >
-                <span style={{ fontSize: 15 }}>{cat.emoji}</span>
-                <span style={{ flex: 1 }}>{cat.label}</span>
-                <span style={{ fontSize: 11, opacity: 0.6 }}>{cat.count}</span>
-              </button>
-            ))}
-          </div>
+      {/* Thèmes de discussion */}
+      <section style={{ padding: "72px 24px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <span className="section-label">Sujets couverts</span>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "#0F172A" }}>
+            De quoi parle-t-on ?
+          </h2>
+          <p style={{ fontSize: 15, color: "#64748B", marginTop: 8, maxWidth: 480, margin: "8px auto 0" }}>
+            La communauté couvrira l'ensemble de l'écosystème data & IA — du débutant au praticien senior.
+          </p>
+        </div>
 
-          {/* Rejoindre Discord */}
-          <div style={{ marginTop: 24, padding: 16, background: "#5865F2", borderRadius: 12, color: "#0F172A" }}>
-            <div style={{ fontSize: 20, marginBottom: 8 }}>🎮</div>
-            <p style={{ fontSize: 13, fontWeight: 600, marginBottom: 4 }}>Discord DataSphère</p>
-            <p style={{ fontSize: 12, opacity: 0.8, marginBottom: 12 }}>Discute en temps réel avec la communauté</p>
-            <a href="#" style={{
-              display: "block", textAlign: "center", padding: "8px 12px",
-              background: "rgba(255,255,255,0.2)", borderRadius: 8, color: "#0F172A",
-              fontSize: 12.5, fontWeight: 600,
-            }}>
-              Rejoindre →
-            </a>
-          </div>
-        </aside>
-
-        {/* Questions */}
-        <div>
-          {/* Barre de recherche */}
-          <div style={{ display: "flex", gap: 10, marginBottom: 24 }}>
-            <input
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              placeholder="Rechercher dans la communauté..."
-              style={{
-                flex: 1, padding: "10px 16px", borderRadius: 10,
-                border: "1px solid var(--border)", fontSize: 14,
-                background: "white", outline: "none", fontFamily: "inherit",
-              }}
-            />
-            <button
-              onClick={() => setShowNewQuestion(true)}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none", cursor: "pointer",
-                background: "var(--indigo)", color: "#0F172A", fontSize: 13.5, fontWeight: 600,
-                fontFamily: "inherit", whiteSpace: "nowrap",
-              }}
-            >
-              + Nouvelle question
-            </button>
-          </div>
-
-          {/* En vedette */}
-          {!search && categorieActive === "Toutes" && (
-            <div style={{ marginBottom: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                <span className="badge badge-amber">⭐ En vedette</span>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 28 }}>
-                {MOCK_QUESTIONS.filter(q => q.featured).map(q => (
-                  <div key={q.id} className="card" style={{ padding: 20, cursor: "pointer" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
-                      <span style={{ fontSize: 12, color: "var(--muted)" }}>{q.emoji} {q.categorie}</span>
-                      <span className="badge badge-amber" style={{ fontSize: 10 }}>Populaire</span>
-                    </div>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.4, marginBottom: 8 }}>{q.titre}</h3>
-                    <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.6 }}>{q.extrait.substring(0, 80)}...</p>
-                    <div style={{ display: "flex", gap: 12, marginTop: 12, fontSize: 11.5, color: "var(--faint)" }}>
-                      <span>👁 {q.vues}</span>
-                      <span>💬 {q.reponses} réponses</span>
-                    </div>
-                  </div>
-                ))}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 16 }}>
+          {THEMES.map(t => (
+            <div key={t.label} className="card" style={{ padding: "20px 22px", display: "flex", alignItems: "flex-start", gap: 14 }}>
+              <span style={{ fontSize: 26, flexShrink: 0 }}>{t.emoji}</span>
+              <div>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: 15, fontWeight: 700, marginBottom: 4 }}>{t.label}</p>
+                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>{t.desc}</p>
               </div>
             </div>
-          )}
-
-          {/* Liste questions */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-            <span className="section-label" style={{ marginBottom: 0 }}>
-              {categorieActive === "Toutes" ? "Questions récentes" : categorieActive}
-            </span>
-            <span style={{ fontSize: 12, color: "var(--muted)" }}>— {filtered.length} résultat{filtered.length > 1 ? "s" : ""}</span>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: 0, border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden" }}>
-            {filtered.map((q, i) => (
-              <div key={q.id} style={{
-                padding: "20px 24px", borderBottom: i < filtered.length - 1 ? "1px solid var(--border)" : "none",
-                cursor: "pointer", transition: "background 0.15s",
-                display: "flex", alignItems: "flex-start", gap: 16,
-              }}
-                className="article-row"
-              >
-                {/* Stats votes simulés */}
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 4, flexShrink: 0, paddingTop: 4 }}>
-                  <div style={{ width: 40, height: 40, borderRadius: 8, background: q.reponses > 10 ? "var(--teal-tint)" : "var(--surface-2)", border: `1px solid ${q.reponses > 10 ? "#A7F3D0" : "var(--border)"}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontSize: 14, fontWeight: 700, color: q.reponses > 10 ? "#0F766E" : "var(--muted)" }}>{q.reponses}</span>
-                  </div>
-                  <span style={{ fontSize: 10, color: "var(--faint)" }}>rép.</span>
-                </div>
-
-                {/* Contenu */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <h3 style={{ fontSize: 14.5, fontWeight: 600, lineHeight: 1.4, marginBottom: 6, color: "var(--text)" }}>{q.titre}</h3>
-                  <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.5, marginBottom: 10 }}>{q.extrait.substring(0, 100)}...</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <AvatarCircle initiales={q.avatar} size={22} />
-                      <span style={{ fontSize: 12, color: "var(--muted)" }}>{q.auteur}</span>
-                    </div>
-                    <span style={{ fontSize: 11.5, color: "var(--faint)" }}>•</span>
-                    <span style={{ fontSize: 12, color: "var(--faint)" }}>{q.date}</span>
-                    <span style={{ fontSize: 11.5, color: "var(--faint)" }}>•</span>
-                    <span style={{ fontSize: 12, color: "var(--muted)" }}>👁 {q.vues}</span>
-                    {q.tags.slice(0, 2).map(tag => (
-                      <span key={tag} style={{ padding: "2px 8px", borderRadius: 12, background: "var(--indigo-tint)", color: "var(--indigo)", fontSize: 11, fontWeight: 500 }}>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {filtered.length === 0 && (
-              <div style={{ padding: "60px 24px", textAlign: "center", color: "var(--muted)" }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
-                <p>Aucune question ne correspond à ta recherche.</p>
-                <button
-                  onClick={() => setShowNewQuestion(true)}
-                  style={{ marginTop: 16, padding: "8px 20px", borderRadius: 8, border: "none", background: "var(--indigo)", color: "#0F172A", cursor: "pointer", fontFamily: "inherit", fontSize: 13.5 }}
-                >
-                  Poser cette question en premier
-                </button>
-              </div>
-            )}
-          </div>
-
-          {/* Note communauté */}
-          <div style={{ marginTop: 24, padding: 20, background: "var(--surface-2)", borderRadius: 12, border: "1px solid var(--border)", textAlign: "center" }}>
-            <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.6 }}>
-              🚀 La communauté DataSphère est en cours de lancement.{" "}
-              <Link href="/newsletter" style={{ color: "var(--indigo)", fontWeight: 600 }}>Inscris-toi à la newsletter</Link>{" "}
-              pour être notifié des nouvelles fonctionnalités (compte, votes, notifications).
-            </p>
-          </div>
+          ))}
         </div>
-      </div>
+      </section>
 
-      {/* Modal nouvelle question */}
-      {showNewQuestion && (
-        <div
-          style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}
-          onClick={() => { setShowNewQuestion(false); setSubmitted(false); }}
-        >
-          <div
-            style={{ background: "white", borderRadius: 20, maxWidth: 560, width: "100%", padding: 36 }}
-            onClick={e => e.stopPropagation()}
-          >
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-              <h2 style={{ fontSize: "1.2rem" }}>Poser une question</h2>
-              <button onClick={() => { setShowNewQuestion(false); setSubmitted(false); }} style={{ background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "var(--muted)" }}>✕</button>
+      {/* Comment participer */}
+      <section style={{ padding: "0 24px 80px", maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <span className="section-label">Comment participer</span>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "#0F172A" }}>
+            Rejoins la communauté dès maintenant
+          </h2>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
+          {FACONS.map(f => (
+            <div key={f.titre} style={{ background: f.bg, border: `1.5px solid ${f.border}`, borderRadius: 18, padding: "28px 26px", display: "flex", flexDirection: "column" }}>
+              <span style={{ fontSize: 32, marginBottom: 14 }}>{f.emoji}</span>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 800, color: f.color, marginBottom: 10 }}>{f.titre}</h3>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, flex: 1, marginBottom: 20 }}>{f.desc}</p>
+              <Link href={f.href} style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "10px 18px", borderRadius: 10, fontSize: 13.5, fontWeight: 700,
+                background: f.color, color: "#fff", textDecoration: "none",
+                fontFamily: "var(--font-display)", width: "fit-content",
+              }}>
+                {f.cta} →
+              </Link>
             </div>
-
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "24px 0" }}>
-                <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-                <h3 style={{ fontSize: "1.1rem", marginBottom: 8 }}>Question envoyée !</h3>
-                <p style={{ color: "var(--muted)", fontSize: 14 }}>Ta question sera publiée après modération. La communauté va y répondre bientôt.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmitQuestion} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 600, marginBottom: 6 }}>Titre de ta question *</label>
-                  <input
-                    required
-                    value={newQuestion.titre}
-                    onChange={e => setNewQuestion(prev => ({ ...prev, titre: e.target.value }))}
-                    placeholder="Ex: Comment optimiser un modèle XGBoost sur Databricks ?"
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid var(--border)", fontSize: 13.5, outline: "none", fontFamily: "inherit" }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 600, marginBottom: 6 }}>Catégorie *</label>
-                  <select
-                    required
-                    value={newQuestion.categorie}
-                    onChange={e => setNewQuestion(prev => ({ ...prev, categorie: e.target.value }))}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid var(--border)", fontSize: 13.5, fontFamily: "inherit", background: "white" }}
-                  >
-                    <option value="">Choisir une catégorie</option>
-                    {CATEGORIES_FORUM.map(c => <option key={c.id} value={c.label}>{c.emoji} {c.label}</option>)}
-                  </select>
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 600, marginBottom: 6 }}>Détails *</label>
-                  <textarea
-                    required
-                    value={newQuestion.contenu}
-                    onChange={e => setNewQuestion(prev => ({ ...prev, contenu: e.target.value }))}
-                    placeholder="Décris ton contexte, ce que tu as déjà essayé, et ce que tu cherches..."
-                    rows={4}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid var(--border)", fontSize: 13.5, outline: "none", fontFamily: "inherit", resize: "vertical" }}
-                  />
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: 12.5, fontWeight: 600, marginBottom: 6 }}>Email (pour être notifié des réponses)</label>
-                  <input
-                    type="email"
-                    value={newQuestion.email}
-                    onChange={e => setNewQuestion(prev => ({ ...prev, email: e.target.value }))}
-                    placeholder="prenom@exemple.fr"
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 8, border: "1px solid var(--border)", fontSize: 13.5, outline: "none", fontFamily: "inherit" }}
-                  />
-                </div>
-                <button type="submit" style={{
-                  padding: "12px 24px", borderRadius: 10, border: "none", cursor: "pointer",
-                  background: "var(--indigo)", color: "#0F172A", fontSize: 14, fontWeight: 700, fontFamily: "var(--font-display)",
-                }}>
-                  Publier la question
-                </button>
-              </form>
-            )}
-          </div>
+          ))}
         </div>
-      )}
+      </section>
+
+      {/* CTA final */}
+      <section style={{ background: "#F8FAFC", borderTop: "1px solid #E2E8F0", padding: "64px 24px" }}>
+        <div style={{ maxWidth: 560, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)", fontWeight: 800, color: "#0F172A", marginBottom: 12 }}>
+            Tu veux contribuer au site ?
+          </h2>
+          <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.7, marginBottom: 24 }}>
+            Cas d&apos;usage, retour d&apos;expérience, comparatif, agent IA — si tu travailles en data et que tu veux partager ton expertise, contacte-nous via la newsletter.
+          </p>
+          <Link href="/newsletter" className="btn-primary">
+            Rejoindre et contribuer →
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

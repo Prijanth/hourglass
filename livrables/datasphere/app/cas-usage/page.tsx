@@ -2,6 +2,119 @@
 import { useState, useMemo } from "react";
 import data from "@/content/cas-usage.json";
 
+type CasUsage = typeof data.cas[0];
+
+function esc(s: string | undefined): string {
+  if (!s) return "";
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function printHtml(html: string) {
+  const iframe = document.createElement("iframe");
+  iframe.style.cssText = "position:fixed;top:-9999px;left:-9999px;width:0;height:0;border:0";
+  document.body.appendChild(iframe);
+  const doc = iframe.contentDocument || iframe.contentWindow?.document;
+  if (!doc) { document.body.removeChild(iframe); return; }
+  doc.open();
+  doc.write(html);
+  doc.close();
+  iframe.addEventListener("load", () => {
+    iframe.contentWindow?.print();
+    setTimeout(() => { if (document.body.contains(iframe)) document.body.removeChild(iframe); }, 1000);
+  });
+}
+
+function buildCasHtml(c: CasUsage): string {
+  const DIFF_COLORS: Record<string, { bg: string; color: string }> = {
+    "Débutant":      { bg: "#ECFDF5", color: "#065F46" },
+    "Intermédiaire": { bg: "#FFFBEB", color: "#92400E" },
+    "Avancé":        { bg: "#FFF1F2", color: "#9F1239" },
+  };
+  const diff = DIFF_COLORS[c.difficulte] || { bg: "#F1F5F9", color: "#475569" };
+
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>DataSphère — ${esc(c.titre)}</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0F172A;background:#fff;font-size:13px;line-height:1.6}
+    .header{padding:26px 36px 18px;border-bottom:3px solid #00C9A7;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+    .logo{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:#0F766E;margin-bottom:8px}
+    h1{font-size:20px;font-weight:800;line-height:1.25;color:#0F172A;margin-bottom:10px}
+    .badge{padding:2px 9px;border-radius:100px;font-size:10.5px;font-weight:600;display:inline-block}
+    .meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+    .stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+    .skill{padding:3px 8px;background:#F1F5F9;border:1px solid #E2E8F0;border-radius:5px;font-size:11px;color:#475569;font-family:'Courier New',monospace}
+    .body{padding:22px 36px;display:flex;flex-direction:column;gap:16px}
+    .section-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#94A3B8;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+    .card{border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.75}
+    .card-gray{background:#F8FAFC;border:1px solid #E2E8F0}
+    .card-blue{background:#EEF2FF;border:1px solid rgba(85,88,255,.15)}
+    .results-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .result-item{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;background:#ECFDF5;border:1px solid rgba(0,201,167,.2);border-radius:8px;font-size:12px;line-height:1.5}
+    .points{display:flex;flex-direction:column;gap:7px}
+    .point-item{display:flex;align-items:flex-start;gap:8px;padding:10px 14px;background:#EEF2FF;border:1px solid rgba(85,88,255,.12);border-radius:8px;font-size:12.5px;line-height:1.6}
+    .footer{margin-top:20px;padding:12px 36px;border-top:1px solid #E2E8F0;display:flex;justify-content:space-between;align-items:center}
+    .footer-brand{font-size:11px;font-weight:800;color:#0F766E}
+    .footer-url{font-size:10px;color:#94A3B8}
+    @media print{
+      *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+      @page{margin:1cm 1.2cm;size:A4}
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div>
+      <div class="logo">⬡ DataSphère · Cas d'usage</div>
+      <h1>${esc(c.titre)}</h1>
+      <div class="meta">
+        <span class="badge" style="background:#F0FDF4;color:#15803D">${esc(c.secteur)}</span>
+        <span class="badge" style="background:#F1F5F9;color:#475569">${esc(c.type)}</span>
+        <span class="badge" style="background:${diff.bg};color:${diff.color}">${esc(c.difficulte)}</span>
+      </div>
+      <div class="stack">${c.stack.map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>
+    </div>
+    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">datasphere.fr/cas-usage</div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-label">🔍 Le problème</div>
+      <div class="card card-gray">${esc(c.probleme)}</div>
+    </div>
+
+    <div>
+      <div class="section-label">⚙️ La solution</div>
+      <div class="card card-blue">${esc(c.solution)}</div>
+    </div>
+
+    <div>
+      <div class="section-label">📊 Résultats mesurables <span style="font-size:11px;font-weight:400;color:#92400E;">(estimations — varient selon le contexte)</span></div>
+      <div style="font-size:11px;color:#92400E;font-style:italic;margin-bottom:8px;padding:6px 10px;background:#FFFBEB;border-radius:6px;border:1px solid #FDE68A;">Ces chiffres sont des ordres de grandeur issus de projets similaires. Les gains réels dépendent du contexte et de l'implémentation.</div>
+      <div class="results-grid">
+        ${c.resultats.map(r => `<div class="result-item"><span style="color:#0F766E;font-weight:700;flex-shrink:0">✓</span><span>${esc(r)}</span></div>`).join("")}
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">💡 Points clés</div>
+      <div class="points">
+        ${c.points_cles.map(p => `<div class="point-item"><span style="color:#5558FF;font-weight:700;flex-shrink:0">→</span><span>${esc(p)}</span></div>`).join("")}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">DataSphère</div>
+    <div class="footer-url">datasphere.fr · Le référentiel data en français</div>
+  </div>
+</body>
+</html>`;
+}
+
 const SECTEUR_CONFIG: Record<string, { bg: string; color: string; border: string; emoji: string }> = {
   "Finance":               { bg: "#EEF2FF", color: "#4338CA", border: "rgba(67,56,202,0.15)", emoji: "🏦" },
   "Retail / E-commerce":   { bg: "#F0FDF4", color: "#15803D", border: "rgba(21,128,61,0.15)",  emoji: "🛒" },
@@ -31,7 +144,15 @@ function SecteurBadge({ secteur }: { secteur: string }) {
   );
 }
 
-function CasModal({ cas, onClose }: { cas: typeof data.cas[0]; onClose: () => void }) {
+function CasModal({ cas, onClose }: { cas: CasUsage; onClose: () => void }) {
+  const [exported, setExported] = useState(false);
+
+  function handleExport() {
+    printHtml(buildCasHtml(cas));
+    setExported(true);
+    setTimeout(() => setExported(false), 2500);
+  }
+
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 200, background: "rgba(6,11,24,0.75)", display: "flex", alignItems: "center", justifyContent: "center", padding: 24, backdropFilter: "blur(8px)" }}
       onClick={onClose}>
@@ -45,7 +166,26 @@ function CasModal({ cas, onClose }: { cas: typeof data.cas[0]; onClose: () => vo
               {cas.featured && <span className="badge badge-amber">⭐ Vedette</span>}
               <span className={`badge ${cas.difficulte === "Avancé" ? "badge-rose" : cas.difficulte === "Intermédiaire" ? "badge-amber" : "badge-teal"}`}>{cas.difficulte}</span>
             </div>
-            <button onClick={onClose} style={{ background: "var(--surface-2)", border: "none", width: 32, height: 32, borderRadius: "50%", cursor: "pointer", fontSize: 16, color: "var(--muted)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>✕</button>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+              <button
+                onClick={handleExport}
+                title="Exporter en Markdown"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  padding: "6px 12px", borderRadius: 8, border: "1px solid var(--border)",
+                  background: exported ? "#F0FDF4" : "var(--surface-2)",
+                  color: exported ? "#15803D" : "var(--muted)",
+                  cursor: "pointer", fontSize: 12.5, fontWeight: 600,
+                  fontFamily: "inherit", transition: "all 0.2s",
+                }}
+              >
+                {exported
+                  ? <><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 6L9 17l-5-5"/></svg> Téléchargé</>
+                  : <><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Exporter PDF</>
+                }
+              </button>
+              <button onClick={onClose} style={{ background: "var(--surface-2)", border: "none", width: 32, height: 32, borderRadius: "50%", cursor: "pointer", fontSize: 16, color: "var(--muted)", display: "flex", alignItems: "center", justifyContent: "center" }}>✕</button>
+            </div>
           </div>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.35rem", fontWeight: 800, marginTop: 16, lineHeight: 1.25 }}>{cas.titre}</h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 12 }}>
@@ -67,8 +207,16 @@ function CasModal({ cas, onClose }: { cas: typeof data.cas[0]; onClose: () => vo
           ))}
 
           <div>
-            <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--muted)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-              <span>📊</span>RÉSULTATS MESURABLES
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+              <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--muted)", margin: 0, display: "flex", alignItems: "center", gap: 6 }}>
+                <span>📊</span>RÉSULTATS MESURABLES
+              </p>
+              <span style={{ fontSize: 10.5, color: "#92400E", background: "#FFFBEB", border: "1px solid #FDE68A", borderRadius: 20, padding: "2px 10px", fontWeight: 600 }}>
+                ⚠️ Estimations — varient selon le contexte
+              </span>
+            </div>
+            <p style={{ fontSize: 11.5, color: "var(--muted)", marginBottom: 12, lineHeight: 1.6, fontStyle: "italic" }}>
+              Ces chiffres sont des ordres de grandeur issus de projets similaires documentés. Les gains réels dépendent de la qualité des données, de la maturité de l&apos;organisation et des conditions d&apos;implémentation.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               {cas.resultats.map(r => (
@@ -193,7 +341,9 @@ export default function CasUsagePage() {
                       {cas.stack.slice(0, 4).map(s => <span key={s} className="skill-pill" style={{ fontSize: 11 }}>{s}</span>)}
                     </div>
                     <div style={{ borderTop: "1px solid var(--border)", paddingTop: 14 }}>
-                      <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--muted)", marginBottom: 8 }}>Résultats clés</p>
+                      <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--muted)", marginBottom: 4 }}>
+                        Résultats clés <span style={{ fontWeight: 400, textTransform: "none", fontSize: 10, color: "#B45309" }}>(estimations — voir détail)</span>
+                      </p>
                       {cas.resultats.slice(0, 2).map(r => (
                         <p key={r} style={{ fontSize: 12.5, color: "var(--text-2)", lineHeight: 1.5, marginBottom: 4, display: "flex", alignItems: "flex-start", gap: 6 }}>
                           <span style={{ color: "var(--teal)", fontWeight: 700, flexShrink: 0 }}>✓</span>{r}

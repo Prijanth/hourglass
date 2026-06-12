@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import data from "@/content/certifications.json";
 
@@ -41,7 +41,7 @@ function DotRating({ value, max = 5, color = "var(--indigo)" }: { value: number;
   );
 }
 
-export default function CertificationsPage() {
+function CertificationsContent() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("q") ?? "");
   const [categorie, setCategorie] = useState("Toutes");
@@ -186,11 +186,11 @@ export default function CertificationsPage() {
                   </div>
 
                   {/* Titre */}
-                  <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.35, marginBottom: 10, color: "var(--text)", flex: 1 }}>
+                  <h3 style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.35, marginBottom: 10, color: "var(--text)" }}>
                     {cert.nom}
                   </h3>
 
-                  <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.65, marginBottom: 14 }}>
+                  <p style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.65, marginBottom: 14, flex: 1 }}>
                     {cert.description}
                   </p>
 
@@ -253,15 +253,14 @@ export default function CertificationsPage() {
                     href={cert.lien_officiel}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="hover-lift"
                     style={{
                       display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
                       padding: "10px 16px", borderRadius: 10,
                       background: oc.bg, color: oc.text, border: `1.5px solid ${oc.border}`,
-                      fontSize: 13, fontWeight: 700, transition: "all 0.2s",
+                      fontSize: 13, fontWeight: 700,
                       fontFamily: "var(--font-display)",
                     }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.8"; (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)"; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; }}
                   >
                     Voir la certification officielle →
                   </a>
@@ -288,5 +287,13 @@ export default function CertificationsPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function CertificationsPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: "80px 24px", textAlign: "center", color: "#94A3B8" }}>Chargement…</div>}>
+      <CertificationsContent />
+    </Suspense>
   );
 }

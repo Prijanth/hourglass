@@ -14,14 +14,12 @@ export function ResourceLink({ href, label, desc, tag, tagColor }: ResourceLinkP
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      className="hover-shadow-card"
       style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "14px 18px", background: "white", borderRadius: 12,
         border: "1px solid #E2E8F0", textDecoration: "none",
-        transition: "box-shadow 0.2s",
       }}
-      onMouseEnter={e => ((e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.08)")}
-      onMouseLeave={e => ((e.currentTarget as HTMLElement).style.boxShadow = "none")}
     >
       <div>
         <p style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 2 }}>{label}</p>

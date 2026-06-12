@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import articles from "@/content/articles.json";
 import { ArticleSidebar } from "@/components/article-sidebar";
+import { fmtDate } from "@/lib/date-utils";
+
+const BASE = "https://datasphere.fr";
 
 const CATEGORY_COLORS: Record<string, string> = {
   indigo: "badge-indigo", teal: "badge-teal", amber: "badge-amber", rose: "badge-rose",
@@ -9,10 +13,6 @@ const CATEGORY_COLORS: Record<string, string> = {
 const CATEGORY_ACCENT: Record<string, string> = {
   indigo: "var(--indigo)", teal: "#0F766E", amber: "#B45309", rose: "#BE123C",
 };
-
-function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
-}
 
 function extractHeadings(content: string) {
   return content.split("\n\n")
@@ -75,6 +75,28 @@ export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
+  if (!article) return { title: "Article — DataSphère" };
+  const title = `${article.title} | DataSphère`;
+  const ogImageUrl = `${BASE}/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.excerpt.slice(0, 120))}&type=${encodeURIComponent(article.category)}`;
+  return {
+    title,
+    description: article.excerpt,
+    openGraph: {
+      title,
+      description: article.excerpt,
+      url: `${BASE}/actualites/${slug}`,
+      type: "article",
+      publishedTime: article.date,
+      authors: [article.author],
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: article.title }],
+    },
+    twitter: { card: "summary_large_image", title, description: article.excerpt, images: [ogImageUrl] },
+  };
+}
+
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
@@ -85,8 +107,33 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const blocks = article.content.split("\n\n");
   const accent = CATEGORY_ACCENT[article.categoryColor] ?? "var(--indigo)";
 
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": article.title,
+    "description": article.excerpt,
+    "datePublished": article.date,
+    "author": { "@type": "Person", "name": article.author },
+    "publisher": { "@type": "Organization", "name": "DataSphère", "url": BASE },
+    "inLanguage": "fr",
+    "articleSection": article.category,
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE}/actualites/${slug}` },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil",    "item": BASE },
+      { "@type": "ListItem", "position": 2, "name": "Actualités", "item": `${BASE}/actualites` },
+      { "@type": "ListItem", "position": 3, "name": article.title, "item": `${BASE}/actualites/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* Hero article */}
       <div style={{ background: `linear-gradient(180deg, color-mix(in srgb, ${accent} 8%, white) 0%, var(--surface) 100%)`, borderBottom: "1px solid var(--border)", padding: "48px 24px 40px" }}>
         <div style={{ maxWidth: 820, margin: "0 auto" }}>
@@ -132,7 +179,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </article>
 
-        <ArticleSidebar headings={headings} related={related} accent={accent} />
+        <ArticleSidebar headings={headings} related={related} accent={accent} shareUrl={`https://datasphere.fr/actualites/${slug}`} />
       </div>
     </>
   );

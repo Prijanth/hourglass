@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import metiers from "@/content/metiers.json";
 import formations from "@/content/formations.json";
+
+const BASE = "https://datasphere.fr";
 
 const FORMATIONS_PAR_METIER: Record<string, string[]> = {
   "data-analyst":          ["google-data-analytics", "udemy-sql-complet", "datacamp-sql-fundamentals", "openclassrooms-data-analyst"],
@@ -56,9 +59,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const m = getMetier(slug);
   if (!m) return {};
+  const title = `${m.title} — Compétences, certifications et carrière 2026 | DataSphère`;
+  const description = `Tout sur le métier de ${m.title} : compétences requises, certifications, formations et trajectoires de carrière en France.`;
+  const ogImageUrl = `${BASE}/og?title=${encodeURIComponent(m.title)}&subtitle=${encodeURIComponent(m.tagline)}&type=M%C3%A9tier`;
   return {
-    title: `${m.title} — Salaires, compétences et carrière 2025 | DataSphère`,
-    description: `Tout sur le métier de ${m.title} : salaire ${m.salaryMin}-${m.salaryMax}k€, compétences requises, certifications et trajectoires de carrière en France.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${BASE}/metiers/${slug}`,
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: m.title }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [ogImageUrl] },
   };
 }
 
@@ -89,8 +102,19 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
     .filter(r => r.slug !== m.slug && r.category === m.category)
     .slice(0, 3);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": BASE },
+      { "@type": "ListItem", "position": 2, "name": "Métiers", "item": `${BASE}/metiers` },
+      { "@type": "ListItem", "position": 3, "name": m.title,   "item": `${BASE}/metiers/${slug}` },
+    ],
+  };
+
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {/* Breadcrumb */}
       <div style={{ background: "#F8FAFC", borderBottom: "1px solid #E2E8F0", padding: "12px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: 8, alignItems: "center", fontSize: 13, color: "#94A3B8" }}>
@@ -145,8 +169,6 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
                 En un coup d&apos;œil
               </p>
               {[
-                { label: "Salaire", value: `${m.salaryMin}–${m.salaryMax}k€/an` },
-                { label: "Paris senior", value: m.salaryParisSenior },
                 { label: "Remote", value: m.remoteRate },
                 { label: "Demande", value: m.demand },
               ].map(({ label, value }) => (
@@ -176,14 +198,14 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
             <p style={{ fontSize: 12, color: "#94A3B8", marginBottom: 16 }}>Clique sur un terme pour le chercher dans le glossaire.</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {m.skills.map(skill => (
-                <Link key={skill} href={`/glossaire?q=${encodeURIComponent(skill.split(" / ")[0].split(" ")[0])}`} style={{
+                <Link key={skill} href={`/glossaire?q=${encodeURIComponent(skill.split(" / ")[0].split(" ")[0])}`}
+                className="skill-link-hover"
+                style={{
                   padding: "6px 14px", borderRadius: 100,
                   background: "#F1F5F9", border: "1px solid #E2E8F0",
                   fontSize: 13, fontWeight: 500, color: "#334155",
-                  textDecoration: "none", transition: "all 0.15s",
+                  textDecoration: "none",
                 }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = "#EDE9FE"; el.style.borderColor = "#7C3AED"; el.style.color = "#7C3AED"; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = "#F1F5F9"; el.style.borderColor = "#E2E8F0"; el.style.color = "#334155"; }}
                 >
                   {skill}
                 </Link>
@@ -198,13 +220,13 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
             </h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {m.certifications.map(cert => (
-                <Link key={cert} href={`/certifications?q=${encodeURIComponent(cert.split(" ").slice(0, 3).join(" "))}`} style={{
+                <Link key={cert} href={`/certifications?q=${encodeURIComponent(cert)}`}
+                className="cert-link-hover"
+                style={{
                   display: "flex", alignItems: "center", gap: 12, padding: "12px 14px",
                   borderRadius: 10, background: "#F8FAFC", border: "1px solid #E2E8F0",
-                  textDecoration: "none", transition: "border-color 0.15s",
+                  textDecoration: "none",
                 }}
-                onMouseEnter={e => (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED"}
-                onMouseLeave={e => (e.currentTarget as HTMLElement).style.borderColor = "#E2E8F0"}
                 >
                   <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#7C3AED", flexShrink: 0 }} />
                   <span style={{ fontSize: 13.5, fontWeight: 500, color: "#0F172A", flex: 1 }}>{cert}</span>
@@ -226,13 +248,13 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
               <div style={{ padding: "8px 16px", borderRadius: 100, background: "#7C3AED", color: "#fff", fontSize: 13, fontWeight: 700 }}>
                 {m.title}
               </div>
-              {m.evolution.map((step, i) => (
-                <>
-                  <span key={`arrow-${i}`} style={{ color: "#CBD5E1", fontSize: 16 }}>→</span>
-                  <div key={step} style={{ padding: "8px 16px", borderRadius: 100, background: "rgba(124,58,237,0.1)", border: "1.5px solid rgba(124,58,237,0.2)", color: "#5B21B6", fontSize: 13, fontWeight: 600 }}>
+              {m.evolution.map((step) => (
+                <Fragment key={step}>
+                  <span style={{ color: "#CBD5E1", fontSize: 16 }}>→</span>
+                  <div style={{ padding: "8px 16px", borderRadius: 100, background: "rgba(124,58,237,0.1)", border: "1.5px solid rgba(124,58,237,0.2)", color: "#5B21B6", fontSize: 13, fontWeight: 600 }}>
                     {step}
                   </div>
-                </>
+                </Fragment>
               ))}
             </div>
           </div>
@@ -320,7 +342,7 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
             <div>
               <p style={{ fontSize: 14, fontWeight: 700, color: "#A78BFA", marginBottom: 4 }}>Newsletter DataSphère</p>
               <p style={{ fontSize: 17, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>
-                Salaires, certifications data<br />chaque semaine en français
+                Certifications, outils data<br />chaque semaine en français
               </p>
             </div>
             <Link href="/newsletter" className="btn-primary" style={{ flexShrink: 0 }}>
@@ -331,23 +353,6 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
 
         {/* Sidebar */}
         <div style={{ display: "flex", flexDirection: "column", gap: 20, position: "sticky", top: 80 }}>
-
-          {/* Salaire visuel */}
-          <div className="card" style={{ padding: "22px 22px" }}>
-            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.09em", color: "#94A3B8", marginBottom: 14 }}>
-              Fourchette salariale 2025
-            </p>
-            <div style={{ marginBottom: 8 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ fontSize: 12, color: "#64748B" }}>{m.salaryMin}k€</span>
-                <span style={{ fontSize: 12, color: "#64748B" }}>{m.salaryMax}k€</span>
-              </div>
-              <div style={{ height: 8, borderRadius: 10, background: "#F1F5F9", position: "relative", overflow: "hidden" }}>
-                <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "100%", background: `linear-gradient(90deg, #7C3AED, #0EA5E9)`, borderRadius: 10 }} />
-              </div>
-              <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 8 }}>{m.salaryParisSenior}</p>
-            </div>
-          </div>
 
           {/* Métiers similaires */}
           {related.length > 0 && (
@@ -363,7 +368,7 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
                     background: "#F8FAFC", border: "1px solid #E2E8F0", textDecoration: "none",
                   }}>
                     <span style={{ fontSize: 13, fontWeight: 600, color: "#0F172A" }}>{r.title}</span>
-                    <span style={{ fontSize: 11.5, color: "#94A3B8" }}>{r.salaryMin}–{r.salaryMax}k€ · {r.demand}</span>
+                    <span style={{ fontSize: 11.5, color: "#94A3B8" }}>{r.demand} · {r.remoteRate}</span>
                   </Link>
                 ))}
               </div>

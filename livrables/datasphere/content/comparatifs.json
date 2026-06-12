@@ -2,7 +2,7 @@
   {
     "slug": "snowflake-vs-databricks",
     "title": "Snowflake vs Databricks",
-    "subtitle": "Warehouse SQL ou Lakehouse unifié : le choix clé pour votre stack data 2025",
+    "subtitle": "Warehouse SQL ou Lakehouse unifié : le choix clé pour votre stack data 2026",
     "category": "Data Platform",
     "date": "2026-05-15",
     "tools": ["snowflake", "databricks"],
@@ -13,7 +13,7 @@
       { "name": "Facilité de prise en main", "a": 80, "b": 65, "note": "Snowflake s'utilise en SQL standard. Databricks nécessite de maîtriser Spark et Python." },
       { "name": "Coût total (TCO)", "a": 62, "b": 58, "note": "Les deux sont coûteux. Snowflake est plus prévisible, Databricks peut déraper sur le compute Spark." },
       { "name": "Écosystème et intégrations", "a": 88, "b": 91, "note": "Databricks pousse l'open source (Delta Lake, MLflow). Snowflake a un marketplace de données unique." },
-      { "name": "Gouvernance des données", "a": 82, "b": 90, "note": "Unity Catalog (Databricks) unifie la gouvernance data+ML. Snowflake propose Horizon Catalog, Dynamic Masking et Row Access Policies — gouvernance SQL et sécurité robuste." }
+      { "name": "Gouvernance des données", "a": 88, "b": 85, "note": "Snowflake excelle sur la gouvernance SQL fine (Horizon Catalog, Dynamic Masking, Row Access Policies). Unity Catalog (Databricks) rattrape son retard mais reste moins mature sur la sécurité colonne/ligne en 2026." }
     ],
     "verdict_a": "Choisissez Snowflake si votre équipe est centrée sur l'analytique SQL, que vous avez peu de data scientists, et que vous cherchez la simplicité opérationnelle. Idéal pour les équipes finance, marketing, BI.",
     "verdict_b": "Choisissez Databricks si vous avez une équipe data engineering + data science, des workloads ML significatifs, ou si vous traitez des volumes massifs nécessitant Spark.",
@@ -24,7 +24,7 @@
   {
     "slug": "powerbi-vs-tableau-vs-looker",
     "title": "Power BI vs Tableau vs Looker",
-    "subtitle": "Quel outil BI choisir pour votre organisation en 2025 ?",
+    "subtitle": "Quel outil BI choisir pour votre organisation en 2026 ?",
     "category": "Business Intelligence",
     "date": "2026-05-10",
     "tools": ["power-bi", "tableau", "looker"],
@@ -50,7 +50,7 @@
   {
     "slug": "airflow-vs-prefect-vs-dagster",
     "title": "Airflow vs Prefect vs Dagster",
-    "subtitle": "Quel orchestrateur de pipelines data choisir en 2025 ?",
+    "subtitle": "Quel orchestrateur de pipelines data choisir en 2026 ?",
     "category": "Orchestration",
     "date": "2026-04-28",
     "tools": ["airflow", "prefect", "dagster"],
@@ -101,7 +101,7 @@
     "category": "Data Engineering",
     "date": "2026-05-20",
     "tools": ["pandas", "polars"],
-    "summary": "Pandas est la bibliothèque DataFrame de référence depuis 15 ans. Polars, écrite en Rust, est jusqu'à 10 à 30x plus rapide grâce à son exécution lazy et son moteur multithreadé. Le choix dépend de la taille de tes données et de ton contexte de migration. Note : le score légèrement supérieur de Polars ne signifie pas qu'il faut l'apprendre en priorité — les débutants doivent commencer par Pandas (voir les verdicts).",
+    "summary": "Pandas est la bibliothèque DataFrame de référence depuis 15 ans. Polars, écrite en Rust, est généralement 3x à 20x plus rapide selon les benchmarks communautaires (h2oai/db-benchmark), grâce à son exécution lazy et son moteur multithreadé. Le choix dépend de la taille de tes données et de ton contexte de migration. Note : le score légèrement supérieur de Polars ne signifie pas qu'il faut l'apprendre en priorité — les débutants doivent commencer par Pandas (voir les verdicts).",
     "criteria": [
       { "name": "Performance brute", "a": 52, "b": 95, "note": "Polars est massivement plus rapide grâce au multithreading natif et à son moteur d'exécution lazy qui optimise les opérations avant de les lancer." },
       { "name": "Facilité d'apprentissage", "a": 90, "b": 68, "note": "Pandas est enseigné dans pratiquement toutes les formations data. L'API Polars est plus stricte et nécessite de changer quelques réflexes." },
@@ -113,8 +113,8 @@
     "verdict_a": "Pandas si tu démarres en data (c'est ce qu'on t'enseignera partout), si ton équipe n'a pas encore migré, ou si tu travailles sur des datasets qui tiennent en mémoire avec un écosystème ML existant à ne pas casser.",
     "verdict_b": "Polars si tu traites des fichiers de plusieurs Go en Python, si tu construis un nouveau pipeline de transformation from scratch, ou si la performance est critique. La montée en compétences est rapide.",
     "shared_use": "Les deux ne sont pas mutuellement exclusifs. Beaucoup d'équipes utilisent Polars pour l'ingestion et la transformation des données, et convertissent en Pandas uniquement pour l'interface avec Scikit-learn ou des librairies qui ne supportent pas encore Polars nativement.",
-    "score_a": 72,
-    "score_b": 75
+    "score_a": 76,
+    "score_b": 73
   },
   {
     "slug": "dbt-core-vs-dbt-cloud",

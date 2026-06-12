@@ -13,7 +13,7 @@ const data = [
   { skill: "Docker/K8s", score: 62 },
   { skill: "Airflow",    score: 60 },
   { skill: "Kafka",      score: 55 },
-  { skill: "LLM / RAG",  score: 68 },
+  { skill: "LLM / RAG",  score: 82 },
 ];
 
 const COLORS = ["#6366F1","#6366F1","#7C3AED","#7C3AED","#8B5CF6","#8B5CF6","#A78BFA","#A78BFA","#C4B5FD","#C4B5FD"];

@@ -6,17 +6,22 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   async function handleSubscribe() {
     if (!email.includes("@")) return;
     setLoading(true);
+    setError(false);
     try {
-      await fetch("/api/newsletter/subscribe", {
+      const res = await fetch("/api/newsletter/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
+      if (!res.ok) throw new Error();
       setDone(true);
+    } catch {
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -27,7 +32,7 @@ export function Footer() {
       <div style={{ height: 1, background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.6), rgba(14,165,233,0.4), transparent)" }} />
 
       <div style={{ maxWidth: 1240, margin: "0 auto", padding: "52px 24px 32px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1.3fr", gap: 48, marginBottom: 44 }}>
+        <div className="footer-grid">
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
@@ -41,7 +46,7 @@ export function Footer() {
                 Data<span style={{ color: "#A78BFA" }}>Sphère</span>
               </span>
             </div>
-            <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.42)", lineHeight: 1.7, maxWidth: 290, marginBottom: 18 }}>
+            <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 290, marginBottom: 18 }}>
               La référence francophone sur la data et l&apos;IA. Encyclopédie, certifications, cas d&apos;usage, glossaire et communauté.
             </p>
             <div style={{ display: "flex", gap: 8 }}>
@@ -64,7 +69,7 @@ export function Footer() {
           {/* Ressources */}
           <div>
             <p style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>Ressources</p>
-            {[["Outils", "/outils"], ["Comparatifs", "/comparatifs"], ["Métiers", "/metiers"], ["Formations", "/formations"], ["Jobs", "/jobs"], ["Communauté", "/communaute"]].map(([l, h]) => (
+            {[["Outils", "/outils"], ["Comparatifs", "/comparatifs"], ["Comparateur", "/comparateur"], ["Métiers", "/metiers"], ["Formations", "/formations"], ["Jobs", "/jobs"], ["Communauté", "/communaute"]].map(([l, h]) => (
               <Link key={h} href={h} className="footer-link">{l}</Link>
             ))}
           </div>
@@ -72,14 +77,18 @@ export function Footer() {
           {/* Newsletter */}
           <div>
             <p style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>Newsletter</p>
-            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.42)", marginBottom: 14, lineHeight: 1.6 }}>L&apos;essentiel data et IA chaque lundi. Gratuit.</p>
+            <p style={{ fontSize: 13, color: "rgba(255,255,255,0.65)", marginBottom: 14, lineHeight: 1.6 }}>L&apos;essentiel data et IA chaque lundi. Gratuit.</p>
             {done ? (
               <div style={{ padding: "11px 14px", background: "rgba(22,163,74,0.12)", border: "1px solid rgba(22,163,74,0.25)", borderRadius: "var(--r-md)" }}>
                 <p style={{ fontSize: 13, color: "#4ADE80" }}>Merci, inscription confirmée !</p>
               </div>
             ) : (
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <form onSubmit={e => { e.preventDefault(); handleSubscribe(); }} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <label htmlFor="footer-email" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
+                  Votre adresse email
+                </label>
                 <input
+                  id="footer-email"
                   type="email"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
@@ -94,7 +103,7 @@ export function Footer() {
                   onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)")}
                 />
                 <button
-                  onClick={handleSubscribe}
+                  type="submit"
                   disabled={loading}
                   style={{
                     padding: "10px 14px", background: "var(--indigo)", color: "#fff",
@@ -102,12 +111,15 @@ export function Footer() {
                     fontSize: 13.5, fontWeight: 700, fontFamily: "var(--font-display)",
                     transition: "background 0.15s", opacity: loading ? 0.7 : 1,
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.background = "#6D28D9")}
-                  onMouseLeave={e => (e.currentTarget.style.background = "var(--indigo)")}
                 >
                   {loading ? "..." : "S'abonner →"}
                 </button>
-              </div>
+                {error && (
+                  <p style={{ fontSize: 12, color: "#F87171", marginTop: 4 }}>
+                    Erreur lors de l&apos;inscription. Réessaie.
+                  </p>
+                )}
+              </form>
             )}
           </div>
         </div>
@@ -115,10 +127,10 @@ export function Footer() {
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 22, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
           <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>© 2026 DataSphère. Tous droits réservés.</p>
           <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
-            <Link href="/a-propos" style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>À propos</Link>
-            <Link href="/mentions-legales" style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Mentions légales</Link>
-            <Link href="/confidentialite" style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Confidentialité</Link>
-            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)", margin: 0 }}>Fait avec passion en France</p>
+            <Link href="/a-propos" style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>À propos</Link>
+            <Link href="/mentions-legales" style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>Mentions légales</Link>
+            <Link href="/confidentialite" style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>Confidentialité</Link>
+            <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", margin: 0 }}>Mis à jour : juin 2026</p>
           </div>
         </div>
       </div>

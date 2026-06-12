@@ -1,7 +1,9 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { GlobalSearch } from "./global-search";
+import { ThemeToggle } from "./theme-toggle";
 
 type NavItem  = { href: string; label: string; desc: string };
 type NavGroup =
@@ -15,6 +17,8 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/concepts",    label: "Encyclopédie",   desc: "60+ concepts ML, Cloud, Gouvernance" },
       { href: "/ia",          label: "IA & LLMs",      desc: "Modèles, agents IA, AI Act" },
+      { href: "/agents",      label: "Agents IA",      desc: "22 prompts data & corporate prêts à l'emploi" },
+      { href: "/quiz",        label: "Quiz",           desc: "20 quiz de 20 questions — SQL, Python, Power BI, Azure…" },
       { href: "/glossaire",   label: "Glossaire",      desc: "137 définitions avec exemples" },
       { href: "/cas-usage",   label: "Cas d'usage",    desc: "50+ projets réels annotés" },
     ],
@@ -32,8 +36,9 @@ const NAV_GROUPS: NavGroup[] = [
     label: "Outils",
     items: [
       { href: "/outils",      label: "Outils & plateformes", desc: "Snowflake, Databricks, dbt et plus" },
-      { href: "/comparatifs", label: "Comparatifs",          desc: "Face-à-face objectifs entre outils" },
-      { href: "/toolbox",     label: "Toolbox",              desc: "Snippets et checklists par rôle" },
+      { href: "/comparatifs",  label: "Comparatifs",          desc: "Face-à-face objectifs entre outils" },
+      { href: "/comparateur",  label: "Comparateur",          desc: "Compare jusqu'à 3 outils en temps réel" },
+      { href: "/toolbox",      label: "Toolbox",              desc: "Snippets et checklists par rôle" },
     ],
   },
   {
@@ -41,6 +46,7 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/jobs",          label: "Offres d'emploi",   desc: "CDI, freelance, remote — toute la France" },
       { href: "/recruteurs",    label: "Recruteurs",        desc: "Publiez votre offre auprès de 2 400 pros data" },
+      { href: "/marketplace",   label: "Déposer son CV",    desc: "Mise en relation avec des recruteurs data" },
       { href: "/jobs/deposer",  label: "Déposer une offre", desc: "Gratuit, validation sous 24h" },
     ],
   },
@@ -55,6 +61,18 @@ export function Nav() {
   const [openGroup, setOpenGroup]       = useState<string | null>(null);
   const [mobileOpen, setMobileOpen]     = useState(false);
   const [mobileExp, setMobileExp]       = useState<string | null>(null);
+  const [searchOpen, setSearchOpen]     = useState(false);
+
+  useEffect(() => {
+    function handler(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(s => !s);
+      }
+    }
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   function groupActive(group: NavGroup) {
     if (group.href) return isActive(pathname, group.href);
@@ -96,7 +114,7 @@ export function Nav() {
         </Link>
 
         {/* Nav desktop */}
-        <nav style={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <nav className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 2 }}>
           {NAV_GROUPS.map(group => {
             const active = groupActive(group);
 
@@ -125,7 +143,11 @@ export function Nav() {
                 onMouseEnter={() => setOpenGroup(group.label)}
                 onMouseLeave={() => setOpenGroup(null)}
               >
-                <button style={{
+                <button
+                  aria-haspopup="true"
+                  aria-expanded={isOpen}
+                  onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpenGroup(isOpen ? null : group.label); } if (e.key === "Escape") setOpenGroup(null); }}
+                  style={{
                   padding: "5px 12px", borderRadius: "var(--r-sm)",
                   fontSize: 13.5, fontWeight: active || isOpen ? 600 : 400,
                   color: active || isOpen ? "var(--indigo)" : "#64748B",
@@ -143,11 +165,13 @@ export function Nav() {
 
                 {isOpen && (
                   <div style={{
-                    position: "absolute", top: "calc(100% + 6px)", left: "50%",
+                    position: "absolute", top: "100%", left: "50%",
                     transform: "translateX(-50%)", minWidth: 230,
+                    paddingTop: 8, zIndex: 100,
+                  }}>
+                  <div style={{
                     background: "#fff", border: "1px solid #E2E8F0", borderRadius: 14,
                     padding: 6, boxShadow: "0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(124,58,237,0.06)",
-                    zIndex: 100,
                   }}>
                     {group.items.map(item => {
                       const ia = isActive(pathname, item.href);
@@ -168,10 +192,11 @@ export function Nav() {
                           <div style={{ fontSize: 13, fontWeight: 600, color: ia ? "var(--indigo)" : "#0F172A", marginBottom: 2 }}>
                             {item.label}
                           </div>
-                          <div style={{ fontSize: 11.5, color: "#94A3B8", lineHeight: 1.4 }}>{item.desc}</div>
+                          <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.4 }}>{item.desc}</div>
                         </Link>
                       );
                     })}
+                  </div>
                   </div>
                 )}
               </div>
@@ -181,6 +206,26 @@ export function Nav() {
 
         {/* CTA + Hamburger */}
         <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+          {/* Bouton recherche globale */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            aria-label="Recherche"
+            style={{
+              display: "flex", alignItems: "center", gap: 6,
+              padding: "6px 10px", borderRadius: 8,
+              background: "#F8FAFC", border: "1px solid #E2E8F0",
+              cursor: "pointer", color: "#64748B",
+              fontFamily: "inherit", transition: "all 0.15s",
+            }}
+            onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#C4B5FD"; el.style.color = "#7C3AED"; }}
+            onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#E2E8F0"; el.style.color = "#64748B"; }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <span style={{ fontSize: 11, color: "#94A3B8", fontFamily: "var(--font-mono)", letterSpacing: "0.02em" }}>⌘K</span>
+          </button>
+
           <button
             onClick={() => setMobileOpen(o => !o)}
             aria-label="Menu"
@@ -197,23 +242,14 @@ export function Nav() {
             <span style={{ display: "block", width: 18, height: 2, background: "#64748B", borderRadius: 2, transition: "transform 0.2s", transform: mobileOpen ? "rotate(-45deg) translate(4px, -4px)" : "none" }} />
           </button>
 
-          <Link href="/communaute" style={{
-            padding: "7px 14px", border: "1.5px solid #E2E8F0", color: "#64748B",
-            borderRadius: "var(--r-md)", fontSize: 13, fontWeight: 600,
-            transition: "all 0.15s", display: "flex", alignItems: "center", gap: 5,
-            whiteSpace: "nowrap", background: "#FFFFFF",
-          }}
-          onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "var(--indigo)"; el.style.color = "var(--indigo)"; el.style.background = "#EDE9FE"; }}
-          onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "#E2E8F0"; el.style.color = "#64748B"; el.style.background = "#FFFFFF"; }}
-          >
-            Communauté
-          </Link>
-
+          <ThemeToggle />
           <Link href="/newsletter" className="btn-primary" style={{ padding: "7px 16px", fontSize: 13 }}>
             Newsletter
           </Link>
         </div>
       </div>
+
+      <GlobalSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Menu mobile */}
       {mobileOpen && (

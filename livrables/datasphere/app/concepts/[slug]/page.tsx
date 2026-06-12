@@ -1,8 +1,22 @@
-"use client";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { use } from "react";
 import data from "@/content/concepts.json";
+import ConceptExportButton from "@/components/concept-export-button";
+
+export function generateStaticParams() {
+  return data.concepts.map(c => ({ slug: c.id }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const concept = data.concepts.find(c => c.id === slug);
+  if (!concept) return { title: "Concept — DataSphère" };
+  return {
+    title: `${concept.titre} — ${concept.categorie} | DataSphère`,
+    description: concept.description_courte,
+  };
+}
 
 const CAT_CONFIG: Record<string, { emoji: string; color: string; bg: string; border: string; gradient: string }> = {
   "Machine Learning":       { emoji: "🤖", color: "#5558FF", bg: "#EEEEFF", border: "rgba(85,88,255,0.2)",  gradient: "linear-gradient(135deg, #5558FF, #00C9A7)" },
@@ -13,8 +27,8 @@ const CAT_CONFIG: Record<string, { emoji: string; color: string; bg: string; bor
 
 const NIVEAU_CLS: Record<string, string> = { "Débutant": "badge-teal", "Intermédiaire": "badge-amber", "Avancé": "badge-rose" };
 
-export default function ConceptPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+export default async function ConceptPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const concept = data.concepts.find(c => c.id === slug);
   if (!concept) notFound();
 
@@ -43,10 +57,13 @@ export default function ConceptPage({ params }: { params: Promise<{ slug: string
             <span style={{ fontSize: 40 }}>{concept.emoji}</span>
             <span style={{ padding: "4px 12px", borderRadius: 100, fontSize: 11.5, fontWeight: 700, background: `${cfg.color}20`, color: cfg.color, border: `1px solid ${cfg.color}35` }}>{concept.categorie}</span>
             <span className={`badge ${NIVEAU_CLS[concept.niveau] || "badge-neutral"}`}>{concept.niveau}</span>
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.07)", padding: "3px 10px", borderRadius: 100 }}>{concept.sous_categorie}</span>
+            <span style={{ fontSize: 11, color: "var(--muted)", background: "rgba(124,58,237,0.08)", padding: "3px 10px", borderRadius: 100 }}>{concept.sous_categorie}</span>
           </div>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 800, lineHeight: 1.12, color: "#0F172A", marginBottom: 14 }}>{concept.titre}</h1>
-          <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.52)", lineHeight: 1.7, maxWidth: 680 }}>{concept.description_courte}</p>
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+            <p style={{ fontSize: 16.5, color: "var(--text-2)", lineHeight: 1.7, maxWidth: 640 }}>{concept.description_courte}</p>
+            <ConceptExportButton concept={concept} />
+          </div>
         </div>
       </section>
 

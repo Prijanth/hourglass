@@ -3,6 +3,7 @@ import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { BackToTop } from "@/components/back-to-top";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -21,12 +22,26 @@ export const metadata: Metadata = {
   description: "Actualités, glossaire, métiers et formations sur la data et l'intelligence artificielle. Le hub francophone de la communauté data.",
 };
 
+const themeScript = `
+(function(){
+  try {
+    var t = localStorage.getItem('datasphere_theme');
+    var d = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', d ? 'dark' : 'light');
+  } catch(e) {}
+})();
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${syne.variable} ${dmSans.variable}`}>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <Nav />
-        <main style={{ flex: 1 }}>{children}</main>
+        <div style={{ flex: 1 }}>{children}</div>
+        <BackToTop />
         <Footer />
       </body>
     </html>

@@ -8,6 +8,7 @@ const CAT_CONFIG: Record<string, { emoji: string; color: string; bg: string; bor
   "Techniques Analytics":   { emoji: "📊", color: "#0F766E", bg: "#E6FAF7", border: "rgba(0,201,167,0.2)", gradient: "linear-gradient(135deg, #00C9A7, #0F766E)" },
   "Cloud":                  { emoji: "☁️", color: "#C2410C", bg: "#FFF7ED", border: "rgba(255,107,53,0.2)", gradient: "linear-gradient(135deg, #FF6B35, #FF9500)" },
   "Gouvernance & Qualité":  { emoji: "🏛️", color: "#7E22CE", bg: "#F5F3FF", border: "rgba(126,34,206,0.2)", gradient: "linear-gradient(135deg, #7E22CE, #5558FF)" },
+  "Data Engineering":       { emoji: "⚙️", color: "#0369A1", bg: "#E0F2FE", border: "rgba(3,105,161,0.2)", gradient: "linear-gradient(135deg, #0369A1, #0EA5E9)" },
 };
 
 const NIVEAU_CLS: Record<string, string> = {
@@ -59,27 +60,6 @@ export default function ConceptsPage() {
             {data.concepts.length} concepts couverts — Machine Learning, Cloud, Techniques Analytics, Gouvernance. Des explications avec des exemples que tout le monde peut comprendre.
           </p>
 
-          {/* Catégories rapides */}
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {[{ id: "Toutes", label: "Tout", emoji: "✦" }, ...Object.entries(CAT_CONFIG).map(([cat, cfg]) => ({ id: cat, label: cat, emoji: cfg.emoji }))].map(({ id, label, emoji }) => (
-              <button key={id} onClick={() => setCategorie(id)} style={{
-                display: "flex", alignItems: "center", gap: 6, padding: "8px 16px",
-                borderRadius: 100, border: "none", cursor: "pointer", fontFamily: "inherit",
-                background: categorie === id ? "rgba(85,88,255,0.3)" : "rgba(255,255,255,0.07)",
-                color: categorie === id ? "var(--indigo-bright)" : "rgba(255,255,255,0.55)",
-                fontSize: 13, fontWeight: categorie === id ? 700 : 400,
-                borderWidth: "1.5px", borderStyle: "solid",
-                borderColor: categorie === id ? "rgba(85,88,255,0.5)" : "rgba(255,255,255,0.1)",
-                transition: "all 0.15s",
-              }}>
-                <span>{emoji}</span>
-                <span>{label}</span>
-                <span style={{ fontSize: 11, opacity: 0.6 }}>
-                  ({id === "Toutes" ? data.concepts.length : data.concepts.filter(c => c.categorie === id).length})
-                </span>
-              </button>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -87,27 +67,60 @@ export default function ConceptsPage() {
       <div style={{
         position: "sticky", top: 58, zIndex: 40,
         background: "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)",
-        borderBottom: "1px solid var(--border)", padding: "14px 24px",
+        WebkitBackdropFilter: "blur(20px)",
+        borderBottom: "1px solid var(--border)", padding: "10px 24px 8px",
       }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto", display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
-          <input value={search} onChange={e => setSearch(e.target.value)}
-            placeholder="🔍 Rechercher un concept, technique, outil..."
-            className="input-field" style={{ flex: "1 1 300px", maxWidth: 480 }} />
-          <select value={niveau} onChange={e => setNiveau(e.target.value)} style={{
-            padding: "10px 12px", borderRadius: 10, border: "1.5px solid var(--border)",
-            fontSize: 13.5, background: "white", cursor: "pointer", fontFamily: "inherit",
-          }}>
-            {["Tous", ...data.niveaux].map(o => <option key={o} value={o}>{o}</option>)}
-          </select>
-          {(search || categorie !== "Toutes" || niveau !== "Tous") && (
-            <button onClick={() => { setSearch(""); setCategorie("Toutes"); setNiveau("Tous"); }}
-              style={{ padding: "10px 14px", borderRadius: 10, border: "1.5px solid var(--border)", background: "white", fontSize: 13, cursor: "pointer", color: "var(--muted)", fontFamily: "inherit" }}>
-              ✕ Réinitialiser
-            </button>
-          )}
-          <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-mono)" }}>
-            {filtered.length} concept{filtered.length > 1 ? "s" : ""}
-          </span>
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          {/* Ligne 1 : recherche + niveau + reset + count */}
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center", marginBottom: 8 }}>
+            <input value={search} onChange={e => setSearch(e.target.value)}
+              placeholder="🔍 Rechercher un concept, technique, outil..."
+              className="input-field" style={{ flex: "1 1 260px", maxWidth: 440 }} />
+            <select value={niveau} onChange={e => setNiveau(e.target.value)} style={{
+              padding: "10px 12px", borderRadius: 10, border: "1.5px solid var(--border)",
+              fontSize: 13.5, background: "white", cursor: "pointer", fontFamily: "inherit",
+            }}>
+              {["Tous", ...data.niveaux].map(o => <option key={o} value={o}>{o}</option>)}
+            </select>
+            {(search || categorie !== "Toutes" || niveau !== "Tous") && (
+              <button onClick={() => { setSearch(""); setCategorie("Toutes"); setNiveau("Tous"); }}
+                style={{ padding: "10px 14px", borderRadius: 10, border: "1.5px solid var(--border)", background: "white", fontSize: 13, cursor: "pointer", color: "var(--muted)", fontFamily: "inherit" }}>
+                ✕ Réinitialiser
+              </button>
+            )}
+            <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-mono)" }}>
+              {filtered.length} concept{filtered.length > 1 ? "s" : ""}
+            </span>
+          </div>
+          {/* Ligne 2 : chips catégories */}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {[
+              { id: "Toutes", label: "Toutes", emoji: "✦" },
+              ...Object.entries(CAT_CONFIG).map(([cat, cfg]) => ({ id: cat, label: cat, emoji: cfg.emoji })),
+            ].map(({ id, label, emoji }) => {
+              const active = categorie === id;
+              const cfg = CAT_CONFIG[id];
+              return (
+                <button key={id} onClick={() => setCategorie(id)} style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  padding: "6px 14px", borderRadius: 100, fontSize: 13,
+                  fontWeight: active ? 700 : 500, cursor: "pointer", fontFamily: "inherit",
+                  border: "1.5px solid",
+                  borderColor: active ? (cfg?.color ?? "var(--indigo)") : "#CBD5E1",
+                  background: active ? (cfg?.bg ?? "var(--indigo-tint)") : "#F8FAFC",
+                  color: active ? (cfg?.color ?? "var(--indigo)") : "#475569",
+                  transition: "all 0.15s",
+                  boxShadow: active ? `0 0 0 2px ${cfg?.border ?? "rgba(85,88,255,0.15)"}` : "none",
+                }}>
+                  <span style={{ fontSize: 13 }}>{emoji}</span>
+                  <span>{label}</span>
+                  <span style={{ fontSize: 11, opacity: 0.6 }}>
+                    ({id === "Toutes" ? data.concepts.length : data.concepts.filter(c => c.categorie === id).length})
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 

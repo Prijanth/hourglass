@@ -185,51 +185,203 @@ export default function NewsletterPage() {
         </div>
       </section>
 
-      {/* Aperçu d'une édition */}
+      {/* Aperçu d'une édition complète */}
       <section style={{ background: "#F8FAFC", borderTop: "1px solid #E2E8F0", padding: "64px 24px" }}>
-        <div style={{ maxWidth: 740, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
+        <div style={{ maxWidth: 680, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#94A3B8" }}>Ce que tu reçois vraiment</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)", fontWeight: 800, color: "#0F172A", marginTop: 6 }}>
-              Aperçu d&apos;une édition réelle
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)", fontWeight: 800, color: "#0F172A", marginTop: 6, marginBottom: 6 }}>
+              Aperçu de l&apos;édition #12
             </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B" }}>Lundi 9 juin 2026 · 4 min de lecture</p>
           </div>
-          <div style={{
-            borderRadius: 16, border: "1px solid #E2E8F0", background: "#fff",
-            overflow: "hidden", boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-          }}>
-            {/* Header email */}
-            <div style={{ background: "#0B0F29", padding: "20px 28px", display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 28, height: 28, borderRadius: "50%", background: "linear-gradient(135deg, #7C3AED, #0EA5E9)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                <span style={{ fontSize: 12 }}>DS</span>
+
+          {/* Email simulé */}
+          <div style={{ borderRadius: 20, border: "1px solid #E2E8F0", overflow: "hidden", boxShadow: "0 8px 40px rgba(0,0,0,0.08)" }}>
+
+            {/* Header */}
+            <div style={{ background: "linear-gradient(135deg, #0B0F29, #1e0a3c)", padding: "28px 32px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(124,58,237,0.6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>⬡</div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: 14, fontWeight: 800, color: "#fff" }}>DataSphère Weekly · #12</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>9 juin 2026 · 4 min de lecture</div>
+                </div>
               </div>
-              <div>
-                <p style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>DataSphère — Édition #47</p>
-                <p style={{ fontSize: 11, color: "rgba(255,255,255,0.45)" }}>Lundi 27 mai 2026 · 5 min de lecture</p>
-              </div>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>
+                📬 dbt expliqué, un pipeline automatisé et 2 actus clés
+              </h3>
             </div>
-            {/* Contenu aperçu */}
-            <div style={{ padding: "24px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
+
+            <div style={{ padding: "28px 32px", background: "#fff", display: "flex", flexDirection: "column", gap: 0 }}>
+
+              {/* Outil de la semaine */}
+              <div style={{ paddingBottom: 24, marginBottom: 24, borderBottom: "1px solid #F1F5F9" }}>
+                <p style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#7C3AED", marginBottom: 14 }}>🔧 Outil de la semaine</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+                  <span style={{ fontSize: 26 }}>🔧</span>
+                  <div>
+                    <div style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>dbt Core</div>
+                    <div style={{ fontSize: 13, color: "#64748B" }}>L&apos;outil qui transforme SQL en pipelines professionnels</div>
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 14 }}>
+                  {["SQL versionné avec Git — fini les scripts perdus sur des SharePoints", "Tests automatiques : unicité, non-nullité, cohérence référentielle", "Documentation générée depuis le code — toujours à jour", "Compatible Snowflake, BigQuery, Databricks, PostgreSQL"].map((p, i) => (
+                    <div key={i} style={{ display: "flex", gap: 10, fontSize: 13.5, color: "#334155" }}>
+                      <span style={{ color: "#7C3AED", fontWeight: 700, flexShrink: 0 }}>✓</span>{p}
+                    </div>
+                  ))}
+                </div>
+                <div style={{ background: "#F5F3FF", borderRadius: 8, padding: "8px 12px", display: "inline-block", fontSize: 12.5, color: "#6D28D9", marginBottom: 10 }}>
+                  🎓 Certification disponible : <strong>dbt Analytics Engineering</strong>
+                </div>
+                <div><a href="/outils/dbt-core" style={{ fontSize: 13, fontWeight: 700, color: "#7C3AED" }}>Voir la fiche complète →</a></div>
+              </div>
+
+              {/* Cas d'usage */}
+              <div style={{ paddingBottom: 24, marginBottom: 24, borderBottom: "1px solid #F1F5F9" }}>
+                <p style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#0E7490", marginBottom: 14 }}>💡 Cas d&apos;usage</p>
+                <p style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 14, lineHeight: 1.3 }}>Automatiser le reporting mensuel avec dbt + Airflow</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+                  {[
+                    { label: "Contexte", t: "Une équipe finance passe 3 jours/mois à consolider des fichiers Excel éparpillés dans 4 SharePoints.", c: "#64748B" },
+                    { label: "Solution", t: "Un modèle dbt agrège toutes les sources en 15 min, déclenché par Airflow le 1er du mois à 7h.", c: "#0E7490" },
+                    { label: "Résultat", t: "Le rapport est disponible à 7h15. L'équipe économise 3 jours de travail manuel chaque mois.", c: "#15803D" },
+                  ].map(({ label, t, c }) => (
+                    <div key={label} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <span style={{ fontSize: 11, fontWeight: 800, color: c, minWidth: 58, paddingTop: 2 }}>{label}</span>
+                      <span style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.6 }}>{t}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ background: "#0F1629", borderRadius: 10, padding: "14px 16px", overflow: "auto" }}>
+                  <pre style={{ margin: 0, fontSize: 11, color: "#A5B4FC", fontFamily: "monospace", lineHeight: 1.7 }}>{`{{ config(materialized='table', tags=['finance','monthly']) }}
+
+WITH ventes AS (
+  SELECT * FROM {{ ref('stg_ventes') }}
+  WHERE date_trunc('month', date) = date_trunc('month', current_date - interval '1 month')
+)
+SELECT region, SUM(montant) AS ca_reel FROM ventes GROUP BY 1`}</pre>
+                </div>
+              </div>
+
+              {/* Actualités */}
+              <div style={{ paddingBottom: 24, marginBottom: 24, borderBottom: "1px solid #F1F5F9" }}>
+                <p style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#B45309", marginBottom: 14 }}>📰 Actualités de la semaine</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+
+                  {/* Actu 1 */}
+                  <div style={{ padding: "16px 18px", background: "#F8FAFC", borderRadius: 12, border: "1px solid #E2E8F0", borderLeft: "3px solid #7C3AED" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                      <span style={{ fontSize: 15 }}>🆕</span>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>Databricks lance le Context Engineer Associate</p>
+                    </div>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 8 }}>
+                      Databricks vient d&apos;ouvrir les inscriptions à une toute nouvelle certification : le <strong>Context Engineer Associate</strong>. Elle valide la capacité à concevoir des systèmes de contexte pour les agents IA — autrement dit, comment alimenter correctement un LLM avec les bonnes données au bon moment pour qu&apos;il prenne de meilleures décisions.
+                    </p>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 10 }}>
+                      C&apos;est un signal fort : le métier de &ldquo;Context Engineer&rdquo; est en train de s&apos;institutionnaliser. Si tu travailles sur des pipelines RAG ou des agents IA, cette certification va rapidement devenir un marqueur de crédibilité sur le marché.
+                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Source : Databricks Blog · 6 juin 2026</span>
+                      <a href="/outils/databricks" style={{ fontSize: 12, fontWeight: 600, color: "#7C3AED" }}>Voir la fiche Databricks →</a>
+                    </div>
+                  </div>
+
+                  {/* Actu 2 */}
+                  <div style={{ padding: "16px 18px", background: "#F8FAFC", borderRadius: 12, border: "1px solid #E2E8F0", borderLeft: "3px solid #0E7490" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                      <span style={{ fontSize: 15 }}>📅</span>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>Snowflake MLOps Engineer Beta — lancement le 15 juin</p>
+                    </div>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 8 }}>
+                      Dans 6 jours, <strong>SnowPro Advanced : MLOps Engineer</strong> quitte son statut bêta et devient une certification officielle. C&apos;est la 9ème certification du catalogue Snowflake et la première entièrement dédiée au déploiement et monitoring de modèles ML directement dans Snowpark.
+                    </p>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 10 }}>
+                      Bonne nouvelle pour ceux qui ont passé la bêta : les résultats sont maintenus et la certification sera rétroactivement convertie. Si tu hésitais, c&apos;est le bon moment pour t&apos;inscrire avant que le prix monte.
+                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Source : Snowflake Training · 5 juin 2026</span>
+                      <a href="/outils/snowflake" style={{ fontSize: 12, fontWeight: 600, color: "#0E7490" }}>Voir la fiche Snowflake →</a>
+                    </div>
+                  </div>
+
+                  {/* Actu 3 */}
+                  <div style={{ padding: "16px 18px", background: "#FFFBEB", borderRadius: 12, border: "1px solid #FDE68A", borderLeft: "3px solid #D97706" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                      <span style={{ fontSize: 15 }}>⚠️</span>
+                      <p style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>AWS ML Specialty retiré depuis le 31 mars — alternatives</p>
+                    </div>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 8 }}>
+                      Pour ceux qui n&apos;ont pas encore eu l&apos;info : l&apos;<strong>AWS Certified Machine Learning – Specialty</strong> a officiellement été retiré le 31 mars 2026. AWS le remplace par deux certifications plus précises : <strong>ML Engineer Associate</strong> (déploiement et opérations MLOps) et <strong>AI Practitioner</strong> (fondamentaux IA/ML).
+                    </p>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 10 }}>
+                      Si tu préparais le ML Specialty, réoriente-toi vers le ML Engineer Associate qui est plus opérationnel et mieux aligné avec les besoins du marché en 2026.
+                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Source : AWS Certification · mars 2026</span>
+                      <a href="/outils/aws" style={{ fontSize: 12, fontWeight: 600, color: "#D97706" }}>Voir les certifs AWS →</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Définitions */}
+              <div style={{ paddingBottom: 24, marginBottom: 24, borderBottom: "1px solid #F1F5F9" }}>
+                <p style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#6D28D9", marginBottom: 14 }}>📖 2 définitions à connaître</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+
+                  <div style={{ padding: "14px 16px", background: "#F5F3FF", borderRadius: 12, border: "1px solid #DDD6FE" }}>
+                    <p style={{ fontSize: 14, fontWeight: 800, color: "#4C1D95", marginBottom: 6 }}>Data Lineage</p>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 8 }}>
+                      Le <strong>data lineage</strong> (ou lignée de données) désigne la capacité à tracer le chemin d&apos;une donnée depuis sa source jusqu&apos;à son utilisation finale : d&apos;où vient-elle ? Quelles transformations a-t-elle subies ? Dans quels rapports est-elle utilisée ?
+                    </p>
+                    <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65 }}>
+                      <strong>Exemple concret :</strong> Si le chiffre d&apos;affaires dans ton dashboard Tableau est faux, le lineage te permet de remonter : Tableau → modèle dbt mart_sales → staging Snowflake → source Salesforce → pour trouver exactement où l&apos;erreur s&apos;est glissée.
+                    </p>
+                    <div style={{ marginTop: 8 }}>
+                      <a href="/glossaire?q=lineage" style={{ fontSize: 12, fontWeight: 600, color: "#7C3AED" }}>Voir dans le glossaire →</a>
+                    </div>
+                  </div>
+
+                  <div style={{ padding: "14px 16px", background: "#F0FDF4", borderRadius: 12, border: "1px solid #BBF7D0" }}>
+                    <p style={{ fontSize: 14, fontWeight: 800, color: "#14532D", marginBottom: 6 }}>Slowly Changing Dimension (SCD)</p>
+                    <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 8 }}>
+                      Une <strong>Slowly Changing Dimension</strong> est une dimension d&apos;un data warehouse dont les attributs changent lentement dans le temps — par opposition aux faits qui changent en continu. La question centrale : quand un client déménage, garde-t-on l&apos;ancienne adresse pour les ventes passées, ou écrasons-nous la valeur ?
+                    </p>
+                    <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65 }}>
+                      <strong>Les 3 types principaux :</strong> SCD Type 1 (on écrase — simple mais perte d&apos;historique), SCD Type 2 (on crée une nouvelle ligne avec date de début/fin — le standard), SCD Type 3 (on ajoute une colonne &ldquo;ancienne valeur&rdquo; — compromis).
+                    </p>
+                    <div style={{ marginTop: 8 }}>
+                      <a href="/concepts" style={{ fontSize: 12, fontWeight: 600, color: "#15803D" }}>Explorer les concepts →</a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Tip */}
               <div>
-                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#7C3AED", marginBottom: 10 }}>🤖 IA & LLMs — Cette semaine</p>
-                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.75 }}>
-                  <strong>Anthropic publie Claude 4 Opus</strong> — plus rapide et moins cher que GPT-4o sur les tâches de raisonnement long. On a testé les cas d&apos;usage data (génération SQL, analyse de logs, extraction d&apos;entités) : résultats détaillés dans ce numéro.
+                <p style={{ fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#0E7490", marginBottom: 12 }}>⚡ Tip de la semaine</p>
+                <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.7, marginBottom: 14 }}>
+                  Dans dbt, utilise <code style={{ background: "#F5F3FF", padding: "1px 6px", borderRadius: 4, fontSize: 12, color: "#6D28D9" }}>{"{{ this }}"}</code> dans un modèle incrémental pour référencer la table elle-même. Ça marche quel que soit l&apos;environnement (dev/prod) et tu n&apos;as jamais à écrire le nom de la table en dur. Indispensable pour les modèles qui tournent en production.
                 </p>
+                <div style={{ background: "#0F1629", borderRadius: 10, padding: "12px 16px" }}>
+                  <pre style={{ margin: 0, fontSize: 11, color: "#A5B4FC", fontFamily: "monospace", lineHeight: 1.7 }}>{`{{ config(materialized='incremental', unique_key='event_id') }}
+
+SELECT * FROM {{ ref('stg_events') }}
+{% if is_incremental() %}
+  -- {{ this }} = la table elle-même, quel que soit l'environnement
+  WHERE created_at > (SELECT MAX(created_at) FROM {{ this }})
+{% endif %}`}</pre>
+                </div>
               </div>
-              <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16 }}>
-                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#0E7490", marginBottom: 10 }}>⚙️ Data Engineering</p>
-                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.75 }}>
-                  <strong>dbt 1.9 sort en GA</strong> — le Semantic Layer est maintenant stable. Ce que ça change concrètement pour les Analytics Engineers qui utilisent encore des métriques ad hoc dans Looker ou Power BI.
-                </p>
-              </div>
-              <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16 }}>
-                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#B45309", marginBottom: 10 }}>💼 Marché data France</p>
-                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.75 }}>
-                  Les offres Data Engineer ont progressé de <strong>+12% en mai 2026</strong> sur Indeed France. LLM/RAG est mentionné dans 34% des offres senior — contre 8% il y a 18 mois. Détail par ville et niveau d&apos;expérience.
-                </p>
-              </div>
-              <div style={{ background: "#F8FAFC", borderRadius: 10, padding: "14px 16px", fontSize: 12, color: "#64748B", borderLeft: "3px solid #7C3AED" }}>
-                Il ne s&apos;agit pas d&apos;un résumé générique — chaque édition est rédigée par un praticien data actif, avec du contexte et des avis, pas juste des liens.
+
+              {/* Footer email */}
+              <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #F1F5F9", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED" }}>DataSphère</div>
+                <div style={{ fontSize: 11, color: "#94A3B8" }}>datasphere.fr · Se désabonner</div>
               </div>
             </div>
           </div>

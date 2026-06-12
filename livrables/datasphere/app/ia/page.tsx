@@ -6,10 +6,12 @@ import ia from "@/content/ia.json";
 interface Modele {
   id: string; nom: string; editeur: string; logo_color: string;
   type: string; acces: string; date_sortie: string; description: string;
+  statut?: string;
   points_forts: string[]; points_faibles: string[];
   context_window?: string; cout_approx?: string;
   cas_usage_phares: string[];
   benchmark_mmlu?: number | null; benchmark_humaneval?: number | null; benchmark_math?: number | null;
+  benchmark_swebench_pro?: number | null; benchmark_osworld?: number | null; benchmark_hle?: number | null;
   lien: string; tags: string[];
 }
 interface Risque {
@@ -17,13 +19,6 @@ interface Risque {
   couleur: string; description: string;
   exemples_concrets: string[]; secteurs_exposes: string[];
   bonnes_pratiques: string[]; sources?: string[];
-}
-interface Enjeu {
-  id: string; titre: string; emoji: string; sous_titre: string;
-  description: string;
-  chiffres_cles: { valeur: string; label: string; source: string }[];
-  metiers_menaces?: string[]; metiers_crees?: string[];
-  perspective: string; tags: string[];
 }
 interface UsageIA {
   id: string; titre: string; type_ia: string; secteur: string;
@@ -34,14 +29,79 @@ interface UsageIA {
 
 /* ─── CONSTANTES ──────────────────────────────────────── */
 const TABS = [
-  { id: "modeles",         label: "Modèles IA",          emoji: "🧠" },
-  { id: "usages",          label: "Cas d'usage",          emoji: "💼" },
-  { id: "risques",         label: "Risques & Limites",    emoji: "⚠️" },
-  { id: "reglementations", label: "Réglementations",      emoji: "📋" },
-  { id: "enjeux",          label: "Enjeux & Perspectives", emoji: "🌍" },
+  { id: "modeles",         label: "Modèles IA",       emoji: "🧠" },
+  { id: "usages",          label: "Cas d'usage",       emoji: "💼" },
+  { id: "risques",         label: "Risques & Limites", emoji: "⚠️" },
+  { id: "reglementations", label: "Réglementations",   emoji: "📋" },
 ];
 
 const MODEL_TYPES = ["Tous", "LLM", "Image", "Code", "Audio", "Vidéo", "Multimodal", "Embarqué"];
+
+const PRICING_URLS: Record<string, string> = {
+  "OpenAI":             "https://openai.com/pricing",
+  "Anthropic":          "https://www.anthropic.com/pricing",
+  "Google DeepMind":    "https://ai.google.dev/pricing",
+  "Mistral AI":         "https://mistral.ai/technology/#pricing",
+  "Cohere":             "https://cohere.com/pricing",
+  "Alibaba Cloud":      "https://www.alibabacloud.com/help/en/model-studio/",
+  "DeepSeek":           "https://platform.deepseek.com/api-docs/pricing",
+  "Microsoft":          "https://azure.microsoft.com/fr-fr/pricing/details/cognitive-services/",
+  "Black Forest Labs":  "https://docs.bfl.ai/",
+  "Stability AI":       "https://platform.stability.ai/pricing",
+  "Ideogram":           "https://ideogram.ai/pricing",
+  "Adobe":              "https://www.adobe.com/fr/creativecloud/plans.html",
+  "Microsoft / GitHub": "https://github.com/features/copilot#pricing",
+  "Cursor AI":          "https://cursor.sh/pricing",
+  "ElevenLabs":         "https://elevenlabs.io/pricing",
+  "Suno":               "https://suno.com/pricing",
+  "Kuaishou":           "https://kling.kuaishou.com/",
+  "Midjourney":         "https://www.midjourney.com/account",
+  "Runway":             "https://runwayml.com/pricing",
+  "xAI":                "https://x.ai/api",
+};
+
+const BENCHMARK_SOURCES: Record<string, "officiel" | "estimé"> = {
+  // OpenAI
+  "gpt-4o":           "officiel",
+  "o3":               "officiel",
+  "o4-mini":          "officiel",
+  "gpt-41":           "officiel",
+  "gpt-5":            "estimé",   // en bordure de cutoff août 2025
+  "gpt-55":           "estimé",   // post cutoff (avril 2026)
+  // Anthropic
+  "claude-3-5-sonnet":"officiel",
+  "claude-37-sonnet": "officiel",
+  "claude-sonnet-46": "officiel",
+  "claude-haiku-45":  "officiel",
+  "claude-opus-47":   "officiel",
+  "claude-opus-48":   "officiel",
+  // Google DeepMind
+  "gemini-1-5-pro":   "officiel",
+  "gemini-2-0-flash": "officiel",
+  "gemini-2-0-pro":   "estimé",
+  "gemini-25-pro":    "officiel",
+  "gemini-25-flash":  "officiel",
+  "gemini-31-pro":    "estimé",   // post cutoff (fév 2026)
+  "gemini-35-flash":  "estimé",   // post cutoff (mai 2026)
+  // Meta
+  "llama-3-1-405b":   "officiel",
+  "llama-3-3-70b":    "officiel",
+  "llama-4-scout":    "officiel",
+  "llama-4-maverick": "officiel",
+  // Mistral AI
+  "mistral-large-2":  "officiel",
+  "mistral-small-3":  "officiel",
+  "mistral-medium-3": "officiel",
+  "mixtral-8x22b":    "officiel",
+  "pixtral-large":    "estimé",
+  // Autres
+  "command-r-plus":   "officiel",
+  "qwen-2-5-72b":     "officiel",
+  "deepseek-v3":      "officiel",
+  "deepseek-r1":      "officiel",
+  "phi-4":            "officiel",
+  "grok-3":           "officiel",
+};
 const ACCES_COLORS: Record<string, { bg: string; text: string; border: string }> = {
   "Propriétaire": { bg: "#FFF7ED", text: "#C2410C", border: "#FED7AA" },
   "Open Source":  { bg: "#F0FDF4", text: "#15803D", border: "#86EFAC" },
@@ -72,6 +132,17 @@ function BenchmarkBar({ label, value, max = 100, color = "#7C3AED" }: { label: s
   );
 }
 
+function tokenToPages(ctx: string): string | null {
+  const m = ctx.match(/^([\d.]+)\s*(K|M)?/i);
+  if (!m) return null;
+  const num = parseFloat(m[1]);
+  const mult = m[2]?.toUpperCase() === "M" ? 1_000_000 : m[2]?.toUpperCase() === "K" ? 1_000 : 1;
+  const pages = Math.round((num * mult * 0.75) / 350);
+  if (pages >= 10_000) return `~${Math.round(pages / 1000)}k pages A4`;
+  if (pages >= 1_000) return `~${(pages / 1000).toFixed(1)}k pages A4`;
+  return `~${pages} pages A4`;
+}
+
 function RisqueBadge({ niveau }: { niveau: string }) {
   const color = RISQUE_COLORS[niveau] || "#94A3B8";
   return (
@@ -90,23 +161,37 @@ function RisqueBadge({ niveau }: { niveau: string }) {
 export default function IAPage() {
   const [activeTab, setActiveTab] = useState("modeles");
   const [modelType, setModelType] = useState("Tous");
+  const [modelEditeur, setModelEditeur] = useState("Tous");
   const [modelSearch, setModelSearch] = useState("");
+  const [showLegacy, setShowLegacy] = useState(false);
   const [usageSecteur, setUsageSecteur] = useState("Tous");
   const [usageType, setUsageType] = useState("Tous");
 
   const modeles: Modele[] = (ia as { modeles: Modele[] }).modeles || [];
   const risques: Risque[] = (ia as { risques: Risque[] }).risques || [];
-  const enjeux: Enjeu[] = (ia as { enjeux: Enjeu[] }).enjeux || [];
   const usages: UsageIA[] = (ia as { usages_ia: UsageIA[] }).usages_ia || [];
   const reglements = (ia as { reglementations: { eu_ai_act: { description: string; timeline: { date: string; etape: string; detail: string }[]; tiers_risque: { niveau: string; couleur: string; description: string; exemples: string[]; consequences: string }[]; obligations_entreprises: string[] }; autres_reglementations: { pays: string; nom: string; description: string; lien?: string }[] } }).reglementations;
 
-  const filteredModeles = useMemo(() =>
-    modeles.filter(m => {
-      const q = modelSearch.toLowerCase();
-      if (modelType !== "Tous" && m.type !== modelType) return false;
-      if (q && !m.nom.toLowerCase().includes(q) && !m.editeur.toLowerCase().includes(q) && !m.tags.some(t => t.toLowerCase().includes(q))) return false;
-      return true;
-    }), [modeles, modelType, modelSearch]);
+  const editeurs = useMemo(() =>
+    ["Tous", ...Array.from(new Set(modeles.map(m => m.editeur))).sort()],
+  [modeles]);
+
+  const filteredModeles = useMemo(() => {
+    const q = modelSearch.toLowerCase();
+    return modeles
+      .filter(m => {
+        if (!showLegacy && m.statut === "legacy") return false;
+        if (modelType !== "Tous" && m.type !== modelType) return false;
+        if (modelEditeur !== "Tous" && m.editeur !== modelEditeur) return false;
+        if (q && !m.nom.toLowerCase().includes(q) && !m.editeur.toLowerCase().includes(q) && !m.tags.some(t => t.toLowerCase().includes(q))) return false;
+        return true;
+      })
+      .sort((a, b) => {
+        if (a.statut === "legacy" && b.statut !== "legacy") return 1;
+        if (a.statut !== "legacy" && b.statut === "legacy") return -1;
+        return b.date_sortie.localeCompare(a.date_sortie);
+      });
+  }, [modeles, modelType, modelEditeur, modelSearch, showLegacy]);
 
   const secteurs = useMemo(() => ["Tous", ...Array.from(new Set(usages.map(u => u.secteur)))], [usages]);
   const types = useMemo(() => ["Tous", ...Array.from(new Set(usages.map(u => u.type_ia)))], [usages]);
@@ -146,7 +231,6 @@ export default function IAPage() {
               { n: modeles.length + "+", l: "modèles référencés" },
               { n: risques.length, l: "risques documentés" },
               { n: usages.length + "+", l: "cas d'usage" },
-              { n: "5", l: "tiers AI Act" },
             ].map(({ n, l }) => (
               <div key={l} className="card" style={{ padding: "10px 18px", display: "inline-flex", alignItems: "center", gap: 8 }}>
                 <span className="stat-num" style={{ fontSize: "1.4rem" }}>{n}</span>
@@ -188,19 +272,53 @@ export default function IAPage() {
         {/* ── MODÈLES ─────────────────────────────────────── */}
         {activeTab === "modeles" && (
           <div>
+            {/* Note sourçage benchmarks */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "10px 14px", marginBottom: 16, background: "#FFFBEB", borderRadius: 10, border: "1px solid #FDE68A" }}>
+              <span style={{ fontSize: 14, flexShrink: 0 }}>⚠️</span>
+              <p style={{ fontSize: 12, color: "#92400E", margin: 0, lineHeight: 1.6 }}>
+                <strong>Note sur les benchmarks :</strong> Les scores affichés proviennent des annonces officielles des éditeurs. Les méthodologies varient (pass@1, avec/sans outils, prompts différents) — les comparaisons inter-éditeurs sont indicatives. Les prix sont vérifiés mais évoluent fréquemment ; consultez les pages tarifaires officielles pour les valeurs actuelles.
+              </p>
+            </div>
             {/* Filtres */}
-            <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap", alignItems: "center" }}>
-              <input value={modelSearch} onChange={e => setModelSearch(e.target.value)}
-                placeholder="🔍 Rechercher un modèle, éditeur..."
-                className="input-field" style={{ flex: "0 1 280px" }} />
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+              {/* Ligne 1 : recherche + toggle legacy + count */}
+              <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+                <input value={modelSearch} onChange={e => setModelSearch(e.target.value)}
+                  placeholder="🔍 Rechercher un modèle, éditeur..."
+                  className="input-field" style={{ flex: "0 1 300px" }} />
+                <button
+                  onClick={() => setShowLegacy(v => !v)}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 6,
+                    padding: "7px 13px", borderRadius: 8, cursor: "pointer", fontFamily: "inherit",
+                    fontSize: 12.5, fontWeight: 600, transition: "all 0.15s",
+                    border: showLegacy ? "1.5px solid #7C3AED" : "1.5px solid #E2E8F0",
+                    background: showLegacy ? "#EDE9FE" : "#F8FAFC",
+                    color: showLegacy ? "#7C3AED" : "#94A3B8",
+                  }}>
+                  <span style={{ fontSize: 11 }}>{showLegacy ? "✓" : "○"}</span>
+                  Inclure les archivés
+                </button>
+                <span style={{ marginLeft: "auto", fontSize: 12, color: "#94A3B8", fontFamily: "var(--font-mono)" }}>
+                  {filteredModeles.length} modèle{filteredModeles.length > 1 ? "s" : ""}
+                </span>
+              </div>
+
+              {/* Ligne 2 : filtre par type */}
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginRight: 2, whiteSpace: "nowrap" }}>Type</span>
                 {MODEL_TYPES.map(t => (
                   <button key={t} onClick={() => setModelType(t)} className={`filter-chip ${modelType === t ? "active" : ""}`}>{t}</button>
                 ))}
               </div>
-              <span style={{ marginLeft: "auto", fontSize: 12, color: "#94A3B8", fontFamily: "var(--font-mono)" }}>
-                {filteredModeles.length} modèle{filteredModeles.length > 1 ? "s" : ""}
-              </span>
+
+              {/* Ligne 3 : filtre par éditeur */}
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginRight: 2, whiteSpace: "nowrap" }}>Éditeur</span>
+                {editeurs.map(e => (
+                  <button key={e} onClick={() => setModelEditeur(e)} className={`filter-chip ${modelEditeur === e ? "active" : ""}`}>{e}</button>
+                ))}
+              </div>
             </div>
 
             {/* Grille */}
@@ -209,7 +327,10 @@ export default function IAPage() {
                 const ac = ACCES_COLORS[m.acces] || ACCES_COLORS["Hybride"];
                 return (
                   <a key={m.id} href={m.lien} target="_blank" rel="noopener noreferrer"
-                    className="card" style={{ padding: 24, display: "flex", flexDirection: "column", gap: 14, textDecoration: "none" }}>
+                    className="card" style={{
+                      padding: 24, display: "flex", flexDirection: "column", gap: 14, textDecoration: "none",
+                      opacity: m.statut === "legacy" ? 0.72 : 1,
+                    }}>
                     {/* Header */}
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -227,6 +348,11 @@ export default function IAPage() {
                         </div>
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+                        {m.statut === "legacy" && (
+                          <span style={{ padding: "3px 9px", borderRadius: 100, fontSize: 10, fontWeight: 700, background: "#F1F5F9", color: "#64748B", border: "1px solid #CBD5E1", letterSpacing: "0.04em" }}>
+                            ARCHIVÉ
+                          </span>
+                        )}
                         <span style={{ padding: "3px 9px", borderRadius: 100, fontSize: 10.5, fontWeight: 600, background: ac.bg, color: ac.text, border: `1px solid ${ac.border}` }}>
                           {m.acces}
                         </span>
@@ -235,7 +361,7 @@ export default function IAPage() {
                     </div>
 
                     {/* Titre + description */}
-                    <div>
+                    <div style={{ flex: 1 }}>
                       <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>{m.nom}</h3>
                       <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{m.description}</p>
                     </div>
@@ -250,27 +376,75 @@ export default function IAPage() {
                       ))}
                     </div>
 
-                    {/* Benchmarks */}
+                    {/* Benchmarks classiques MMLU / HumanEval / MATH */}
                     {(m.benchmark_mmlu || m.benchmark_humaneval || m.benchmark_math) && (
                       <div style={{ paddingTop: 12, borderTop: "1px solid #F1F5F9" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em" }}>Benchmarks</span>
+                          {BENCHMARK_SOURCES[m.id] && (
+                            <span style={{
+                              fontSize: 9.5, fontWeight: 700, padding: "2px 7px", borderRadius: 100,
+                              background: BENCHMARK_SOURCES[m.id] === "officiel" ? "#F0FDF4" : "#FFFBEB",
+                              color: BENCHMARK_SOURCES[m.id] === "officiel" ? "#15803D" : "#B45309",
+                              border: `1px solid ${BENCHMARK_SOURCES[m.id] === "officiel" ? "#86EFAC" : "#FCD34D"}`,
+                            }}>
+                              {BENCHMARK_SOURCES[m.id] === "officiel" ? "✓ Officiel" : "~ Estimé"}
+                            </span>
+                          )}
+                        </div>
                         <BenchmarkBar label="MMLU (connaissances)" value={m.benchmark_mmlu} color={m.logo_color} />
                         <BenchmarkBar label="HumanEval (code)" value={m.benchmark_humaneval} color={m.logo_color} />
                         <BenchmarkBar label="MATH" value={m.benchmark_math} color={m.logo_color} />
+                      </div>
+                    )}
+                    {/* Benchmarks agentiques (modèles frontier sans MMLU/HumanEval) */}
+                    {!m.benchmark_mmlu && !m.benchmark_humaneval && !m.benchmark_math &&
+                     (m.benchmark_swebench_pro || m.benchmark_osworld || m.benchmark_hle) && (
+                      <div style={{ paddingTop: 12, borderTop: "1px solid #F1F5F9" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                          <span style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em" }}>Benchmarks agentiques</span>
+                          <span style={{ fontSize: 9.5, fontWeight: 700, padding: "2px 7px", borderRadius: 100, background: "#F0FDF4", color: "#15803D", border: "1px solid #86EFAC" }}>
+                            ✓ Officiel
+                          </span>
+                        </div>
+                        <BenchmarkBar label="SWE-bench Pro (code autonome)" value={m.benchmark_swebench_pro} color={m.logo_color} />
+                        <BenchmarkBar label="OSWorld (computer use)" value={m.benchmark_osworld} color={m.logo_color} />
+                        <BenchmarkBar label="HLE (raisonnement expert)" value={m.benchmark_hle} color={m.logo_color} />
                       </div>
                     )}
 
                     {/* Infos pratiques */}
                     <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                       {m.context_window && (
-                        <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: "#F8FAFC", border: "1px solid #E2E8F0", color: "#64748B" }}>
-                          📐 {m.context_window}
-                        </span>
+                        <div
+                          title="Quantité maximale de texte (messages + documents + réponse) traitable en une seule requête. 1 token ≈ 0,75 mot."
+                          style={{ fontSize: 11, padding: "6px 10px", borderRadius: 8, background: "#F8FAFC", border: "1px solid #E2E8F0", cursor: "help" }}
+                        >
+                          <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
+                            Fenêtre de contexte
+                          </div>
+                          <span style={{ fontWeight: 700, color: "#0F172A" }}>{m.context_window}</span>
+                          {tokenToPages(m.context_window) && (
+                            <span style={{ color: "#64748B", marginLeft: 6 }}>— {tokenToPages(m.context_window)}</span>
+                          )}
+                        </div>
                       )}
-                      {m.cout_approx && (
-                        <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: "#F8FAFC", border: "1px solid #E2E8F0", color: "#64748B" }}>
-                          💰 {m.cout_approx}
+                      {m.acces === "Open Source" ? (
+                        <span style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: "#F0FDF4", border: "1px solid #86EFAC", color: "#15803D", fontWeight: 600 }}>
+                          Gratuit · Open source
                         </span>
-                      )}
+                      ) : PRICING_URLS[m.editeur] ? (
+                        <a
+                          href={PRICING_URLS[m.editeur]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={e => e.stopPropagation()}
+                          style={{ fontSize: 11, padding: "3px 9px", borderRadius: 100, background: "#F8FAFC", border: "1px solid #E2E8F0", color: "#7C3AED", fontWeight: 600, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}
+                        >
+                          💰 Tarifs officiels
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                      ) : null}
                     </div>
                   </a>
                 );
@@ -501,66 +675,6 @@ export default function IAPage() {
           </div>
         )}
 
-        {/* ── ENJEUX ──────────────────────────────────────── */}
-        {activeTab === "enjeux" && (
-          <div>
-            <p style={{ fontSize: 14, color: "#64748B", marginBottom: 32, maxWidth: 680 }}>
-              L&apos;IA soulève des enjeux stratégiques, économiques, éthiques et environnementaux majeurs. Une lecture nuancée et factuelle.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              {enjeux.map(e => (
-                <div key={e.id} className="card" style={{ padding: 30 }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "start" }}>
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                        <span style={{ fontSize: 28 }}>{e.emoji}</span>
-                        <div>
-                          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 800, color: "#0F172A" }}>{e.titre}</h2>
-                          <p style={{ fontSize: 13, color: "#7C3AED", fontWeight: 600 }}>{e.sous_titre}</p>
-                        </div>
-                      </div>
-                      <p style={{ fontSize: 14, color: "#1E293B", lineHeight: 1.75, marginBottom: 16 }}>{e.description}</p>
-                      <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.7, fontStyle: "italic" }}>{e.perspective}</p>
-
-                      {/* Métiers */}
-                      {(e.metiers_menaces || e.metiers_crees) && (
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 16 }}>
-                          {e.metiers_menaces && (
-                            <div style={{ background: "#FFF1F2", borderRadius: 10, padding: 14 }}>
-                              <p style={{ fontSize: 11, fontWeight: 700, color: "#BE123C", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Métiers impactés</p>
-                              {e.metiers_menaces.slice(0, 5).map((m, i) => <p key={i} style={{ fontSize: 12, color: "#1E293B", marginBottom: 3 }}>• {m}</p>)}
-                            </div>
-                          )}
-                          {e.metiers_crees && (
-                            <div style={{ background: "#F0FDF4", borderRadius: 10, padding: 14 }}>
-                              <p style={{ fontSize: 11, fontWeight: 700, color: "#15803D", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Métiers créés</p>
-                              {e.metiers_crees.slice(0, 5).map((m, i) => <p key={i} style={{ fontSize: 12, color: "#1E293B", marginBottom: 3 }}>• {m}</p>)}
-                            </div>
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Chiffres clés */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 10, minWidth: 200 }}>
-                      {e.chiffres_cles.map((c, i) => (
-                        <div key={i} style={{ background: "#F5F3FF", borderRadius: 12, padding: "14px 18px", border: "1px solid #DDD6FE" }}>
-                          <p style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 800, color: "#5B21B6", lineHeight: 1 }}>{c.valeur}</p>
-                          <p style={{ fontSize: 12, color: "#64748B", marginTop: 3, lineHeight: 1.4 }}>{c.label}</p>
-                          <p style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{c.source}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 16, paddingTop: 14, borderTop: "1px solid #F1F5F9" }}>
-                    {e.tags.map(t => <span key={t} className="tag-pill">{t}</span>)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
 
       </section>
     </main>

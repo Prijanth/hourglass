@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import certData from "@/content/certifications.json";
+import conceptsData from "@/content/concepts.json";
+import glossaireData from "@/content/glossaire.json";
+import casData from "@/content/cas-usage.json";
 
 export const metadata: Metadata = {
   title: "À propos de DataSphère — La référence data & IA en français",
@@ -7,10 +11,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { n: "137",   l: "termes dans le glossaire" },
-  { n: "100+",  l: "certifications référencées" },
-  { n: "60+",   l: "concepts expliqués" },
-  { n: "2 400+", l: "abonnés newsletter (juin 2026)" },
+  { n: String(glossaireData.length),              l: "termes dans le glossaire" },
+  { n: String(certData.certifications.length),    l: "certifications référencées" },
+  { n: String(conceptsData.concepts.length),      l: "concepts expliqués" },
+  { n: "2 400+",                                  l: "abonnés newsletter (juin 2026)" },
 ];
 
 const VALEURS = [
@@ -37,10 +41,10 @@ const VALEURS = [
 ];
 
 const SECTIONS = [
-  { href: "/concepts",       emoji: "📚", titre: "Encyclopédie",         desc: "60+ concepts ML, Cloud, Gouvernance expliqués en français" },
-  { href: "/certifications", emoji: "🎓", titre: "Certifications",        desc: "100+ fiches AWS, Azure, GCP, Databricks, Snowflake et plus" },
-  { href: "/glossaire",      emoji: "📖", titre: "Glossaire",             desc: "137 définitions précises avec exemples et cas d'usage" },
-  { href: "/metiers",        emoji: "👤", titre: "Métiers",               desc: "Salaires 2025, compétences requises et trajectoires de carrière" },
+  { href: "/concepts",       emoji: "📚", titre: "Encyclopédie",         desc: `${conceptsData.concepts.length} concepts ML, Cloud, Gouvernance expliqués en français` },
+  { href: "/certifications", emoji: "🎓", titre: "Certifications",        desc: `${certData.certifications.length} fiches AWS, Azure, GCP, Databricks, Snowflake et plus` },
+  { href: "/glossaire",      emoji: "📖", titre: "Glossaire",             desc: `${glossaireData.length} définitions précises avec exemples et cas d'usage` },
+  { href: "/metiers",        emoji: "👤", titre: "Métiers",               desc: "Salaires 2026, compétences requises et trajectoires de carrière" },
   { href: "/outils",         emoji: "🛠️", titre: "Outils & plateformes",  desc: "Comparatifs honnêtes de Snowflake, Databricks, dbt et plus" },
   { href: "/cas-usage",      emoji: "💼", titre: "Cas d'usage",           desc: "50+ projets réels avec stack technique et résultats mesurés" },
   { href: "/debuter",        emoji: "🚀", titre: "Débuter en data",       desc: "Parcours guidé pour entrer dans la data en partant de zéro" },
@@ -81,10 +85,20 @@ export default function AProposPage() {
               enfin expliquées en français
             </span>
           </h1>
-          <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.8, maxWidth: 640 }}>
+          <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.8, maxWidth: 640, marginBottom: 32 }}>
             DataSphère est une encyclopédie indépendante dédiée aux professionnels de la data en France.
-            Créée par Prijanth S., Consultant Senior en Data — avec un seul objectif : rendre la connaissance data accessible en français.
+            Un seul objectif : rendre la connaissance data accessible en français, par quelqu&apos;un qui travaille dans ce domaine au quotidien.
           </p>
+          <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 22px", background: "rgba(124,58,237,0.06)", borderRadius: 14, border: "1px solid rgba(124,58,237,0.15)", maxWidth: 540 }}>
+            <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg, #7C3AED, #0EA5E9)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontWeight: 800, color: "#fff", fontSize: 20, flexShrink: 0 }}>
+              P
+            </div>
+            <div>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 15, color: "#0F172A" }}>Prijanth Seevaratnam</div>
+              <div style={{ fontSize: 13, color: "#64748B", marginTop: 2 }}>Consultant Senior en Data · TNP Consultants</div>
+              <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 3 }}>Product Owner ESG · La Banque Postale · Paris</div>
+            </div>
+          </div>
         </div>
       </section>
 

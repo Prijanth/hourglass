@@ -1,102 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ParcoursEtapes } from "./parcours";
 
 export const metadata: Metadata = {
-  title: "Débuter en data — Parcours guidé pour entrer dans la data en 2025 | DataSphère",
+  title: "Débuter en data — Parcours guidé pour entrer dans la data en 2026 | DataSphère",
   description: "Tu veux débuter dans la data ? Suis ce parcours en 5 étapes : bases SQL et Python, certifications pour débutants, premiers projets et ressources gratuites recommandées par des praticiens.",
 };
 
-const ETAPES = [
-  {
-    num: "01",
-    titre: "Comprendre les métiers de la data",
-    duree: "1 semaine",
-    desc: "Avant d'apprendre quoi que ce soit, il faut savoir vers quel métier tu te diriges. Data Analyst, Data Engineer, Data Scientist, ML Engineer : chaque rôle a des compétences différentes.",
-    actions: [
-      "Lire les fiches métiers DataSphère pour comprendre les différences",
-      "Identifier le rôle qui correspond à ton profil et tes objectifs",
-      "Regarder les salaires et les compétences requises pour chaque poste",
-    ],
-    liens: [
-      { label: "Fiche Data Analyst", href: "/metiers/data-analyst" },
-      { label: "Fiche Data Engineer", href: "/metiers/data-engineer" },
-      { label: "Fiche Data Scientist", href: "/metiers/data-scientist" },
-      { label: "Tous les métiers data", href: "/metiers" },
-    ],
-    couleur: "#7C3AED",
-    bg: "#EDE9FE",
-  },
-  {
-    num: "02",
-    titre: "Apprendre SQL — la compétence n°1",
-    duree: "2 à 4 semaines",
-    desc: "SQL est présent dans pratiquement toutes les offres data, quel que soit le métier. C'est la compétence la plus rentable à acquérir en premier : facile à apprendre, immédiatement valorisable.",
-    actions: [
-      "Suivre un cours SQL débutant (SQLZoo ou Mode Analytics sont gratuits)",
-      "Pratiquer avec de vraies données sur BigQuery sandbox (gratuit)",
-      "Réaliser les exercices de 8 Week SQL Challenge (gratuit)",
-    ],
-    liens: [
-      { label: "Glossaire : SQL", href: "/glossaire?q=sql" },
-      { label: "Concept : OLAP vs OLTP", href: "/concepts/olap-vs-oltp" },
-    ],
-    couleur: "#0E7490",
-    bg: "#ECFEFF",
-  },
-  {
-    num: "03",
-    titre: "Apprendre Python pour la data",
-    duree: "4 à 8 semaines",
-    desc: "Python est le langage standard de la data. Les bases suffisent pour commencer : manipulation de données avec Pandas, visualisation avec Matplotlib, et quelques notions de scripting.",
-    actions: [
-      "Suivre Python for Everybody (Coursera, gratuit en audit)",
-      "Pratiquer avec des datasets publics sur Kaggle (compétitions débutants)",
-      "Apprendre Pandas : pd.read_csv, groupby, merge — les 20 fonctions essentielles",
-    ],
-    liens: [
-      { label: "Glossaire : Pandas", href: "/glossaire?q=pandas" },
-      { label: "Glossaire : Python", href: "/glossaire?q=python" },
-      { label: "Outil : Polars (alternative rapide)", href: "/outils/polars" },
-    ],
-    couleur: "#15803D",
-    bg: "#F0FDF4",
-  },
-  {
-    num: "04",
-    titre: "Décrocher ta première certification",
-    duree: "4 à 12 semaines",
-    desc: "Une certification valide tes compétences auprès des recruteurs et t'oblige à apprendre de façon structurée. Commence par une certification cloud accessible — elles sont reconnues, abordables et bien documentées.",
-    actions: [
-      "Choisir entre Google Data Analytics Certificate (débutant, 6 mois) ou AWS Cloud Practitioner (2 mois)",
-      "Suivre les cours officiels et la documentation",
-      "Passer l'examen — le taux de réussite au premier essai est élevé si tu révises sérieusement",
-    ],
-    liens: [
-      { label: "Toutes les certifications débutants", href: "/certifications?niveau=Débutant" },
-      { label: "Certif : Google Data Analytics", href: "/certifications/google-data-analytics" },
-      { label: "Certif : AWS Cloud Practitioner", href: "/certifications/aws-cloud-practitioner" },
-    ],
-    couleur: "#B45309",
-    bg: "#FFFBEB",
-  },
-  {
-    num: "05",
-    titre: "Construire ton premier projet réel",
-    duree: "2 à 4 semaines",
-    desc: "Un projet concret sur ton CV vaut plus que 3 certifications. Il démontre que tu sais appliquer ce que tu as appris sur un vrai problème. Il n'a pas besoin d'être parfait — il doit être réel.",
-    actions: [
-      "Choisir un sujet qui t'intéresse vraiment (sport, finance, mobilité, santé…)",
-      "Récupérer des données ouvertes (data.gouv.fr, Kaggle Datasets, APIs publiques)",
-      "Construire un dashboard simple ou une analyse complète, la publier sur GitHub",
-    ],
-    liens: [
-      { label: "Cas d'usage pour s'inspirer", href: "/cas-usage" },
-      { label: "Outils débutants recommandés", href: "/outils?niveau=débutant" },
-    ],
-    couleur: "#BE123C",
-    bg: "#FFF1F2",
-  },
-];
 
 const FAQ = [
   {
@@ -115,11 +25,30 @@ const FAQ = [
     q: "Par quel outil commencer : Python ou SQL ?",
     r: "SQL en premier, sans hésiter. Il s'apprend plus vite, s'utilise dans tous les métiers data, et te permettra d'être opérationnel rapidement. Python arrive ensuite naturellement. Les deux sont indispensables à terme.",
   },
+  {
+    q: "Mon profil commerce ou non-technique est-il un handicap ?",
+    r: "Non, surtout pour Data Analyst et Product Owner Data. Beaucoup d'entreprises cherchent des profils qui combinent compréhension métier et maîtrise des données — c'est exactement ce que tu apportes. Commence par SQL et Power BI, qui se maîtrisent en quelques semaines, et tu seras opérationnel rapidement. Le bagage technique se construit en poste.",
+  },
+  {
+    q: "Quelle certification choisir selon le métier que je vise ?",
+    r: "Data Analyst → Google Data Analytics Certificate (orienté SQL, Sheets, Tableau, accessible sans prérequis, ~180h). Data Engineer → AWS Data Engineer Associate (cloud AWS, pipelines, plus technique). Data Scientist → AWS ML Specialty ou Google Professional ML Engineer (statistiques et Python requis). Cloud Practitioner (AWS) ou Cloud Digital Leader (Google) sont de bons points de départ cloud pour n'importe quel métier.",
+  },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": FAQ.map(({ q, r }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": r },
+  })),
+};
 
 export default function DebuterPage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero */}
       <section style={{
         background: "linear-gradient(150deg, #FAFBFF 0%, #F5F3FF 55%, #EDE9FE 100%)",
@@ -147,7 +76,7 @@ export default function DebuterPage() {
           }}>
             Débuter dans la data{" "}
             <span style={{ background: "linear-gradient(90deg, #7C3AED, #0EA5E9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              en 2025
+              en 2026
             </span>
           </h1>
           <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.8, maxWidth: 640, marginBottom: 36 }}>
@@ -175,7 +104,7 @@ export default function DebuterPage() {
           <div style={{ display: "flex", gap: 32, marginTop: 48, paddingTop: 32, borderTop: "1px solid #DDD6FE", flexWrap: "wrap" }}>
             {[
               { n: "5", l: "étapes claires" },
-              { n: "3-6", l: "mois pour être employable" },
+              { n: "6-18", l: "mois pour être employable*" },
               { n: "100%", l: "gratuit à suivre" },
             ].map(({ n, l }) => (
               <div key={l}>
@@ -184,110 +113,52 @@ export default function DebuterPage() {
               </div>
             ))}
           </div>
+          <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 12 }}>
+            * 6 mois depuis un profil analytique (finance, marketing, RH) vers Data Analyst. 12-18 mois pour une reconversion complète depuis un profil non-technique. Les examens de certification sont payants (50-300€).
+          </p>
         </div>
       </section>
 
-      {/* Parcours en 5 étapes */}
-      <section style={{ maxWidth: 900, margin: "0 auto", padding: "72px 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: 52 }}>
-          <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#94A3B8" }}>Le parcours</span>
-          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "#0F172A", marginTop: 6 }}>
-            5 étapes pour entrer dans la data
+      {/* ── ORIENTATION PAR PROFIL ─────────────────────── */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "52px 24px 0" }}>
+        <div style={{ marginBottom: 48 }}>
+          <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#94A3B8" }}>Trouve ton point de départ</span>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.4rem, 2vw, 1.8rem)", fontWeight: 800, color: "#0F172A", marginTop: 6, marginBottom: 20 }}>
+            Ce parcours est-il fait pour toi ?
           </h2>
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-          {ETAPES.map((e, i) => (
-            <div
-              key={e.num}
-              id={`etape-${e.num}`}
-              style={{
-                borderRadius: 20, border: "1px solid #E2E8F0", overflow: "hidden",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
-              }}
-            >
-              {/* Header étape */}
-              <div style={{ background: e.bg, padding: "22px 28px", display: "flex", alignItems: "flex-start", gap: 20 }}>
-                <div style={{
-                  width: 52, height: 52, borderRadius: 14, background: e.couleur,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 800, color: "#fff", flexShrink: 0,
-                }}>
-                  {e.num}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
-                    <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem", fontWeight: 800, color: "#0F172A" }}>{e.titre}</h3>
-                    <span style={{
-                      padding: "4px 12px", borderRadius: 100, fontSize: 11.5, fontWeight: 600,
-                      background: "rgba(0,0,0,0.06)", color: "#475569", whiteSpace: "nowrap",
-                    }}>
-                      ⏱ {e.duree}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.7, marginTop: 6 }}>{e.desc}</p>
-                </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 14 }}>
+            {[
+              {
+                emoji: "🎓", color: "#0E7490", bg: "#ECFEFF",
+                title: "Tu viens de commerce ou d'un domaine non-tech",
+                desc: "Data Analyst ou Product Owner Data sont tes portes d'entrée naturelles. SQL + Power BI suffisent pour commencer.",
+                cta: "Voir Data Analyst", href: "/metiers/data-analyst",
+              },
+              {
+                emoji: "💻", color: "#7C3AED", bg: "#EDE9FE",
+                title: "Tu as un background technique (info, ingé, maths)",
+                desc: "Data Engineer, Data Scientist ou AI Engineer sont accessibles en sortie d'école avec Python et les bonnes certifications.",
+                cta: "Voir Data Engineer", href: "/metiers/data-engineer",
+              },
+              {
+                emoji: "📈", color: "#15803D", bg: "#F0FDF4",
+                title: "Tu es déjà en poste data et tu veux progresser",
+                desc: "Ce parcours est orienté débutants. Explore plutôt les fiches métiers seniors et les certifications avancées.",
+                cta: "Voir les métiers seniors", href: "/metiers",
+              },
+            ].map(p => (
+              <div key={p.title} style={{ background: p.bg, border: `1px solid ${p.color}22`, borderRadius: 14, padding: "18px 20px" }}>
+                <div style={{ fontSize: 24, marginBottom: 8 }}>{p.emoji}</div>
+                <p style={{ fontSize: 13.5, fontWeight: 700, color: p.color, marginBottom: 6, lineHeight: 1.4 }}>{p.title}</p>
+                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, marginBottom: 12 }}>{p.desc}</p>
+                <a href={p.href} style={{ fontSize: 12.5, fontWeight: 700, color: p.color, textDecoration: "none" }}>{p.cta} →</a>
               </div>
-
-              {/* Corps */}
-              <div style={{ padding: "24px 28px", background: "#fff", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 28 }}>
-                {/* Actions */}
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#94A3B8", marginBottom: 12 }}>
-                    Ce que tu dois faire
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                    {e.actions.map((a, j) => (
-                      <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                        <div style={{
-                          width: 20, height: 20, borderRadius: "50%",
-                          background: e.bg, border: `2px solid ${e.couleur}`,
-                          display: "flex", alignItems: "center", justifyContent: "center",
-                          flexShrink: 0, marginTop: 1,
-                        }}>
-                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: e.couleur }} />
-                        </div>
-                        <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.6 }}>{a}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Liens */}
-                <div>
-                  <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#94A3B8", marginBottom: 12 }}>
-                    Ressources DataSphère
-                  </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                    {e.liens.map(l => (
-                      <Link key={l.href} href={l.href} style={{
-                        display: "flex", alignItems: "center", justifyContent: "space-between",
-                        padding: "10px 14px", borderRadius: 10,
-                        background: "#F8FAFC", border: "1px solid #E2E8F0",
-                        textDecoration: "none", fontSize: 13, color: "#0F172A", fontWeight: 500,
-                        transition: "all 0.15s",
-                      }}>
-                        {l.label}
-                        <span style={{ color: e.couleur, fontSize: 14, fontWeight: 700 }}>→</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Connecteur vers étape suivante */}
-              {i < ETAPES.length - 1 && (
-                <div style={{ textAlign: "center", padding: "4px 0 0", background: "#fff" }}>
-                  <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", gap: 2, paddingBottom: 8 }}>
-                    <div style={{ width: 2, height: 12, background: "#E2E8F0" }} />
-                    <div style={{ fontSize: 16, color: "#CBD5E1" }}>↓</div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
+
+      <ParcoursEtapes />
 
       {/* FAQ */}
       <section style={{ background: "#F8FAFC", borderTop: "1px solid #E2E8F0", padding: "72px 24px" }}>
@@ -319,19 +190,27 @@ export default function DebuterPage() {
         </p>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/metiers/data-analyst" style={{
-            padding: "12px 28px", borderRadius: 10,
+            padding: "12px 22px", borderRadius: 10,
             background: "#7C3AED", color: "#fff",
-            fontSize: 14, fontWeight: 700, textDecoration: "none",
+            fontSize: 13.5, fontWeight: 700, textDecoration: "none",
             fontFamily: "var(--font-display)",
           }}>
-            Je veux devenir Data Analyst →
+            Je viens de commerce → Data Analyst
+          </Link>
+          <Link href="/metiers/data-engineer" style={{
+            padding: "12px 22px", borderRadius: 10,
+            background: "#0E7490", color: "#fff",
+            fontSize: 13.5, fontWeight: 700, textDecoration: "none",
+            fontFamily: "var(--font-display)",
+          }}>
+            J&apos;ai un background tech → Data Engineer
           </Link>
           <Link href="/metiers" style={{
-            padding: "12px 28px", borderRadius: 10,
+            padding: "12px 22px", borderRadius: 10,
             border: "1.5px solid #E2E8F0", color: "#64748B",
-            fontSize: 14, fontWeight: 600, textDecoration: "none",
+            fontSize: 13.5, fontWeight: 600, textDecoration: "none",
           }}>
-            Explorer tous les métiers →
+            Je veux comparer tous les métiers →
           </Link>
         </div>
         <p style={{ fontSize: 13, color: "#94A3B8", marginTop: 20 }}>

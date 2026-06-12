@@ -2,6 +2,7 @@
   "modeles": [
     {
       "id": "gpt-4o",
+      "statut": "legacy",
       "nom": "GPT-4o",
       "editeur": "OpenAI",
       "logo_color": "#00A67E",
@@ -47,26 +48,26 @@
       "type": "LLM",
       "acces": "Propriétaire",
       "date_sortie": "2025-04",
-      "description": "Modèle de raisonnement de pointe d'OpenAI utilisant le chain-of-thought étendu pour résoudre des problèmes complexes. Excelle en mathématiques, sciences et programmation avancée. Coût plus élevé mais performances supérieures sur les tâches de raisonnement.",
+      "description": "Modèle de raisonnement de pointe d'OpenAI utilisant le chain-of-thought étendu pour résoudre des problèmes complexes. Excelle en mathématiques, sciences et programmation avancée. Note : o3 Deep Research (variante avec recherche web approfondie) a un pricing différent à $10/$40 par M tokens.",
       "points_forts": [
         "Raisonnement mathématique et scientifique de haut niveau",
         "Excellentes performances sur les benchmarks de codage avancé",
         "Chain-of-thought étendu pour problèmes multi-étapes"
       ],
       "points_faibles": [
-        "Très coûteux par rapport aux autres modèles",
+        "Plus coûteux que les modèles de la gamme GPT-4",
         "Latence élevée due au raisonnement étendu",
         "Moins adapté aux tâches simples"
       ],
       "context_window": "200K tokens",
-      "cout_approx": "~$10/M tokens input, ~$40/M tokens output",
+      "cout_approx": "~$2/M tokens input, ~$8/M tokens output (o3 standard)",
       "cas_usage_phares": [
         "Résolution de problèmes mathématiques complexes",
         "Recherche scientifique assistée",
         "Débogage de code avancé"
       ],
-      "benchmark_mmlu": 92.3,
-      "benchmark_humaneval": 96.7,
+      "benchmark_mmlu": 91.6,
+      "benchmark_humaneval": 81.3,
       "benchmark_math": 96.7,
       "lien": "https://openai.com/o3",
       "tags": [
@@ -77,43 +78,45 @@
       ]
     },
     {
-      "id": "o3-mini",
-      "nom": "o3-mini",
+      "id": "o4-mini",
+      "nom": "o4-mini",
       "editeur": "OpenAI",
       "logo_color": "#00A67E",
       "type": "LLM",
       "acces": "Propriétaire",
-      "date_sortie": "2025-01",
-      "description": "Version compacte et économique du modèle de raisonnement o3. Offre un excellent rapport performance/coût pour les tâches de raisonnement STEM. Disponible en trois niveaux d'effort de raisonnement (low, medium, high).",
+      "date_sortie": "2025-04",
+      "description": "Successeur de o3-mini (disponible depuis avril 2025), modèle de raisonnement compact et économique. Améliore o3-mini sur la vision, le code et le raisonnement multiétape. Disponible via l'API OpenAI en remplacement de o3-mini.",
       "points_forts": [
         "Raisonnement STEM de haute qualité à coût réduit",
-        "Trois niveaux de raisonnement configurables",
-        "Rapide pour un modèle de raisonnement"
+        "Support vision (analyse d'images)",
+        "Meilleur que o3-mini sur code et math"
       ],
       "points_faibles": [
         "Moins performant que o3 sur les tâches très complexes",
-        "Capacités multimodales limitées"
+        "Contexte limité comparé aux modèles full-size"
       ],
-      "context_window": "200K tokens",
-      "cout_approx": "~$1.10/M tokens input, ~$4.40/M tokens output",
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.55/M tokens input, ~$2.20/M tokens output (o4-mini standard — o4-mini High : $1.10/$4.40)",
       "cas_usage_phares": [
         "Analyse de données structurées",
         "Résolution de problèmes STEM",
-        "Code et débogage"
+        "Code et débogage avec vision"
       ],
-      "benchmark_mmlu": 86.2,
-      "benchmark_humaneval": 93.7,
-      "benchmark_math": 90,
-      "lien": "https://openai.com/o3-mini",
+      "benchmark_mmlu": 90.0,
+      "benchmark_humaneval": 98.2,
+      "benchmark_math": 97.5,
+      "lien": "https://openai.com/o4-mini",
       "tags": [
         "raisonnement",
         "code",
         "STEM",
-        "économique"
+        "économique",
+        "vision"
       ]
     },
     {
       "id": "claude-3-5-sonnet",
+      "statut": "legacy",
       "nom": "Claude 3.5 Sonnet",
       "editeur": "Anthropic",
       "logo_color": "#D97706",
@@ -152,110 +155,194 @@
       ]
     },
     {
-      "id": "claude-4-sonnet",
-      "nom": "Claude Sonnet 4",
+      "id": "claude-opus-48",
+      "nom": "Claude Opus 4.8",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-05",
+      "description": "Modèle phare d'Anthropic sorti le 28 mai 2026, 41 jours après Opus 4.7. Introduit les 'dynamic workflows' dans Claude Code pour les tâches à très grande échelle. Score de 61.4 sur l'Artificial Analysis Intelligence Index (+4.1 vs 4.7), le meilleur tous modèles confondus. Vitesse 2,5x via le fast mode, 3x moins cher que sur la génération précédente.",
+      "points_forts": [
+        "Dynamic workflows : résolution de problèmes très large scale dans Claude Code",
+        "69.2% agentic coding, 84% sur Online-Mind2Web / 83.4% computer use global (SoTA toutes catégories)",
+        "Fast mode : 2.5x plus rapide, 3x moins cher que les versions précédentes",
+        "Plus honnête sur ses erreurs et ses limites en mode agentique"
+      ],
+      "points_faibles": [
+        "API uniquement, pas de version open source",
+        "Légèrement moins créatif que GPT-5.5 sur les tâches ouvertes selon certains benchmarks"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$5/M tokens input, $25/M tokens output",
+      "cas_usage_phares": [
+        "Agents de développement autonomes longue durée (Claude Code)",
+        "Tâches très complexes nécessitant raisonnement multi-étapes",
+        "Computer use et automatisation de workflows"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "benchmark_swebench_pro": 69.2,
+      "benchmark_osworld": 83.4,
+      "benchmark_hle": 57.9,
+      "lien": "https://www.anthropic.com/news/claude-opus-4-8",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "computer use",
+        "dynamic workflows"
+      ]
+    },
+    {
+      "id": "claude-opus-47",
+      "statut": "legacy",
+      "nom": "Claude Opus 4.7",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-04",
+      "description": "Flagship Anthropic d'avril 2026, remplacé par Opus 4.8 41 jours plus tard. Notable pour ses améliorations en vision multimodale (98.5%) et en codage (64.3% agentic coding). Même tarif qu'Opus 4.8 au moment de sa sortie.",
+      "points_forts": [
+        "98.5% en vision multimodale — meilleur de la gamme à sa sortie",
+        "64.3% agentic coding, solide pour les workflows de développement",
+        "82.8% computer use"
+      ],
+      "points_faibles": [
+        "Supplanté par Opus 4.8 moins de 6 semaines après sa sortie",
+        "Moins performant qu'Opus 4.8 sur les benchmarks agentiques"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$5/M tokens input, $25/M tokens output",
+      "cas_usage_phares": [
+        "Tâches de vision avancée et analyse d'images complexes",
+        "Agents de développement multi-étapes",
+        "Analyse documentaire approfondie"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "benchmark_swebench_pro": 64.3,
+      "benchmark_osworld": 82.8,
+      "benchmark_hle": 46.9,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "vision",
+        "code"
+      ]
+    },
+    {
+      "id": "claude-sonnet-46",
+      "nom": "Claude Sonnet 4.6",
       "editeur": "Anthropic",
       "logo_color": "#D97706",
       "type": "Multimodal",
       "acces": "Propriétaire",
       "date_sortie": "2025-05",
-      "description": "Dernière génération de Claude d'Anthropic, combinant des capacités de raisonnement hybrides (instantané et étendu). Modèle de référence pour le code et les tâches agentiques complexes, avec une amélioration significative sur les benchmarks de développement.",
+      "description": "Le modèle principal de la famille Claude 4.x, et le modèle qui fait tourner Claude Code. Combine raisonnement hybride (rapide et étendu), très haute performance sur le code et les tâches agentiques, avec un coût nettement inférieur à Opus. Référence du marché pour les applications production.",
       "points_forts": [
-        "Raisonnement hybride rapide et étendu",
-        "Performance SWE-bench de premier rang",
-        "Excellent pour les workflows agentiques",
-        "Long contexte stable"
+        "Rapport performance/coût exceptionnel dans la gamme Claude 4",
+        "Performance SWE-bench de premier rang pour les tâches de développement",
+        "Excellent pour les workflows agentiques et l'utilisation d'outils",
+        "Raisonnement hybride : rapide ou étendu selon la tâche"
       ],
       "points_faibles": [
-        "Coût élevé pour les cas d'usage intensifs",
+        "Moins puissant qu'Opus sur les tâches de raisonnement pur très complexes",
         "Accès cloud uniquement"
       ],
-      "context_window": "200K tokens",
+      "context_window": "1M tokens (bêta)",
       "cout_approx": "~$3/M tokens input, ~$15/M tokens output",
       "cas_usage_phares": [
-        "Agents de développement autonomes",
+        "Agents de développement autonomes (Claude Code)",
         "Analyse de grandes bases de code",
-        "Rédaction et synthèse avancée"
+        "Applications production à fort volume"
       ],
-      "benchmark_mmlu": 90.1,
-      "benchmark_humaneval": 95.2,
-      "benchmark_math": 82.1,
+      "benchmark_mmlu": 85.2,
+      "benchmark_humaneval": 93.5,
+      "benchmark_math": 89.4,
       "lien": "https://www.anthropic.com/claude",
       "tags": [
-        "texte",
-        "code",
-        "image",
+        "LLM",
+        "multimodal",
         "agents",
+        "code",
         "raisonnement"
       ]
     },
     {
-      "id": "claude-3-haiku",
-      "nom": "Claude 3 Haiku",
+      "id": "claude-haiku-45",
+      "nom": "Claude Haiku 4.5",
       "editeur": "Anthropic",
       "logo_color": "#D97706",
       "type": "LLM",
       "acces": "Propriétaire",
-      "date_sortie": "2024-03",
-      "description": "Modèle compact et ultra-rapide d'Anthropic, conçu pour les cas d'usage nécessitant faible latence et coût réduit. Idéal pour les pipelines de traitement en masse et les chatbots haute fréquence. Offre un excellent rapport qualité/prix dans la gamme Anthropic.",
+      "date_sortie": "2025-10",
+      "description": "Modèle ultra-rapide et économique de la famille Claude 4.x, sorti en octobre 2025. Représente un bond qualitatif majeur par rapport à Claude 3 Haiku, avec des capacités proches de Claude 3.5 Sonnet pour une fraction du coût. Idéal pour les pipelines haute fréquence.",
       "points_forts": [
-        "Latence très faible",
-        "Coût parmi les plus bas du marché",
-        "Qualité supérieure aux modèles équivalents",
-        "Bon suivi d'instructions"
+        "Latence très faible, idéal pour les applications temps réel",
+        "Qualité nettement supérieure à Claude 3 Haiku",
+        "Coût parmi les plus bas du marché pour la gamme 4.x",
+        "Bon suivi d'instructions et capacités multimodales"
       ],
       "points_faibles": [
-        "Performances inférieures sur les raisonnements complexes",
-        "Contexte plus limité que Sonnet"
+        "Moins performant que Sonnet 4.6 sur les tâches complexes",
+        "Raisonnement étendu non disponible"
       ],
       "context_window": "200K tokens",
-      "cout_approx": "~$0.25/M tokens input, ~$1.25/M tokens output",
+      "cout_approx": "~$0.80/M tokens input, ~$4/M tokens output",
       "cas_usage_phares": [
-        "Chatbots haute fréquence",
-        "Classification et extraction d'entités",
-        "Pipelines de traitement en masse"
+        "Chatbots et assistants haute fréquence",
+        "Classification et extraction d'entités à grande échelle",
+        "Pipelines de traitement de données en masse"
       ],
-      "benchmark_mmlu": 75.2,
-      "benchmark_humaneval": 75.9,
-      "benchmark_math": null,
+      "benchmark_mmlu": 76.8,
+      "benchmark_humaneval": 86.3,
+      "benchmark_math": 81.3,
       "lien": "https://www.anthropic.com/claude",
       "tags": [
-        "texte",
+        "LLM",
         "rapide",
         "économique",
-        "classification"
+        "classification",
+        "haute fréquence"
       ]
     },
     {
       "id": "gemini-2-0-flash",
+      "statut": "retired",
       "nom": "Gemini 2.0 Flash",
       "editeur": "Google DeepMind",
       "logo_color": "#4285F4",
       "type": "Multimodal",
       "acces": "Propriétaire",
-      "date_sortie": "2025-02",
-      "description": "Modèle multimodal rapide de Google, successeur de Gemini 1.5 Flash. Conçu pour les applications temps réel avec support audio, vidéo, image et texte. Intègre des capacités agentiques natives et un moteur de recherche Google intégré.",
+      "date_sortie": "2025-01",
+      "description": "⚠️ Retiré le 1er juin 2026 — remplacé par Gemini 2.5 Flash. Sorti le 30 janvier 2025 comme modèle par défaut de l'API Google. Modèle multimodal rapide, successeur de Gemini 1.5 Flash. Conçu pour les applications temps réel avec support audio, vidéo, image et texte.",
       "points_forts": [
         "Vitesse d'inférence très élevée",
         "Multimodalité native complète",
-        "Accès à Google Search en temps réel",
-        "Coût compétitif"
+        "Accès à Google Search en temps réel"
       ],
       "points_faibles": [
+        "Retiré de l'API le 01/06/2026 — utiliser Gemini 2.5 Flash",
         "Légèrement en dessous de Gemini 2.0 Pro sur les tâches complexes",
         "Dépendance à l'écosystème Google"
       ],
       "context_window": "1M tokens",
-      "cout_approx": "~$0.075/M tokens input, ~$0.30/M tokens output",
+      "cout_approx": "N/A — retiré le 01/06/2026 (était $0.10/M input, $0.40/M output)",
       "cas_usage_phares": [
         "Applications temps réel",
         "Analyse de vidéos longues",
         "Agents avec recherche web",
         "RAG sur grands documents"
       ],
-      "benchmark_mmlu": 85,
-      "benchmark_humaneval": 85.5,
-      "benchmark_math": 78,
+      "benchmark_mmlu": 76.4,
+      "benchmark_humaneval": 78.9,
+      "benchmark_math": 89.7,
       "lien": "https://deepmind.google/technologies/gemini/flash/",
       "tags": [
         "texte",
@@ -268,6 +355,7 @@
     },
     {
       "id": "gemini-2-0-pro",
+      "statut": "legacy",
       "nom": "Gemini 2.0 Pro",
       "editeur": "Google DeepMind",
       "logo_color": "#4285F4",
@@ -292,9 +380,9 @@
         "Traitement de rapports annuels",
         "Génération de code complexe"
       ],
-      "benchmark_mmlu": 90,
-      "benchmark_humaneval": 90,
-      "benchmark_math": 84,
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
       "lien": "https://deepmind.google/technologies/gemini/",
       "tags": [
         "texte",
@@ -307,6 +395,7 @@
     },
     {
       "id": "gemini-1-5-pro",
+      "statut": "legacy",
       "nom": "Gemini 1.5 Pro",
       "editeur": "Google DeepMind",
       "logo_color": "#4285F4",
@@ -382,18 +471,19 @@
     },
     {
       "id": "llama-3-1-405b",
+      "statut": "legacy",
       "nom": "Llama 3.1 405B",
       "editeur": "Meta",
       "logo_color": "#0084FF",
       "type": "LLM",
       "acces": "Open Source",
       "date_sortie": "2024-07",
-      "description": "Le plus grand modèle open source jamais publié par Meta, avec 405 milliards de paramètres. Performances comparables aux meilleurs modèles propriétaires sur de nombreux benchmarks. Représente une avancée majeure pour l'open source face aux modèles fermés.",
+      "description": "Modèle emblématique de la lignée Llama 3, sorti en juillet 2024 avec 405 milliards de paramètres. Désormais remplacé par Llama 4 (sorti en 2025) dans la gamme Meta. Reste pertinent pour le fine-tuning et le déploiement on-premise sur des usages nécessitant un grand modèle open source stable, mais les nouveaux projets devraient privilégier Llama 4.",
       "points_forts": [
-        "Plus grand modèle open source disponible",
-        "Performances de niveau GPT-4 sur plusieurs benchmarks",
-        "Déployable sur infrastructure privée",
-        "Support 128K tokens de contexte"
+        "Performances proches de GPT-4 sur de nombreux benchmarks (à sa sortie en 2024)",
+        "Déployable sur infrastructure privée, sans dépendance cloud",
+        "Support 128K tokens de contexte",
+        "Très bien documenté, nombreux guides de fine-tuning disponibles"
       ],
       "points_faibles": [
         "Infrastructure GPU très coûteuse pour l'auto-hébergement",
@@ -420,6 +510,7 @@
     },
     {
       "id": "mistral-large-2",
+      "statut": "legacy",
       "nom": "Mistral Large 2",
       "editeur": "Mistral AI",
       "logo_color": "#FF7000",
@@ -458,24 +549,24 @@
     },
     {
       "id": "mistral-small-3",
-      "nom": "Mistral Small 3",
+      "nom": "Mistral Small 3.1",
       "editeur": "Mistral AI",
       "logo_color": "#FF7000",
       "type": "LLM",
       "acces": "Open Source",
-      "date_sortie": "2025-01",
-      "description": "Modèle compact de 24 milliards de paramètres de Mistral AI, conçu pour les déploiements edge et les applications nécessitant faible latence. Performances comparables à des modèles bien plus grands tout en restant sous licence Apache 2.0.",
+      "date_sortie": "2025-03",
+      "description": "Modèle compact de 24 milliards de paramètres de Mistral AI (version 3.1 de mars 2025), conçu pour les déploiements edge et les applications nécessitant faible latence. Support multimodal (images) et fenêtre de contexte portée à 128K tokens vs 32K pour la version 3.0 initiale.",
       "points_forts": [
         "Open source sous licence Apache 2.0",
         "Excellent ratio performance/taille",
         "Très rapide en inférence",
-        "Faible empreinte mémoire (déployable sur GPU grand public)"
+        "Support multimodal (images) depuis la v3.1"
       ],
       "points_faibles": [
         "Moins performant que Mistral Large sur les tâches complexes",
-        "Contexte limité comparé aux grands modèles"
+        "Moins puissant que les modèles frontier sur le raisonnement"
       ],
-      "context_window": "32K tokens",
+      "context_window": "128K tokens",
       "cout_approx": "~$0.10/M tokens input, ~$0.30/M tokens output",
       "cas_usage_phares": [
         "Déploiement on-premise sur petits serveurs",
@@ -496,6 +587,7 @@
     },
     {
       "id": "mixtral-8x22b",
+      "statut": "legacy",
       "nom": "Mixtral 8x22B",
       "editeur": "Mistral AI",
       "logo_color": "#FF7000",
@@ -558,7 +650,7 @@
         "Extraction d'informations de documents scannés",
         "Description et comparaison d'images"
       ],
-      "benchmark_mmlu": 83.7,
+      "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
       "lien": "https://mistral.ai/news/pixtral-large/",
@@ -572,6 +664,7 @@
     },
     {
       "id": "command-r-plus",
+      "statut": "legacy",
       "nom": "Command R+",
       "editeur": "Cohere",
       "logo_color": "#39594A",
@@ -610,6 +703,7 @@
     },
     {
       "id": "qwen-2-5-72b",
+      "statut": "legacy",
       "nom": "Qwen 2.5 72B",
       "editeur": "Alibaba Cloud",
       "logo_color": "#FF6A00",
@@ -666,8 +760,8 @@
         "Questions de confidentialité (serveurs chinois)",
         "Support français moyen"
       ],
-      "context_window": "64K tokens",
-      "cout_approx": "~$0.07/M tokens input, ~$1.10/M tokens output via API",
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.14/M tokens input, ~$0.28/M tokens output via API DeepSeek",
       "cas_usage_phares": [
         "Développement logiciel assisté",
         "Analyse de données quantitatives",
@@ -705,7 +799,7 @@
         "Mêmes préoccupations de confidentialité que DeepSeek V3",
         "Verbeux dans ses traces de raisonnement"
       ],
-      "context_window": "64K tokens",
+      "context_window": "128K tokens",
       "cout_approx": "~$0.14/M tokens input, ~$2.19/M tokens output via API",
       "cas_usage_phares": [
         "Résolution de problèmes mathématiques",
@@ -764,26 +858,26 @@
     },
     {
       "id": "dall-e-3",
+      "statut": "retired",
       "nom": "DALL-E 3",
       "editeur": "OpenAI",
       "logo_color": "#00A67E",
       "type": "Image",
       "acces": "Propriétaire",
       "date_sortie": "2023-10",
-      "description": "Modèle de génération d'images d'OpenAI, intégré nativement à ChatGPT. Excellente compréhension des prompts complexes grâce à une phase de recaptioning par GPT-4. Très bon pour les illustrations, les concepts et les visuels marketing.",
+      "description": "⚠️ Retiré de l'API OpenAI le 12 mai 2026 — remplacé par GPT Image 1 (gpt-image-1). DALL-E 3 reste accessible via ChatGPT mais n'est plus disponible via l'API. Modèle historique d'OpenAI avec une excellente compréhension des prompts complexes grâce à une phase de recaptioning par GPT-4.",
       "points_forts": [
         "Très bonne compréhension des prompts en langage naturel",
-        "Intégré à ChatGPT et à l'API OpenAI",
         "Bonne gestion du texte dans les images",
         "Sécurité et filtres contenus avancés"
       ],
       "points_faibles": [
+        "Retiré de l'API le 12 mai 2026 — utiliser GPT Image 1 (gpt-image-1)",
         "Photorealisme inférieur à Midjourney ou Flux",
-        "Moins de contrôle sur le style que la concurrence",
-        "Coût par image élevé"
+        "Moins de contrôle sur le style que la concurrence"
       ],
       "context_window": null,
-      "cout_approx": "~$0.04-0.08 par image (1024x1024)",
+      "cout_approx": "N/A — retiré de l'API le 12/05/2026 (remplacé par GPT Image 1)",
       "cas_usage_phares": [
         "Illustrations pour articles et présentations",
         "Visuels marketing conceptuels",
@@ -802,6 +896,7 @@
     },
     {
       "id": "midjourney-v6-1",
+      "statut": "legacy",
       "nom": "Midjourney v6.1",
       "editeur": "Midjourney",
       "logo_color": "#000000",
@@ -954,6 +1049,7 @@
     },
     {
       "id": "adobe-firefly-3",
+      "statut": "legacy",
       "nom": "Adobe Firefly 3",
       "editeur": "Adobe",
       "logo_color": "#FF0000",
@@ -998,20 +1094,20 @@
       "type": "Code",
       "acces": "Propriétaire",
       "date_sortie": "2022-06",
-      "description": "Assistant de codage IA le plus utilisé au monde avec plus de 77 millions de développeurs. Intégré nativement à VS Code, JetBrains, Visual Studio et Neovim. Powered par des modèles d'OpenAI et Anthropic, avec Copilot Chat pour les conversations contextuelles.",
+      "description": "Assistant de codage IA le plus adopté en entreprise, avec 4,7M+ abonnés payants (jan. 2026) et disponible pour tous les développeurs GitHub (plan gratuit inclus). Intégré nativement à VS Code, JetBrains, Visual Studio et Neovim. Powered par des modèles d'OpenAI et Anthropic, avec Copilot Chat pour les conversations contextuelles.",
       "points_forts": [
-        "Plus de 77M développeurs actifs",
+        "4,7M+ abonnés payants — standard de facto en entreprise",
         "Intégration native dans les IDEs majeurs",
         "Complétion de code inline en temps réel",
         "GitHub Copilot Chat pour Q&A sur la base de code"
       ],
       "points_faibles": [
-        "Abonnement payant pour les fonctionnalités avancées",
+        "Plan gratuit limité (2 000 complétions/mois)",
         "Dépendance à l'écosystème Microsoft/GitHub",
         "Peut suggérer du code de moins bonne qualité sur des langages rares"
       ],
       "context_window": null,
-      "cout_approx": "$10/mois individuel, $19/mois enterprise",
+      "cout_approx": "Pro $10/mois, Business $19/user/mois, Enterprise $39/user/mois",
       "cas_usage_phares": [
         "Complétion de code en temps réel",
         "Génération de tests unitaires",
@@ -1071,25 +1167,25 @@
     },
     {
       "id": "codestral",
-      "nom": "Codestral",
+      "statut": "legacy",
+      "nom": "Codestral v1 (mai 2024)",
       "editeur": "Mistral AI",
       "logo_color": "#FF7000",
       "type": "Code",
       "acces": "Hybride",
       "date_sortie": "2024-05",
-      "description": "Modèle de Mistral AI spécialement conçu pour la génération de code. Supporte plus de 80 langages de programmation et offre une endpoint de complétion FIM (Fill-in-the-Middle) optimisée. Disponible en version API cloud et pour usage non-commercial.",
+      "description": "Première version du modèle code de Mistral AI (mai 2024, 32K tokens). Remplacée par Codestral 2 (Codestral 2508, août 2025) : 256K tokens, 2x plus rapide, $0.30/$0.90 par M tokens, FIM amélioré. Recommandation : utiliser Codestral 2508 pour les nouveaux projets.",
       "points_forts": [
-        "Spécialisé code, très performant sur les benchmarks",
+        "Spécialisé code, endpoint FIM optimisée",
         "Supporte 80+ langages de programmation",
-        "Endpoint FIM optimisée pour la complétion",
         "Intégrable dans VS Code et JetBrains via plugins"
       ],
       "points_faibles": [
-        "Pas totalement open source pour usage commercial",
-        "Moins connu que Copilot dans l'écosystème"
+        "Version v1 dépassée — Codestral 2508 (256K tokens) lui est largement supérieur",
+        "Pas totalement open source pour usage commercial"
       ],
-      "context_window": "32K tokens",
-      "cout_approx": "~$0.20/M tokens input (Mistral API)",
+      "context_window": "32K tokens (v1) — Codestral 2508 : 256K tokens",
+      "cout_approx": "v1 : ~$0.20/M tokens input — Codestral 2508 : $0.30/$0.90 par M tokens",
       "cas_usage_phares": [
         "Complétion de code dans les IDEs",
         "Génération de fonctions et classes",
@@ -1108,25 +1204,26 @@
     },
     {
       "id": "whisper",
+      "statut": "legacy",
       "nom": "Whisper",
       "editeur": "OpenAI",
       "logo_color": "#00A67E",
       "type": "Audio",
       "acces": "Open Source",
       "date_sortie": "2022-09",
-      "description": "Modèle de reconnaissance vocale open source d'OpenAI entraîné sur 680 000 heures d'audio multilingue. Référence absolue pour la transcription automatique de la parole, disponible en plusieurs tailles (tiny à large-v3). Utilisé comme base par de nombreux produits.",
+      "description": "Modèle de reconnaissance vocale open source d'OpenAI entraîné sur 680 000 heures d'audio multilingue. Référence pour le self-hosted. Via l'API OpenAI, les alternatives recommandées sont désormais gpt-4o-transcribe ($0.006/min) et gpt-4o-mini-transcribe ($0.003/min), plus précis que Whisper-1.",
       "points_forts": [
-        "Open source et déployable localement",
+        "Open source, déployable localement (tiny à large-v3)",
         "Support de 99 langues dont le français",
-        "Excellente robustesse aux accents et bruits",
-        "Plusieurs tailles selon les contraintes (tiny à large-v3)"
+        "Excellente robustesse aux accents et bruits"
       ],
       "points_faibles": [
+        "Remplacé par gpt-4o-transcribe dans l'API OpenAI pour de meilleures performances",
         "Pas de transcription en temps réel dans la version officielle",
         "Lent sur CPU pour les grandes tailles de modèle"
       ],
       "context_window": "30 secondes par chunk audio",
-      "cout_approx": "Gratuit (self-hosted), $0.006/minute via OpenAI API",
+      "cout_approx": "Gratuit (self-hosted) — API : Whisper-1 $0.006/min, gpt-4o-transcribe $0.006/min, gpt-4o-mini-transcribe $0.003/min",
       "cas_usage_phares": [
         "Transcription de réunions et podcasts",
         "Sous-titrage automatique",
@@ -1153,20 +1250,20 @@
       "type": "Audio",
       "acces": "Propriétaire",
       "date_sortie": "2023-01",
-      "description": "Plateforme de synthèse vocale ultra-réaliste, considérée comme la meilleure du marché pour la qualité et la naturalité des voix générées. Propose le clonage vocal avec très peu d'échantillons audio, la synthèse multilingue et des voix expressives avec émotions.",
+      "description": "Plateforme de synthèse vocale ultra-réaliste, référence du marché. Le modèle flagship Eleven v3 (février 2026) supporte 70+ langues avec contrôle émotionnel avancé via audio tags. Flash v2.5 (32 langues) cible les applications temps-réel basse-latence. Plans : Free (10 000 crédits/mois ≈ 10 min), Starter ($5/mois), Creator ($22/mois), Pro ($99/mois).",
       "points_forts": [
-        "Qualité de synthèse vocale la plus réaliste du marché",
-        "Clonage vocal en quelques secondes",
-        "Support de 32 langues dont français avec accent natif",
-        "API robuste pour l'intégration"
+        "Eleven v3 : 70+ langues, contrôle émotionnel via audio tags",
+        "Clonage vocal instantané (quelques secondes d'audio)",
+        "Flash v2.5 pour les applications temps-réel basse-latence",
+        "API robuste avec SDK Python et JavaScript"
       ],
       "points_faibles": [
-        "Coût peut être élevé pour les volumes importants",
+        "Coût élevé pour les volumes importants",
         "Propriétaire, dépendance à la plateforme",
         "Préoccupations éthiques sur le clonage vocal"
       ],
       "context_window": null,
-      "cout_approx": "A partir de $5/mois, facturation à la minute d'audio",
+      "cout_approx": "Free (10 000 crédits/mois), Starter $5/mois, Creator $22/mois, Pro $99/mois",
       "cas_usage_phares": [
         "Narration de vidéos et podcasts",
         "Doublage et localisation",
@@ -1206,7 +1303,7 @@
         "Propriétaire"
       ],
       "context_window": null,
-      "cout_approx": "Plan gratuit (10 crédits/jour), ~$10-30/mois pour les plans payants",
+      "cout_approx": "Plan gratuit (50 crédits/jour ≈ 10 chansons, usage personnel), Pro $10/mois (2 500 crédits), Premier $30/mois (10 000 crédits)",
       "cas_usage_phares": [
         "Création de jingles et musiques de fond",
         "Prototypage musical rapide",
@@ -1264,6 +1361,7 @@
     },
     {
       "id": "runway-gen-3",
+      "statut": "legacy",
       "nom": "Runway Gen-3 Alpha",
       "editeur": "Runway",
       "logo_color": "#00E5FF",
@@ -1336,6 +1434,458 @@
         "personnages",
         "mouvements",
         "long format"
+      ]
+    },
+    {
+      "id": "gemini-25-pro",
+      "nom": "Gemini 2.5 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-03",
+      "description": "Le modèle phare de Google intégrant un mécanisme de réflexion interne (thinking). Domine les benchmarks de raisonnement et de code en mars 2025, avec une fenêtre contextuelle d'1 million de tokens. Multimodal natif (texte, image, audio, vidéo).",
+      "points_forts": [
+        "Meilleur modèle au monde sur les benchmarks de raisonnement (Humanity's Last Exam)",
+        "Mode thinking : raisonnement pas-à-pas avant de répondre",
+        "Contexte 1M tokens nativement"
+      ],
+      "points_faibles": [
+        "Mode thinking ralentit la latence et augmente les coûts",
+        "Encore moins mature que GPT-4o sur les tâches conversationnelles longues",
+        "Accès API parfois limité en phase de déploiement"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$3.5/M tokens input, $10.5/M tokens output (sans thinking)",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et mathématique complexe",
+        "Analyse de documents longs (PDF, transcripts)",
+        "Code avancé avec debugging"
+      ],
+      "benchmark_mmlu": 90,
+      "benchmark_humaneval": 97,
+      "benchmark_math": 91,
+      "lien": "https://deepmind.google/technologies/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "thinking",
+        "long context",
+        "raisonnement"
+      ]
+    },
+    {
+      "id": "gemini-25-flash",
+      "statut": "legacy",
+      "nom": "Gemini 2.5 Flash",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-05",
+      "description": "Version rapide et économique de Gemini 2.5 avec thinking optionnel. Rapport qualité/prix exceptionnel, idéal pour les applications haute fréquence nécessitant du raisonnement.",
+      "points_forts": [
+        "Thinking activable selon le budget (token budget configurable)",
+        "Prix très bas : 8 fois moins cher que Gemini 2.5 Pro",
+        "Très bonne multimodalité native"
+      ],
+      "points_faibles": [
+        "Moins puissant que Gemini 2.5 Pro sur les tâches très complexes",
+        "Thinking moins profond que le Pro"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$0.30/M tokens input (sans thinking), $3.50/M tokens output (sans thinking)",
+      "cas_usage_phares": [
+        "Applications conversationnelles à fort volume",
+        "Extraction d'informations sur documents",
+        "Agents IA légèrement autonomes"
+      ],
+      "benchmark_mmlu": 89,
+      "benchmark_humaneval": 93,
+      "benchmark_math": 88,
+      "lien": "https://deepmind.google/technologies/gemini/",
+      "tags": [
+        "LLM",
+        "rapide",
+        "économique",
+        "thinking",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "claude-37-sonnet",
+      "statut": "legacy",
+      "nom": "Claude 3.7 Sonnet",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-02",
+      "description": "Premier modèle Anthropic avec réflexion étendue (extended thinking). Permet de configurer un budget de tokens de réflexion interne avant la réponse finale. Particulièrement puissant sur le code, les maths et les raisonnements en plusieurs étapes.",
+      "points_forts": [
+        "Extended thinking : la réflexion interne est visible et configurable",
+        "Excellentes performances en code (meilleur sur SWE-bench à sa sortie)",
+        "Très fort sur les tâches qui nécessitent de la planification"
+      ],
+      "points_faibles": [
+        "Mode thinking coûteux en tokens et en latence",
+        "Moins performant sans thinking que les meilleurs modèles non-thinking"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$3/M tokens input, $15/M tokens output",
+      "cas_usage_phares": [
+        "Résolution de bugs complexes avec explication pas-à-pas",
+        "Génération de code avec architecture réfléchie",
+        "Analyse de cas complexes en finance ou droit"
+      ],
+      "benchmark_mmlu": 90.1,
+      "benchmark_humaneval": 96,
+      "benchmark_math": 84,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "extended thinking",
+        "code",
+        "raisonnement",
+        "SWE-bench"
+      ]
+    },
+    {
+      "id": "gpt-41",
+      "statut": "legacy",
+      "nom": "GPT-4.1",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-04",
+      "description": "Successeur de GPT-4o avec des améliorations majeures sur le suivi d'instructions et le code. Fenêtre contextuelle d'1 million de tokens et tarif réduit de 20% vs GPT-4o (de $2.50 à $2/M tokens input). OpenAI a aussi lancé GPT-4.1 mini et nano pour les applications haute fréquence.",
+      "points_forts": [
+        "1M tokens de contexte (8x plus que GPT-4o)",
+        "20% moins cher que GPT-4o en input et output",
+        "Améliorations significatives sur le suivi d'instructions complexes"
+      ],
+      "points_faibles": [
+        "Pas de mode thinking natif (contrairement à o3/o4-mini)",
+        "Ne surpasse pas les modèles avec thinking sur le raisonnement pur"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$2/M tokens input, $8/M tokens output",
+      "cas_usage_phares": [
+        "Agents IA avec beaucoup de contexte (codebases, docs)",
+        "Applications conversationnelles longues",
+        "Traitement de gros documents"
+      ],
+      "benchmark_mmlu": 90.3,
+      "benchmark_humaneval": 93,
+      "benchmark_math": 83,
+      "lien": "https://openai.com/gpt-4",
+      "tags": [
+        "LLM",
+        "long context",
+        "instruction following",
+        "économique"
+      ]
+    },
+    {
+      "id": "llama-4-scout",
+      "nom": "Llama 4 Scout",
+      "editeur": "Meta",
+      "logo_color": "#0866FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-04",
+      "description": "Premier modèle de la famille Llama 4 de Meta, avec architecture Mixture of Experts (MoE). 17B paramètres actifs pour 109B au total. Fenêtre contextuelle record de 10 millions de tokens, optimisé pour le déploiement local et cloud.",
+      "points_forts": [
+        "10M tokens de contexte (plus grand contexte du marché)",
+        "Open source sous licence personnalisée Meta",
+        "Nativement multimodal (texte + image)"
+      ],
+      "points_faibles": [
+        "Architecture MoE complexe à déployer",
+        "Moins fort que les modèles propriétaires sur les tâches de raisonnement pur",
+        "Licence Meta avec restrictions commerciales au-delà de 700M utilisateurs"
+      ],
+      "context_window": "10M tokens",
+      "cout_approx": "Gratuit (open source) / ~$0.08/M tokens sur API tiers",
+      "cas_usage_phares": [
+        "Analyse de très longs documents (livres, codebases entières)",
+        "Déploiement on-premise pour données sensibles",
+        "Applications multimodales économiques"
+      ],
+      "benchmark_mmlu": 88,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 82,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "LLM",
+        "open source",
+        "MoE",
+        "long context",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "llama-4-maverick",
+      "nom": "Llama 4 Maverick",
+      "editeur": "Meta",
+      "logo_color": "#0866FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-04",
+      "description": "Modèle phare de la famille Llama 4, avec 128 experts MoE et 17B paramètres actifs pour 400B au total. Concurrent direct de GPT-4o et Claude 3.5 Sonnet sur la plupart des benchmarks, avec l'avantage d'être open source.",
+      "points_forts": [
+        "Performances proches de GPT-4o en open source",
+        "Excellent sur les tâches de code et de raisonnement multimodal",
+        "Contexte de 1M tokens"
+      ],
+      "points_faibles": [
+        "Nécessite une infrastructure GPU importante pour auto-héberger",
+        "Légèrement en retard sur le raisonnement mathématique avancé"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "Gratuit (open source) / ~$0.19/M tokens sur API tiers",
+      "cas_usage_phares": [
+        "Remplacement de GPT-4o pour les entreprises souhaitant l'open source",
+        "Applications multimodales avancées",
+        "Fine-tuning sur données propriétaires"
+      ],
+      "benchmark_mmlu": 89.5,
+      "benchmark_humaneval": 90,
+      "benchmark_math": 85,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "LLM",
+        "open source",
+        "MoE",
+        "multimodal",
+        "fine-tuning"
+      ]
+    },
+    {
+      "id": "grok-3",
+      "nom": "Grok 3",
+      "editeur": "xAI",
+      "logo_color": "#1D1D1D",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-02",
+      "description": "Le modèle phare d'Elon Musk's xAI, entraîné sur 100k GPU H100. Accès exclusif via abonnement Premium+ X (ex-Twitter). Intègre le mode 'Think' pour le raisonnement étendu et l'accès temps réel aux données de X.",
+      "points_forts": [
+        "Accès temps réel aux données de X (Twitter)",
+        "Mode Think pour le raisonnement étape par étape",
+        "Très fort sur les maths et la science (revendique top classement)"
+      ],
+      "points_faibles": [
+        "Accès uniquement via X Premium+ ou API xAI",
+        "Pas de version open source",
+        "Écosystème moins mature que OpenAI ou Anthropic"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "API xAI : $3/M tokens input, $15/M tokens output — ou via X Premium+ (~$40/mois)",
+      "cas_usage_phares": [
+        "Veille et analyse de l'actualité en temps réel",
+        "Raisonnement scientifique et mathématique",
+        "Débat et analyse d'opinions"
+      ],
+      "benchmark_mmlu": 91,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 93,
+      "lien": "https://x.ai/",
+      "tags": [
+        "LLM",
+        "temps réel",
+        "raisonnement",
+        "X/Twitter"
+      ]
+    },
+    {
+      "id": "mistral-medium-3",
+      "nom": "Mistral Medium 3",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "LLM",
+      "acces": "Hybride",
+      "date_sortie": "2025-05",
+      "description": "Modèle intermédiaire de Mistral positionnée entre Small 3 et Large 2. Optimisé pour les tâches d'entreprise avec un rapport coût/performance compétitif. Déployable en cloud Mistral ou on-premise via la licence commerciale.",
+      "points_forts": [
+        "Rapport qualité/prix excellent (3x moins cher que Large 2)",
+        "Disponible en self-hosted pour les entreprises européennes",
+        "Très fort sur le français et les langues européennes"
+      ],
+      "points_faibles": [
+        "Moins performant que Large 2 sur les tâches complexes",
+        "Pas encore de mode reasoning natif"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "$0.4/M tokens input, $1.2/M tokens output",
+      "cas_usage_phares": [
+        "Chatbots d'entreprise en français",
+        "Résumé et extraction d'information à grande échelle",
+        "Conformité RGPD avec hébergement EU"
+      ],
+      "benchmark_mmlu": 86,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 74,
+      "lien": "https://mistral.ai/",
+      "tags": [
+        "LLM",
+        "français",
+        "entreprise",
+        "on-premise",
+        "RGPD"
+      ]
+    },
+    {
+      "id": "gpt-5",
+      "statut": "legacy",
+      "nom": "GPT-5",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-08",
+      "description": "Lancé le 7 août 2025, GPT-5 est le premier modèle OpenAI à unifier raisonnement rapide et raisonnement étendu dans un seul système. Un routeur interne décide automatiquement s'il faut répondre directement ou réfléchir plus longuement selon la complexité de la requête. Remplace GPT-4o comme modèle par défaut dans ChatGPT.",
+      "points_forts": [
+        "Système unifié : routing automatique entre réponse rapide et raisonnement approfondi",
+        "74.9% SWE-bench Verified, 94.6% AIME 2025 (sans outils)",
+        "88.4% GPQA avec raisonnement étendu — meilleur score science avancée à sa sortie",
+        "Disponible gratuitement dans ChatGPT pour tous les utilisateurs"
+      ],
+      "points_faibles": [
+        "L'accès Pro (raisonnement étendu complet) est payant",
+        "Supplanté par GPT-5.2, 5.4 et 5.5 en quelques mois"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "Gratuit via ChatGPT / API : ~$2.50/M tokens input",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et mathématique",
+        "Agents de codage avec SWE-bench de pointe",
+        "Applications conversationnelles grand public"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/index/introducing-gpt-5/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "raisonnement unifié",
+        "grand public",
+        "agents"
+      ]
+    },
+    {
+      "id": "gpt-55",
+      "nom": "GPT-5.5",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-04",
+      "description": "Dernière version du flagship OpenAI, sortie le 23 avril 2026. Fenêtre contextuelle portée à 400K tokens, raisonnement complexe amélioré. Score de 60.2 sur l'Artificial Analysis Intelligence Index — légèrement en dessous de Claude Opus 4.8 (61.4). Disponible en version standard et frontier.",
+      "points_forts": [
+        "400K tokens de contexte",
+        "Raisonnement nettement amélioré vs GPT-5.4",
+        "Contrôle autonome d'ordinateur (computer use) intégré"
+      ],
+      "points_faibles": [
+        "Légèrement derrière Claude Opus 4.8 sur les benchmarks agentiques selon Artificial Analysis",
+        "Version frontier très onéreuse ($5/$30 par M tokens)"
+      ],
+      "context_window": "400K tokens",
+      "cout_approx": "$1.25/M tokens input, $10/M tokens output (standard) / $5/$30 (frontier)",
+      "cas_usage_phares": [
+        "Analyse de très longs documents",
+        "Agents complexes avec computer use",
+        "Raisonnement avancé en entreprise"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/index/introducing-gpt-5-5/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "long context",
+        "raisonnement",
+        "computer use"
+      ]
+    },
+    {
+      "id": "gemini-35-flash",
+      "nom": "Gemini 3.5 Flash",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-05",
+      "description": "Modèle actuel de référence de Google pour les agents et le code. Offre des performances de niveau frontier à 4x la vitesse des modèles comparables. Contexte 1M tokens, optimisé pour les tâches longues horizon et les pipelines agentiques complexes.",
+      "points_forts": [
+        "Intelligence frontier à vitesse 4x supérieure aux équivalents",
+        "1M tokens de contexte nativement",
+        "Excellent pour les tâches agentiques longue durée et le coding",
+        "Tarif très compétitif pour le niveau de performance offert"
+      ],
+      "points_faibles": [
+        "Moins profond que Gemini 3.5 Pro sur les tâches scientifiques complexes",
+        "Moins mature qu'Opus 4.8 sur certains benchmarks agentiques spécialisés"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$1.50/M tokens input, $9/M tokens output",
+      "cas_usage_phares": [
+        "Agents IA haute fréquence",
+        "Coding assistants et refactoring à grande échelle",
+        "Analyse de corpus documentaires longs"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://deepmind.google/models/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "long context",
+        "rapide"
+      ]
+    },
+    {
+      "id": "gemini-31-pro",
+      "nom": "Gemini 3.1 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-02",
+      "description": "Sorti le 19 février 2026, Gemini 3.1 Pro double les performances de raisonnement de Gemini 3 Pro. Classé numéro 1 sur 12 des 18 benchmarks suivis à sa sortie, avec 1M tokens de contexte et 65K tokens de sortie maximum. Meilleur modèle Google pour les tâches de raisonnement complexe.",
+      "points_forts": [
+        "2x les performances de raisonnement de Gemini 3 Pro",
+        "#1 sur 12/18 benchmarks à sa sortie (février 2026)",
+        "65K tokens de sortie maximum — plus long contexte de sortie du marché",
+        "1M tokens de contexte avec performances stables sur les longues fenêtres"
+      ],
+      "points_faibles": [
+        "Supplanté par Gemini 3.5 Flash en vitesse et coût",
+        "Moins optimisé pour l'agentique que Gemini 3.5 Flash"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$3.50/M tokens input, $10.50/M tokens output",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et analyse complexe",
+        "Génération de longs contenus structurés",
+        "Analyse multimodale approfondie"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://deepmind.google/models/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "raisonnement",
+        "long context",
+        "long output"
       ]
     }
   ],
@@ -1671,8 +2221,13 @@
         },
         {
           "date": "2026-08",
-          "etape": "Application complète pour les systèmes à haut risque",
-          "detail": "Toutes les obligations pour les systèmes d'IA à haut risque (Annexe III) entrent en application : certification, registre, surveillance post-marché."
+          "etape": "Date initiale pour les systèmes à haut risque — reportée",
+          "detail": "Suite à l'accord Digital Omnibus du 7 mai 2026, les obligations pour les systèmes à haut risque Annexe III (certification, registre, surveillance post-marché) ont été reportées au 2 décembre 2027. La date d'août 2026 reste dans la directive originale mais n'est plus applicable."
+        },
+        {
+          "date": "2027-12",
+          "etape": "Application effective pour les systèmes à haut risque (Annexe III) — post Digital Omnibus",
+          "detail": "Nouvelle date d'application des obligations high-risk après le report accordé par le Digital Omnibus (Règlement UE 2025/1085 du 7 mai 2026). Couvre : certification, registre UE, surveillance post-marché, évaluation de conformité."
         },
         {
           "date": "2027-08",
@@ -2233,7 +2788,7 @@
         "Coût élevé pour de très grands corpus",
         "Nécessite une validation humaine sur les décisions stratégiques"
       ],
-      "exemple_concret": "Des cabinets d'audit utilisent des LLMs pour pré-analyser des milliers de pages de contrats financiers, réduisant le travail de revue initial de 60% et permettant aux auditeurs de se concentrer sur les points d'attention identifiés."
+      "exemple_concret": "Le cabinet d'avocats Allen & Overy a déployé Harvey, un LLM spécialisé en droit, utilisé par ses 3 500 avocats pour la revue et la synthèse de documents complexes. JPMorgan Chase utilise sa plateforme COiN pour analyser et synthétiser 12 000+ contrats de prêts commerciaux par an, en extrayant automatiquement les clauses clés avec 99,2% de précision. Sources : Allen & Overy / Harvey announcement ; JPMorgan Annual Report."
     },
     {
       "id": "analyse-contrats",
@@ -2341,7 +2896,7 @@
         "Difficultés sur les jeux de mots et le contenu très créatif",
         "Qualité variable pour les paires de langues peu représentées"
       ],
-      "exemple_concret": "Le cabinet de traduction spécialisé JONCKERS a réduit ses délais de livraison de 50% en intégrant une chaîne de traduction IA + post-editing humain, maintenant ses tarifs compétitifs face à la commoditisation de la traduction pure."
+      "exemple_concret": "DeepL, l'entreprise allemande spécialisée en traduction IA, est utilisée par 100 000+ entreprises dont Zendesk, Salesforce et LinkedIn pour la localisation à grande échelle. Les études de cas publiées par DeepL montrent que ses clients réduisent les cycles de traduction de 50 à 70% par rapport à la traduction humaine pure, en utilisant un workflow de traduction machine + post-editing humain. Source : DeepL case studies, deeplpartners.com."
     },
     {
       "id": "contenu-marketing",
@@ -2370,7 +2925,7 @@
         "Risques de contenus factuellement incorrects",
         "Saturation du web avec du contenu IA peu différencié"
       ],
-      "exemple_concret": "Coca-Cola utilise des LLMs et des modèles d'images pour personnaliser ses campagnes marketing à l'échelle nationale, générant des variantes d'annonces adaptées à chaque audience cible, avec des gains de 20% sur les taux d'engagement."
+      "exemple_concret": "La plateforme \"Create Real Magic\" de Coca-Cola, lancée en 2023 avec OpenAI et Bain, a généré 120 000+ créations par les utilisateurs en quelques semaines et affiché +60% d'engagement sur les plateformes. La campagne publicitaire de Noël 2024 entièrement générée par IA a été qualifiée de \"l'une des publicités les mieux testées de notre histoire\" par Islam ElDessouky, VP Global Creative Strategy de Coca-Cola. Source : Coca-Cola Company / Marketing Dive, 2024-2025."
     },
     {
       "id": "analyse-sentiment",
@@ -2387,17 +2942,17 @@
         "GPT-4o avec fine-tuning"
       ],
       "gains_typiques": [
-        "Traitement de 100x plus d'avis qu'en analyse manuelle",
+        "Traitement automatique de grands volumes d'avis et de messages support",
         "Détection précoce des tendances négatives avant escalade",
         "Segmentation automatique des feedbacks par thème",
-        "Corrélation automatique sentiment / métriques business"
+        "Couverture multilingue avec des modèles Transformer"
       ],
       "limites": [
         "Biais possible sur les langues peu représentées",
         "Difficultés avec les expressions culturellement spécifiques",
         "Nécessite une calibration régulière sur les données du domaine"
       ],
-      "exemple_concret": "Airbnb analyse en temps réel 100 000+ avis par semaine avec des modèles NLP pour détecter des patterns négatifs émergents et alerter les équipes concernées dans les 24h, réduisant de 30% le délai de traitement des problèmes récurrents."
+      "exemple_concret": "Airbnb a publié son système de scoring de sentiment IA sur l'Airbnb Engineering Blog (\"Using Sentiment Score to Assess Customer Service Quality\"). Le modèle traite en temps réel les messages envoyés aux agents du support client, en extrayant des signaux de satisfaction. Les modèles Transformer utilisés atteignent de meilleures performances que les approches classiques, en particulier sur les langues peu représentées. Airbnb ne publie pas de chiffres d'économies, mais le système est en production sur l'ensemble de la plateforme mondiale. Source : Airbnb Engineering Blog."
     },
     {
       "id": "detection-fraude",
@@ -2414,17 +2969,17 @@
         "AWS Fraud Detector"
       ],
       "gains_typiques": [
-        "Réduction des fraudes de 30-50% vs systèmes à règles fixes",
-        "Taux de faux positifs réduit de 40% (moins de blocages légitimes)",
-        "Adaptation en temps réel aux nouveaux schémas de fraude",
-        "Économies de plusieurs milliards $ annuels pour les grandes banques"
+        "3x plus de transactions frauduleuses détectées vs systèmes précédents (Mastercard, 2024)",
+        "10x moins de faux positifs (blocages légitimes évités)",
+        "50 milliards $ d'attaques bloquées sur 3 ans (réseau Mastercard)",
+        "Adaptation en temps réel aux nouveaux schémas de fraude"
       ],
       "limites": [
         "Risque d'explication de la décision (modèles boîte noire)",
         "Nécessite des données labellisées de haute qualité",
         "Course perpétuelle aux armements avec les fraudeurs"
       ],
-      "exemple_concret": "Mastercard utilise des modèles IA pour analyser 165 milliards de transactions annuelles, avec un taux de détection de fraude qui aurait augmenté de 20% et une réduction des faux positifs de 50% depuis le déploiement de ses modèles IA avancés."
+      "exemple_concret": "Mastercard a publié en mai 2024 que son IA générative détecte 3 fois plus de transactions frauduleuses tout en réduisant les faux positifs d'un facteur 10. Sur les 3 dernières années, les modèles IA de Mastercard ont bloqué 50 milliards de dollars d'attaques frauduleuses sur son réseau. Son système Consumer Fraud Risk a réduit les cas de fraude APP de 20% en 2024. Source : Mastercard Press Release, mai 2024 ; Mastercard 2025 Payment Fraud Prevention Report."
     },
     {
       "id": "scoring-esg",
@@ -2468,17 +3023,17 @@
         "Solutions sur-mesure RAG"
       ],
       "gains_typiques": [
-        "Réduction de 40-60% du temps de production des reportings",
-        "Réduction des erreurs de saisie et d'interprétation",
-        "Adaptation plus rapide aux évolutions réglementaires",
-        "Traçabilité et documentation automatique des calculs"
+        "360 000 heures-avocat automatisées annuellement (JPMorgan COiN)",
+        "99,2% de précision sur l'analyse de contrats de prêts complexes",
+        "Détection 2 à 4x plus élevée des crimes financiers (HSBC / Google Cloud)",
+        "Réduction de 60% des faux positifs (HSBC / Google Cloud)"
       ],
       "limites": [
         "Risque réglementaire élevé en cas d'erreur non détectée",
         "Nécessite une validation humaine systématique sur les sorties",
         "Intégration complexe avec les systèmes de données existants"
       ],
-      "exemple_concret": "BNP Paribas utilise des solutions IA pour automatiser une partie de ses reportings COREP/FINREP, réduisant le délai de production de plusieurs jours et libérant les équipes pour l'analyse et la vérification plutôt que la collecte de données."
+      "exemple_concret": "JPMorgan Chase a développé la plateforme COiN (Contract Intelligence) pour analyser ses accords de prêts commerciaux. Elle traite 12 000+ contrats annuels avec un taux de précision de 99,2%, automatisant une tâche qui consommait auparavant environ 360 000 heures-avocat par an. HSBC, en partenariat avec Google Cloud, surveille 1,35 milliard de transactions mensuelles avec un système IA qui détecte 2 à 4 fois plus de crimes financiers et a réduit les faux positifs de 60%. Sources : JPMorgan Annual Report ; HSBC / Google Cloud case study."
     },
     {
       "id": "optimisation-supply-chain",
@@ -2495,17 +3050,17 @@
         "Google Cloud Supply Chain AI"
       ],
       "gains_typiques": [
-        "Réduction des stocks excédentaires de 20-30%",
-        "Réduction des ruptures de stock de 30-50%",
-        "Amélioration du taux de service de 5-10%",
-        "Anticipation des perturbations supply chain 2-4 semaines à l'avance"
+        "+55 millions $ économisés par le système Self-Healing Inventory (Walmart)",
+        "30 millions de miles inutiles supprimés, 94 millions de livres de CO2 évitées",
+        "Automatisation des négociations fournisseurs : 68% de taux d'accord (Pactum AI)",
+        "Prix Franz Edelman 2023 pour l'excellence en optimisation supply chain"
       ],
       "limites": [
         "Dépendance à la qualité des données historiques",
         "Événements de type cygne noir difficiles à prédire",
         "ROI dépendant de la maturité data de l'entreprise"
       ],
-      "exemple_concret": "Walmart utilise des modèles IA pour optimiser son réseau de supply chain pour 10 000+ fournisseurs et 4 700 magasins, avec une réduction estimée des coûts logistiques de 12% et une réduction significative du gaspillage alimentaire."
+      "exemple_concret": "Walmart a publié via ses rapports officiels que son système \"Self-Healing Inventory\" (IA qui redistribue automatiquement les stocks excédentaires) a économisé plus de 55 millions de dollars. Son optimisation de routes IA a économisé 30 millions de miles de conduite inutiles et évité 94 millions de livres de CO2. Sa collaboration avec Pactum AI automatise les négociations fournisseurs avec un taux d'accord de 68% et une réduction de 1,5% des coûts. Walmart a reçu le prix Franz Edelman 2023 pour ce déploiement. Sources : corporate.walmart.com ; Supply Chain Dive, 2025."
     },
     {
       "id": "maintenance-predictive",
@@ -2522,17 +3077,17 @@
         "Azure IoT Hub + ML"
       ],
       "gains_typiques": [
-        "Réduction des pannes non planifiées de 25-50%",
-        "Réduction des coûts de maintenance de 10-25%",
-        "Prolongation de la durée de vie des équipements de 20%",
-        "Réduction des temps d'arrêt non planifiés"
+        "10-15% de réduction des coûts de maintenance (compagnies aériennes utilisatrices de Skywise)",
+        "20% d'amélioration de la fiabilité des rotations (Skywise)",
+        "35% d'amélioration de la disponibilité des équipements en production (usines Airbus)",
+        "Identification des besoins de maintenance jusqu'à 6 mois à l'avance"
       ],
       "limites": [
         "Investissement initial élevé en capteurs et infrastructure IoT",
         "Nécessite des données historiques de pannes importantes pour l'entraînement",
         "Variabilité des performances selon les types d'équipements"
       ],
-      "exemple_concret": "Airbus utilise des modèles prédictifs IA sur ses moteurs d'avion pour anticiper les maintenances avec une précision de 85%, réduisant les immobilisations non planifiées et générant des économies estimées à plusieurs centaines de millions d'euros annuellement."
+      "exemple_concret": "La plateforme Skywise d'Airbus agrège les données de 11 000+ avions pour 200+ compagnies aériennes. Les compagnies utilisant Skywise rapportent en moyenne une réduction de 10 à 15% des coûts de maintenance et une amélioration de 20% de la fiabilité des rotations. Emirates a communiqué sur des économies de 100 millions de dollars annuels grâce à Skywise. Dans ses propres usines, Airbus rapporte une amélioration de 35% de la disponibilité des équipements et une réduction de 25% des coûts de maintenance industrielle. Sources : Airbus Skywise Core documentation ; iMaintain."
     },
     {
       "id": "agents-rh",
@@ -2576,17 +3131,17 @@
         "Defog.ai"
       ],
       "gains_typiques": [
-        "Démocratisation de l'accès aux données (self-service analytics)",
-        "Réduction du backlog analytique des équipes data de 50%",
-        "Réduction du time-to-insight de jours à minutes",
-        "Réduction des erreurs d'interprétation entre les métiers et les data"
+        "140 000 heures économisées par mois (Uber QueryGPT, données officielles)",
+        "Temps d'écriture SQL réduit de 10+ minutes à ~3 minutes",
+        "1,2 million de requêtes interactives traitées mensuellement",
+        "Démocratisation de l'accès aux données sans compétences SQL requises"
       ],
       "limites": [
         "Précision insuffisante pour les requêtes très complexes ou multi-jointures",
         "Risque d'hallucinations sur les noms de tables ou de colonnes",
         "Nécessite une documentation du schéma de données de qualité"
       ],
-      "exemple_concret": "Uber a déployé un système Text-to-SQL interne qui permet à ses équipes non-techniques de générer des requêtes sur ses bases de données massives, réduisant de 80% les demandes adressées à l'équipe data pour des analyses ad-hoc."
+      "exemple_concret": "Uber a publié sur son Engineering Blog (septembre 2024) le détail de son système QueryGPT. Il économise 140 000 heures de travail par mois en réduisant le temps d'écriture d'une requête SQL de 10+ minutes à environ 3 minutes. QueryGPT traite 1,2 million de requêtes interactives par mois, permettant aux équipes non-techniques de requêter directement les bases de données Uber sans passer par l'équipe data. Source : Uber Engineering Blog, \"QueryGPT – Natural Language to SQL Using Generative AI\", septembre 2024."
     },
     {
       "id": "generation-images-produit",

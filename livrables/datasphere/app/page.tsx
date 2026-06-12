@@ -1,25 +1,22 @@
 import Link from "next/link";
 import articles from "@/content/articles.json";
 import metiers from "@/content/metiers.json";
-import { TrendsChart } from "@/components/charts/trends-chart";
 import { SkillsChart } from "@/components/charts/skills-chart";
+import { fmtDate } from "@/lib/date-utils";
 
 const CAT_COLORS: Record<string, string> = {
   indigo: "badge-indigo", teal: "badge-teal", amber: "badge-amber", rose: "badge-rose",
 };
 
-function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
-}
-
 const SECTIONS = [
   { href: "/ia",             emoji: "🧠", title: "Intelligence IA", desc: "Modèles, risques, AI Act, enjeux — tout sur l'IA en français",  color: "#BE123C", bg: "#FFF1F2" },
-  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "60+ concepts ML, Cloud et Gouvernance expliqués simplement",   color: "#7C3AED", bg: "#EDE9FE" },
-  { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "100+ certifications AWS, Azure, GCP, Databricks, Snowflake",   color: "#5B21B6", bg: "#F5F3FF" },
+  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "82 concepts ML, Cloud et Gouvernance expliqués simplement",    color: "#7C3AED", bg: "#EDE9FE" },
+  { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "92 certifications AWS, Azure, GCP, Databricks, Snowflake",    color: "#5B21B6", bg: "#F5F3FF" },
   { href: "/cas-usage",      emoji: "💼", title: "Cas d'usage",    desc: "50+ projets réels avec stack, solution et résultats mesurés",  color: "#C2410C", bg: "#FFF7ED" },
   { href: "/glossaire",      emoji: "📖", title: "Glossaire",      desc: "137 définitions précises avec exemples concrets",              color: "#0E7490", bg: "#ECFEFF" },
   { href: "/outils",         emoji: "🛠️", title: "Outils",         desc: "Comparatifs honnêtes des plateformes data du marché",          color: "#B45309", bg: "#FFFBEB" },
-  { href: "/metiers",        emoji: "👤", title: "Métiers",        desc: "Salaires 2025, compétences requises et trajectoires",          color: "#BE123C", bg: "#FFF1F2" },
+  { href: "/comparateur",   emoji: "⚖️", title: "Comparateur",    desc: "Compare jusqu'à 3 outils côte à côte en temps réel",           color: "#7C3AED", bg: "#EDE9FE" },
+  { href: "/metiers",        emoji: "👤", title: "Métiers",        desc: "Salaires 2026, compétences requises et trajectoires",          color: "#BE123C", bg: "#FFF1F2" },
   { href: "/toolbox",        emoji: "🛠️", title: "Toolbox",        desc: "Snippets, checklists, tips par rôle et ressources d'apprentissage", color: "#15803D", bg: "#F0FDF4" },
   { href: "/communaute",     emoji: "💬", title: "Communauté",     desc: "Questions, réponses et retours d'expérience entre data pros",  color: "#7C3AED", bg: "#EDE9FE" },
   { href: "/formations",     emoji: "🎯", title: "Formations",     desc: "Les meilleures ressources pour progresser, triées par niveau", color: "#0E7490", bg: "#ECFEFF" },
@@ -32,12 +29,11 @@ export default function Home() {
   return (
     <>
       {/* ── HERO — fond lavande clair ─────────────────── */}
-      <section style={{
+      <section className="hero-section" style={{
         background: "linear-gradient(150deg, #FAFBFF 0%, #F5F3FF 55%, #EDE9FE 100%)",
         padding: "80px 24px 80px",
         position: "relative",
         overflow: "hidden",
-        minHeight: "calc(100vh - 60px)",
         display: "flex", alignItems: "center",
       }}>
         {/* Orbs lumineux (soft) */}
@@ -47,7 +43,7 @@ export default function Home() {
         <div className="grid-bg" style={{ position: "absolute", inset: 0 }} />
 
         <div style={{ maxWidth: 1240, margin: "0 auto", width: "100%", position: "relative" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 420px", gap: 72, alignItems: "center" }}>
+          <div className="hero-grid">
             {/* Texte */}
             <div>
               <div style={{
@@ -67,8 +63,8 @@ export default function Home() {
                 lineHeight: 1.05, letterSpacing: "-0.04em",
                 marginBottom: 20,
               }}>
-                La data de A à Z.<br />
-                <span className="text-gradient">Tout ce que tu dois savoir sur la data.</span>
+                La référence data &amp; IA<br />
+                <span className="text-gradient">en français.</span>
               </h1>
 
               <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.75, marginBottom: 36, maxWidth: 500 }}>
@@ -91,9 +87,9 @@ export default function Home() {
               {/* Stats */}
               <div style={{ display: "flex", gap: 36, marginTop: 48, paddingTop: 36, borderTop: "1px solid #DDD6FE" }}>
                 {[
-                  { n: "100+", l: "certifications" },
-                  { n: "60+",  l: "concepts" },
-                  { n: "50+",  l: "cas d'usage" },
+                  { n: "92",   l: "certifications" },
+                  { n: "82",   l: "concepts" },
+                  { n: "50",   l: "cas d'usage" },
                   { n: "137",  l: "termes" },
                 ].map(({ n, l }) => (
                   <div key={l}>
@@ -104,26 +100,82 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Chart card */}
-            <div className="card" style={{ padding: "22px 24px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                <p style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.09em" }}>Tendances tech 2025</p>
-                <span className="badge badge-neutral" style={{ fontSize: 9.5 }}>France</span>
-              </div>
-              <p style={{ fontSize: 11, color: "#CBD5E1", marginBottom: 16 }}>Présence dans les offres data en France — Indeed, France Travail, WTTJ · Sources : dbt Labs State of Data Engineering 2025, 365 Data Science, Dataquest</p>
-              <TrendsChart />
+            {/* Contenus vedettes */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
 
-              {/* Tags tech */}
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 16, paddingTop: 14, borderTop: "1px solid #F1F5F9" }}>
-                {["Python", "dbt", "Spark", "LLM", "Kafka"].map(t => (
-                  <span key={t} style={{
-                    padding: "3px 9px", borderRadius: 100,
-                    background: "#F1F5F9", border: "1px solid #E2E8F0",
-                    fontSize: 11.5, color: "#64748B",
-                    fontFamily: "var(--font-mono)",
-                  }}>{t}</span>
-                ))}
-              </div>
+              {/* Certifications */}
+              <Link href="/certifications" style={{ textDecoration: "none" }} className="hover-lift">
+                <div style={{ background: "linear-gradient(135deg, #EDE9FE 0%, #F5F3FF 100%)", border: "1.5px solid #C4B5FD", borderRadius: 16, padding: "18px 20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 18 }}>🎓</span>
+                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#0F172A" }}>Certifications data & cloud</p>
+                    </div>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: "#5B21B6", background: "rgba(124,58,237,0.1)", padding: "2px 9px", borderRadius: 100, border: "1px solid rgba(124,58,237,0.2)" }}>92</span>
+                  </div>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {["AWS", "Azure", "GCP", "Databricks", "Snowflake", "dbt"].map(c => (
+                      <span key={c} style={{ padding: "3px 9px", borderRadius: 100, fontSize: 11, fontWeight: 600, background: "rgba(124,58,237,0.1)", color: "#5B21B6", border: "1px solid rgba(124,58,237,0.18)" }}>{c}</span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+
+              {/* Outils populaires */}
+              <Link href="/outils" style={{ textDecoration: "none" }} className="hover-lift">
+                <div style={{ background: "linear-gradient(135deg, #FFFBEB 0%, #FFF7ED 100%)", border: "1.5px solid #FCD34D", borderRadius: 16, padding: "18px 20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 18 }}>🛠️</span>
+                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#0F172A" }}>Outils & plateformes</p>
+                    </div>
+                    <span style={{ fontSize: 13, color: "#B45309", fontWeight: 700 }}>Voir tout →</span>
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
+                    {[
+                      { e: "❄️", n: "Snowflake" }, { e: "🔥", n: "Databricks" }, { e: "🔧", n: "dbt" },
+                      { e: "⚡", n: "Airflow" },   { e: "🐼", n: "Pandas" },     { e: "🔎", n: "BigQuery" },
+                    ].map(t => (
+                      <div key={t.n} style={{ display: "flex", alignItems: "center", gap: 5, padding: "5px 8px", background: "rgba(255,255,255,0.65)", borderRadius: 7, border: "1px solid rgba(217,119,6,0.15)" }}>
+                        <span style={{ fontSize: 13 }}>{t.e}</span>
+                        <span style={{ fontSize: 11, fontWeight: 600, color: "#78350F" }}>{t.n}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+
+              {/* Agents IA */}
+              <Link href="/agents" style={{ textDecoration: "none" }} className="hover-lift">
+                <div style={{ background: "linear-gradient(135deg, #0F1629 0%, #1A2040 100%)", border: "1.5px solid rgba(124,58,237,0.35)", borderRadius: 16, padding: "18px 20px" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 18 }}>🤖</span>
+                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#fff" }}>Agents IA data prêts</p>
+                    </div>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#A78BFA", background: "rgba(124,58,237,0.2)", padding: "2px 9px", borderRadius: 100, border: "1px solid rgba(124,58,237,0.35)" }}>22 prompts</span>
+                  </div>
+                  <div style={{ background: "rgba(0,0,0,0.35)", borderRadius: 8, padding: "8px 12px", fontFamily: "var(--font-mono)", fontSize: 10.5, color: "#94A3B8", lineHeight: 1.6, overflow: "hidden", maxHeight: 50, marginBottom: 8 }}>
+                    Tu es un expert SQL senior avec 10 ans d&apos;expérience sur Snowflake, BigQuery, PostgreSQL et dbt...
+                  </div>
+                  <p style={{ fontSize: 11.5, color: "#818CF8", fontWeight: 600 }}>Data Quality · ETL Builder · dbt Reviewer · +19 →</p>
+                </div>
+              </Link>
+
+              {/* Encyclopédie concepts */}
+              <Link href="/concepts" style={{ textDecoration: "none" }} className="hover-lift">
+                <div style={{ padding: "13px 18px", background: "linear-gradient(135deg, #F0F9FF 0%, #EFF6FF 100%)", borderRadius: 12, border: "1px solid #BFDBFE", display: "flex", alignItems: "center", gap: 14 }}>
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>📚</span>
+                  <div style={{ flex: 1 }}>
+                    <p style={{ fontSize: 12.5, color: "#1E40AF", lineHeight: 1.5 }}>
+                      <strong>Encyclopédie data</strong> — ML, Cloud, Gouvernance, LLMs
+                    </p>
+                    <p style={{ fontSize: 11, color: "#3B82F6", marginTop: 2 }}>82 concepts expliqués simplement, avec exemples</p>
+                  </div>
+                  <span style={{ fontSize: 13, color: "#1D4ED8", fontWeight: 700, flexShrink: 0 }}>→</span>
+                </div>
+              </Link>
+
             </div>
           </div>
         </div>
@@ -147,7 +199,7 @@ export default function Home() {
 
       {/* ── CTA DOUBLES — DÉBUTANT + RECRUTEUR ───────────── */}
       <section style={{ padding: "52px 24px", background: "#fff", borderBottom: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto" }} className="cta-grid">
           {/* Débutant */}
           <div style={{
             borderRadius: 20, padding: "32px 36px",
@@ -158,9 +210,9 @@ export default function Home() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 100, background: "rgba(124,58,237,0.12)", width: "fit-content" }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.08em", textTransform: "uppercase" }}>🚀 Nouveau dans la data</span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
+            <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
               Tu veux te lancer dans la data ?
-            </h2>
+            </p>
             <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.7 }}>
               Parcours guidé en 5 étapes : de zéro à employable en 3 à 6 mois. SQL, Python, première certification, premier projet.
             </p>
@@ -193,10 +245,10 @@ export default function Home() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "4px 12px", borderRadius: 100, background: "rgba(255,255,255,0.08)", width: "fit-content" }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#A78BFA", letterSpacing: "0.08em", textTransform: "uppercase" }}>💼 Recruteurs</span>
             </div>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>
+            <p style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.3rem, 2vw, 1.7rem)", fontWeight: 800, color: "#fff", lineHeight: 1.2 }}>
               Tu recrutes des profils data ?
-            </h2>
-            <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
+            </p>
+            <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.78)", lineHeight: 1.7 }}>
               Publie ton offre gratuitement et touche 2 400 data professionnels francophones — Data Engineers, Data Scientists, Analytics Engineers.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -229,7 +281,7 @@ export default function Home() {
               Tout ce dont tu as besoin pour progresser en data
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+          <div className="sections-grid">
             {SECTIONS.map(({ href, emoji, title, desc, color, bg }) => (
               <Link key={href} href={href} className="card" style={{ padding: 22, display: "block" }}>
                 <div style={{ width: 42, height: 42, borderRadius: 10, background: bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, marginBottom: 14 }}>
@@ -265,7 +317,7 @@ export default function Home() {
                 <h3 style={{ fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 700, lineHeight: 1.3, color: "#0F172A" }}>{a.title}</h3>
                 <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.7, flex: 1 }}>{a.excerpt}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #E2E8F0", paddingTop: 14 }}>
-                  <span style={{ fontSize: 12, color: "#94A3B8" }}>{fmtDate(a.date)}</span>
+                  <span style={{ fontSize: 12, color: "#94A3B8" }}>{fmtDate(a.date, true)}</span>
                   <span style={{ fontSize: 13, fontWeight: 700, color: "var(--indigo)" }}>Lire →</span>
                 </div>
               </Link>
@@ -292,7 +344,7 @@ export default function Home() {
                 <Link key={a.slug} href={`/actualites/${a.slug}`} className="article-row" style={{ display: "flex", flexDirection: "column", gap: 5, padding: "13px 0", borderBottom: i < recent.length - 1 ? "1px solid #E2E8F0" : "none" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span className={`badge ${CAT_COLORS[a.categoryColor] ?? "badge-neutral"}`}>{a.category}</span>
-                    <span style={{ fontSize: 11, color: "#94A3B8", fontFamily: "var(--font-mono)" }}>{fmtDate(a.date)}</span>
+                    <span style={{ fontSize: 11, color: "#94A3B8", fontFamily: "var(--font-mono)" }}>{fmtDate(a.date, true)}</span>
                   </div>
                   <p style={{ fontFamily: "var(--font-display)", fontSize: 13.5, fontWeight: 600, lineHeight: 1.35, color: "#0F172A" }}>{a.title}</p>
                 </Link>
@@ -312,14 +364,14 @@ export default function Home() {
             <div>
               <span className="section-label">Marché de l&apos;emploi</span>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", fontWeight: 800, color: "#0F172A" }}>
-                Salaires data en France <span style={{ color: "var(--indigo)" }}>2025</span>
+                Salaires data en France <span style={{ color: "var(--indigo)" }}>2026</span>
               </h2>
             </div>
             <Link href="/metiers" style={{ fontSize: 13, fontWeight: 600, color: "#64748B" }}>Fiches complètes →</Link>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
             {metiers.slice(0, 6).map(m => (
-              <Link key={m.slug} href="/metiers" className="card" style={{ padding: "18px 20px", display: "flex", alignItems: "center", gap: 14 }}>
+              <Link key={m.slug} href={`/metiers/${m.slug}`} className="card" style={{ padding: "18px 20px", display: "flex", alignItems: "center", gap: 14 }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 14, color: "#0F172A", marginBottom: 3 }}>{m.title}</div>
                   <div style={{ fontSize: 12, color: "#94A3B8" }}>{m.category}</div>
