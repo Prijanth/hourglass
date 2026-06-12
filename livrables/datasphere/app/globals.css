@@ -827,13 +827,12 @@ button { font-family: inherit; }
 
 /* ── Hero responsive ─────────────────────────────────── */
 .hero-section {
-  min-height: calc(100vh - 60px);
+  min-height: auto;
 }
 @media (max-width: 768px) {
   .hero-section {
-    min-height: auto;
-    padding-top: 48px !important;
-    padding-bottom: 48px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 }
 
@@ -848,11 +847,11 @@ button { font-family: inherit; }
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 48px;
-  align-items: center;
+  gap: 40px;
+  align-items: start;
 }
 @media (min-width: 1024px) {
-  .hero-grid { grid-template-columns: 1fr 420px; gap: 72px; }
+  .hero-grid { grid-template-columns: 1fr 420px; gap: 64px; align-items: start; }
 }
 
 .cta-grid {
@@ -900,6 +899,10 @@ button { font-family: inherit; }
 .skill-link-hover:hover { background: #EDE9FE !important; border-color: #7C3AED !important; color: #7C3AED !important; }
 
 .cert-link-hover { transition: border-color 0.15s; }
+
+/* Cellule de stat dans le hero */
+.stat-cell { background: #FAFBFF; transition: background 0.15s; }
+.stat-cell:hover { background: #F5F3FF; }
 .cert-link-hover:hover { border-color: #7C3AED !important; }
 
 /* ── Accessibilité : mouvement réduit ────────────── */

@@ -31,10 +31,10 @@ export default function Home() {
       {/* ── HERO — fond lavande clair ─────────────────── */}
       <section className="hero-section" style={{
         background: "linear-gradient(150deg, #FAFBFF 0%, #F5F3FF 55%, #EDE9FE 100%)",
-        padding: "80px 24px 80px",
+        padding: "52px 24px 52px",
         position: "relative",
         overflow: "hidden",
-        display: "flex", alignItems: "center",
+        display: "flex", alignItems: "flex-start",
       }}>
         {/* Orbs lumineux (soft) */}
         <div className="orb" style={{ width: 600, height: 600, background: "rgba(124,58,237,0.1)", top: -160, right: -100 }} />
@@ -100,81 +100,72 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contenus vedettes */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {/* Stats visuelles unifiées */}
+            <div style={{
+              background: "#fff",
+              border: "1.5px solid #E2E8F0",
+              borderRadius: 20,
+              padding: "26px 24px",
+              boxShadow: "0 4px 32px rgba(124,58,237,0.07), 0 1px 4px rgba(0,0,0,0.04)",
+            }}>
 
-              {/* Certifications */}
-              <Link href="/certifications" style={{ textDecoration: "none" }} className="hover-lift">
-                <div style={{ background: "linear-gradient(135deg, #EDE9FE 0%, #F5F3FF 100%)", border: "1.5px solid #C4B5FD", borderRadius: 16, padding: "18px 20px" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ fontSize: 18 }}>🎓</span>
-                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#0F172A" }}>Certifications data & cloud</p>
-                    </div>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: "#5B21B6", background: "rgba(124,58,237,0.1)", padding: "2px 9px", borderRadius: 100, border: "1px solid rgba(124,58,237,0.2)" }}>92</span>
-                  </div>
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {["AWS", "Azure", "GCP", "Databricks", "Snowflake", "dbt"].map(c => (
-                      <span key={c} style={{ padding: "3px 9px", borderRadius: 100, fontSize: 11, fontWeight: 600, background: "rgba(124,58,237,0.1)", color: "#5B21B6", border: "1px solid rgba(124,58,237,0.18)" }}>{c}</span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
+              {/* Header */}
+              <div style={{ marginBottom: 20 }}>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--indigo)", marginBottom: 5 }}>
+                  Ce que contient DataSphère
+                </p>
+                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.5 }}>
+                  Toute la data &amp; l&apos;IA en français, au même endroit.
+                </p>
+              </div>
 
-              {/* Outils populaires */}
-              <Link href="/outils" style={{ textDecoration: "none" }} className="hover-lift">
-                <div style={{ background: "linear-gradient(135deg, #FFFBEB 0%, #FFF7ED 100%)", border: "1.5px solid #FCD34D", borderRadius: 16, padding: "18px 20px" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ fontSize: 18 }}>🛠️</span>
-                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#0F172A" }}>Outils & plateformes</p>
-                    </div>
-                    <span style={{ fontSize: 13, color: "#B45309", fontWeight: 700 }}>Voir tout →</span>
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
-                    {[
-                      { e: "❄️", n: "Snowflake" }, { e: "🔥", n: "Databricks" }, { e: "🔧", n: "dbt" },
-                      { e: "⚡", n: "Airflow" },   { e: "🐼", n: "Pandas" },     { e: "🔎", n: "BigQuery" },
-                    ].map(t => (
-                      <div key={t.n} style={{ display: "flex", alignItems: "center", gap: 5, padding: "5px 8px", background: "rgba(255,255,255,0.65)", borderRadius: 7, border: "1px solid rgba(217,119,6,0.15)" }}>
-                        <span style={{ fontSize: 13 }}>{t.e}</span>
-                        <span style={{ fontSize: 11, fontWeight: 600, color: "#78350F" }}>{t.n}</span>
+              {/* Grille 2×3 — chaque cellule est un lien */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 14, overflow: "hidden", border: "1px solid #F1F5F9", marginBottom: 18 }}>
+                {[
+                  { n: "92",   l: "certifications", emoji: "🎓", href: "/certifications", color: "#7C3AED" },
+                  { n: "82",   l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
+                  { n: "30+",  l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
+                  { n: "22",   l: "agents IA",       emoji: "🤖", href: "/agents",         color: "#6D28D9" },
+                  { n: "137",  l: "termes",          emoji: "📖", href: "/glossaire",      color: "#0F766E" },
+                  { n: "50+",  l: "cas d'usage",     emoji: "💼", href: "/cas-usage",      color: "#C2410C" },
+                ].map((s, i) => (
+                  <Link
+                    key={s.href}
+                    href={s.href}
+                    className="stat-cell"
+                    style={{
+                      display: "flex", alignItems: "center", gap: 12,
+                      padding: "16px 18px",
+                      borderBottom: i < 4 ? "1px solid #F1F5F9" : "none",
+                      borderRight: i % 2 === 0 ? "1px solid #F1F5F9" : "none",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <span style={{ fontSize: 22, flexShrink: 0, lineHeight: 1 }}>{s.emoji}</span>
+                    <div>
+                      <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 24, color: s.color, letterSpacing: "-0.04em", lineHeight: 1 }}>
+                        {s.n}
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-
-              {/* Agents IA */}
-              <Link href="/agents" style={{ textDecoration: "none" }} className="hover-lift">
-                <div style={{ background: "linear-gradient(135deg, #0F1629 0%, #1A2040 100%)", border: "1.5px solid rgba(124,58,237,0.35)", borderRadius: 16, padding: "18px 20px" }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ fontSize: 18 }}>🤖</span>
-                      <p style={{ fontFamily: "var(--font-display)", fontSize: 14.5, fontWeight: 800, color: "#fff" }}>Agents IA data prêts</p>
+                      <div style={{ fontSize: 11, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.07em", marginTop: 3 }}>
+                        {s.l}
+                      </div>
                     </div>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: "#A78BFA", background: "rgba(124,58,237,0.2)", padding: "2px 9px", borderRadius: 100, border: "1px solid rgba(124,58,237,0.35)" }}>22 prompts</span>
-                  </div>
-                  <div style={{ background: "rgba(0,0,0,0.35)", borderRadius: 8, padding: "8px 12px", fontFamily: "var(--font-mono)", fontSize: 10.5, color: "#94A3B8", lineHeight: 1.6, overflow: "hidden", maxHeight: 50, marginBottom: 8 }}>
-                    Tu es un expert SQL senior avec 10 ans d&apos;expérience sur Snowflake, BigQuery, PostgreSQL et dbt...
-                  </div>
-                  <p style={{ fontSize: 11.5, color: "#818CF8", fontWeight: 600 }}>Data Quality · ETL Builder · dbt Reviewer · +19 →</p>
-                </div>
+                  </Link>
+                ))}
+              </div>
+
+              {/* CTA principal */}
+              <Link href="/actualites" className="btn-primary" style={{ display: "flex", justifyContent: "center", padding: "11px", fontSize: 13.5, borderRadius: 12 }}>
+                Dernières actualités data &amp; IA →
               </Link>
 
-              {/* Encyclopédie concepts */}
-              <Link href="/concepts" style={{ textDecoration: "none" }} className="hover-lift">
-                <div style={{ padding: "13px 18px", background: "linear-gradient(135deg, #F0F9FF 0%, #EFF6FF 100%)", borderRadius: 12, border: "1px solid #BFDBFE", display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ fontSize: 20, flexShrink: 0 }}>📚</span>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: 12.5, color: "#1E40AF", lineHeight: 1.5 }}>
-                      <strong>Encyclopédie data</strong> — ML, Cloud, Gouvernance, LLMs
-                    </p>
-                    <p style={{ fontSize: 11, color: "#3B82F6", marginTop: 2 }}>82 concepts expliqués simplement, avec exemples</p>
-                  </div>
-                  <span style={{ fontSize: 13, color: "#1D4ED8", fontWeight: 700, flexShrink: 0 }}>→</span>
-                </div>
-              </Link>
+              {/* Pulse marché */}
+              <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#7C3AED", animation: "pulse-glow 2s ease-in-out infinite", flexShrink: 0 }} />
+                <p style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.4 }}>
+                  Mis à jour chaque matin · 2 400 pros abonnés
+                </p>
+              </div>
 
             </div>
           </div>
