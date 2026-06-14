@@ -2566,7 +2566,91 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
+const ALL_AGENT_CATS = ["Toutes", ...Array.from(new Set(AGENTS.map(a => a.categorie))).sort()];
+
+function AgentCard({ agent }: { agent: typeof AGENTS[number] }) {
+  const [open, setOpen] = useState(false);
+  const cat  = CAT_COLORS[agent.categorie]  ?? { bg: "#F8FAFC", color: "#475569", border: "#E2E8F0" };
+  const diff = DIFF_COLORS[agent.difficulte] ?? { bg: "#F8FAFC", color: "#475569" };
+
+  return (
+    <div className="card" style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      {/* Header */}
+      <div style={{ padding: "18px 20px 14px", borderBottom: "1px solid var(--border)" }}>
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10, marginBottom: 10 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: 22 }}>{agent.emoji}</span>
+            <div>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 15, fontWeight: 800, color: "var(--text)", marginBottom: 2 }}>{agent.titre}</h2>
+              <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.4 }}>{agent.tagline}</p>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, flexShrink: 0, alignItems: "flex-end" }}>
+            <span style={{ padding: "2px 8px", borderRadius: 100, fontSize: 10, fontWeight: 600, background: cat.bg, color: cat.color, border: `1px solid ${cat.border}` }}>{agent.categorie}</span>
+            <span style={{ padding: "2px 8px", borderRadius: 100, fontSize: 10, fontWeight: 600, background: diff.bg, color: diff.color }}>{agent.difficulte}</span>
+          </div>
+        </div>
+        <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+          {agent.stack.map(s => (
+            <span key={s} style={{ padding: "1px 7px", borderRadius: 5, fontSize: 10, background: "var(--surface-2)", color: "var(--muted)", border: "1px solid var(--border)", fontFamily: "var(--font-mono)" }}>{s}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Accordion toggle */}
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          padding: "12px 20px", border: "none", borderBottom: open ? "1px solid var(--border)" : "none",
+          background: open ? "var(--indigo-tint)" : "var(--surface-2)",
+          cursor: "pointer", fontFamily: "inherit", width: "100%",
+          color: "var(--indigo)", transition: "background 0.15s",
+        }}
+      >
+        <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+          {open ? "Masquer le prompt" : "Voir le prompt système"}
+        </span>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <CopyButton text={agent.prompt_systeme} />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 0.2s", flexShrink: 0 }}>
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+      </button>
+
+      {/* Contenu expandable */}
+      {open && (
+        <div style={{ padding: "16px 20px 20px", display: "flex", flexDirection: "column", gap: 14 }}>
+          <div style={{ background: "#0F1629", borderRadius: 10 }}>
+            <pre style={{ margin: 0, padding: "12px 14px", fontSize: 11, color: "#CBD5E1", fontFamily: "var(--font-mono)", lineHeight: 1.7, whiteSpace: "pre-wrap", wordBreak: "break-word", maxHeight: 220, overflow: "auto" }}>
+              {agent.prompt_systeme}
+            </pre>
+          </div>
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#0E7490", marginBottom: 6 }}>Exemple d&apos;input</p>
+            <div style={{ padding: "9px 12px", background: "var(--surface-2)", borderRadius: 8, borderLeft: "3px solid var(--teal)" }}>
+              <p style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{agent.exemple_input}</p>
+            </div>
+          </div>
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#15803D", marginBottom: 6 }}>Exemple d&apos;output (extrait)</p>
+            <div style={{ background: "#F0FDF4", borderRadius: 8, borderLeft: "3px solid #BBF7D0", padding: "9px 12px" }}>
+              <pre style={{ margin: 0, fontSize: 11, color: "#166534", fontFamily: "var(--font-mono)", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
+                {agent.exemple_output}
+              </pre>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function AgentsPage() {
+  const [activeCat, setActiveCat] = useState("Toutes");
+  const filtered = activeCat === "Toutes" ? AGENTS : AGENTS.filter(a => a.categorie === activeCat);
+
   return (
     <main>
       {/* Hero */}
@@ -2585,7 +2669,7 @@ export default function AgentsPage() {
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
             {[
               { value: `${AGENTS.length}`, label: "agents disponibles" },
-              { value: "7", label: "catégories" },
+              { value: `${ALL_AGENT_CATS.length - 1}`, label: "catégories" },
               { value: "100%", label: "copy-paste ready" },
             ].map(s => (
               <div key={s.label} style={{ textAlign: "center" }}>
@@ -2597,71 +2681,40 @@ export default function AgentsPage() {
         </div>
       </section>
 
-      {/* Grille agents */}
-      <section style={{ maxWidth: 1200, margin: "0 auto", padding: "56px 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(520px, 1fr))", gap: 24 }}>
-          {AGENTS.map(agent => {
-            const cat  = CAT_COLORS[agent.categorie]  ?? { bg: "#F8FAFC", color: "#475569", border: "#E2E8F0" };
-            const diff = DIFF_COLORS[agent.difficulte] ?? { bg: "#F8FAFC", color: "#475569" };
+      {/* Filtres catégorie sticky */}
+      <div style={{ position: "sticky", top: 58, zIndex: 30, background: "rgba(248,250,252,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "12px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+          {ALL_AGENT_CATS.map(cat => {
+            const active = activeCat === cat;
+            const count = cat === "Toutes" ? AGENTS.length : AGENTS.filter(a => a.categorie === cat).length;
             return (
-              <div key={agent.id} className="card" style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
-                {/* Header carte */}
-                <div style={{ padding: "22px 24px 18px", borderBottom: "1px solid var(--border)" }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <span style={{ fontSize: 26 }}>{agent.emoji}</span>
-                      <div>
-                        <h2 style={{ fontFamily: "var(--font-display)", fontSize: 16.5, fontWeight: 800, color: "var(--text)", marginBottom: 3 }}>{agent.titre}</h2>
-                        <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.4 }}>{agent.tagline}</p>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 5, flexShrink: 0, alignItems: "flex-end" }}>
-                      <span style={{ padding: "2px 9px", borderRadius: 100, fontSize: 11, fontWeight: 600, background: cat.bg, color: cat.color, border: `1px solid ${cat.border}` }}>{agent.categorie}</span>
-                      <span style={{ padding: "2px 9px", borderRadius: 100, fontSize: 11, fontWeight: 600, background: diff.bg, color: diff.color }}>{agent.difficulte}</span>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    {agent.stack.map(s => (
-                      <span key={s} style={{ padding: "2px 8px", borderRadius: 6, fontSize: 11, background: "var(--surface-2)", color: "var(--muted)", border: "1px solid var(--border)", fontFamily: "var(--font-mono)" }}>{s}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Prompt système */}
-                <div style={{ padding: "18px 24px 0", flex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                    <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--indigo)" }}>Prompt système</p>
-                    <CopyButton text={agent.prompt_systeme} />
-                  </div>
-                  <div style={{ background: "#0F1629", borderRadius: 12, marginBottom: 18 }}>
-                    <pre style={{ margin: 0, padding: "14px 16px", fontSize: 11, color: "#CBD5E1", fontFamily: "var(--font-mono)", lineHeight: 1.7, whiteSpace: "pre-wrap", wordBreak: "break-word", maxHeight: 200, overflow: "auto" }}>
-                      {agent.prompt_systeme}
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Exemple */}
-                <div style={{ padding: "0 24px 22px" }}>
-                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#0E7490", marginBottom: 8 }}>Exemple d&apos;input</p>
-                  <div style={{ padding: "10px 14px", background: "var(--surface-2)", borderRadius: 10, borderLeft: "3px solid var(--teal)", marginBottom: 14 }}>
-                    <p style={{ fontSize: 12.5, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{agent.exemple_input}</p>
-                  </div>
-                  <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#15803D", marginBottom: 8 }}>Exemple d&apos;output (extrait)</p>
-                  <div style={{ background: "#F0FDF4", borderRadius: 10, borderLeft: "3px solid #BBF7D0", padding: "10px 14px" }}>
-                    <pre style={{ margin: 0, fontSize: 11.5, color: "#166534", fontFamily: "var(--font-mono)", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
-                      {agent.exemple_output}
-                    </pre>
-                  </div>
-                </div>
-              </div>
+              <button key={cat} onClick={() => setActiveCat(cat)} style={{
+                padding: "5px 14px", borderRadius: 20, fontSize: 12.5, fontWeight: active ? 700 : 400, cursor: "pointer",
+                border: `1px solid ${active ? "var(--indigo)" : "var(--border)"}`,
+                background: active ? "var(--indigo-tint)" : "var(--surface)",
+                color: active ? "var(--indigo)" : "var(--muted)",
+                fontFamily: "inherit", transition: "all 0.15s",
+              }}>
+                {cat} <span style={{ opacity: 0.6 }}>({count})</span>
+              </button>
             );
           })}
+          <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-mono)" }}>
+            {filtered.length} agent{filtered.length > 1 ? "s" : ""}
+          </span>
+        </div>
+      </div>
+
+      {/* Grille agents — 3 colonnes compactes */}
+      <section style={{ maxWidth: 1280, margin: "0 auto", padding: "40px 24px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: 16 }}>
+          {filtered.map(agent => <AgentCard key={agent.id} agent={agent} />)}
         </div>
 
         {/* CTA bas de page */}
-        <div style={{ marginTop: 56, padding: "36px 32px", background: "linear-gradient(135deg, var(--indigo-tint), var(--lavender-2))", borderRadius: 20, border: "1.5px solid var(--indigo-border)", textAlign: "center" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 800, marginBottom: 10 }}>Tu veux un agent sur mesure ?</h3>
-          <p style={{ fontSize: 14.5, color: "var(--muted)", marginBottom: 20, maxWidth: 500, margin: "0 auto 20px" }}>
+        <div style={{ marginTop: 52, padding: "32px 28px", background: "linear-gradient(135deg, var(--indigo-tint), var(--lavender-2))", borderRadius: 20, border: "1.5px solid var(--indigo-border)", textAlign: "center" }}>
+          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 800, marginBottom: 8 }}>Tu veux un agent sur mesure ?</h3>
+          <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 18, maxWidth: 500, margin: "0 auto 18px" }}>
             Propose un cas d&apos;usage via la newsletter et on ajoutera le prompt à cette bibliothèque.
           </p>
           <a href="/newsletter" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
