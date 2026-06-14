@@ -46,7 +46,7 @@ const SECTIONS = [
   { href: "/glossaire",      emoji: "📖", titre: "Glossaire",             desc: `${glossaireData.length} définitions précises avec exemples et cas d'usage` },
   { href: "/metiers",        emoji: "👤", titre: "Métiers",               desc: "Salaires 2026, compétences requises et trajectoires de carrière" },
   { href: "/outils",         emoji: "🛠️", titre: "Outils & plateformes",  desc: "Comparatifs honnêtes de Snowflake, Databricks, dbt et plus" },
-  { href: "/cas-usage",      emoji: "💼", titre: "Cas d'usage",           desc: "50+ projets réels avec stack technique et résultats mesurés" },
+  { href: "/cas-usage",      emoji: "💼", titre: "Cas d'usage",           desc: "104 projets réels avec stack technique et résultats mesurés" },
   { href: "/debuter",        emoji: "🚀", titre: "Débuter en data",       desc: "Parcours guidé pour entrer dans la data en partant de zéro" },
   { href: "/newsletter",     emoji: "📬", titre: "Newsletter",            desc: "L'essentiel data & IA chaque semaine, en français" },
 ];
@@ -93,11 +93,25 @@ export default function AProposPage() {
             <div style={{ width: 48, height: 48, borderRadius: "50%", background: "linear-gradient(135deg, #7C3AED, #0EA5E9)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontWeight: 800, color: "#fff", fontSize: 20, flexShrink: 0 }}>
               P
             </div>
-            <div>
+            <div style={{ flex: 1 }}>
               <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 15, color: "#0F172A" }}>Prijanth Seevaratnam</div>
               <div style={{ fontSize: 13, color: "#64748B", marginTop: 2 }}>Consultant Senior en Data · TNP Consultants</div>
               <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 3 }}>Product Owner ESG · La Banque Postale · Paris</div>
             </div>
+            <a
+              href="https://www.linkedin.com/in/prijanth-seevaratnam/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex", alignItems: "center", gap: 6,
+                padding: "7px 14px", borderRadius: 8, flexShrink: 0,
+                background: "#0A66C2", color: "#fff",
+                fontSize: 12, fontWeight: 700, textDecoration: "none",
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
           </div>
         </div>
       </section>

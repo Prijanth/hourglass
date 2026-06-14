@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ParcoursEtapes } from "./parcours";
+import { Bifurcation } from "./bifurcation";
 
 export const metadata: Metadata = {
   title: "Débuter en data — Parcours guidé pour entrer dans la data en 2026 | DataSphère",
@@ -156,6 +157,41 @@ export default function DebuterPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ── BIFURCATION — Par où commencer ? ──────────────── */}
+      <section style={{ maxWidth: 900, margin: "0 auto", padding: "48px 24px 0" }}>
+        <div style={{ marginBottom: 36 }}>
+          <span
+            className="section-label"
+            style={{
+              display: "block",
+              fontSize: 10,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "var(--indigo)",
+              marginBottom: 8,
+            }}
+          >
+            Par où commencer ?
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.4rem, 2vw, 1.8rem)",
+              fontWeight: 800,
+              color: "var(--text)",
+              marginBottom: 6,
+            }}
+          >
+            Quel est ton point de départ ?
+          </h2>
+          <p style={{ fontSize: 14, color: "var(--muted)", maxWidth: 520 }}>
+            Clique sur ta situation pour voir un plan personnalisé.
+          </p>
+        </div>
+        <Bifurcation />
       </section>
 
       <ParcoursEtapes />
