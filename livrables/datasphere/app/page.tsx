@@ -125,7 +125,7 @@ export default function Home() {
                   { n: "166",  l: "certifications", emoji: "🎓", href: "/certifications", color: "#7C3AED" },
                   { n: "134",  l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
                   { n: "88",   l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
-                  { n: "22",   l: "agents IA",       emoji: "🤖", href: "/agents",         color: "#6D28D9" },
+                  { n: "47",   l: "agents IA",       emoji: "🤖", href: "/agents",         color: "#6D28D9" },
                   { n: "246",  l: "termes",          emoji: "📖", href: "/glossaire",      color: "#0F766E" },
                   { n: "104",  l: "cas d'usage",     emoji: "💼", href: "/cas-usage",      color: "#C2410C" },
                 ].map((s, i) => (
