@@ -10,10 +10,10 @@ const CAT_COLORS: Record<string, string> = {
 
 const SECTIONS = [
   { href: "/ia",             emoji: "🧠", title: "Intelligence IA", desc: "Modèles, risques, AI Act, enjeux — tout sur l'IA en français",  color: "#BE123C", bg: "#FFF1F2" },
-  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "82 concepts ML, Cloud et Gouvernance expliqués simplement",    color: "#7C3AED", bg: "#EDE9FE" },
-  { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "92 certifications AWS, Azure, GCP, Databricks, Snowflake",    color: "#5B21B6", bg: "#F5F3FF" },
-  { href: "/cas-usage",      emoji: "💼", title: "Cas d'usage",    desc: "50+ projets réels avec stack, solution et résultats mesurés",  color: "#C2410C", bg: "#FFF7ED" },
-  { href: "/glossaire",      emoji: "📖", title: "Glossaire",      desc: "137 définitions précises avec exemples concrets",              color: "#0E7490", bg: "#ECFEFF" },
+  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "134 concepts ML, Cloud et Gouvernance expliqués simplement",   color: "#7C3AED", bg: "#EDE9FE" },
+  { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "166 certifications AWS, Azure, GCP, Databricks, Snowflake",   color: "#5B21B6", bg: "#F5F3FF" },
+  { href: "/cas-usage",      emoji: "💼", title: "Cas d'usage",    desc: "104 projets réels avec stack, solution et résultats mesurés", color: "#C2410C", bg: "#FFF7ED" },
+  { href: "/glossaire",      emoji: "📖", title: "Glossaire",      desc: "246 définitions précises avec exemples concrets",              color: "#0E7490", bg: "#ECFEFF" },
   { href: "/outils",         emoji: "🛠️", title: "Outils",         desc: "Comparatifs honnêtes des plateformes data du marché",          color: "#B45309", bg: "#FFFBEB" },
   { href: "/comparateur",   emoji: "⚖️", title: "Comparateur",    desc: "Compare jusqu'à 3 outils côte à côte en temps réel",           color: "#7C3AED", bg: "#EDE9FE" },
   { href: "/metiers",        emoji: "👤", title: "Métiers",        desc: "Salaires 2026, compétences requises et trajectoires",          color: "#BE123C", bg: "#FFF1F2" },
@@ -87,10 +87,10 @@ export default function Home() {
               {/* Stats */}
               <div style={{ display: "flex", gap: 36, marginTop: 48, paddingTop: 36, borderTop: "1px solid #DDD6FE" }}>
                 {[
-                  { n: "92",   l: "certifications" },
-                  { n: "82",   l: "concepts" },
-                  { n: "50",   l: "cas d'usage" },
-                  { n: "137",  l: "termes" },
+                  { n: "166",  l: "certifications" },
+                  { n: "134",  l: "concepts" },
+                  { n: "104",  l: "cas d'usage" },
+                  { n: "246",  l: "termes" },
                 ].map(({ n, l }) => (
                   <div key={l}>
                     <div className="stat-num" style={{ fontSize: "1.8rem" }}>{n}</div>
@@ -122,12 +122,12 @@ export default function Home() {
               {/* Grille 2×3 — chaque cellule est un lien */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 14, overflow: "hidden", border: "1px solid #F1F5F9", marginBottom: 18 }}>
                 {[
-                  { n: "92",   l: "certifications", emoji: "🎓", href: "/certifications", color: "#7C3AED" },
-                  { n: "82",   l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
-                  { n: "30+",  l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
+                  { n: "166",  l: "certifications", emoji: "🎓", href: "/certifications", color: "#7C3AED" },
+                  { n: "134",  l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
+                  { n: "88",   l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
                   { n: "22",   l: "agents IA",       emoji: "🤖", href: "/agents",         color: "#6D28D9" },
-                  { n: "137",  l: "termes",          emoji: "📖", href: "/glossaire",      color: "#0F766E" },
-                  { n: "50+",  l: "cas d'usage",     emoji: "💼", href: "/cas-usage",      color: "#C2410C" },
+                  { n: "246",  l: "termes",          emoji: "📖", href: "/glossaire",      color: "#0F766E" },
+                  { n: "104",  l: "cas d'usage",     emoji: "💼", href: "/cas-usage",      color: "#C2410C" },
                 ].map((s, i) => (
                   <Link
                     key={s.href}
@@ -321,7 +321,7 @@ export default function Home() {
       <section style={{ padding: "72px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 24 }}>
           <div className="card" style={{ padding: "28px 26px" }}>
-            <span className="section-label">Marché data 2025</span>
+            <span className="section-label">Marché data 2026</span>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 800, marginBottom: 4, color: "#0F172A" }}>Compétences les plus demandées</h2>
             <p style={{ fontSize: 13, color: "#64748B", marginBottom: 20 }}>D&apos;après dbt Labs State of Data Engineering 2025, 365 Data Science et Dataquest — tendances marché France</p>
             <SkillsChart />

@@ -11,7 +11,7 @@ type Concept = {
   description_courte: string;
   explication_simple: string;
   exemple_concret: string;
-  formule?: string;
+  formule?: string | null;
   quand_utiliser?: string[];
   avantages: string[];
   inconvenients: string[];
