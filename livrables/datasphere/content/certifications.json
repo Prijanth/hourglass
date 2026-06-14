@@ -2192,7 +2192,7 @@
                                "outil":  "GCP",
                                "niveau":  "IntermÃ©diaire",
                                "duree_prep":  "80-120h",
-                               "cout":  "~200â‚¬",
+                               "cout":  "~125$",
                                "validite":  "3 ans",
                                "description":  "Certification fondamentale GCP pour les ingÃ©nieurs. Valide la capacitÃ© Ã  dÃ©ployer des applications, configurer des rÃ©seaux, gÃ©rer des projets GCP et utiliser la CLI gcloud.",
                                "competences":  [
@@ -2221,7 +2221,7 @@
                                "outil":  "GCP",
                                "niveau":  "DÃ©butant",
                                "duree_prep":  "30-50h",
-                               "cout":  "~200â‚¬",
+                               "cout":  "~99$",
                                "validite":  "3 ans",
                                "description":  "Certification non technique pour comprendre les capacitÃ©s de GCP et la faÃ§on dont elles transforment les organisations. IdÃ©ale pour les profils non techniques souhaitant valider une culture cloud.",
                                "competences":  [
