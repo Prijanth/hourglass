@@ -3,6 +3,7 @@ import Link from "next/link";
 import metiers from "@/content/metiers.json";
 import { MetiersListing } from "./listing";
 import { SkillsChart } from "@/components/charts/skills-chart";
+import { SalaryChart } from "@/components/charts/salary-chart";
 
 export const metadata: Metadata = {
   title: "Métiers Data & IA — Compétences et carrières 2026 | DataSphère",
@@ -107,13 +108,19 @@ export default function MetiersPage() {
         ))}
       </div>
 
-      {/* Skills chart */}
-      <div style={{ marginBottom: 56 }}>
-        <div className="card" style={{ padding: "28px 24px", maxWidth: 680 }}>
+      {/* Charts côte à côte */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 56 }}>
+        <div className="card" style={{ padding: "28px 24px" }}>
           <span className="section-label">Compétences</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, marginBottom: 4 }}>Top compétences demandées</h2>
           <p style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 18 }}>Score de demande sur les offres d&apos;emploi data analysées</p>
           <SkillsChart />
+        </div>
+        <div className="card" style={{ padding: "28px 24px" }}>
+          <span className="section-label">Rémunération</span>
+          <h2 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700, marginBottom: 4 }}>Fourchettes salariales</h2>
+          <p style={{ fontSize: 12.5, color: "var(--muted)", marginBottom: 18 }}>Salaires bruts annuels en France 2026 — junior à senior</p>
+          <SalaryChart />
         </div>
       </div>
 

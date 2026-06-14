@@ -2,6 +2,7 @@
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import data from "@/content/certifications.json";
+import { CertPopularityChart } from "@/components/charts/cert-popularity-chart";
 
 const ALL_PROFILS = Array.from(
   new Set(data.certifications.flatMap(c => c.recommandee_pour))
@@ -151,6 +152,24 @@ function CertificationsContent() {
           </span>
         </div>
       </div>
+
+      {/* Top certifications par popularité — affiché uniquement sans filtre actif */}
+      {!isFiltering && (
+        <section style={{ padding: "40px 24px 0", maxWidth: 1240, margin: "0 auto" }}>
+          <div className="card" style={{ padding: "28px 28px 24px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <span className="section-label">Classement</span>
+                <h2 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 800, color: "var(--text)", margin: 0 }}>
+                  Top 12 certifications les plus demandées
+                </h2>
+              </div>
+              <span style={{ fontSize: 12, color: "var(--faint)" }}>Score sur 100 · offres d&apos;emploi France 2026</span>
+            </div>
+            <CertPopularityChart certs={data.certifications} />
+          </div>
+        </section>
+      )}
 
       {/* Grille */}
       <section style={{ padding: "44px 24px", maxWidth: 1240, margin: "0 auto" }}>

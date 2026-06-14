@@ -2,6 +2,7 @@ import Link from "next/link";
 import articles from "@/content/articles.json";
 import metiers from "@/content/metiers.json";
 import { SkillsChart } from "@/components/charts/skills-chart";
+import { TrendsChart } from "@/components/charts/trends-chart";
 import { fmtDate } from "@/lib/date-utils";
 
 const CAT_COLORS: Record<string, string> = {
@@ -320,11 +321,19 @@ export default function Home() {
       {/* ── SKILLS + RECENT ───────────────────────────────── */}
       <section style={{ padding: "72px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 24 }}>
-          <div className="card" style={{ padding: "28px 26px" }}>
-            <span className="section-label">Marché data 2026</span>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 800, marginBottom: 4, color: "#0F172A" }}>Compétences les plus demandées</h2>
-            <p style={{ fontSize: 13, color: "#64748B", marginBottom: 20 }}>D&apos;après dbt Labs State of Data Engineering 2025, 365 Data Science et Dataquest — tendances marché France</p>
-            <SkillsChart />
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            <div className="card" style={{ padding: "28px 26px" }}>
+              <span className="section-label">Marché data 2026</span>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 800, marginBottom: 4, color: "#0F172A" }}>Compétences les plus demandées</h2>
+              <p style={{ fontSize: 13, color: "#64748B", marginBottom: 20 }}>D&apos;après dbt Labs State of Data Engineering 2025, 365 Data Science et Dataquest — tendances marché France</p>
+              <SkillsChart />
+            </div>
+            <div className="card" style={{ padding: "28px 26px" }}>
+              <span className="section-label">Tendances</span>
+              <h2 style={{ fontFamily: "var(--font-display)", fontSize: 21, fontWeight: 800, marginBottom: 4, color: "#0F172A" }}>Évolution des technologies data</h2>
+              <p style={{ fontSize: 13, color: "#64748B", marginBottom: 20 }}>Progression relative sur les offres d&apos;emploi data — Jan 2024 → Avr 2025</p>
+              <TrendsChart />
+            </div>
           </div>
 
           <div className="card" style={{ padding: "28px 26px", display: "flex", flexDirection: "column" }}>
