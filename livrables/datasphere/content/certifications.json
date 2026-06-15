@@ -4248,7 +4248,7 @@
                                "outil":  "Snowflake",
                                "niveau":  "AvancÃ©",
                                "duree_prep":  "100-150h",
-                               "cout":  "~175$",
+                               "cout":  "~375$",
                                "validite":  "2 ans",
                                "description":  "Certification expert Snowflake pour les architectes data. Couvre la conception d\u0027architectures Data Cloud complexes, l\u0027optimisation des coÃ»ts, la gouvernance avancÃ©e avec Horizon et les patterns de Data Sharing inter-organisations.",
                                "competences":  [
@@ -4306,7 +4306,7 @@
                                "outil":  "Snowflake",
                                "niveau":  "AvancÃ©",
                                "duree_prep":  "80-120h",
-                               "cout":  "~175$",
+                               "cout":  "~375$",
                                "validite":  "2 ans",
                                "description":  "Certification avancÃ©e Snowflake pour les analystes donnÃ©es. Valide la maÃ®trise du SQL avancÃ© dans Snowflake, des fonctions analytiques, de Snowsight (interface analytique) et des patterns d\u0027analyse self-service.",
                                "competences":  [
@@ -4335,7 +4335,7 @@
                                "outil":  "Snowflake",
                                "niveau":  "AvancÃ©",
                                "duree_prep":  "100-150h",
-                               "cout":  "~175$",
+                               "cout":  "~375$",
                                "validite":  "2 ans",
                                "description":  "Certification avancÃ©e Snowflake pour les Data Engineers. Valide la maÃ®trise des pipelines de donnÃ©es : ingestion (Snowpipe, Streaming), transformations (Snowpark Python), orchestration (Tasks, Streams) et performance tuning.",
                                "competences":  [
@@ -4364,7 +4364,7 @@
                                "outil":  "Snowflake",
                                "niveau":  "AvancÃ©",
                                "duree_prep":  "100-150h",
-                               "cout":  "~175$",
+                               "cout":  "~375$",
                                "validite":  "2 ans",
                                "description":  "Certification avancÃ©e Snowflake pour les Data Scientists. Couvre Snowpark ML (entraÃ®nement de modÃ¨les directement dans Snowflake), Snowflake ML Functions et l\u0027intÃ©gration avec des outils ML externes.",
                                "competences":  [

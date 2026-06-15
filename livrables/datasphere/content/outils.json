@@ -9929,6 +9929,79 @@
     ]
   },
   {
+    "slug": "altimate-code",
+    "name": "Altimate Code",
+    "tagline": "Le harnais agentique open source #1 pour data engineering — dbt, SQL, 10 warehouses",
+    "category": "Data Engineering",
+    "emoji": "⚡",
+    "website": "https://www.altimate.sh",
+    "pricing": "Open source gratuit (CLI/TUI). Datamates extension VS Code gratuite. Enterprise sur devis.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Altimate Code est un harnais agentique open source spécialisé pour le data engineering. Basé sur OpenCode (agent IA terminal), il embarque plus de 100 outils déterministes conçus spécifiquement pour dbt, SQL et les cloud warehouses. Il se distingue des agents IA généralistes par ses outils déterministes (analyseur d'anti-patterns SQL, traceur de lignage statique, classificateur PII, diffing de schéma), qui lui permettent de dépasser des modèles plus puissants sur les tâches data. Classé #1 sur ADE-Bench (74,4%), le benchmark de référence pour les agents IA en data engineering.",
+    "features": [
+      "100+ outils déterministes pour dbt, SQL et warehouses",
+      "Analyseur d'anti-patterns SQL (index manquants, cross-joins, DISTINCT inutiles)",
+      "Traceur de lignage statique entre modèles dbt",
+      "Classificateur PII automatique sur les colonnes",
+      "Schema diff avec détection de breaking changes",
+      "Analyse des coûts Snowflake (query profiling)",
+      "Traduction SQL inter-dialectes (BigQuery → Snowflake, etc.)",
+      "Extension VS Code Datamates pour usage en IDE",
+      "CLI/TUI standalone pour intégration CI/CD",
+      "Support de 10 warehouses (Snowflake, BigQuery, Databricks, Redshift, DuckDB...)"
+    ],
+    "pros": [
+      "Classé #1 sur ADE-Bench (74,4%) — dépasse des agents sur Opus 4.8 grâce aux outils déterministes",
+      "100% open source et self-hostable (RGPD)",
+      "Spécialisé data engineering : connaît le contexte dbt et SQL warehouse nativement",
+      "CLI intégrable dans les pipelines CI/CD",
+      "Gratuit pour les équipes de toute taille"
+    ],
+    "cons": [
+      "Moins adapté aux tâches data engineering non-SQL (ex : pipelines Kafka, ML)",
+      "Ecosystème plus jeune que Claude Code ou Cursor",
+      "Documentation encore en construction (projet actif en 2025-2026)"
+    ],
+    "best_for": "Data engineers et analytics engineers qui veulent un agent IA spécialisé pour dbt et SQL — revues de code, migrations de dialectes, audits PII, détection de breaking changes.",
+    "not_for": "Développeurs généralistes cherchant un assistant de coding polyvalent (préférer Claude Code ou Cursor).",
+    "pieges_prod": [
+      "Altimate Code est un harnais, pas un modèle : il faut configurer sa propre clé API LLM (Anthropic, OpenAI, etc.) — les coûts de tokens sont à prévoir.",
+      "Les 100+ outils déterministes nécessitent une connexion au warehouse configurée — prévoir les credentials dans les variables d'environnement."
+    ],
+    "alternatives": [
+      "dbt-core",
+      "langchain"
+    ],
+    "score": {
+      "performance": 88,
+      "facilite": 70,
+      "ecosysteme": 65,
+      "cout": 95,
+      "support": 65
+    },
+    "tags": [
+      "data-engineering",
+      "dbt",
+      "sql",
+      "open-source",
+      "agentic",
+      "ai"
+    ],
+    "launched": "2025",
+    "use_cases": [
+      {
+        "titre": "Revue automatique des modèles dbt en CI",
+        "description": "Altimate Code analyse chaque Pull Request dbt : détecte les anti-patterns SQL, valide le lignage, classe les colonnes PII et signale les breaking changes de schéma — avant la merge, sans intervention humaine."
+      },
+      {
+        "titre": "Migration de dialecte SQL BigQuery → Snowflake",
+        "description": "Altimate Code traduit des centaines de requêtes BigQuery en SQL Snowflake natif, en gérant les fonctions spécifiques (ARRAY_AGG, UNNEST, DATE_TRUNC) et en signalant les cas ambigus."
+      }
+    ]
+  },
+  {
     "slug": "metaflow",
     "name": "Metaflow",
     "tagline": "Le framework ML workflow de Netflix — définissez vos pipelines ML comme du Python simple",
