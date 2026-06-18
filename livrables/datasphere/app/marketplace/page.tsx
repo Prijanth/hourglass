@@ -380,7 +380,7 @@ export default function MarketplacePage() {
           <p style={{ fontSize: 14.5, color: "var(--muted)", marginBottom: 24, maxWidth: 440, margin: "0 auto 24px" }}>
             Candidats pré-qualifiés, disponibles et motivés. Commission uniquement en cas de succès. Contactez-nous pour en savoir plus.
           </p>
-          <a href="mailto:talent@Data Universe.fr" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <a href="mailto:talent@data-universe.fr" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
             Contacter l&apos;équipe Talent →
           </a>
         </div>

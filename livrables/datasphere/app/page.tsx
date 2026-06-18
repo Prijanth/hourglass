@@ -164,7 +164,7 @@ export default function Home() {
               <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 10 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#7C3AED", animation: "pulse-glow 2s ease-in-out infinite", flexShrink: 0 }} />
                 <p style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.4 }}>
-                  Mis à jour chaque matin · 2 400 pros abonnés
+                  Contenu vérifié · 2 400 pros abonnés
                 </p>
               </div>
 
