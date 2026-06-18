@@ -1,6 +1,6 @@
-# C'est quoi un Lakehouse ?
+﻿# C'est quoi un Lakehouse ?
 **Durée cible :** 75s
-**Caption TikTok :** Data Lake ou Data Warehouse ? En 2024 la vraie réponse c'est : les deux. Le Lakehouse combine le meilleur des deux mondes, et c'est pour ça que Databricks a tout changé dans l'industrie. Explication avec une analogie simple, sans jargon. #lakehouse #datawarehouse #datalake #databricks #dataengineering #moderndata #techfr #datasphere
+**Caption TikTok :** Data Lake ou Data Warehouse ? En 2024 la vraie réponse c'est : les deux. Le Lakehouse combine le meilleur des deux mondes, et c'est pour ça que Databricks a tout changé dans l'industrie. Explication avec une analogie simple, sans jargon. #lakehouse #datawarehouse #datalake #databricks #dataengineering #moderndata #techfr #Data Universe
 
 ---
 ## SCRIPT
@@ -12,7 +12,7 @@ Data Lake, Data Warehouse, Lakehouse... T'as déjà entendu ces termes sans vrai
 Imagine un entrepôt logistique classique. Tout est rangé, étiqueté, organisé. Tu trouves ce que tu cherches en deux secondes. C'est le Data Warehouse. Super pour les requêtes SQL rapides, les dashboards, les reportings. Mais il n'accepte que les données déjà structurées. Maintenant imagine un lac. Tu peux y jeter n'importe quoi : des fichiers texte, des images, des logs de serveurs, des vidéos. Tout rentre. C'est le Data Lake. Mais pour retrouver quelque chose, bonne chance. Le Lakehouse, c'est un entrepôt construit sur les rives d'un lac. Tu stockes tout, n'importe quel format, à moindre coût. Et en même temps tu peux faire des requêtes SQL performantes dessus, comme sur un vrai entrepôt. C'est Databricks qui a popularisé ce concept avec leur format Delta Lake. Et depuis, tous les grands cloud providers ont suivi.
 
 [60s] CONCLUSION + CTA
-Résultat ? Les équipes data n'ont plus à choisir entre flexibilité et performance. Elles ont les deux. Pour aller plus loin sur l'architecture data moderne : datasphere.fr
+Résultat ? Les équipes data n'ont plus à choisir entre flexibilité et performance. Elles ont les deux. Pour aller plus loin sur l'architecture data moderne : Data Universe.fr
 
 ---
 ## VISUELS / TRANSITIONS SUGGÉRÉS
@@ -36,5 +36,5 @@ Résultat ? Les équipes data n'ont plus à choisir entre flexibilité et perfor
 
 [55s-75s]
 - Schéma simplifié d'une architecture Lakehouse (3 couches : Bronze / Silver / Gold)
-- URL datasphere.fr en overlay
+- URL Data Universe.fr en overlay
 - CTA texte final

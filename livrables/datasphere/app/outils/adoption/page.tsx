@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 
@@ -505,7 +505,7 @@ export default function AdoptionPage() {
             <span style={{ opacity: 0.7, flexShrink: 0 }}>ℹ️</span>
             <span>
               Données basées sur l&apos;analyse des offres d&apos;emploi françaises (LinkedIn, Welcome to the Jungle, Indeed),
-              des retours de praticiens de la communauté DataSphère et des benchmarks du marché à mi-2026.
+              des retours de praticiens de la communauté Data Universe et des benchmarks du marché à mi-2026.
               Les niveaux d&apos;adoption reflètent la fréquence d&apos;utilisation dans chaque secteur, pas la popularité globale.
             </span>
           </p>

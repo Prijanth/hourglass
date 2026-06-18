@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 const THEMES = [
@@ -204,7 +204,7 @@ export default function NewsletterPage() {
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(124,58,237,0.6)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>⬡</div>
                 <div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: 14, fontWeight: 800, color: "#fff" }}>DataSphère Weekly · #12</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: 14, fontWeight: 800, color: "#fff" }}>Data Universe Weekly · #12</div>
                   <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>9 juin 2026 · 4 min de lecture</div>
                 </div>
               </div>
@@ -380,8 +380,8 @@ SELECT * FROM {{ ref('stg_events') }}
 
               {/* Footer email */}
               <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #F1F5F9", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-                <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED" }}>DataSphère</div>
-                <div style={{ fontSize: 11, color: "#94A3B8" }}>datasphere.fr · Se désabonner</div>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED" }}>Data Universe</div>
+                <div style={{ fontSize: 11, color: "#94A3B8" }}>Data Universe.fr · Se désabonner</div>
               </div>
             </div>
           </div>
@@ -398,7 +398,7 @@ SELECT * FROM {{ ref('stg_events') }}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
             {[
               { texte: "La meilleure newsletter data en français. Concise, utile, sans bullshit. Je l'attends chaque lundi.", auteur: "Sarah M.", poste: "Data Engineer, BNP Paribas" },
-              { texte: "En tant que consultant, DataSphère me permet de rester à jour sans passer des heures à lire des articles en anglais.", auteur: "Thomas R.", poste: "Consultant Senior Data, Capgemini" },
+              { texte: "En tant que consultant, Data Universe me permet de rester à jour sans passer des heures à lire des articles en anglais.", auteur: "Thomas R.", poste: "Consultant Senior Data, Capgemini" },
               { texte: "L'encyclopédie et la newsletter forment un duo parfait. Je retrouve toujours ce dont j'ai besoin.", auteur: "Amira K.", poste: "Data Analyst, SNCF" },
               { texte: "J'ai décroché mon premier poste de Data Analyst deux mois après m'être abonné. La section Métiers et les fiches certifications ont été déterminantes pour préparer mes entretiens.", auteur: "Julien F.", poste: "Data Analyst junior, PME e-commerce — abonné depuis 3 mois" },
               { texte: "Je viens du marketing et je ne comprenais rien au jargon de mon équipe data. Après 4 semaines de newsletter, je suis enfin dans la conversation.", auteur: "Margaux D.", poste: "Responsable Marketing digital — débutante en data" },

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — DataSphère",
-  description: "Mentions légales du site DataSphère, hub data & IA francophone.",
+  title: "Mentions légales — Data Universe",
+  description: "Mentions légales du site Data Universe, hub data & IA francophone.",
 };
 
 export default function MentionsLegalesPage() {
@@ -25,12 +25,12 @@ export default function MentionsLegalesPage() {
             1. Éditeur du site
           </h2>
           <div style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            <p>Le site <strong>datasphere.fr</strong> est édité par :</p>
+            <p>Le site <strong>Data Universe.fr</strong> est édité par :</p>
             <br />
             <p><strong>Prijanth Seevaratnam</strong></p>
             <p>Particulier</p>
             <p>Montry, 77 Seine-et-Marne, France</p>
-            <p>Email : <a href="mailto:contact@datasphere.fr" style={{ color: "var(--indigo)" }}>contact@datasphere.fr</a></p>
+            <p>Email : <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)" }}>contact@Data Universe.fr</a></p>
           </div>
         </section>
 
@@ -61,7 +61,7 @@ export default function MentionsLegalesPage() {
             4. Responsabilité
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            Les informations publiées sur DataSphère sont fournies à titre informatif. L&apos;éditeur s&apos;efforce d&apos;en assurer l&apos;exactitude mais ne peut garantir leur exhaustivité ou leur actualité. DataSphère décline toute responsabilité pour les décisions prises sur la base des informations publiées.
+            Les informations publiées sur Data Universe sont fournies à titre informatif. L&apos;éditeur s&apos;efforce d&apos;en assurer l&apos;exactitude mais ne peut garantir leur exhaustivité ou leur actualité. Data Universe décline toute responsabilité pour les décisions prises sur la base des informations publiées.
           </p>
         </section>
 
@@ -70,7 +70,7 @@ export default function MentionsLegalesPage() {
             5. Liens d&apos;affiliation
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            Certains liens présents sur ce site sont des liens d&apos;affiliation. Si tu cliques sur l&apos;un de ces liens et effectues un achat, DataSphère peut percevoir une commission, sans frais supplémentaires pour toi. Ces liens sont signalés explicitement et ne biaisent pas les contenus éditoriaux.
+            Certains liens présents sur ce site sont des liens d&apos;affiliation. Si tu cliques sur l&apos;un de ces liens et effectues un achat, Data Universe peut percevoir une commission, sans frais supplémentaires pour toi. Ces liens sont signalés explicitement et ne biaisent pas les contenus éditoriaux.
           </p>
         </section>
 
@@ -90,7 +90,7 @@ export default function MentionsLegalesPage() {
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
             Pour toute question relative à ce site :{" "}
-            <a href="mailto:contact@datasphere.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@datasphere.fr</a>
+            <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@Data Universe.fr</a>
           </p>
         </section>
       </div>

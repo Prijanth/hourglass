@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import data from "@/content/certifications.json";
@@ -298,7 +298,7 @@ function CertificationsContent() {
             Tu prépares une certification ?
           </h2>
           <p style={{ color: "#64748B", marginBottom: 28, fontSize: 16, lineHeight: 1.7 }}>
-            Rejoins la communauté DataSphère pour partager tes ressources, poser tes questions et te motiver avec d&apos;autres apprenants.
+            Rejoins la communauté Data Universe pour partager tes ressources, poser tes questions et te motiver avec d&apos;autres apprenants.
           </p>
           <a href="/communaute" className="btn-primary" style={{ display: "inline-flex" }}>
             Rejoindre la communauté →

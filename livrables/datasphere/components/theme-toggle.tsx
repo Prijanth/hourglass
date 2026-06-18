@@ -7,7 +7,7 @@ export function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem("datasphere_theme");
+    const saved = localStorage.getItem("datauniverse_theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const isDark = saved ? saved === "dark" : prefersDark;
     setDark(isDark);
@@ -18,7 +18,7 @@ export function ThemeToggle() {
     const next = !dark;
     setDark(next);
     document.documentElement.setAttribute("data-theme", next ? "dark" : "light");
-    localStorage.setItem("datasphere_theme", next ? "dark" : "light");
+    localStorage.setItem("datauniverse_theme", next ? "dark" : "light");
   }
 
   if (!mounted) return null;

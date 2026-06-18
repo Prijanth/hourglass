@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
 import { rateLimit } from "@/lib/rate-limit";
 import { Resend } from "resend";
@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://datasphere.fr";
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://Data Universe.fr";
   const body = await req.json().catch(() => null);
   if (!body) return NextResponse.json({ error: "Corps de requête invalide." }, { status: 400 });
 
@@ -58,9 +58,9 @@ export async function POST(req: NextRequest) {
   const prenomDisplay = prenom ? ` ${prenom}` : "";
 
   await resend.emails.send({
-    from: "DataSphère <onboarding@resend.dev>",
+    from: "Data Universe <onboarding@resend.dev>",
     to: email,
-    subject: "Confirme ton inscription à la newsletter DataSphère",
+    subject: "Confirme ton inscription à la newsletter Data Universe",
     html: `
       <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 24px;">
         <div style="margin-bottom: 32px;">
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         </p>
         <hr style="border: none; border-top: 1px solid #E2E8F0; margin: 32px 0;" />
         <p style="font-size: 12px; color: #94A3B8;">
-          DataSphère · Le hub data & IA francophone ·
+          Data Universe · Le hub data & IA francophone ·
           <a href="${BASE_URL}/confidentialite" style="color: #94A3B8;">Politique de confidentialité</a>
         </p>
       </div>

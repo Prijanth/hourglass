@@ -1,6 +1,6 @@
-# SQL vs Python : lequel apprendre en premier ?
+﻿# SQL vs Python : lequel apprendre en premier ?
 **Durée cible :** 65s
-**Caption TikTok :** Tout le monde débute avec la même question : SQL ou Python d'abord ? La réponse honnête n'est pas "les deux" (c'est trop facile). Voici mon avis tranché, avec une vraie justification. #sql #python #apprendrelacode #dataanalytics #debutant #datascience #techfr #datasphere
+**Caption TikTok :** Tout le monde débute avec la même question : SQL ou Python d'abord ? La réponse honnête n'est pas "les deux" (c'est trop facile). Voici mon avis tranché, avec une vraie justification. #sql #python #apprendrelacode #dataanalytics #debutant #datascience #techfr #Data Universe
 
 ---
 ## SCRIPT
@@ -12,7 +12,7 @@ SQL ou Python, lequel apprendre en premier ? La vraie réponse, pas la réponse 
 Je vais être direct : commence par SQL. Voilà pourquoi. SQL est le langage de la donnée. Quel que soit le métier data que tu vises, data analyst, data engineer, data scientist, tu vas utiliser SQL. Tous les jours. Même les data scientists qui font du machine learning passent 80% de leur temps à extraire et nettoyer des données... avec SQL. Python c'est plus puissant, c'est indéniable. Tu peux faire du machine learning, de l'automatisation, des dashboards interactifs. Mais Python sans savoir manipuler des données, c'est un marteau sans clou. SQL te donne le fondement. Tu comprends comment les données sont structurées, comment les jointures fonctionnent, comment penser en ensembles. C'est une logique que Python ne t'apprendra pas. Et bonne nouvelle : SQL s'apprend en 2-3 semaines pour le niveau opérationnel. Python prend plusieurs mois. Commence par la victoire rapide qui te rend immédiatement utile sur le marché.
 
 [55s] CONCLUSION + CTA
-SQL d'abord. Python ensuite. Dans cet ordre. On a un parcours débutant complet sur datasphere.fr si tu veux un plan structuré.
+SQL d'abord. Python ensuite. Dans cet ordre. On a un parcours débutant complet sur Data Universe.fr si tu veux un plan structuré.
 
 ---
 ## VISUELS / TRANSITIONS SUGGÉRÉS
@@ -36,5 +36,5 @@ SQL d'abord. Python ensuite. Dans cet ordre. On a un parcours débutant complet 
 
 [50s-65s]
 - Texte : "SQL d'abord. Python ensuite."
-- URL datasphere.fr en overlay
-- CTA : "Parcours débutant sur datasphere.fr"
+- URL Data Universe.fr en overlay
+- CTA : "Parcours débutant sur Data Universe.fr"

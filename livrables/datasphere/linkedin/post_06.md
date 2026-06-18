@@ -1,7 +1,7 @@
-# Data Engineer vs Data Scientist vs Data Analyst : qui fait quoi ?
+﻿# Data Engineer vs Data Scientist vs Data Analyst : qui fait quoi ?
 **Format :** Comparatif liste/tableau
 **Objectif :** Éduquer / Générer du trafic
-**Hashtags :** #DataEngineer #DataScientist #DataAnalyst #Métiers #DataSphère
+**Hashtags :** #DataEngineer #DataScientist #DataAnalyst #Métiers #Data Universe
 
 ---
 
@@ -62,5 +62,5 @@ Le Data Scientist prédit la météo.
 Ils ont besoin les uns des autres.
 
 ---
-**CTA :** Fiches détaillées des 3 métiers avec salaires, compétences et formations sur DataSphère.
-**Lien :** https://datasphere.fr/metiers
+**CTA :** Fiches détaillées des 3 métiers avec salaires, compétences et formations sur Data Universe.
+**Lien :** https://Data Universe.fr/metiers

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Recruteurs data & IA — Publiez vos offres | DataSphère",
+  title: "Recruteurs data & IA — Publiez vos offres | Data Universe",
   description:
     "Recrutez les meilleurs profils data & IA francophones. 2 400 professionnels reçoivent vos offres chaque semaine. Dépôt gratuit, audience qualifiée.",
 };
@@ -55,7 +55,7 @@ const PROFILS = [
 const AVANTAGES = [
   {
     titre: "100 % gratuit",
-    desc: "Aucun frais de publication. Diffusion immédiate auprès de l'audience DataSphère, sans abonnement ni commission.",
+    desc: "Aucun frais de publication. Diffusion immédiate auprès de l'audience Data Universe, sans abonnement ni commission.",
   },
   {
     titre: "Audience qualifiée",
@@ -63,7 +63,7 @@ const AVANTAGES = [
   },
   {
     titre: "Profils techniques validés",
-    desc: "Les membres DataSphère passent des quiz de niveau et suivent des roadmaps de certification. Vous ciblez des candidats qui savent ce qu'ils font.",
+    desc: "Les membres Data Universe passent des quiz de niveau et suivent des roadmaps de certification. Vous ciblez des candidats qui savent ce qu'ils font.",
   },
   {
     titre: "Ciblage France / francophone",
@@ -80,7 +80,7 @@ const ETAPES = [
   {
     num: "02",
     titre: "Validation sous 24 h",
-    desc: "L'équipe DataSphère vérifie votre offre et vous confirme la publication par e-mail.",
+    desc: "L'équipe Data Universe vérifie votre offre et vous confirme la publication par e-mail.",
   },
   {
     num: "03",
@@ -319,7 +319,7 @@ export default function RecruteursPage() {
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 32, padding: "0 24px" }}>
-          <span className="section-label">Ils recrutent sur DataSphère</span>
+          <span className="section-label">Ils recrutent sur Data Universe</span>
         </div>
 
         {/* Marquee */}
@@ -524,7 +524,7 @@ export default function RecruteursPage() {
       {/* ── Avantages ────────────────────────────────────────── */}
       <section style={{ padding: "72px 24px", maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <span className="section-label">Pourquoi DataSphère</span>
+          <span className="section-label">Pourquoi Data Universe</span>
           <h2
             style={{
               fontFamily: "var(--font-display)",

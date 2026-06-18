@@ -5,7 +5,7 @@ export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const title    = searchParams.get("title")    ?? "DataSphere";
+  const title    = searchParams.get("title")    ?? "Data Universe";
   const subtitle = searchParams.get("subtitle") ?? "La reference data & IA en francais";
   const type     = searchParams.get("type")     ?? "";
 
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
             <div style={{ width: 16, height: 16, borderRadius: "50%", background: "white", opacity: 0.9 }} />
           </div>
           <span style={{ fontWeight: 800, fontSize: 24, color: "#0F172A", letterSpacing: "-0.03em" }}>
-            DataSphere
+            Data Universe
           </span>
           {type ? (
             <span style={{
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
 
         {/* Footer */}
         <div style={{ display: "flex", marginTop: 52, fontSize: 16, color: "#94A3B8" }}>
-          datasphere.fr
+          data-universe.fr
         </div>
       </div>
     ),

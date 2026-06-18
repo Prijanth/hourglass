@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import outils from "@/content/outils.json";
 import { OutilsGrid } from "@/components/outils-grid";
 
 export const metadata: Metadata = {
-  title: "Outils Data & IA — Comparatifs et fiches détaillées | DataSphère",
+  title: "Outils Data & IA — Comparatifs et fiches détaillées | Data Universe",
   description: "88 fiches détaillées sur les outils data du marché : Snowflake, Databricks, dbt, Airflow, Spark. Scores, pros/cons et alternatives pour choisir le bon outil.",
 };
 

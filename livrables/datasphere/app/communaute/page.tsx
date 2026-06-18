@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Communauté DataSphère — Le hub data francophone",
-  description: "La communauté DataSphère pour les professionnels de la data en France. Questions, retours d'expérience, partage de ressources.",
+  title: "Communauté Data Universe — Le hub data francophone",
+  description: "La communauté Data Universe pour les professionnels de la data en France. Questions, retours d'expérience, partage de ressources.",
 };
 
 const THEMES = [
@@ -84,7 +84,7 @@ export default function CommunautePage() {
           </h1>
 
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.7)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 36px" }}>
-            La communauté DataSphère est en cours de construction. En attendant le lancement du Discord et du forum, rejoins la newsletter pour rester connecté.
+            La communauté Data Universe est en cours de construction. En attendant le lancement du Discord et du forum, rejoins la newsletter pour rester connecté.
           </p>
 
           <Link href="/newsletter" className="btn-primary" style={{ fontSize: 15, padding: "13px 28px" }}>

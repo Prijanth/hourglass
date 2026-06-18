@@ -1,7 +1,7 @@
-# Top 5 certifications data à passer en 2026
+﻿# Top 5 certifications data à passer en 2026
 **Format :** Post liste
 **Objectif :** Éduquer / Générer du trafic
-**Hashtags :** #Certification #Data #AWS #Databricks #Snowflake #DataSphère
+**Hashtags :** #Certification #Data #AWS #Databricks #Snowflake #Data Universe
 
 ---
 
@@ -56,7 +56,7 @@ Pourquoi ces 5 en particulier ?
 Les équipes data recrutent massivement en ce moment.
 Une certification bien choisie te différencie en 30 secondes sur un CV.
 
-Toutes les infos détaillées (programme, prix, ressources) sur DataSphère 👇
-datasphere.fr/certifications
+Toutes les infos détaillées (programme, prix, ressources) sur Data Universe 👇
+Data Universe.fr/certifications
 
-#Data #Certification #AWS #Databricks #Snowflake #DataSphère
+#Data #Certification #AWS #Databricks #Snowflake #Data Universe

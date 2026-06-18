@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import outils from "@/content/outils.json";
@@ -16,13 +16,13 @@ export function generateStaticParams() {
   return outils.map((o) => ({ slug: o.slug }));
 }
 
-const BASE = "https://datasphere.fr";
+const BASE = "https://Data Universe.fr";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const outil = outils.find((o) => o.slug === slug);
-  if (!outil) return { title: "Outil — DataSphère" };
-  const title = `${outil.name} — Présentation, cas d'usage et alternatives 2026 | DataSphère`;
+  if (!outil) return { title: "Outil — Data Universe" };
+  const title = `${outil.name} — Présentation, cas d'usage et alternatives 2026 | Data Universe`;
   const description = `${outil.tagline}. Tarif : ${outil.pricing}. Points forts, limites et cas d'usage concrets.`;
   const ogImageUrl = `${BASE}/og?title=${encodeURIComponent(outil.name)}&subtitle=${encodeURIComponent(outil.tagline)}&type=${encodeURIComponent(outil.category)}`;
   return {

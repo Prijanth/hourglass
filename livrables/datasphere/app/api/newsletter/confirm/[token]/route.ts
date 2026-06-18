@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+﻿import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ token: string }> }) {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://datasphere.fr";
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://Data Universe.fr";
   const { token } = await params;
 
   const supabase = getSupabase();

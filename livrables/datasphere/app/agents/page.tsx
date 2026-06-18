@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 const AGENTS = [
@@ -845,7 +845,7 @@ Format de sortie : YAML structuré + commentaires explicatifs.`,
     exemple_input: "Table 'orders' produite par l'équipe e-commerce. Colonnes : order_id (PK), customer_id (FK), amount, status, created_at. Mise à jour toutes les heures. Consommée par l'équipe analytics pour les dashboards de ventes.",
     exemple_output: `\`\`\`yaml
 dataContractSpecification: 0.9.3
-id: urn:datasphere:ecommerce:orders:v1
+id: urn:Data Universe:ecommerce:orders:v1
 info:
   title: Orders Dataset
   version: 1.0.0

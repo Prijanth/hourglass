@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { ParcoursEtapes } from "./parcours";
 import { Bifurcation } from "./bifurcation";
 
 export const metadata: Metadata = {
-  title: "Débuter en data — Parcours guidé pour entrer dans la data en 2026 | DataSphère",
+  title: "Débuter en data — Parcours guidé pour entrer dans la data en 2026 | Data Universe",
   description: "Tu veux débuter dans la data ? Suis ce parcours en 5 étapes : bases SQL et Python, certifications pour débutants, premiers projets et ressources gratuites recommandées par des praticiens.",
 };
 

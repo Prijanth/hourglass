@@ -1,7 +1,7 @@
-# Comment passer AWS Cloud Practitioner en 3 semaines
+﻿# Comment passer AWS Cloud Practitioner en 3 semaines
 **Format :** Liste plan semaine par semaine
 **Objectif :** Éduquer / Générer du trafic
-**Hashtags :** #AWS #Certification #Cloud #CloudPractitioner #DataSphère
+**Hashtags :** #AWS #Certification #Cloud #CloudPractitioner #Data Universe
 
 ---
 
@@ -63,5 +63,5 @@ Coût : 100 USD (souvent remboursé par l'employeur).
 Avec cette méthode, le taux de réussite au premier passage est très élevé.
 
 ---
-**CTA :** Plan de révision complet et ressources recommandées sur DataSphère.
-**Lien :** https://datasphere.fr/certifications/aws-cloud-practitioner
+**CTA :** Plan de révision complet et ressources recommandées sur Data Universe.
+**Lien :** https://Data Universe.fr/certifications/aws-cloud-practitioner

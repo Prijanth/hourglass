@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import formations from "@/content/formations.json";
 import { FormationsGrid } from "@/components/formations-grid";
 
 export const metadata: Metadata = {
-  title: "Formations Data & IA — Udemy, Coursera, DataCamp | DataSphère",
+  title: "Formations Data & IA — Udemy, Coursera, DataCamp | Data Universe",
   description: "Les meilleures formations data et IA sélectionnées : Udemy, Coursera, DataCamp, dbt Labs, fast.ai. Tous niveaux, Python, SQL, Machine Learning, MLOps.",
 };
 

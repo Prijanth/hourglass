@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Roadmap certifications data 2026 — Dans quel ordre se certifier | DataSphère",
+  title: "Roadmap certifications data 2026 — Dans quel ordre se certifier | Data Universe",
   description: "Parcours visuels de certifications par provider : AWS, Azure, GCP, Databricks, Snowflake, dbt, Dataiku, Google. De débutant à expert, dans le bon ordre.",
 };
 

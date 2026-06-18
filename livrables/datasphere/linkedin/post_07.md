@@ -1,7 +1,7 @@
-# Pourquoi apprendre dbt en 2026 ?
+﻿# Pourquoi apprendre dbt en 2026 ?
 **Format :** Post texte
 **Objectif :** Éduquer / Inspirer
-**Hashtags :** #dbt #Analytics #DataAnalyst #DataEngineering #DataSphère
+**Hashtags :** #dbt #Analytics #DataAnalyst #DataEngineering #Data Universe
 
 ---
 
@@ -51,5 +51,5 @@ Un premier projet pratique prend moins d'une journée.
 Il n'y a pas de raison d'attendre.
 
 ---
-**CTA :** Guide de démarrage dbt avec exemples concrets sur DataSphère.
-**Lien :** https://datasphere.fr/outils/dbt
+**CTA :** Guide de démarrage dbt avec exemples concrets sur Data Universe.
+**Lien :** https://Data Universe.fr/outils/dbt

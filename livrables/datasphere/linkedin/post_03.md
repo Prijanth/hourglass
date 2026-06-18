@@ -1,7 +1,7 @@
-# SQL vs dbt : quelle différence ?
+﻿# SQL vs dbt : quelle différence ?
 **Format :** Post texte éducatif
 **Objectif :** Éduquer
-**Hashtags :** #SQL #dbt #Data #Analytics #DataSphère
+**Hashtags :** #SQL #dbt #Data #Analytics #Data Universe
 
 ---
 
@@ -49,5 +49,5 @@ Tu travailles déjà en SQL ?
 dbt est la prochaine compétence à ajouter.
 
 ---
-**CTA :** Découvre le guide complet sur dbt et comment démarrer sur DataSphère.
-**Lien :** https://datasphere.fr/outils/dbt
+**CTA :** Découvre le guide complet sur dbt et comment démarrer sur Data Universe.
+**Lien :** https://Data Universe.fr/outils/dbt

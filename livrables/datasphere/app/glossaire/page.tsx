@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import glossaire from "@/content/glossaire.json";
@@ -30,7 +30,7 @@ function buildTermHtml(t: GlossaireTerm): string {
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>DataSphère — ${esc(t.term)}</title>
+  <title>Data Universe — ${esc(t.term)}</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0F172A;background:#fff;font-size:13px;line-height:1.6}
@@ -55,11 +55,11 @@ function buildTermHtml(t: GlossaireTerm): string {
 <body>
   <div class="header">
     <div>
-      <div class="logo">⬡ DataSphère · Fiche Glossaire</div>
+      <div class="logo">⬡ Data Universe · Fiche Glossaire</div>
       <h1>${esc(t.term)}</h1>
       <span class="badge" style="background:#EDE9FE;color:#5B21B6">${esc(t.category)}</span>
     </div>
-    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">datasphere.fr/glossaire</div>
+    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">Data Universe.fr/glossaire</div>
   </div>
   <div class="body">
     <div class="def">${esc(t.definition)}</div>
@@ -68,8 +68,8 @@ function buildTermHtml(t: GlossaireTerm): string {
     <div class="examples">${t.examples.map(e => `<span class="ex">${esc(e)}</span>`).join("")}</div>` : ""}
   </div>
   <div class="footer">
-    <div class="footer-brand">DataSphère</div>
-    <div class="footer-url">datasphere.fr · Le référentiel data en français</div>
+    <div class="footer-brand">Data Universe</div>
+    <div class="footer-url">Data Universe.fr · Le référentiel data en français</div>
   </div>
 </body>
 </html>`;

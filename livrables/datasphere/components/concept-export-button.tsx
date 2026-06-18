@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 type Concept = {
@@ -64,7 +64,7 @@ function buildConceptBody(c: Concept): string {
 
   <div class="ds-header">
     <div>
-      <div class="ds-logo">⬡ DataSphère · Fiche Concept</div>
+      <div class="ds-logo">⬡ Data Universe · Fiche Concept</div>
       <div class="ds-h1">${esc(c.emoji)} ${esc(c.titre)}</div>
       <div class="ds-meta">
         <span class="ds-badge" style="background:#EDE9FE;color:#5B21B6">${esc(c.categorie)}</span>
@@ -72,7 +72,7 @@ function buildConceptBody(c: Concept): string {
         <span style="font-size:11px;color:#94A3B8">${esc(c.sous_categorie)}</span>
       </div>
     </div>
-    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">datasphere.fr/concepts/${esc(c.id)}</div>
+    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">Data Universe.fr/concepts/${esc(c.id)}</div>
   </div>
 
   <div class="ds-body">
@@ -121,8 +121,8 @@ function buildConceptBody(c: Concept): string {
   </div>
 
   <div class="ds-footer">
-    <div class="ds-footer-brand">DataSphère</div>
-    <div class="ds-footer-url">datasphere.fr · Le référentiel data en français</div>
+    <div class="ds-footer-brand">Data Universe</div>
+    <div class="ds-footer-url">Data Universe.fr · Le référentiel data en français</div>
   </div>
 </div>`;
 }
@@ -139,7 +139,7 @@ export default function ConceptExportButton({ concept }: { concept: Concept }) {
       await html2pdf()
         .set({
           margin: [8, 8, 8, 8],
-          filename: `datasphere-${concept.id}.pdf`,
+          filename: `Data Universe-${concept.id}.pdf`,
           image: { type: "png" },
           html2canvas: { scale: 3, useCORS: true, logging: false },
           jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },

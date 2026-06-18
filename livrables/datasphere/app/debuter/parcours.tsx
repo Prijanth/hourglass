@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ const ETAPES = [
     duree: "1 semaine",
     desc: "Avant d'apprendre quoi que ce soit, il faut savoir vers quel métier tu te diriges. Data Analyst, Data Engineer, Data Scientist, ML Engineer : chaque rôle a des compétences différentes.",
     actions: [
-      "Lire les fiches métiers DataSphère pour comprendre les différences",
+      "Lire les fiches métiers Data Universe pour comprendre les différences",
       "Identifier le rôle qui correspond à ton profil et tes objectifs",
       "Regarder les salaires et les compétences requises pour chaque poste",
     ],
@@ -95,7 +95,7 @@ const ETAPES = [
   },
 ];
 
-const STORAGE_KEY = "datasphere_debuter_progress";
+const STORAGE_KEY = "Data Universe_debuter_progress";
 
 export function ParcoursEtapes() {
   const [completed, setCompleted] = useState<Record<string, boolean>>({});
@@ -257,7 +257,7 @@ export function ParcoursEtapes() {
                 {/* Liens */}
                 <div>
                   <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.08em", color: "#94A3B8", marginBottom: 12 }}>
-                    Ressources DataSphère
+                    Ressources Data Universe
                   </p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {e.liens.map(l => (

@@ -37,12 +37,13 @@ export function Footer() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <div style={{ width: 28, height: 28, borderRadius: 8, background: "linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 16px rgba(124,58,237,0.4)" }}>
-                <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-                  <polyline points="0,5 3,5 5,1 7,9 9,2 11,5 16,5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="3.2" fill="white"/>
+                  <ellipse cx="10" cy="10" rx="9" ry="3.8" stroke="white" strokeWidth="1.4" fill="none"/>
                 </svg>
               </div>
               <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 17, letterSpacing: "-0.03em" }}>
-                Data<span style={{ color: "#A78BFA" }}>Sphère</span>
+                Data<span style={{ color: "#A78BFA" }}> Universe</span>
               </span>
             </div>
             <p style={{ fontSize: 13.5, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 290, marginBottom: 18 }}>
@@ -124,7 +125,7 @@ export function Footer() {
         </div>
 
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 22, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
-          <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>© 2026 DataSphère. Tous droits réservés.</p>
+          <p style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>© 2026 Data Universe. Tous droits réservés.</p>
           <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
             <Link href="/a-propos" style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>À propos</Link>
             <Link href="/mentions-legales" style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", textDecoration: "none" }}>Mentions légales</Link>

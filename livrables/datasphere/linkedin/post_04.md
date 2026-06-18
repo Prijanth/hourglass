@@ -1,7 +1,7 @@
-# C'est quoi un Lakehouse ?
+﻿# C'est quoi un Lakehouse ?
 **Format :** Post texte + schéma textuel
 **Objectif :** Éduquer
-**Hashtags :** #Lakehouse #DataLake #DataWarehouse #Architecture #DataSphère
+**Hashtags :** #Lakehouse #DataLake #DataWarehouse #Architecture #Data Universe
 
 ---
 
@@ -55,5 +55,5 @@ Ils ajoutent les propriétés ACID au stockage objet.
 Databricks, Snowflake et Microsoft Fabric construisent leurs produits sur ce paradigme.
 
 ---
-**CTA :** Comprendre l'architecture Lakehouse en profondeur : fiche complète sur DataSphère.
-**Lien :** https://datasphere.fr/concepts/lakehouse
+**CTA :** Comprendre l'architecture Lakehouse en profondeur : fiche complète sur Data Universe.
+**Lien :** https://Data Universe.fr/concepts/lakehouse

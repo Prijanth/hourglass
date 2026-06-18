@@ -107,12 +107,13 @@ export function Nav() {
             boxShadow: "0 2px 8px rgba(124,58,237,0.3)",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
-            <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
-              <polyline points="0,5 3,5 5,1 7,9 9,2 11,5 16,5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="3.2" fill="white"/>
+              <ellipse cx="10" cy="10" rx="9" ry="3.8" stroke="white" strokeWidth="1.4" fill="none"/>
             </svg>
           </div>
           <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 16, letterSpacing: "-0.03em", color: "#0F172A" }}>
-            Data<span style={{ color: "var(--indigo)" }}>Sphère</span>
+            Data<span style={{ color: "var(--indigo)" }}> Universe</span>
           </span>
         </Link>
 

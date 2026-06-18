@@ -1,4 +1,4 @@
-# Rapport de review DataSphère — 7 agents — 6 juin 2026
+﻿# Rapport de review Data Universe — 7 agents — 6 juin 2026
 
 > Synthèse consolidée et classée par priorité.
 > Agents : Vérification factuelle · UX/Accessibilité · Contenu data · SEO · Product Manager · Frontend/Performance · Expert Design Web (25+ ans)
@@ -94,7 +94,7 @@ Ces problèmes cassent le site en production ou induisent gravement en erreur le
 **Agents : SEO, Frontend**
 - `app/outils/[slug]/page.tsx` : aucun `generateMetadata` → toutes les fiches outils héritent du title générique
 - `app/actualites/[slug]/page.tsx` : idem
-- **Correction** : Ajouter `generateMetadata` dynamique dans ces deux fichiers (title = `{nom} — Avis, prix, alternatives | DataSphère`)
+- **Correction** : Ajouter `generateMetadata` dynamique dans ces deux fichiers (title = `{nom} — Avis, prix, alternatives | Data Universe`)
 
 ---
 

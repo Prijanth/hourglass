@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useEffect, useState } from "react";
 
 type ScoreRecord = Record<string, { pct: number; date: string; total: number; correct: number }>;
@@ -8,7 +8,7 @@ export function QuizScoreBadge({ slug }: { slug: string }) {
 
   useEffect(() => {
     try {
-      const saved: ScoreRecord = JSON.parse(localStorage.getItem("datasphere_quiz_scores") ?? "{}");
+      const saved: ScoreRecord = JSON.parse(localStorage.getItem("Data Universe_quiz_scores") ?? "{}");
       if (saved[slug]) setScore(saved[slug]);
     } catch {}
   }, [slug]);

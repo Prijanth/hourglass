@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useMemo, use } from "react";
 import Link from "next/link";
 import quizzes from "@/content/quizzes.json";
@@ -56,7 +56,7 @@ export default function QuizPage({ params }: { params: Promise<{ slug: string }>
 
   function saveScore(finalScores: boolean[]) {
     try {
-      const key = "datasphere_quiz_scores";
+      const key = "Data Universe_quiz_scores";
       const existing = JSON.parse(localStorage.getItem(key) ?? "{}");
       existing[quiz!.slug] = {
         pct: Math.round((finalScores.filter(Boolean).length / finalScores.length) * 100),
@@ -126,7 +126,7 @@ export default function QuizPage({ params }: { params: Promise<{ slug: string }>
       <div style={{ marginTop: 28, padding: "20px 24px", background: "var(--indigo-tint)", borderRadius: 14, border: "1px solid var(--indigo-border)" }}>
         <p style={{ fontSize: 13, fontWeight: 700, color: "var(--indigo)", marginBottom: 6 }}>Aller plus loin</p>
         <p style={{ fontSize: 13.5, color: "var(--text)", lineHeight: 1.6 }}>
-          Pour progresser sur ce sujet, consulte la fiche outil ou les concepts associés sur DataSphère.
+          Pour progresser sur ce sujet, consulte la fiche outil ou les concepts associés sur Data Universe.
         </p>
         <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
           <Link href="/outils" style={{ fontSize: 13, fontWeight: 600, color: "var(--indigo)" }}>Outils →</Link>

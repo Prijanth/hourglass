@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import data from "@/content/certifications.json";
@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const cert = getCert(slug);
   if (!cert) return {};
   return {
-    title: `${cert.nom} — Guide complet, avis et ressources | DataSphère`,
+    title: `${cert.nom} — Guide complet, avis et ressources | Data Universe`,
     description: `Tout sur la certification ${cert.nom} : niveau ${cert.niveau}, ${cert.duree_prep} de préparation, coût ${cert.cout}. Guide complet, compétences et conseils pour réussir.`,
     openGraph: {
       title: `${cert.nom} — Guide complet`,
       description: cert.description,
-      url: `https://datasphere.fr/certifications/${slug}`,
-      siteName: "DataSphère",
+      url: `https://Data Universe.fr/certifications/${slug}`,
+      siteName: "Data Universe",
       locale: "fr_FR",
       type: "article",
     },
@@ -218,14 +218,14 @@ export default async function CertificationPage({ params }: { params: Promise<{ 
                 ))}
               </div>
               <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 14, lineHeight: 1.6 }}>
-                Les liens &ldquo;Externe&rdquo; ouvrent des recherches Udemy. DataSphère ne perçoit pas de commission sur ces liens.
+                Les liens &ldquo;Externe&rdquo; ouvrent des recherches Udemy. Data Universe ne perçoit pas de commission sur ces liens.
               </p>
             </div>
 
             {/* CTA newsletter */}
             <div style={{ background: "#0B0F29", borderRadius: 16, padding: "28px 26px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
               <div>
-                <p style={{ fontSize: 14, fontWeight: 700, color: "#A78BFA", marginBottom: 4 }}>Newsletter DataSphère</p>
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#A78BFA", marginBottom: 4 }}>Newsletter Data Universe</p>
                 <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>
                   Toutes les certifications data,<br />chaque semaine en français
                 </p>

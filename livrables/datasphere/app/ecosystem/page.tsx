@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Carte de l'écosystème data — Modern Data Stack 2026 | DataSphère",
+  title: "Carte de l'écosystème data — Modern Data Stack 2026 | Data Universe",
   description:
     "Visualisez le Modern Data Stack de bout en bout : sources, ingestion, stockage, transformation, ML et consommation. Tous les outils data organisés par couche, avec les combos les plus populaires en 2026.",
 };

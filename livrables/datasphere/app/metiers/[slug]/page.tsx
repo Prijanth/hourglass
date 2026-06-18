@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import metiers from "@/content/metiers.json";
 import formations from "@/content/formations.json";
 
-const BASE = "https://datasphere.fr";
+const BASE = "https://Data Universe.fr";
 
 const FORMATIONS_PAR_METIER: Record<string, string[]> = {
   "data-analyst":          ["google-data-analytics", "udemy-sql-complet", "datacamp-sql-fundamentals", "openclassrooms-data-analyst"],
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const m = getMetier(slug);
   if (!m) return {};
-  const title = `${m.title} — Compétences, certifications et carrière 2026 | DataSphère`;
+  const title = `${m.title} — Compétences, certifications et carrière 2026 | Data Universe`;
   const description = `Tout sur le métier de ${m.title} : compétences requises, certifications, formations et trajectoires de carrière en France.`;
   const ogImageUrl = `${BASE}/og?title=${encodeURIComponent(m.title)}&subtitle=${encodeURIComponent(m.tagline)}&type=M%C3%A9tier`;
   return {
@@ -340,7 +340,7 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
           {/* CTA newsletter */}
           <div style={{ background: "#0B0F29", borderRadius: 16, padding: "28px 26px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
             <div>
-              <p style={{ fontSize: 14, fontWeight: 700, color: "#A78BFA", marginBottom: 4 }}>Newsletter DataSphère</p>
+              <p style={{ fontSize: 14, fontWeight: 700, color: "#A78BFA", marginBottom: 4 }}>Newsletter Data Universe</p>
               <p style={{ fontSize: 17, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>
                 Certifications, outils data<br />chaque semaine en français
               </p>

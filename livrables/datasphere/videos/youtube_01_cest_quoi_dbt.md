@@ -1,7 +1,7 @@
-# C'est quoi dbt ? Expliqué en 4 minutes
+﻿# C'est quoi dbt ? Expliqué en 4 minutes
 **Durée cible :** 4 min
-**Description YouTube :** dbt (data build tool) est l'outil qui a révolutionné la façon de travailler avec SQL en data engineering. Dans cette vidéo, on explique en 4 minutes ce que c'est, pourquoi ça change tout pour les data analysts et engineers, et comment ça résout le problème du "SQL spaghetti" que tout le monde a vécu. On voit la différence entre avant et après dbt, avec un exemple concret. Si tu bosses avec des données et que tu n'as pas encore entendu parler de dbt, c'est le moment. Pour aller plus loin : datasphere.fr/outils/dbt-core
-**Tags :** dbt, data build tool, sql, data engineering, data analyst, transformation de données, modern data stack, analytics engineering, tutorial français, datasphere
+**Description YouTube :** dbt (data build tool) est l'outil qui a révolutionné la façon de travailler avec SQL en data engineering. Dans cette vidéo, on explique en 4 minutes ce que c'est, pourquoi ça change tout pour les data analysts et engineers, et comment ça résout le problème du "SQL spaghetti" que tout le monde a vécu. On voit la différence entre avant et après dbt, avec un exemple concret. Si tu bosses avec des données et que tu n'as pas encore entendu parler de dbt, c'est le moment. Pour aller plus loin : Data Universe.fr/outils/dbt-core
+**Tags :** dbt, data build tool, sql, data engineering, data analyst, transformation de données, modern data stack, analytics engineering, tutorial français, Data Universe
 
 ---
 ## SCRIPT
@@ -25,7 +25,7 @@ Si tu es data analyst, dbt te permet de devenir plus autonome. Tu n'as plus beso
 Il existe deux versions. dbt Core, la version open source, gratuite, que tu installes en local. Et dbt Cloud, la version SaaS avec interface web, parfaite si tu veux éviter la configuration. Pour débuter, installe dbt Core avec pip, connecte-le à ta base de données, et lance `dbt init` pour créer ton premier projet. La courbe d'apprentissage est courte si tu connais déjà SQL.
 
 [03:50] OUTRO (15s)
-On a un guide complet sur dbt Core sur datasphere.fr, avec les commandes essentielles et un exemple de projet de bout en bout. Le lien est dans la description. Si cette vidéo t'a été utile, like et abonne-toi, on sort du contenu data et IA en français chaque semaine.
+On a un guide complet sur dbt Core sur Data Universe.fr, avec les commandes essentielles et un exemple de projet de bout en bout. Le lien est dans la description. Si cette vidéo t'a été utile, like et abonne-toi, on sort du contenu data et IA en français chaque semaine.
 
 ---
 ## ÉLÉMENTS VISUELS SUGGÉRÉS
@@ -57,5 +57,5 @@ On a un guide complet sur dbt Core sur datasphere.fr, avec les commandes essenti
 - Écran de documentation auto-générée par dbt
 
 [03:50-04:05]
-- Écran datasphere.fr/outils/dbt-core avec le guide
+- Écran Data Universe.fr/outils/dbt-core avec le guide
 - Bouton like / abonnement mis en avant

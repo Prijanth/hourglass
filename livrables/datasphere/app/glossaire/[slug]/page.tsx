@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import glossaire from "@/content/glossaire.json";
@@ -36,12 +36,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const term = glossaire.find((t) => toSlug(t.term) === slug);
-  if (!term) return { title: "Terme introuvable | DataSphère" };
+  if (!term) return { title: "Terme introuvable | Data Universe" };
   return {
-    title: `${term.term} — Définition data & IA | DataSphère`,
+    title: `${term.term} — Définition data & IA | Data Universe`,
     description: term.definition.slice(0, 155) + (term.definition.length > 155 ? "…" : ""),
     openGraph: {
-      title: `${term.term} — Définition | DataSphère`,
+      title: `${term.term} — Définition | Data Universe`,
       description: term.definition.slice(0, 155),
     },
   };
@@ -62,7 +62,7 @@ export default async function GlossaireTermPage({ params }: { params: Promise<{ 
     "@type": "DefinedTerm",
     "name": term.term,
     "description": term.definition,
-    "inDefinedTermSet": "https://datasphere.fr/glossaire",
+    "inDefinedTermSet": "https://Data Universe.fr/glossaire",
   };
 
   return (

@@ -1,7 +1,7 @@
-# Le mythe du "Big Data" (et pourquoi Spark n'est pas pour vous)
+﻿# Le mythe du "Big Data" (et pourquoi Spark n'est pas pour vous)
 **Format :** Post texte opinionné
 **Objectif :** Engager / Éduquer
-**Hashtags :** #BigData #Spark #Data #Architecture #DataSphère
+**Hashtags :** #BigData #Spark #Data #Architecture #Data Universe
 
 ---
 
@@ -47,5 +47,5 @@ Si vous n'êtes pas dans ce cas, vous n'avez probablement pas besoin de Spark.
 L'outil le plus puissant n'est pas toujours le bon outil.
 
 ---
-**CTA :** Comprendre quand utiliser Spark (et quand l'éviter) sur DataSphère.
-**Lien :** https://datasphere.fr/outils/spark
+**CTA :** Comprendre quand utiliser Spark (et quand l'éviter) sur Data Universe.
+**Lien :** https://Data Universe.fr/outils/spark

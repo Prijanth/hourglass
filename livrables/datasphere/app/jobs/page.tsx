@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Offres d'emploi data & IA | DataSphere",
+  title: "Offres d'emploi data & IA | Data Universe",
   description: "CDI, freelance et remote en data et IA — toute la France.",
 };
 

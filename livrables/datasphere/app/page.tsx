@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import articles from "@/content/articles.json";
 import metiers from "@/content/metiers.json";
 import { SkillsChart } from "@/components/charts/skills-chart";
@@ -69,7 +69,7 @@ export default function Home() {
               </h1>
 
               <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.75, marginBottom: 36, maxWidth: 500 }}>
-                Encyclopédie, certifications, cas d&apos;usage, glossaire et communauté. Que tu démarres de zéro ou que tu sois praticien confirmé, DataSphère couvre toute la data en français.
+                Encyclopédie, certifications, cas d&apos;usage, glossaire et communauté. Que tu démarres de zéro ou que tu sois praticien confirmé, Data Universe couvre toute la data en français.
               </p>
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
@@ -113,7 +113,7 @@ export default function Home() {
               {/* Header */}
               <div style={{ marginBottom: 20 }}>
                 <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--indigo)", marginBottom: 5 }}>
-                  Ce que contient DataSphère
+                  Ce que contient Data Universe
                 </p>
                 <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.5 }}>
                   Toute la data &amp; l&apos;IA en français, au même endroit.
@@ -268,7 +268,7 @@ export default function Home() {
       <section style={{ padding: "72px 24px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <div style={{ marginBottom: 36 }}>
-            <span className="section-label">Explorer DataSphère</span>
+            <span className="section-label">Explorer Data Universe</span>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)", fontWeight: 800, color: "#0F172A" }}>
               Tout ce dont tu as besoin pour progresser en data
             </h2>

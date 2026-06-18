@@ -1,7 +1,7 @@
-# Roadmap Data Engineer 2026 : par où commencer ?
+﻿# Roadmap Data Engineer 2026 : par où commencer ?
 **Format :** Carrousel 5 slides
 **Objectif :** Éduquer / Générer du trafic
-**Hashtags :** #DataEngineering #Data #Carrière #Formation #DataSphère
+**Hashtags :** #DataEngineering #Data #Carrière #Formation #Data Universe
 
 ---
 
@@ -63,5 +63,5 @@ La progression prend du temps.
 Ce qui compte : la régularité, pas la vitesse.
 
 ---
-**CTA :** La roadmap complète avec ressources et liens de formation est sur DataSphère.
-**Lien :** https://datasphere.fr/debuter
+**CTA :** La roadmap complète avec ressources et liens de formation est sur Data Universe.
+**Lien :** https://Data Universe.fr/debuter

@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import articles from "@/content/articles.json";
 import { ArticleSidebar } from "@/components/article-sidebar";
 import { fmtDate } from "@/lib/date-utils";
 
-const BASE = "https://datasphere.fr";
+const BASE = "https://Data Universe.fr";
 
 const CATEGORY_COLORS: Record<string, string> = {
   indigo: "badge-indigo", teal: "badge-teal", amber: "badge-amber", rose: "badge-rose",
@@ -78,8 +78,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = articles.find((a) => a.slug === slug);
-  if (!article) return { title: "Article — DataSphère" };
-  const title = `${article.title} | DataSphère`;
+  if (!article) return { title: "Article — Data Universe" };
+  const title = `${article.title} | Data Universe`;
   const ogImageUrl = `${BASE}/og?title=${encodeURIComponent(article.title)}&subtitle=${encodeURIComponent(article.excerpt.slice(0, 120))}&type=${encodeURIComponent(article.category)}`;
   return {
     title,
@@ -114,7 +114,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     "description": article.excerpt,
     "datePublished": article.date,
     "author": { "@type": "Person", "name": article.author },
-    "publisher": { "@type": "Organization", "name": "DataSphère", "url": BASE },
+    "publisher": { "@type": "Organization", "name": "Data Universe", "url": BASE },
     "inLanguage": "fr",
     "articleSection": article.category,
     "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE}/actualites/${slug}` },
@@ -179,7 +179,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </div>
         </article>
 
-        <ArticleSidebar headings={headings} related={related} accent={accent} shareUrl={`https://datasphere.fr/actualites/${slug}`} />
+        <ArticleSidebar headings={headings} related={related} accent={accent} shareUrl={`https://Data Universe.fr/actualites/${slug}`} />
       </div>
     </>
   );

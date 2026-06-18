@@ -1,0 +1,755 @@
+[
+  {
+    "slug": "vllm",
+    "name": "vLLM",
+    "tagline": "Le serveur d'inférence LLM haute performance — 24x plus rapide que HuggingFace Transformers naïf",
+    "category": "IA Générative",
+    "emoji": "⚡",
+    "website": "https://docs.vllm.ai",
+    "pricing": "Gratuit (open source). Coût = GPU cloud (H100 ~3€/heure sur RunPod).",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "vLLM est le standard de facto pour servir des LLMs en production. Son innovation PagedAttention gère le KV cache comme la mémoire virtuelle d'un OS, éliminant la fragmentation et permettant le batching continu. Compatible avec l'API OpenAI, vLLM peut servir Llama, Mistral, Qwen et la plupart des modèles Hugging Face. Speculative decoding et prefix caching réduisent encore la latence.",
+    "features": [
+      "PagedAttention pour la gestion efficace du KV cache",
+      "Continuous batching (regroupe les requêtes en cours de génération)",
+      "Compatible OpenAI API (drop-in replacement)",
+      "Quantization intégrée (AWQ, GPTQ, FP8)",
+      "Tensor Parallelism multi-GPU",
+      "Speculative Decoding",
+      "Prefix Caching (réutilisation du système prompt)",
+      "LoRA serving multi-adapters",
+      "Support flash attention"
+    ],
+    "pros": [
+      "24x plus de débit que HuggingFace Transformers naïf",
+      "Compatible OpenAI API — zéro changement côté client",
+      "Quantization intégrée pour réduire les besoins GPU",
+      "LoRA multi-adapter : servir plusieurs modèles fine-tunés sur le même GPU"
+    ],
+    "cons": [
+      "GPU NVIDIA requis (AMD expérimental)",
+      "Configuration avancée pour le multi-GPU",
+      "Moins simple que Ollama pour un usage local/dev"
+    ],
+    "best_for": "Déploiement en production de LLMs open source avec de forts volumes de requêtes et exigences de latence.",
+    "not_for": "Usage local sur laptop, prototypage rapide (Ollama est plus adapté).",
+    "pieges_prod": [
+      "max_model_len trop grand fait exploser la VRAM — ajuster selon le use case réel.",
+      "Le continuous batching peut introduire de la latence sur des requêtes courtes si le batch est plein — ajuster max_num_seqs."
+    ],
+    "alternatives": ["ollama"],
+    "score": { "performance": 95, "facilite": 70, "ecosysteme": 85, "cout": 88, "support": 78 },
+    "tags": ["llm", "serving", "open-source", "production", "inference"],
+    "launched": "2023",
+    "use_cases": [
+      { "titre": "API LLM souverain en enterprise", "description": "Mistral-7B servi via vLLM sur 2 GPU A100, compatible OpenAI API, accessible depuis les applications internes. Données sensibles qui ne quittent jamais l'infra." }
+    ]
+  },
+  {
+    "slug": "ollama",
+    "name": "Ollama",
+    "tagline": "Lancez des LLMs open source en local en une commande — Llama, Mistral, Qwen sur votre machine",
+    "category": "IA Générative",
+    "emoji": "🦙",
+    "website": "https://ollama.com",
+    "pricing": "Gratuit (open source). Coût = votre matériel.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Ollama est l'outil le plus simple pour exécuter des LLMs open source en local. Une commande `ollama run llama3.2` télécharge et lance le modèle. Il propose une API compatible OpenAI et s'intègre avec LangChain, LlamaIndex et OpenWebUI. Parfait pour le développement local, les tests de prompts et les projets où les données ne peuvent pas quitter l'entreprise. Supporte la quantification GGUF pour tourner sur CPU ou GPU.",
+    "features": [
+      "Installation et lancement en une commande",
+      "API REST compatible OpenAI",
+      "Ollama Library : 100+ modèles (Llama, Mistral, Qwen, Gemma)",
+      "Quantization GGUF automatique",
+      "GPU inference (NVIDIA, Apple Silicon, AMD)",
+      "CPU fallback si pas de GPU",
+      "Custom models via Modelfile",
+      "Multimodal (LLaVA, vision models)"
+    ],
+    "pros": [
+      "Le plus simple pour démarrer avec les LLMs localement",
+      "Confidentialité totale (aucune donnée ne quitte la machine)",
+      "Fonctionne sur Mac M1/M2/M3 avec performances excellentes",
+      "Parfait pour le développement et les tests avant déploiement vLLM"
+    ],
+    "cons": [
+      "Performances inférieures à vLLM pour les charges de production",
+      "Limité par la RAM/VRAM de la machine locale",
+      "Pas de continuous batching pour les charges multiples"
+    ],
+    "best_for": "Développement local, prototypage d'applications LLM, tests de modèles, projets data en local sur Mac M-series.",
+    "not_for": "Production avec de forts volumes de requêtes (utiliser vLLM).",
+    "pieges_prod": [
+      "Les modèles volumieux (70B en 4-bit) nécessitent beaucoup de RAM unifiée (Mac) ou VRAM — vérifier les prérequis avant le download."
+    ],
+    "alternatives": ["vllm"],
+    "score": { "performance": 72, "facilite": 98, "ecosysteme": 82, "cout": 95, "support": 75 },
+    "tags": ["llm", "local", "open-source", "privacy", "development"],
+    "launched": "2023",
+    "use_cases": [
+      { "titre": "Développement d'application RAG en local", "description": "Développement local avec Ollama (Llama 3.2 3B) + LangChain + Chroma, zéro frais API. La même application est déployée en prod avec Claude API." }
+    ]
+  },
+  {
+    "slug": "langfuse",
+    "name": "Langfuse",
+    "tagline": "L'observabilité open source pour vos applications LLM — traces, évaluations et coûts",
+    "category": "IA Générative",
+    "emoji": "🔭",
+    "website": "https://langfuse.com",
+    "pricing": "Open source gratuit (self-hosted). Langfuse Cloud : free tier (50K traces/mois), Pro 59€/mois.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Langfuse est la plateforme d'observabilité open source pour les applications LLM. Il trace chaque appel LLM, les étapes RAG, les appels d'outils et les scores d'évaluation. Le dashboard affiche les coûts, la latence, les taux d'erreur et la qualité des réponses. Intégration plug-and-play avec LangChain, LlamaIndex, OpenAI SDK, Anthropic SDK.",
+    "features": [
+      "Tracing complet des applications LLM (spans, LLM calls)",
+      "Coût et usage token par requête et par utilisateur",
+      "Evaluations LLM-as-judge et scores humains",
+      "Datasets pour les tests de régression",
+      "Prompt Management versioning",
+      "Dashboard métriques (latence, coût, qualité)",
+      "Intégration LangChain, LlamaIndex, OpenAI, Anthropic",
+      "SDK Python et JS/TS"
+    ],
+    "pros": [
+      "Open source et self-hostable (RGPD)",
+      "Démarrage en 5 lignes de code",
+      "Suivi des coûts par feature/utilisateur/prompt",
+      "Évaluation intégrée pour mesurer la qualité des réponses"
+    ],
+    "cons": [
+      "Moins de fonctionnalités enterprise qu'Arize Phoenix ou LangSmith",
+      "Self-hosting nécessite une infrastructure (Docker/Kubernetes)"
+    ],
+    "best_for": "Équipes développant des applications LLM souhaitant une observabilité complète avec contrôle des données (RGPD).",
+    "not_for": "Cas d'usage sans besoin d'observabilité LLM (modèles ML classiques).",
+    "pieges_prod": [
+      "L'instrumentation correcte des spans (traces) est essentielle — un mauvais nommage rend le dashboard illisible.",
+      "Activer le sampling (ne tracer que 10% des requêtes) dès que les volumes dépassent le free tier."
+    ],
+    "alternatives": ["wandb"],
+    "score": { "performance": 82, "facilite": 85, "ecosysteme": 80, "cout": 88, "support": 78 },
+    "tags": ["llm", "observability", "open-source", "tracing", "evaluation"],
+    "launched": "2023",
+    "use_cases": [
+      { "titre": "Optimisation des coûts d'une app LLM", "description": "Langfuse révèle que 30% des requêtes utilisent le modèle claude-3-5-sonnet pour des tâches simples. Migration de ces requêtes vers claude-3-haiku : -65% de coût." }
+    ]
+  },
+  {
+    "slug": "amplitude",
+    "name": "Amplitude",
+    "tagline": "La plateforme de product analytics de référence pour comprendre le comportement utilisateur",
+    "category": "Business Intelligence",
+    "emoji": "📊",
+    "website": "https://amplitude.com",
+    "pricing": "Free tier (10M events/mois). Growth à partir de 995$/mois. Enterprise sur devis.",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Amplitude est la plateforme de product analytics leader. Elle permet d'analyser les comportements utilisateurs dans les applications web et mobile : funnels, rétention, cohortes, chemins, et impact des features. Amplitude est particulièrement appréciée pour ses analyses de rétention (courbes N-day et unbounded) et son Experiment (A/B testing intégré). Amplitude CDP centralise les données comportementales.",
+    "features": [
+      "Funnels (taux de conversion étape par étape)",
+      "Rétention (N-day, unbounded, bracket)",
+      "Cohortes comportementales",
+      "User Paths (chemins entre les événements)",
+      "Amplitude Experiment (A/B testing)",
+      "Behavioral Cohorts pour le ciblage",
+      "Amplitude CDP (collecte et unification)",
+      "Anomaly Detection automatique",
+      "Intégration Snowflake, BigQuery (export warehouse)"
+    ],
+    "pros": [
+      "Interface très intuitive pour les PMs et analystes non SQL",
+      "Rétention et funnel parmi les meilleurs du marché",
+      "Amplitude Experiment pour le A/B testing intégré",
+      "Export vers data warehouse pour analyses SQL avancées"
+    ],
+    "cons": [
+      "Coût élevé au-delà du free tier",
+      "Limité pour les analyses SQL complexes (préférer une combinaison dbt + BI tool)",
+      "Instrumentation events requiert effort de développement initial"
+    ],
+    "best_for": "Product managers et équipes growth cherchant à comprendre les comportements utilisateurs sans écrire de SQL.",
+    "not_for": "Analytics data warehouse (préférer dbt + Looker ou Metabase).",
+    "pieges_prod": [
+      "Le naming des events sans convention dès le départ crée un catalogue ingérable après 50+ events.",
+      "Les events rétroactifs ne peuvent pas être ingérés — bien définir le plan de tracking avant le développement."
+    ],
+    "alternatives": ["metabase", "looker"],
+    "score": { "performance": 85, "facilite": 88, "ecosysteme": 82, "cout": 55, "support": 82 },
+    "tags": ["product-analytics", "behavior", "saas", "funnel", "retention"],
+    "launched": "2012",
+    "french_clients": ["Doctolib", "Meetic", "ManoMano"],
+    "use_cases": [
+      { "titre": "Analyse du funnel d'onboarding", "description": "Amplitude identifie que 68% des utilisateurs abandonnent à l'étape 3 de l'onboarding. Cohorte des utilisateurs ayant complété l'étape 3 : rétention J30 de 62% vs 28%. Priorité absolue sur cette étape." }
+    ]
+  },
+  {
+    "slug": "segment",
+    "name": "Segment (Twilio)",
+    "tagline": "La Customer Data Platform (CDP) de référence — collectez une fois, envoyez partout",
+    "category": "Data Processing",
+    "emoji": "🔗",
+    "website": "https://segment.com",
+    "pricing": "Free tier (1 000 MTU/mois). Team à partir de 120$/mois. Business sur devis.",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Segment est la Customer Data Platform (CDP) qui centralise la collecte des données comportementales depuis toutes les sources (web, mobile, serveur) et les distribue vers 400+ destinations (analytics, CRM, marketing, data warehouse). Son architecture 'collect once, send anywhere' évite de gérer des dizaines d'intégrations techniques séparées.",
+    "features": [
+      "Tracking SDK (web, iOS, Android, serveur)",
+      "400+ connecteurs destinations (Salesforce, HubSpot, BigQuery)",
+      "Profiles (identité unifiée cross-device)",
+      "Audiences (segmentation et activation)",
+      "Connections (routage des events vers destinations)",
+      "Functions (transformation d'events en JavaScript)",
+      "Protocols (validation du plan de tracking)",
+      "Reverse ETL (depuis votre warehouse vers les destinations)"
+    ],
+    "pros": [
+      "Un seul SDK pour toutes les destinations — économie massive de développement",
+      "Identity resolution cross-device",
+      "400+ intégrations pré-construites",
+      "Source de vérité pour les données comportementales"
+    ],
+    "cons": [
+      "Coût peut être élevé à grande échelle (facturation par MTU)",
+      "Latence sur certaines destinations (quelques secondes de délai)",
+      "La gestion de la conformité RGPD nécessite une configuration soignée"
+    ],
+    "best_for": "Équipes produit/marketing cherchant à connecter toutes leurs sources de données comportementales à leurs outils marketing et analytics sans développement custom.",
+    "not_for": "Analytics SQL complexes (préférer directement le data warehouse).",
+    "pieges_prod": [
+      "Sans plan de tracking formalisé (quels events, quelles propriétés), le catalogue Segment devient rapidement ingérable.",
+      "Les destinations en temps réel (Salesforce, HubSpot) peuvent créer des contacts dupliqués si l'identity resolution n'est pas bien configurée."
+    ],
+    "alternatives": ["amplitude"],
+    "score": { "performance": 82, "facilite": 80, "ecosysteme": 92, "cout": 60, "support": 82 },
+    "tags": ["cdp", "tracking", "integration", "marketing", "saas"],
+    "launched": "2011",
+    "use_cases": [
+      { "titre": "Stack data moderne sans développement custom", "description": "Segment collecte les events web/app → Amplitude pour le product analytics + Snowflake pour les analyses SQL + HubSpot pour le CRM marketing. Un seul SDK côté dev." }
+    ]
+  },
+  {
+    "slug": "docker",
+    "name": "Docker",
+    "tagline": "La plateforme de containerisation qui standardise l'exécution des applications data et ML",
+    "category": "Infrastructure",
+    "emoji": "🐳",
+    "website": "https://www.docker.com",
+    "pricing": "Docker Desktop : gratuit pour les particuliers et PME < 250 personnes. Docker Business : 21$/utilisateur/mois.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Docker est la plateforme de containerisation standard qui permet de packager une application et ses dépendances dans un container portable. Indispensable pour les équipes data modernes : standardisation des environnements ML (plus de 'ça marche sur ma machine'), déploiement reproductible des APIs FastAPI, des modèles ML via TorchServe ou BentoML, et bases locales de développement.",
+    "features": [
+      "Images Docker (blueprints de containers)",
+      "Docker Compose (orchestration multi-containers)",
+      "Docker Hub (registry public de 10M+ images)",
+      "Volumes pour la persistance des données",
+      "Networks pour la communication inter-containers",
+      "Multi-stage builds pour les images de production légères",
+      "BuildKit pour les builds rapides et cache",
+      "Docker Desktop avec interface graphique"
+    ],
+    "pros": [
+      "Environnements parfaitement reproductibles",
+      "Isolation des dépendances (plus de conflits Python)",
+      "Standard universel supporté par tous les cloud providers",
+      "Docker Compose simplifie le développement local multi-services"
+    ],
+    "cons": [
+      "Overhead de performance léger vs bare metal",
+      "Gestion des permissions fichiers sous Linux délicate",
+      "Images volumineuses si mal construites (utiliser .dockerignore et multi-stage builds)"
+    ],
+    "best_for": "Standardisation des environnements de développement et déploiement d'applications data/ML sur n'importe quel infrastructure.",
+    "not_for": "Cas où la performance maximale est requise sans overhead de virtualisation.",
+    "pieges_prod": [
+      "Les images sans .dockerignore incluent node_modules ou les données d'entraînement — faire gonfler les images inutilement.",
+      "Stocker des secrets (API keys) dans les Dockerfiles ou les images est une faille de sécurité critique — utiliser des variables d'environnement ou secrets managers."
+    ],
+    "alternatives": ["kubernetes"],
+    "score": { "performance": 85, "facilite": 80, "ecosysteme": 98, "cout": 90, "support": 85 },
+    "tags": ["infrastructure", "containers", "devops", "open-source", "portable"],
+    "launched": "2013",
+    "use_cases": [
+      { "titre": "Environnement ML reproductible", "description": "Docker Compose lance en local : PostgreSQL + Redis + API FastAPI (modèle ML) + Jupyter Lab. Chaque data scientist a exactement le même environnement." }
+    ]
+  },
+  {
+    "slug": "kubernetes",
+    "name": "Kubernetes (K8s)",
+    "tagline": "Le standard d'orchestration de containers en production pour les workloads data et ML à grande échelle",
+    "category": "Infrastructure",
+    "emoji": "☸️",
+    "website": "https://kubernetes.io",
+    "pricing": "Gratuit (open source). Kubernetes managé : EKS ~180€/cluster/mois + nodes, GKE autopilot pay-per-pod.",
+    "free_tier": false,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Kubernetes est le système d'orchestration de containers standard pour la production. Chaque composant de votre stack data peut tourner sur K8s : Airflow (via Helm), Kafka, Spark Operator, Ray on Kubernetes, MLflow, et les endpoints de serving de modèles ML. K8s gère l'auto-scaling, la haute disponibilité, les rolling updates et la gestion des ressources GPU.",
+    "features": [
+      "Auto-scaling horizontal et vertical des pods",
+      "Rolling deployments sans downtime",
+      "Service discovery et load balancing",
+      "GPU scheduling pour les workloads ML",
+      "Persistent Volumes pour le stockage",
+      "Secrets et ConfigMaps",
+      "Helm Charts pour déployer la stack data",
+      "Namespace pour la multi-tenancy",
+      "RBAC pour les permissions",
+      "Custom Resource Definitions (CRDs) pour Spark, Ray, Kafka"
+    ],
+    "pros": [
+      "Standard universel supporté par tous les clouds",
+      "Auto-scaling natif pour les workloads variables (batch ML)",
+      "GPU scheduling pour les entraînements distribués",
+      "Helm Charts pour déployer Airflow, Kafka, Spark en minutes"
+    ],
+    "cons": [
+      "Courbe d'apprentissage très élevée",
+      "Overhead opérationnel important (un cluster K8s nécessite de l'expertise)",
+      "Over-engineering pour les petites équipes (préférer Docker Compose + EC2)"
+    ],
+    "best_for": "Grandes équipes data avec des workloads ML à grande échelle, des clusters Spark/Kafka/Airflow, et besoin d'auto-scaling et haute disponibilité.",
+    "not_for": "Petites équipes data sans expertise DevOps/SRE ou workloads simples.",
+    "pieges_prod": [
+      "Les GPU ne sont pas préemptibles par défaut — les pods ML qui échouent conservent le GPU et bloquent les autres jobs.",
+      "Le resource requests/limits mal configuré : trop bas = OOMKilled, trop haut = ressources gaspillées.",
+      "Les PersistentVolumes avec ReadWriteOnce ne peuvent pas être montés par plusieurs pods simultanément — utiliser ReadWriteMany ou une solution de stockage objet."
+    ],
+    "alternatives": ["docker"],
+    "score": { "performance": 90, "facilite": 40, "ecosysteme": 95, "cout": 75, "support": 85 },
+    "tags": ["infrastructure", "containers", "orchestration", "open-source", "gpu"],
+    "launched": "2014",
+    "use_cases": [
+      { "titre": "Data platform sur Kubernetes", "description": "Airflow (via Helm), MLflow, Kafka, Spark Operator et vLLM déployés sur un cluster GKE autopilot. Les jobs Spark scalent de 0 à 100 workers selon la charge." }
+    ]
+  },
+  {
+    "slug": "census",
+    "name": "Census",
+    "tagline": "La plateforme Reverse ETL qui active vos données warehouse dans vos outils CRM et marketing",
+    "category": "Intégration (EL)",
+    "emoji": "🔄",
+    "website": "https://www.getcensus.com",
+    "pricing": "Free tier (10 syncs). Platform à partir de 800$/mois. Enterprise sur devis.",
+    "free_tier": true,
+    "open_source": false,
+    "learning_curve": "Débutant",
+    "description": "Census est la plateforme Reverse ETL de référence. Elle synchronise les données calculées dans votre data warehouse (Snowflake, BigQuery, Redshift) vers vos outils opérationnels : Salesforce, HubSpot, Intercom, Braze, et 200+ autres destinations. Les équipes data définissent les requêtes SQL ou les modèles dbt, Census se charge de la synchronisation automatique.",
+    "features": [
+      "200+ destinations (Salesforce, HubSpot, Intercom, Braze)",
+      "Synchronisation depuis Snowflake, BigQuery, Redshift, dbt",
+      "Syncs planifiés ou déclenchés par événement",
+      "Filtres et transformations légères",
+      "Détection automatique des changements (incremental sync)",
+      "Audit trail des synchronisations",
+      "Alertes et monitoring des syncs",
+      "Segments live (audiences actives en temps réel)"
+    ],
+    "pros": [
+      "Activation des données warehouse sans développement custom",
+      "Intégration native avec dbt (modèles dbt comme source de syncs)",
+      "Gestion des conflits et erreurs de synchronisation",
+      "Interface no-code pour les équipes marketing/data"
+    ],
+    "cons": [
+      "Coût significatif pour les volumes importants",
+      "Latence de synchronisation (sync toutes les 15 min au minimum)",
+      "Les syncs bidirectionnels (warehouse → Salesforce → warehouse) sont complexes"
+    ],
+    "best_for": "Équipes data cherchant à activer les scores ML et segments dans les outils CRM/marketing sans développement d'API custom.",
+    "not_for": "Synchronisations en temps réel ultra-basse latence (< 1 minute) — préférer une architecture événementielle.",
+    "pieges_prod": [
+      "Les syncs sans mode incrémental sur les grandes tables peuvent créer des timeouts côté destination (ex: Salesforce API rate limits).",
+      "Vérifier les field mappings avant d'activer un sync en production — une erreur de mapping écrase des données Salesforce."
+    ],
+    "alternatives": ["hightouch"],
+    "score": { "performance": 80, "facilite": 85, "ecosysteme": 80, "cout": 55, "support": 80 },
+    "tags": ["reverse-etl", "activation", "crm", "marketing", "saas"],
+    "launched": "2018",
+    "use_cases": [
+      { "titre": "Score ML dans Salesforce", "description": "Le score de propension calculé chaque nuit dans Snowflake est synchronisé vers le champ custom Salesforce via Census. Les commerciaux voient le score directement sur la fiche prospect." }
+    ]
+  },
+  {
+    "slug": "gradio",
+    "name": "Gradio",
+    "tagline": "Créez une interface web pour votre modèle ML en 3 lignes de Python",
+    "category": "Data Apps",
+    "emoji": "🎛️",
+    "website": "https://www.gradio.app",
+    "pricing": "Gratuit (open source). Hugging Face Spaces pour le déploiement gratuit.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Gradio permet de créer des interfaces web interactives pour les modèles ML en quelques lignes de Python. Particulièrement populaire pour les démos de modèles NLP, Computer Vision et LLMs. L'intégration native avec Hugging Face Spaces permet de déployer gratuitement en quelques secondes. Gradio est le standard pour les démos ML académiques et les MVPs.",
+    "features": [
+      "Composants UI intégrés (texte, image, audio, vidéo, DataFrame)",
+      "Interface web en 3 lignes de Python",
+      "Streaming pour les LLMs (token-by-token output)",
+      "Partage automatique avec share=True (URL publique temporaire)",
+      "Déploiement sur Hugging Face Spaces (gratuit)",
+      "Blocks API pour les interfaces complexes",
+      "Theming",
+      "Authentification basique"
+    ],
+    "pros": [
+      "Démarrage ultra-rapide (< 10 min de la première demo)",
+      "Streaming natif pour les chatbots LLM",
+      "Déploiement Hugging Face Spaces gratuit",
+      "Idéal pour valider un modèle avec des non-techniciens"
+    ],
+    "cons": [
+      "Moins adapté pour des apps de production complexes (préférer Streamlit ou FastAPI)",
+      "Personnalisation CSS limitée",
+      "URL partagée temporaire (7 jours) sans compte HuggingFace"
+    ],
+    "best_for": "Démos rapides de modèles ML, prototypage d'interfaces LLM, partage de modèles avec des non-techniciens.",
+    "not_for": "Applications data en production avec authentification, gestion d'état ou logique métier complexe.",
+    "pieges_prod": [
+      "Les interfaces Gradio partagées via share=True sont publiques sans authentification — ne pas exposer de données sensibles.",
+      "Le streaming des LLMs nécessite yield dans la fonction Python — oublier ce détail produit une interface non réactive."
+    ],
+    "alternatives": ["streamlit"],
+    "score": { "performance": 75, "facilite": 95, "ecosysteme": 85, "cout": 95, "support": 80 },
+    "tags": ["demo", "ml", "open-source", "huggingface", "prototype"],
+    "launched": "2019",
+    "use_cases": [
+      { "titre": "Démo d'un modèle de classification d'images", "description": "Interface Gradio déployée sur HuggingFace Spaces en 30 minutes : upload image → modèle YOLO → bounding boxes affichées. Partagée avec le client pour validation." }
+    ]
+  },
+  {
+    "slug": "mongodb",
+    "name": "MongoDB",
+    "tagline": "La base de données NoSQL documentaire de référence pour stocker des données semi-structurées",
+    "category": "Data Processing",
+    "emoji": "🍃",
+    "website": "https://www.mongodb.com",
+    "pricing": "Community gratuit (open source). Atlas Free Tier (512 Mo). Atlas Dedicated à partir de ~60€/mois.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "MongoDB est la base de données NoSQL documentaire la plus populaire. Elle stocke les données en BSON (JSON binaire), ce qui la rend naturelle pour les données semi-structurées et les schémas évolutifs. Très utilisée dans les architectures data pour stocker des résultats d'API, des configurations, des logs structurés, et des données avec des structures variables. MongoDB Atlas offre une version cloud managée avec recherche full-text et Atlas Search (recherche vectorielle).",
+    "features": [
+      "Stockage documentaire BSON (JSON étendu)",
+      "Index composites, text, géospatiaux et vectoriels",
+      "Aggregation Pipeline (transformation en-base)",
+      "Transactions ACID multi-documents",
+      "Réplication automatique et Replica Sets",
+      "Sharding horizontal natif",
+      "Change Streams pour le CDC",
+      "Atlas Search (Lucene-based full-text + vectoriel)",
+      "Atlas Data Federation (requêtes cross-sources)"
+    ],
+    "pros": [
+      "Schéma flexible — idéal pour les données semi-structurées",
+      "Change Streams pour le CDC vers les pipelines data",
+      "Aggregation Pipeline puissant pour les transformations",
+      "Atlas offre un service managé simple à démarrer"
+    ],
+    "cons": [
+      "Pas adapté aux requêtes SQL complexes avec de nombreuses jointures",
+      "Consommation mémoire élevée par rapport à PostgreSQL",
+      "Duplication des données nécessaire pour éviter les jointures (dénormalisation)"
+    ],
+    "best_for": "Stockage de données semi-structurées, catalogues produits avec attributs variables, résultats d'APIs REST, logs applicatifs structurés.",
+    "not_for": "Données relationnelles fortement normalisées ou requêtes analytiques complexes (préférer PostgreSQL).",
+    "pieges_prod": [
+      "Les indexes manquants sur les champs de filtrage entraînent des COLLSCANS qui bloquent les requêtes sur les grandes collections.",
+      "Les documents qui grandissent indéfiniment (pushing arrays sans limite) créent du fragmentation et ralentissent les lectures."
+    ],
+    "alternatives": ["postgresql"],
+    "score": { "performance": 82, "facilite": 82, "ecosysteme": 88, "cout": 78, "support": 82 },
+    "tags": ["nosql", "document", "open-source", "flexible", "atlas"],
+    "launched": "2009",
+    "use_cases": [
+      { "titre": "Catalogue produit e-commerce", "description": "Chaque produit a des attributs différents (vêtement: taille/couleur, électronique: tension/connectique). MongoDB stocke ces documents hétérogènes sans schéma rigide." }
+    ]
+  },
+  {
+    "slug": "astronomer",
+    "name": "Astronomer",
+    "tagline": "Apache Airflow managé — la plateforme Astro pour les pipelines data de production",
+    "category": "Orchestration",
+    "emoji": "🌟",
+    "website": "https://www.astronomer.io",
+    "pricing": "Astro Hosted : à partir de ~800$/mois. Astro Hybrid (cloud privé) : sur devis.",
+    "free_tier": false,
+    "open_source": false,
+    "learning_curve": "Intermédiaire",
+    "description": "Astronomer est le leader de l'Apache Airflow managé. La plateforme Astro élimine la complexité d'infrastructure d'Airflow (déploiement, mise à jour, monitoring, HA) et ajoute des fonctionnalités enterprise : alertes avancées, RBAC, SSO, observabilité, et GitOps. Astronomer contribue massivement au projet open source Airflow et développe des outils annexes comme Cosmos (intégration dbt-Airflow).",
+    "features": [
+      "Airflow managé (zero infrastructure à gérer)",
+      "Déploiement en minutes depuis GitHub",
+      "RBAC et SSO enterprise",
+      "Alertes et observabilité des DAGs",
+      "Astro CLI pour le développement local",
+      "Cosmos : intégration dbt native dans Airflow",
+      "Auto-scaling des workers",
+      "Multi-workspace isolation",
+      "SLA monitoring"
+    ],
+    "pros": [
+      "Zéro gestion d'infra Airflow — se concentrer sur les DAGs",
+      "Mises à jour Airflow sans downtime",
+      "Cosmos pour les pipelines dbt-Airflow sans effort",
+      "Meilleur support Airflow du marché"
+    ],
+    "cons": [
+      "Coût significatif vs self-hosted Airflow",
+      "Moins flexible que MWAA (AWS) pour les intégrations AWS natives",
+      "Vendor lock-in modéré"
+    ],
+    "best_for": "Équipes data cherchant Airflow en production sans vouloir gérer l'infrastructure. Particulièrement bon avec dbt (Cosmos).",
+    "not_for": "Équipes avec forte expertise Kubernetes qui préfèrent gérer leur propre Airflow.",
+    "pieges_prod": [
+      "Astro facture à la durée d'exécution des tasks — les DAGs avec des tasks idle longues (ex: sensors externes) coûtent cher."
+    ],
+    "alternatives": ["airflow", "dagster", "prefect"],
+    "score": { "performance": 88, "facilite": 85, "ecosysteme": 85, "cout": 55, "support": 92 },
+    "tags": ["orchestration", "airflow", "managed", "dbt", "dataops"],
+    "launched": "2018",
+    "use_cases": [
+      { "titre": "Pipeline dbt + Airflow sans infra", "description": "Cosmos génère automatiquement les DAGs Airflow depuis les modèles dbt. Astronomer les exécute avec auto-scaling selon la charge. L'équipe se concentre uniquement sur les modèles dbt." }
+    ]
+  },
+  {
+    "slug": "mage-ai",
+    "name": "Mage AI",
+    "tagline": "L'outil de data pipeline moderne et intuitif — l'alternative à Airflow pour les équipes data",
+    "category": "Orchestration",
+    "emoji": "🧙",
+    "website": "https://www.mage.ai",
+    "pricing": "Open source gratuit. Mage Pro (cloud) à partir de 299$/mois.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Mage est un outil open source de data engineering conçu pour être plus accessible qu'Airflow. Son interface web intègre un IDE interactif où chaque bloc (loader, transformer, exporter) est développé et testé visuellement. Mage supporte le streaming (Kafka), le ML (training pipelines) et les dbt models. Particulièrement adopté dans les startups et scale-ups qui trouvent Airflow trop complexe.",
+    "features": [
+      "IDE intégré avec preview des résultats en temps réel",
+      "Blocs modulaires (loader, transformer, exporter)",
+      "Streaming natif (Kafka, Redpanda)",
+      "Intégration dbt native",
+      "Retry et SLAs configurables",
+      "Triggers webhooks et basés sur les données",
+      "Version control Git intégré",
+      "Sensors pour les dépendances externes"
+    ],
+    "pros": [
+      "Démarrage très rapide (30 min pour le premier pipeline)",
+      "Interface interactive — teste chaque bloc avant de déployer",
+      "Moins de boilerplate qu'Airflow",
+      "Streaming et batch dans le même outil"
+    ],
+    "cons": [
+      "Moins mature et stable qu'Airflow pour les pipelines critiques",
+      "Communauté plus petite qu'Airflow/Dagster",
+      "Scalabilité moins prouvée en production à très grande échelle"
+    ],
+    "best_for": "Équipes data souhaitant un orchestrateur plus simple qu'Airflow, avec une expérience de développement interactive.",
+    "not_for": "Organisations avec des milliers de DAGs ou des besoins d'orchestration enterprise très avancés.",
+    "pieges_prod": [
+      "La persistance des résultats de blocs peut consommer beaucoup de mémoire sur les gros datasets — configurer des checkpoints intermédiaires."
+    ],
+    "alternatives": ["airflow", "dagster", "prefect"],
+    "score": { "performance": 78, "facilite": 90, "ecosysteme": 70, "cout": 90, "support": 72 },
+    "tags": ["orchestration", "open-source", "pipeline", "streaming", "no-code"],
+    "launched": "2022",
+    "use_cases": [
+      { "titre": "Pipeline ELT pour une startup", "description": "Mage ingère depuis Stripe API → nettoie → charge dans BigQuery. L'interface interactive permet de tester chaque étape avant de planifier. Déployé en 2 jours vs 2 semaines avec Airflow." }
+    ]
+  },
+  {
+    "slug": "evidence",
+    "name": "Evidence",
+    "tagline": "BI as code — créez des rapports analytiques professionnels avec du SQL et du Markdown",
+    "category": "Business Intelligence",
+    "emoji": "📄",
+    "website": "https://evidence.dev",
+    "pricing": "Open source gratuit. Evidence Cloud à partir de 100$/mois.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Débutant",
+    "description": "Evidence est un framework BI open source basé sur le code. Les rapports sont écrits en Markdown avec des requêtes SQL embarquées et des composants de visualisation. Evidence génère des sites statiques ultra-rapides déployables sur GitHub Pages, Vercel ou Netlify. Très adopté par les équipes analytics-as-code (dbt + Evidence) pour remplacer les outils BI traditionnels.",
+    "features": [
+      "Rapports en Markdown + SQL intégré",
+      "Composants charts (bar, line, scatter, heatmap)",
+      "Boucles et conditions templating",
+      "Connexions multiples (BigQuery, Snowflake, DuckDB, PostgreSQL)",
+      "Déploiement statique (Netlify, Vercel, GitHub Pages)",
+      "Version control natif (tout est du code)",
+      "Filtres et paramètres dynamiques",
+      "Evidence Cloud pour les déploiements managés"
+    ],
+    "pros": [
+      "Rapports versionnés dans Git — PR pour les changements de metrics",
+      "Performances excellentes (sites statiques)",
+      "Gratuit et open source pour le self-hosting",
+      "Parfait en combinaison avec dbt"
+    ],
+    "cons": [
+      "Moins interactif que Tableau ou Looker pour l'exploration adhoc",
+      "Nécessite des compétences SQL et Markdown minimales",
+      "Visualisations moins riches que les outils BI enterprise"
+    ],
+    "best_for": "Analytics engineers cherchant une approche BI-as-code, intégrée à dbt, versionnée dans Git.",
+    "not_for": "Utilisateurs non-techniques cherchant à explorer les données sans écrire de SQL.",
+    "pieges_prod": [
+      "Les requêtes SQL lentes bloquent le rendu de la page — toujours optimiser les requêtes et utiliser des matérialized views côté warehouse."
+    ],
+    "alternatives": ["lightdash", "metabase"],
+    "score": { "performance": 88, "facilite": 82, "ecosysteme": 72, "cout": 92, "support": 72 },
+    "tags": ["bi", "open-source", "dbt", "code", "analytics-as-code"],
+    "launched": "2022",
+    "use_cases": [
+      { "titre": "Dashboard mensuel KPIs versionnés", "description": "Le rapport mensuel des KPIs est un fichier Markdown dans le repo Git. Le CFO fait une PR pour ajouter une nouvelle métrique, l'analytics engineer la valide et la déploie sur Netlify." }
+    ]
+  },
+  {
+    "slug": "dspy",
+    "name": "DSPy",
+    "tagline": "Programmez vos LLMs au lieu de les prompter — le framework Python pour les pipelines IA robustes",
+    "category": "IA Générative",
+    "emoji": "🐍",
+    "website": "https://dspy.ai",
+    "pricing": "Gratuit (open source).",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "DSPy (Declarative Self-improving Language Programs in Python) est un framework de Stanford qui permet de construire des pipelines LLM de façon programmatique et optimisable. Au lieu d'écrire des prompts manuels fragiles, vous définissez des modules et des métriques d'évaluation. DSPy optimise automatiquement les prompts et les few-shot examples pour maximiser vos métriques. Il résout le problème des prompts qui cassent quand on change de modèle LLM.",
+    "features": [
+      "Signatures déclaratives (input/output typés)",
+      "Modules composables (Predict, ChainOfThought, ReAct)",
+      "Optimiseurs automatiques (BootstrapFewShot, MIPRO)",
+      "Evaluation intégrée avec métriques customisables",
+      "Compatibilité multi-LLM (OpenAI, Anthropic, Ollama)",
+      "Assertions pour la validation des sorties",
+      "Teleprompt pour le fine-tuning de petits modèles"
+    ],
+    "pros": [
+      "Pipelines LLM maintenables et versionnables comme du code",
+      "Optimisation automatique des prompts (meilleurs résultats sans effort)",
+      "Portabilité entre LLMs : changer de modèle sans tout réécrire",
+      "Evaluation rigoureuse intégrée"
+    ],
+    "cons": [
+      "Courbe d'apprentissage élevée (paradigme très différent du prompting classique)",
+      "Documentation encore en maturation",
+      "Debug plus complexe que LangChain pour les débutants"
+    ],
+    "best_for": "Ingénieurs cherchant à construire des pipelines LLM robustes, testables et optimisables automatiquement en production.",
+    "not_for": "Prototypage rapide ou cas d'usage simples (un seul appel LLM).",
+    "pieges_prod": [
+      "L'optimisation DSPy nécessite un dataset d'exemples annotés — investir dans la création d'un benchmark d'évaluation avant tout.",
+      "Les optimiseurs consomment beaucoup de tokens LLM — prévoir un budget API significatif pour les phases d'optimisation."
+    ],
+    "alternatives": ["langchain", "llamaindex"],
+    "score": { "performance": 88, "facilite": 45, "ecosysteme": 72, "cout": 92, "support": 70 },
+    "tags": ["llm", "framework", "optimization", "open-source", "research"],
+    "launched": "2023",
+    "use_cases": [
+      { "titre": "RAG optimisé automatiquement", "description": "DSPy optimise automatiquement les prompts d'un pipeline RAG (query rewriting + réponse) sur un dataset de 200 paires QA. Amélioration de 18% de la précision sans modification manuelle." }
+    ]
+  },
+  {
+    "slug": "feast",
+    "name": "Feast",
+    "tagline": "Le feature store open source pour servir des features ML temps réel depuis votre data warehouse",
+    "category": "ML Platform",
+    "emoji": "🍽️",
+    "website": "https://feast.dev",
+    "pricing": "Gratuit (open source). Tecton propose une version enterprise managée.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Avancé",
+    "description": "Feast (Feature Store) est le feature store open source de référence pour le ML en production. Il découple la création des features (batch, streaming) de leur service à l'inférence. Feast gère le stockage offline (BigQuery, Redshift) pour l'entraînement et le stockage online (Redis, DynamoDB) pour l'inférence bas-latence. La définition des features est centralisée et versionnée.",
+    "features": [
+      "Registry de features centralisé",
+      "Feature Views pour la définition des features",
+      "Online store (Redis, DynamoDB) pour l'inférence",
+      "Offline store (BigQuery, Redshift, Snowflake)",
+      "Point-in-time correct joins pour l'entraînement",
+      "Matérialisation batch et streaming",
+      "SDK Python pour le serving et l'entraînement",
+      "Intégration avec MLflow, Ray, PyTorch"
+    ],
+    "pros": [
+      "Séparation propre entre la définition et le serving des features",
+      "Point-in-time correct : évite le data leakage dans les datasets d'entraînement",
+      "Online/offline store pour les deux cas d'usage ML",
+      "Gratuit et self-hostable"
+    ],
+    "cons": [
+      "Complexité d'installation et de maintenance",
+      "La matérialisation (copie vers l'online store) doit être planifiée",
+      "Moins de fonctionnalités enterprise que Tecton"
+    ],
+    "best_for": "Équipes ML avec de nombreux modèles en production ayant besoin de features partagées entre entraînement et inférence temps réel.",
+    "not_for": "Équipes avec peu de modèles ou des pipelines ML simples sans besoin de partage de features.",
+    "pieges_prod": [
+      "La matérialisation vers le online store Redis doit être automatisée (Airflow, Dagster) — sans refresh régulier, les features sont stale.",
+      "L'absence de TTL sur le online store peut faire grossir Redis indéfiniment — configurer des politiques d'expiration."
+    ],
+    "alternatives": ["aws-sagemaker"],
+    "score": { "performance": 85, "facilite": 55, "ecosysteme": 72, "cout": 90, "support": 70 },
+    "tags": ["feature-store", "ml", "open-source", "production", "mlops"],
+    "launched": "2019",
+    "use_cases": [
+      { "titre": "Feature store partagé entre 10 modèles", "description": "Feast centralise 200 features (comportementales, transactionnelles, démographiques). Chaque data scientist récupère les features via get_online_features() pour l'inférence et get_historical_features() pour l'entraînement." }
+    ]
+  },
+  {
+    "slug": "metaflow",
+    "name": "Metaflow",
+    "tagline": "Le framework ML workflow de Netflix — définissez vos pipelines ML comme du Python simple",
+    "category": "ML Platform",
+    "emoji": "🎬",
+    "website": "https://metaflow.org",
+    "pricing": "Gratuit (open source). Outerbounds propose une version enterprise managée.",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "Metaflow est le framework open source de Netflix pour l'ingénierie ML en production. Il permet de définir des workflows ML comme des classes Python décorées (@step), avec gestion automatique des données, versioning, et déploiement sur AWS Batch/SageMaker ou Kubernetes. Metaflow simplifie drastiquement le passage du notebook Python à un pipeline ML reproductible et scalable.",
+    "features": [
+      "Décorateurs Python (@step, @retry, @catch, @timeout)",
+      "Gestion automatique des artéfacts et du versioning",
+      "Parallélisation via foreach",
+      "Déploiement sur AWS Batch/K8s/SageMaker",
+      "Debugging avancé (resume depuis un step échoué)",
+      "Notebooks intégrés pour l'exploration des résultats",
+      "Cartes (visualisations dans les steps)",
+      "CLI pour le monitoring des runs"
+    ],
+    "pros": [
+      "Transition naturelle notebook → pipeline : reste du Python standard",
+      "Debugging sans refaire tout le pipeline (resume depuis le step échoué)",
+      "Gestion automatique du versionning des artéfacts",
+      "Scalabilité transparente vers le cloud"
+    ],
+    "cons": [
+      "Moins de fonctionnalités d'observabilité qu'Airflow",
+      "Ecosystème plus petit qu'Airflow ou Dagster",
+      "Principalement optimisé pour AWS"
+    ],
+    "best_for": "Data scientists qui veulent industrialiser leurs notebooks Python en pipelines ML reproductibles sans apprendre un DSL complexe.",
+    "not_for": "Orchestration de pipelines data généraux (ingest, transform) — préférer Airflow ou Dagster.",
+    "pieges_prod": [
+      "Les artéfacts Metaflow sont stockés dans S3 — configurer les politiques de lifecycle pour éviter l'accumulation de données."
+    ],
+    "alternatives": ["airflow", "ray"],
+    "score": { "performance": 85, "facilite": 78, "ecosysteme": 72, "cout": 90, "support": 72 },
+    "tags": ["ml", "workflow", "open-source", "netflix", "python"],
+    "launched": "2019",
+    "use_cases": [
+      { "titre": "Pipeline de recommandation Netflix-style", "description": "Metaflow orchestre l'entraînement hebdomadaire d'un modèle de recommandation : extraction features S3 → entraînement PyTorch distribué sur GPU → évaluation → push vers SageMaker endpoint." }
+    ]
+  }
+]

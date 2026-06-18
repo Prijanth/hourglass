@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import metiers from "@/content/metiers.json";
 import { MetiersListing } from "./listing";
@@ -6,7 +6,7 @@ import { SkillsChart } from "@/components/charts/skills-chart";
 import { SalaryChart } from "@/components/charts/salary-chart";
 
 export const metadata: Metadata = {
-  title: "Métiers Data & IA — Compétences et carrières 2026 | DataSphère",
+  title: "Métiers Data & IA — Compétences et carrières 2026 | Data Universe",
   description: "Fiches complètes des métiers data & IA : compétences requises, certifications, trajectoires de carrière. Data Engineer, Data Scientist, Analytics Engineer, ML Engineer et plus.",
 };
 

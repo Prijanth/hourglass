@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 
 /* ─── DONNÉES ─────────────────────────────────────────── */
@@ -2379,7 +2379,7 @@ variables:
   - key: ENV
     value: "production"
   - key: DATA_BUCKET
-    value: "gs://datasphere-prod-data"
+    value: "gs://Data Universe-prod-data"
   - key: ALERT_EMAIL
     value: "data-alerts@company.com"
 

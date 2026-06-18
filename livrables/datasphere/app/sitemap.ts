@@ -7,7 +7,7 @@ import metiersData from "@/content/metiers.json";
 import conceptsData from "@/content/concepts.json";
 import glossaireData from "@/content/glossaire.json";
 
-const BASE = "https://datasphere.fr";
+const BASE = "https://data-universe.fr";
 
 const STATIC_ROUTES = [
   { url: "/",               priority: 1.0,  changeFrequency: "daily"   },

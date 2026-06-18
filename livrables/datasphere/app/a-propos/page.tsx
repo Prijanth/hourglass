@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import certData from "@/content/certifications.json";
 import conceptsData from "@/content/concepts.json";
@@ -6,8 +6,8 @@ import glossaireData from "@/content/glossaire.json";
 import casData from "@/content/cas-usage.json";
 
 export const metadata: Metadata = {
-  title: "À propos de DataSphère — La référence data & IA en français",
-  description: "DataSphère est le hub francophone de référence pour les professionnels de la data et de l'IA en France. Encyclopédie, certifications, glossaire, métiers et communauté.",
+  title: "À propos de Data Universe — La référence data & IA en français",
+  description: "Data Universe est le hub francophone de référence pour les professionnels de la data et de l'IA en France. Encyclopédie, certifications, glossaire, métiers et communauté.",
 };
 
 const STATS = [
@@ -31,7 +31,7 @@ const VALEURS = [
   {
     emoji: "⚡",
     titre: "Pour les praticiens",
-    desc: "DataSphère est construit par des gens qui travaillent en data au quotidien. Pas de théorie pure : chaque concept est ancré dans la pratique réelle des équipes en France.",
+    desc: "Data Universe est construit par des gens qui travaillent en data au quotidien. Pas de théorie pure : chaque concept est ancré dans la pratique réelle des équipes en France.",
   },
   {
     emoji: "🔓",
@@ -71,7 +71,7 @@ export default function AProposPage() {
             fontSize: 11, fontWeight: 700, color: "#7C3AED",
             letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 22,
           }}>
-            À propos de DataSphère
+            À propos de Data Universe
           </span>
           <h1 style={{
             fontFamily: "var(--font-display)",
@@ -86,7 +86,7 @@ export default function AProposPage() {
             </span>
           </h1>
           <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.8, maxWidth: 640, marginBottom: 32 }}>
-            DataSphère est une encyclopédie indépendante dédiée aux professionnels de la data en France.
+            Data Universe est une encyclopédie indépendante dédiée aux professionnels de la data en France.
             Un seul objectif : rendre la connaissance data accessible en français, par quelqu&apos;un qui travaille dans ce domaine au quotidien.
           </p>
           <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "18px 22px", background: "rgba(124,58,237,0.06)", borderRadius: 14, border: "1px solid rgba(124,58,237,0.15)", maxWidth: 540 }}>
@@ -133,7 +133,7 @@ export default function AProposPage() {
         <div style={{ marginBottom: 56 }}>
           <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#94A3B8" }}>Notre mission</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "#0F172A", marginTop: 6, marginBottom: 20 }}>
-            Pourquoi DataSphère ?
+            Pourquoi Data Universe ?
           </h2>
           <div style={{ display: "flex", flexDirection: "column", gap: 18, fontSize: 15.5, color: "#475569", lineHeight: 1.8 }}>
             <p>
@@ -144,7 +144,7 @@ export default function AProposPage() {
               Les professionnels français doivent constamment jongler entre des sources disparates, des traductions approximatives et des contenus déconnectés de la réalité du marché français.
             </p>
             <p>
-              DataSphère est né de ce constat. L&apos;objectif est simple : construire la référence francophone que l&apos;on aurait voulu avoir soi-même — précise, honnête, et ancrée dans la pratique réelle des équipes data en France.
+              Data Universe est né de ce constat. L&apos;objectif est simple : construire la référence francophone que l&apos;on aurait voulu avoir soi-même — précise, honnête, et ancrée dans la pratique réelle des équipes data en France.
             </p>
           </div>
 
@@ -153,9 +153,9 @@ export default function AProposPage() {
             <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#94A3B8", marginBottom: 16 }}>Pourquoi pas LinkedIn, Medium ou ChatGPT ?</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
-                { icon: "🔗", label: "LinkedIn", diff: "Les posts disparaissent. Aucune cohérence entre les sources. DataSphère est structuré et consultable comme une encyclopédie." },
-                { icon: "📝", label: "Medium / blogs", diff: "Contenu souvent daté, non vérifié, sans ancrage marché français. Chaque fiche DataSphère est vérifiée et datée." },
-                { icon: "🤖", label: "ChatGPT / IA", diff: "Les LLMs hallucinent sur les prix, dates et disponibilités. DataSphère est une source de faits vérifiables, pas de génération." },
+                { icon: "🔗", label: "LinkedIn", diff: "Les posts disparaissent. Aucune cohérence entre les sources. Data Universe est structuré et consultable comme une encyclopédie." },
+                { icon: "📝", label: "Medium / blogs", diff: "Contenu souvent daté, non vérifié, sans ancrage marché français. Chaque fiche Data Universe est vérifiée et datée." },
+                { icon: "🤖", label: "ChatGPT / IA", diff: "Les LLMs hallucinent sur les prix, dates et disponibilités. Data Universe est une source de faits vérifiables, pas de génération." },
               ].map(({ icon, label, diff }) => (
                 <div key={label} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
                   <span style={{ fontSize: 20, flexShrink: 0 }}>{icon}</span>
@@ -190,13 +190,13 @@ export default function AProposPage() {
         </div>
       </section>
 
-      {/* Ce que contient DataSphère */}
+      {/* Ce que contient Data Universe */}
       <section style={{ background: "#F8FAFC", borderTop: "1px solid #E2E8F0", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#94A3B8" }}>Le contenu</span>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "#0F172A", marginTop: 6 }}>
-              Tout ce que tu trouveras sur DataSphère
+              Tout ce que tu trouveras sur Data Universe
             </h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
@@ -214,7 +214,7 @@ export default function AProposPage() {
       {/* CTA Newsletter */}
       <section style={{ maxWidth: 840, margin: "0 auto", padding: "72px 24px", textAlign: "center" }}>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2rem)", fontWeight: 800, color: "#0F172A", marginBottom: 14 }}>
-          Envie de suivre DataSphère ?
+          Envie de suivre Data Universe ?
         </h2>
         <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, maxWidth: 520, margin: "0 auto 28px" }}>
           La newsletter hebdomadaire regroupe les actualités data & IA les plus importantes, filtrées et expliquées en français. Gratuit, sans spam.

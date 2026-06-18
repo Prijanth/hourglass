@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import data from "@/content/concepts.json";
@@ -11,9 +11,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const concept = data.concepts.find(c => c.id === slug);
-  if (!concept) return { title: "Concept — DataSphère" };
+  if (!concept) return { title: "Concept — Data Universe" };
   return {
-    title: `${concept.titre} — ${concept.categorie} | DataSphère`,
+    title: `${concept.titre} — ${concept.categorie} | Data Universe`,
     description: concept.description_courte,
   };
 }

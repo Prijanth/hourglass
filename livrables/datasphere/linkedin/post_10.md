@@ -1,7 +1,7 @@
-# DataSphère : le référentiel data en français qui manquait
+﻿# Data Universe : le référentiel data en français qui manquait
 **Format :** Post storytelling / Présentation
 **Objectif :** Générer du trafic / Inspirer
-**Hashtags :** #Data #IA #Formation #FrenchTech #DataSphère
+**Hashtags :** #Data #IA #Formation #FrenchTech #Data Universe
 
 ---
 
@@ -19,11 +19,11 @@ La communauté data française est grande, active et talentueuse. Elle mérite u
 
 ---
 
-C'est pour ça qu'on a construit DataSphère. 🌐
+C'est pour ça qu'on a construit Data Universe. 🌐
 
 ---
 
-**Ce que vous trouverez sur DataSphère :**
+**Ce que vous trouverez sur Data Universe :**
 
 Une encyclopédie de concepts data & IA, expliqués clairement, sans jargon inutile.
 
@@ -41,8 +41,8 @@ Tout est gratuit. Tout est en français. Tout est conçu pour être utile, pas p
 
 ---
 
-Que vous débutiez dans la data, que vous vous reconvertiez, ou que vous soyez déjà professionnel et que vous cherchiez à monter en compétences : DataSphère est fait pour vous.
+Que vous débutiez dans la data, que vous vous reconvertiez, ou que vous soyez déjà professionnel et que vous cherchiez à monter en compétences : Data Universe est fait pour vous.
 
 ---
-**CTA :** Découvrez DataSphère et explorez le domaine data qui vous intéresse.
-**Lien :** https://datasphere.fr
+**CTA :** Découvrez Data Universe et explorez le domaine data qui vous intéresse.
+**Lien :** https://Data Universe.fr

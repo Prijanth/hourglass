@@ -19,14 +19,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DataSphère — La référence data & IA en français",
+  title: "Data Universe — La référence data & IA en français",
   description: "Actualités, glossaire, métiers et formations sur la data et l'intelligence artificielle. Le hub francophone de la communauté data.",
 };
 
 const themeScript = `
 (function(){
   try {
-    var t = localStorage.getItem('datasphere_theme');
+    var t = localStorage.getItem('datauniverse_theme');
     var d = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
     document.documentElement.setAttribute('data-theme', d ? 'dark' : 'light');
   } catch(e) {}

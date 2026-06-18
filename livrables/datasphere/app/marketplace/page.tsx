@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DataSphère Talent — Déposez votre CV Data & IA | DataSphère",
+  title: "Data Universe Talent — Déposez votre CV Data & IA | Data Universe",
   description: "Mettez votre profil data en visibilité auprès de recruteurs et chasseurs de têtes spécialisés. Dépôt gratuit, commission uniquement en cas d'embauche validée.",
 };
 
@@ -69,7 +69,7 @@ export default function MarketplacePage() {
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "5px 14px", borderRadius: 100, background: "rgba(124,58,237,0.2)", border: "1px solid rgba(124,58,237,0.4)", marginBottom: 24 }}>
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#A78BFA", display: "inline-block", animation: "pulse-glow 2s ease-in-out infinite" }} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#A78BFA", letterSpacing: "0.08em", textTransform: "uppercase" }}>DataSphère Talent · Bêta</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#A78BFA", letterSpacing: "0.08em", textTransform: "uppercase" }}>Data Universe Talent · Bêta</span>
               </div>
 
               <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4vw, 3.2rem)", fontWeight: 800, color: "#fff", lineHeight: 1.08, letterSpacing: "-0.03em", marginBottom: 18 }}>
@@ -293,22 +293,22 @@ export default function MarketplacePage() {
                 {
                   id: "consent-storage",
                   required: true,
-                  label: "J'accepte que DataSphère conserve mes données personnelles (nom, email, profil) pendant une durée maximale de 2 ans, dans le but de faciliter la mise en relation avec des recruteurs spécialisés data. *",
+                  label: "J'accepte que Data Universe conserve mes données personnelles (nom, email, profil) pendant une durée maximale de 2 ans, dans le but de faciliter la mise en relation avec des recruteurs spécialisés data. *",
                 },
                 {
                   id: "consent-share",
                   required: true,
-                  label: "J'accepte que DataSphère partage mon profil (avec mon accord préalable à chaque partage) avec des recruteurs ou chasseurs de têtes partenaires, dans le cadre d'une mise en relation ciblée. *",
+                  label: "J'accepte que Data Universe partage mon profil (avec mon accord préalable à chaque partage) avec des recruteurs ou chasseurs de têtes partenaires, dans le cadre d'une mise en relation ciblée. *",
                 },
                 {
                   id: "consent-model",
                   required: true,
-                  label: "Je comprends que DataSphère perçoit une commission auprès du recruteur en cas d'embauche validée (CDI signé). Cette commission n'est jamais à ma charge. *",
+                  label: "Je comprends que Data Universe perçoit une commission auprès du recruteur en cas d'embauche validée (CDI signé). Cette commission n'est jamais à ma charge. *",
                 },
                 {
                   id: "consent-rights",
                   required: false,
-                  label: "Je reconnais avoir pris connaissance de mes droits RGPD : accès, rectification, suppression, portabilité et opposition, exerc,ables à tout moment via datasphere.fr/confidentialite ou par email à contact@datasphere.fr.",
+                  label: "Je reconnais avoir pris connaissance de mes droits RGPD : accès, rectification, suppression, portabilité et opposition, exerc,ables à tout moment via Data Universe.fr/confidentialite ou par email à contact@Data Universe.fr.",
                 },
               ].map(c => (
                 <label key={c.id} style={{ display: "flex", gap: 12, alignItems: "flex-start", cursor: "pointer" }}>
@@ -320,7 +320,7 @@ export default function MarketplacePage() {
               {/* Note légale */}
               <div style={{ padding: "14px 16px", background: "var(--indigo-tint)", borderRadius: 10, border: "1px solid var(--indigo-border)" }}>
                 <p style={{ fontSize: 12.5, color: "#4C1D95", lineHeight: 1.65 }}>
-                  <strong>Vos données ne seront jamais vendues.</strong> Conformément au RGPD, vous pouvez exercer vos droits (accès, rectification, suppression) à tout moment. Durée de conservation : 2 ans. Responsable du traitement : DataSphère · contact@datasphere.fr
+                  <strong>Vos données ne seront jamais vendues.</strong> Conformément au RGPD, vous pouvez exercer vos droits (accès, rectification, suppression) à tout moment. Durée de conservation : 2 ans. Responsable du traitement : Data Universe · contact@Data Universe.fr
                 </p>
               </div>
 
@@ -344,7 +344,7 @@ export default function MarketplacePage() {
             {[
               {
                 q: "Est-ce vraiment gratuit pour le candidat ?",
-                r: "Oui, à 100%. DataSphère ne facture jamais le candidat. Notre rémunération provient uniquement d'une commission versée par le recruteur en cas d'embauche validée (CDI signé après période d'essai).",
+                r: "Oui, à 100%. Data Universe ne facture jamais le candidat. Notre rémunération provient uniquement d'une commission versée par le recruteur en cas d'embauche validée (CDI signé après période d'essai).",
               },
               {
                 q: "Qui peut voir mon CV ?",
@@ -360,7 +360,7 @@ export default function MarketplacePage() {
               },
               {
                 q: "Comment fonctionne la commission en cas d'embauche ?",
-                r: "Si vous êtes embauché via DataSphère Talent, le recruteur nous verse une commission standard de placement (payée par lui, pas par vous). Cela ne change rien à votre salaire ni aux conditions du contrat.",
+                r: "Si vous êtes embauché via Data Universe Talent, le recruteur nous verse une commission standard de placement (payée par lui, pas par vous). Cela ne change rien à votre salaire ni aux conditions du contrat.",
               },
             ].map(({ q, r }) => (
               <div key={q} className="card" style={{ padding: "20px 24px" }}>
@@ -380,7 +380,7 @@ export default function MarketplacePage() {
           <p style={{ fontSize: 14.5, color: "var(--muted)", marginBottom: 24, maxWidth: 440, margin: "0 auto 24px" }}>
             Candidats pré-qualifiés, disponibles et motivés. Commission uniquement en cas de succès. Contactez-nous pour en savoir plus.
           </p>
-          <a href="mailto:talent@datasphere.fr" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+          <a href="mailto:talent@Data Universe.fr" className="btn-secondary" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
             Contacter l&apos;équipe Talent →
           </a>
         </div>

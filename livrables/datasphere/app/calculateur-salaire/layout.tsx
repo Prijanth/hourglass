@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Calculateur de salaire data — DataSphère",
+  title: "Calculateur de salaire data — Data Universe",
   description:
     "Estime ton salaire brut annuel en France selon ton métier data, ton expérience, ta localisation et tes compétences. Data Engineer, Data Scientist, AI Engineer et plus.",
 };

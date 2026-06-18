@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState, useMemo } from "react";
 import data from "@/content/cas-usage.json";
 
@@ -36,7 +36,7 @@ function buildCasHtml(c: CasUsage): string {
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>DataSphère — ${esc(c.titre)}</title>
+  <title>Data Universe — ${esc(c.titre)}</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;color:#0F172A;background:#fff;font-size:13px;line-height:1.6}
@@ -68,7 +68,7 @@ function buildCasHtml(c: CasUsage): string {
 <body>
   <div class="header">
     <div>
-      <div class="logo">⬡ DataSphère · Cas d'usage</div>
+      <div class="logo">⬡ Data Universe · Cas d'usage</div>
       <h1>${esc(c.titre)}</h1>
       <div class="meta">
         <span class="badge" style="background:#F0FDF4;color:#15803D">${esc(c.secteur)}</span>
@@ -77,7 +77,7 @@ function buildCasHtml(c: CasUsage): string {
       </div>
       <div class="stack">${c.stack.map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>
     </div>
-    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">datasphere.fr/cas-usage</div>
+    <div style="font-size:10px;color:#94A3B8;text-align:right;flex-shrink:0">Data Universe.fr/cas-usage</div>
   </div>
 
   <div class="body">
@@ -108,8 +108,8 @@ function buildCasHtml(c: CasUsage): string {
   </div>
 
   <div class="footer">
-    <div class="footer-brand">DataSphère</div>
-    <div class="footer-url">datasphere.fr · Le référentiel data en français</div>
+    <div class="footer-brand">Data Universe</div>
+    <div class="footer-url">Data Universe.fr · Le référentiel data en français</div>
   </div>
 </body>
 </html>`;
