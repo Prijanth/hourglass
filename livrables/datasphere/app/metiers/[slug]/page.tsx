@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import articles from "@/content/articles.json";
 import metiers from "@/content/metiers.json";
 import { SkillsChart } from "@/components/charts/skills-chart";

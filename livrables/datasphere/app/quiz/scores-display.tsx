@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useEffect, useState } from "react";
 
 type ScoreRecord = Record<string, { pct: number; date: string; total: number; correct: number }>;

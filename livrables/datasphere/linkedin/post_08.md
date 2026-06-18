@@ -1,4 +1,4 @@
-﻿# Le mythe du "Big Data" (et pourquoi Spark n'est pas pour vous)
+# Le mythe du "Big Data" (et pourquoi Spark n'est pas pour vous)
 **Format :** Post texte opinionné
 **Objectif :** Engager / Éduquer
 **Hashtags :** #BigData #Spark #Data #Architecture #Data Universe

@@ -1,4 +1,4 @@
-﻿# Data Universe : le référentiel data en français qui manquait
+# Data Universe : le référentiel data en français qui manquait
 **Format :** Post storytelling / Présentation
 **Objectif :** Générer du trafic / Inspirer
 **Hashtags :** #Data #IA #Formation #FrenchTech #Data Universe

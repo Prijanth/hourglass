@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Comparatifs d'outils data — Snowflake vs Databricks, Pandas vs Polars | Data Universe",

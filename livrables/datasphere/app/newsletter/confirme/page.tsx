@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 export default async function NewsletterConfirmePage({ searchParams }: { searchParams: Promise<{ deja?: string }> }) {
   const sp = await searchParams;

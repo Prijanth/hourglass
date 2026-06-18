@@ -1,4 +1,4 @@
-﻿# C'est quoi un Lakehouse ?
+# C'est quoi un Lakehouse ?
 **Durée cible :** 75s
 **Caption TikTok :** Data Lake ou Data Warehouse ? En 2024 la vraie réponse c'est : les deux. Le Lakehouse combine le meilleur des deux mondes, et c'est pour ça que Databricks a tout changé dans l'industrie. Explication avec une analogie simple, sans jargon. #lakehouse #datawarehouse #datalake #databricks #dataengineering #moderndata #techfr #Data Universe
 

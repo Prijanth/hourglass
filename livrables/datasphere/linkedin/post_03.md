@@ -1,4 +1,4 @@
-﻿# SQL vs dbt : quelle différence ?
+# SQL vs dbt : quelle différence ?
 **Format :** Post texte éducatif
 **Objectif :** Éduquer
 **Hashtags :** #SQL #dbt #Data #Analytics #Data Universe

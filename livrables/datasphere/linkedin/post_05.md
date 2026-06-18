@@ -1,4 +1,4 @@
-﻿# 5 erreurs à éviter quand on débute en Data
+# 5 erreurs à éviter quand on débute en Data
 **Format :** Liste numérotée
 **Objectif :** Engager / Éduquer
 **Hashtags :** #Data #Débutant #Conseil #Carrière #Data Universe

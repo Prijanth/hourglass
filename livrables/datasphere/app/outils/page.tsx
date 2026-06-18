@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import outils from "@/content/outils.json";
 import { OutilsGrid } from "@/components/outils-grid";
 

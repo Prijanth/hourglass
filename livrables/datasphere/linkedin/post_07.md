@@ -1,4 +1,4 @@
-﻿# Pourquoi apprendre dbt en 2026 ?
+# Pourquoi apprendre dbt en 2026 ?
 **Format :** Post texte
 **Objectif :** Éduquer / Inspirer
 **Hashtags :** #dbt #Analytics #DataAnalyst #DataEngineering #Data Universe

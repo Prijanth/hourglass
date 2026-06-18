@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import glossaire from "@/content/glossaire.json";

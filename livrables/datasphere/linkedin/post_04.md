@@ -1,4 +1,4 @@
-﻿# C'est quoi un Lakehouse ?
+# C'est quoi un Lakehouse ?
 **Format :** Post texte + schéma textuel
 **Objectif :** Éduquer
 **Hashtags :** #Lakehouse #DataLake #DataWarehouse #Architecture #Data Universe

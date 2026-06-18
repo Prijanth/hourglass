@@ -1,4 +1,4 @@
-﻿# Rapport de review Data Universe — 7 agents — 6 juin 2026
+# Rapport de review Data Universe — 7 agents — 6 juin 2026
 
 > Synthèse consolidée et classée par priorité.
 > Agents : Vérification factuelle · UX/Accessibilité · Contenu data · SEO · Product Manager · Frontend/Performance · Expert Design Web (25+ ans)

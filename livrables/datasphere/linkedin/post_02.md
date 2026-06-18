@@ -1,4 +1,4 @@
-﻿# Top 5 certifications data à passer en 2026
+# Top 5 certifications data à passer en 2026
 **Format :** Post liste
 **Objectif :** Éduquer / Générer du trafic
 **Hashtags :** #Certification #Data #AWS #Databricks #Snowflake #Data Universe

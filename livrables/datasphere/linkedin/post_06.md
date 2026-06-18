@@ -1,4 +1,4 @@
-﻿# Data Engineer vs Data Scientist vs Data Analyst : qui fait quoi ?
+# Data Engineer vs Data Scientist vs Data Analyst : qui fait quoi ?
 **Format :** Comparatif liste/tableau
 **Objectif :** Éduquer / Générer du trafic
 **Hashtags :** #DataEngineer #DataScientist #DataAnalyst #Métiers #Data Universe

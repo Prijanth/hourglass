@@ -1,4 +1,4 @@
-﻿# Data Engineer en 60 secondes
+# Data Engineer en 60 secondes
 **Durée cible :** 60s
 **Caption TikTok :** Data Engineer c'est pas juste "faire de la data". C'est le métier qui construit les routes sur lesquelles roulent toutes les analyses. Sans eux, les data scientists n'ont rien à modéliser, les dashboards sont vides. On t'explique ce qu'ils font vraiment au quotidien et pourquoi c'est l'un des profils les plus recherchés du marché. #dataengineer #metierdata #datajob #sql #python #karriere #techfr #Data Universe
 

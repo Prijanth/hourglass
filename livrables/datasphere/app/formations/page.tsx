@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import formations from "@/content/formations.json";
 import { FormationsGrid } from "@/components/formations-grid";
 

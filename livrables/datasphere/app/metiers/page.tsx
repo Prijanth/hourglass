@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import metiers from "@/content/metiers.json";
 import { MetiersListing } from "./listing";

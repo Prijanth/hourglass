@@ -1,4 +1,4 @@
-﻿# C'est quoi dbt ? Expliqué en 4 minutes
+# C'est quoi dbt ? Expliqué en 4 minutes
 **Durée cible :** 4 min
 **Description YouTube :** dbt (data build tool) est l'outil qui a révolutionné la façon de travailler avec SQL en data engineering. Dans cette vidéo, on explique en 4 minutes ce que c'est, pourquoi ça change tout pour les data analysts et engineers, et comment ça résout le problème du "SQL spaghetti" que tout le monde a vécu. On voit la différence entre avant et après dbt, avec un exemple concret. Si tu bosses avec des données et que tu n'as pas encore entendu parler de dbt, c'est le moment. Pour aller plus loin : Data Universe.fr/outils/dbt-core
 **Tags :** dbt, data build tool, sql, data engineering, data analyst, transformation de données, modern data stack, analytics engineering, tutorial français, Data Universe

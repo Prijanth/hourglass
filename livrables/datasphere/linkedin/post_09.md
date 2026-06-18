@@ -1,4 +1,4 @@
-﻿# Comment passer AWS Cloud Practitioner en 3 semaines
+# Comment passer AWS Cloud Practitioner en 3 semaines
 **Format :** Liste plan semaine par semaine
 **Objectif :** Éduquer / Générer du trafic
 **Hashtags :** #AWS #Certification #Cloud #CloudPractitioner #Data Universe

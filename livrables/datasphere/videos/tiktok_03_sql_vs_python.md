@@ -1,4 +1,4 @@
-﻿# SQL vs Python : lequel apprendre en premier ?
+# SQL vs Python : lequel apprendre en premier ?
 **Durée cible :** 65s
 **Caption TikTok :** Tout le monde débute avec la même question : SQL ou Python d'abord ? La réponse honnête n'est pas "les deux" (c'est trop facile). Voici mon avis tranché, avec une vraie justification. #sql #python #apprendrelacode #dataanalytics #debutant #datascience #techfr #Data Universe
 
