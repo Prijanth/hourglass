@@ -101,17 +101,19 @@ export function Nav() {
 
         {/* Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%)",
-            boxShadow: "0 2px 8px rgba(124,58,237,0.3)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="3.2" fill="white"/>
-              <ellipse cx="10" cy="10" rx="9" ry="3.8" stroke="white" strokeWidth="1.4" fill="none"/>
-            </svg>
-          </div>
+          <svg width="32" height="32" viewBox="0 0 56 56" fill="none" style={{ filter: "drop-shadow(0 2px 6px rgba(99,102,241,0.4))", flexShrink: 0 }}>
+            <defs>
+              <linearGradient id="nav-du-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#a78bfa"/>
+                <stop offset="100%" stopColor="#4f46e5"/>
+              </linearGradient>
+            </defs>
+            <ellipse cx="28" cy="28" rx="25" ry="8" stroke="#818cf8" strokeWidth="1.8" fill="none" transform="rotate(-18 28 28)" strokeOpacity="0.35" strokeDasharray="40 41"/>
+            <path fillRule="evenodd" d="M12 9 L12 47 L27 47 Q47 47 47 28 Q47 9 27 9 Z M18 15 L18 41 L26 41 Q39 41 39 28 Q39 15 26 15 Z" fill="url(#nav-du-grad)"/>
+            <path d="M22 19 L22 30 Q22 37 28 37 Q34 37 34 30 L34 19" stroke="#818cf8" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeOpacity="0.7"/>
+            <ellipse cx="28" cy="28" rx="25" ry="8" stroke="#a78bfa" strokeWidth="1.8" fill="none" transform="rotate(-18 28 28)" strokeOpacity="0.85" strokeDasharray="40 41" strokeDashoffset="40"/>
+            <circle cx="50" cy="23" r="2" fill="#c4b5fd"/>
+          </svg>
           <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 16, letterSpacing: "-0.03em", color: "#0F172A" }}>
             Data<span style={{ color: "var(--indigo)" }}> Universe</span>
           </span>
