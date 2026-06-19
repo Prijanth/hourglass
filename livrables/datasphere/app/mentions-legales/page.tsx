@@ -16,7 +16,7 @@ export default function MentionsLegalesPage() {
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
         Mentions légales
       </h1>
-      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 5 juin 2026</p>
+      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 19 juin 2026</p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
 
@@ -30,7 +30,7 @@ export default function MentionsLegalesPage() {
             <p><strong>Prijanth Seevaratnam</strong></p>
             <p>Particulier</p>
             <p>Montry, 77 Seine-et-Marne, France</p>
-            <p>Email : <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)" }}>contact@Data Universe.fr</a></p>
+            <p>Email : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)" }}>contact@data-universe.fr</a></p>
           </div>
         </section>
 
@@ -41,9 +41,9 @@ export default function MentionsLegalesPage() {
           <div style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
             <p>Le site est hébergé par :</p>
             <br />
-            <p><strong>Vercel Inc.</strong></p>
-            <p>340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis</p>
-            <p>Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--indigo)" }}>vercel.com</a></p>
+            <p><strong>Netlify Inc.</strong></p>
+            <p>44 Montgomery Street, Suite 300, San Francisco, CA 94104, États-Unis</p>
+            <p>Site web : <a href="https://netlify.com" target="_blank" rel="noopener noreferrer" style={{ color: "var(--indigo)" }}>netlify.com</a></p>
           </div>
         </section>
 
@@ -90,7 +90,7 @@ export default function MentionsLegalesPage() {
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
             Pour toute question relative à ce site :{" "}
-            <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@Data Universe.fr</a>
+            <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@data-universe.fr</a>
           </p>
         </section>
       </div>

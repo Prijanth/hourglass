@@ -16,7 +16,7 @@ export default function ConfidentialitePage() {
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
         Politique de confidentialité
       </h1>
-      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 5 juin 2026</p>
+      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 19 juin 2026</p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
 
@@ -26,7 +26,7 @@ export default function ConfidentialitePage() {
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
             <strong>Prijanth Seevaratnam</strong>, éditeur de Data Universe.fr.<br />
-            Contact : <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)" }}>contact@Data Universe.fr</a>
+            Contact : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)" }}>contact@data-universe.fr</a>
           </p>
         </section>
 
@@ -39,7 +39,7 @@ export default function ConfidentialitePage() {
             <br />
             <ul style={{ paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8 }}>
               <li><strong>Newsletter :</strong> adresse email, prénom (facultatif), fréquence choisie. Finalité : envoi de la newsletter.</li>
-              <li><strong>Données de navigation :</strong> pages visitées, temps passé (via Vercel Analytics, anonymisé, sans cookie de tracking).</li>
+              <li><strong>Données de navigation :</strong> pages visitées, source de trafic, temps passé (via Google Analytics 4, soumis à ton consentement).</li>
             </ul>
           </div>
         </section>
@@ -51,7 +51,7 @@ export default function ConfidentialitePage() {
           <div style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
             <ul style={{ paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8 }}>
               <li><strong>Newsletter :</strong> consentement explicite (double opt-in). Tu confirmes ton inscription par email.</li>
-              <li><strong>Analytics :</strong> intérêt légitime (amélioration du service, données anonymisées).</li>
+              <li><strong>Analytics :</strong> consentement explicite (bandeau cookies affiché à la première visite).</li>
             </ul>
           </div>
         </section>
@@ -66,7 +66,8 @@ export default function ConfidentialitePage() {
             <ul style={{ paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8 }}>
               <li><strong>Supabase</strong> (stockage des emails abonnés) — serveurs en Europe (AWS eu-west-3)</li>
               <li><strong>Resend</strong> (envoi des emails de confirmation et newsletter) — conforme RGPD</li>
-              <li><strong>Vercel</strong> (hébergement) — conforme RGPD, certifié SOC 2</li>
+              <li><strong>Netlify</strong> (hébergement) — conforme RGPD, certifié SOC 2</li>
+              <li><strong>Google Analytics 4</strong> (mesure d&apos;audience) — chargé uniquement après consentement. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--indigo)" }}>Politique Google</a></li>
             </ul>
             <br />
             <p>Aucune donnée n&apos;est vendue ni cédée à des tiers à des fins commerciales.</p>
@@ -101,7 +102,7 @@ export default function ConfidentialitePage() {
             </ul>
             <br />
             <p>
-              Pour exercer ces droits : <a href="mailto:contact@Data Universe.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@Data Universe.fr</a><br />
+              Pour exercer ces droits : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)", fontWeight: 600 }}>contact@data-universe.fr</a><br />
               Tu peux également déposer une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" style={{ color: "var(--indigo)" }}>CNIL</a>.
             </p>
           </div>
@@ -111,9 +112,14 @@ export default function ConfidentialitePage() {
           <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "#0F172A", marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid #E2E8F0" }}>
             7. Cookies
           </h2>
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            Data Universe n&apos;utilise pas de cookies publicitaires ni de cookies tiers de tracking. Les seuls cookies utilisés sont techniques (session, préférences) et strictement nécessaires au fonctionnement du site.
-          </p>
+          <div style={{ fontSize: 15, color: "#475569", lineHeight: 1.8, display: "flex", flexDirection: "column", gap: 12 }}>
+            <p>Data Universe utilise deux catégories de cookies :</p>
+            <ul style={{ paddingLeft: 20, display: "flex", flexDirection: "column", gap: 8 }}>
+              <li><strong>Cookies techniques</strong> (strictement nécessaires) : thème clair/sombre, consentement cookies. Aucun consentement requis.</li>
+              <li><strong>Cookies analytiques</strong> (Google Analytics 4) : mesure d&apos;audience, pages vues, source de trafic. Déposés uniquement après ton accord via le bandeau cookies.</li>
+            </ul>
+            <p>Tu peux retirer ton consentement à tout moment en effaçant les données de navigation de ton navigateur.</p>
+          </div>
         </section>
 
       </div>
