@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none">
+  <rect width="56" height="56" rx="12" fill="#1E1B4B"/>
+  <defs>
+    <linearGradient id="dgrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- ring behind D -->
+  <ellipse cx="28" cy="28" rx="25" ry="8" stroke="#818cf8" stroke-width="1.8" fill="none" transform="rotate(-18 28 28)" stroke-opacity="0.4" stroke-dasharray="40 41"/>
+  <!-- D with transparent cutout (evenodd) -->
+  <path fill-rule="evenodd" d="M12 9 L12 47 L27 47 Q47 47 47 28 Q47 9 27 9 Z M18 15 L18 41 L26 41 Q39 41 39 28 Q39 15 26 15 Z" fill="url(#dgrad)"/>
+  <!-- U symbol -->
+  <path d="M22 19 L22 30 Q22 37 28 37 Q34 37 34 30 L34 19" stroke="#c4b5fd" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-opacity="0.85"/>
+  <!-- ring in front -->
+  <ellipse cx="28" cy="28" rx="25" ry="8" stroke="#a78bfa" stroke-width="1.8" fill="none" transform="rotate(-18 28 28)" stroke-opacity="0.9" stroke-dasharray="40 41" stroke-dashoffset="40"/>
+  <!-- orbital dot -->
+  <circle cx="50" cy="23" r="2.2" fill="#c4b5fd"/>
+</svg>

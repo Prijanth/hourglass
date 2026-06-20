@@ -1,0 +1,3256 @@
+{
+  "modeles": [
+    {
+      "id": "gpt-4o",
+      "statut": "legacy",
+      "nom": "GPT-4o",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-05",
+      "description": "Modèle phare d'OpenAI combinant texte, image et audio dans un seul modèle natif. Offre des performances élevées avec une latence réduite par rapport aux versions précédentes. Supporte nativement la vision, l'audio et le texte sans pipeline séparé.",
+      "points_forts": [
+        "Multimodalité native texte/image/audio",
+        "Rapidité supérieure à GPT-4 Turbo",
+        "Très bon rapport performance/coût",
+        "API largement adoptée dans l'industrie"
+      ],
+      "points_faibles": [
+        "Propriétaire et coûteux à grande échelle",
+        "Fenêtre de contexte inférieure à Gemini 1.5 Pro"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$2.50/M tokens input, ~$10/M tokens output",
+      "cas_usage_phares": [
+        "Génération de texte avancée",
+        "Analyse et description d'images",
+        "Assistants conversationnels",
+        "Génération de code"
+      ],
+      "benchmark_mmlu": 88.7,
+      "benchmark_humaneval": 90.2,
+      "benchmark_math": 76.6,
+      "lien": "https://openai.com/gpt-4o",
+      "tags": [
+        "texte",
+        "image",
+        "audio",
+        "code",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "o3",
+      "nom": "o3",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-04",
+      "description": "Modèle de raisonnement de pointe d'OpenAI utilisant le chain-of-thought étendu pour résoudre des problèmes complexes. Excelle en mathématiques, sciences et programmation avancée. Note : o3 Deep Research (variante avec recherche web approfondie) a un pricing différent à $10/$40 par M tokens.",
+      "points_forts": [
+        "Raisonnement mathématique et scientifique de haut niveau",
+        "Excellentes performances sur les benchmarks de codage avancé",
+        "Chain-of-thought étendu pour problèmes multi-étapes"
+      ],
+      "points_faibles": [
+        "Plus coûteux que les modèles de la gamme GPT-4",
+        "Latence élevée due au raisonnement étendu",
+        "Moins adapté aux tâches simples"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "~$2/M tokens input, ~$8/M tokens output (o3 standard)",
+      "cas_usage_phares": [
+        "Résolution de problèmes mathématiques complexes",
+        "Recherche scientifique assistée",
+        "Débogage de code avancé"
+      ],
+      "benchmark_mmlu": 91.6,
+      "benchmark_humaneval": 81.3,
+      "benchmark_math": 96.7,
+      "lien": "https://openai.com/o3",
+      "tags": [
+        "raisonnement",
+        "mathématiques",
+        "code",
+        "science"
+      ]
+    },
+    {
+      "id": "o4-mini",
+      "nom": "o4-mini",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-04",
+      "description": "Successeur de o3-mini (disponible depuis avril 2025), modèle de raisonnement compact et économique. Améliore o3-mini sur la vision, le code et le raisonnement multiétape. Disponible via l'API OpenAI en remplacement de o3-mini.",
+      "points_forts": [
+        "Raisonnement STEM de haute qualité à coût réduit",
+        "Support vision (analyse d'images)",
+        "Meilleur que o3-mini sur code et math"
+      ],
+      "points_faibles": [
+        "Moins performant que o3 sur les tâches très complexes",
+        "Contexte limité comparé aux modèles full-size"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.55/M tokens input, ~$2.20/M tokens output (o4-mini standard — o4-mini High : $1.10/$4.40)",
+      "cas_usage_phares": [
+        "Analyse de données structurées",
+        "Résolution de problèmes STEM",
+        "Code et débogage avec vision"
+      ],
+      "benchmark_mmlu": 90.0,
+      "benchmark_humaneval": 98.2,
+      "benchmark_math": 97.5,
+      "lien": "https://openai.com/o4-mini",
+      "tags": [
+        "raisonnement",
+        "code",
+        "STEM",
+        "économique",
+        "vision"
+      ]
+    },
+    {
+      "id": "claude-3-5-sonnet",
+      "statut": "legacy",
+      "nom": "Claude 3.5 Sonnet",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-10",
+      "description": "Modèle phare d'Anthropic, reconnu pour ses capacités exceptionnelles en codage, analyse et raisonnement. Intègre la vision et excelle particulièrement dans les tâches de développement logiciel. Adopté massivement par les développeurs via Cursor et Claude.ai.",
+      "points_forts": [
+        "Meilleur modèle de sa génération pour le code",
+        "Excellent suivi d'instructions complexes",
+        "Capacités d'analyse et de raisonnement approfondies",
+        "Vision de haute qualité"
+      ],
+      "points_faibles": [
+        "Propriétaire, dépendance à Anthropic",
+        "Moins fort que o3 sur les mathématiques pures"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "~$3/M tokens input, ~$15/M tokens output",
+      "cas_usage_phares": [
+        "Développement logiciel",
+        "Analyse de documents longs",
+        "Rédaction technique",
+        "Agents IA autonomes"
+      ],
+      "benchmark_mmlu": 88.3,
+      "benchmark_humaneval": 93.7,
+      "benchmark_math": 78.3,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "texte",
+        "code",
+        "image",
+        "analyse",
+        "agents"
+      ]
+    },
+    {
+      "id": "claude-opus-48",
+      "nom": "Claude Opus 4.8",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-05",
+      "description": "Modèle phare d'Anthropic sorti le 28 mai 2026, 41 jours après Opus 4.7. Introduit les 'dynamic workflows' dans Claude Code pour les tâches à très grande échelle. Score de 61.4 sur l'Artificial Analysis Intelligence Index (+4.1 vs 4.7), le meilleur tous modèles confondus. Vitesse 2,5x via le fast mode, 3x moins cher que sur la génération précédente.",
+      "points_forts": [
+        "Dynamic workflows : résolution de problèmes très large scale dans Claude Code",
+        "69.2% agentic coding, 84% sur Online-Mind2Web / 83.4% computer use global (SoTA toutes catégories)",
+        "Fast mode : 2.5x plus rapide, 3x moins cher que les versions précédentes",
+        "Plus honnête sur ses erreurs et ses limites en mode agentique"
+      ],
+      "points_faibles": [
+        "API uniquement, pas de version open source",
+        "Légèrement moins créatif que GPT-5.5 sur les tâches ouvertes selon certains benchmarks"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$5/M tokens input, $25/M tokens output",
+      "cas_usage_phares": [
+        "Agents de développement autonomes longue durée (Claude Code)",
+        "Tâches très complexes nécessitant raisonnement multi-étapes",
+        "Computer use et automatisation de workflows"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "benchmark_swebench_pro": 69.2,
+      "benchmark_osworld": 83.4,
+      "benchmark_hle": 57.9,
+      "lien": "https://www.anthropic.com/news/claude-opus-4-8",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "computer use",
+        "dynamic workflows"
+      ]
+    },
+    {
+      "id": "claude-opus-47",
+      "statut": "legacy",
+      "nom": "Claude Opus 4.7",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-04",
+      "description": "Flagship Anthropic d'avril 2026, remplacé par Opus 4.8 41 jours plus tard. Notable pour ses améliorations en vision multimodale (98.5%) et en codage (64.3% agentic coding). Même tarif qu'Opus 4.8 au moment de sa sortie.",
+      "points_forts": [
+        "98.5% en vision multimodale — meilleur de la gamme à sa sortie",
+        "64.3% agentic coding, solide pour les workflows de développement",
+        "82.8% computer use"
+      ],
+      "points_faibles": [
+        "Supplanté par Opus 4.8 moins de 6 semaines après sa sortie",
+        "Moins performant qu'Opus 4.8 sur les benchmarks agentiques"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$5/M tokens input, $25/M tokens output",
+      "cas_usage_phares": [
+        "Tâches de vision avancée et analyse d'images complexes",
+        "Agents de développement multi-étapes",
+        "Analyse documentaire approfondie"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "benchmark_swebench_pro": 64.3,
+      "benchmark_osworld": 82.8,
+      "benchmark_hle": 46.9,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "vision",
+        "code"
+      ]
+    },
+    {
+      "id": "claude-sonnet-46",
+      "nom": "Claude Sonnet 4.6",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-05",
+      "description": "Le modèle principal de la famille Claude 4.x, et le modèle qui fait tourner Claude Code. Combine raisonnement hybride (rapide et étendu), très haute performance sur le code et les tâches agentiques, avec un coût nettement inférieur à Opus. Référence du marché pour les applications production.",
+      "points_forts": [
+        "Rapport performance/coût exceptionnel dans la gamme Claude 4",
+        "Performance SWE-bench de premier rang pour les tâches de développement",
+        "Excellent pour les workflows agentiques et l'utilisation d'outils",
+        "Raisonnement hybride : rapide ou étendu selon la tâche"
+      ],
+      "points_faibles": [
+        "Moins puissant qu'Opus sur les tâches de raisonnement pur très complexes",
+        "Accès cloud uniquement"
+      ],
+      "context_window": "1M tokens (bêta)",
+      "cout_approx": "~$3/M tokens input, ~$15/M tokens output",
+      "cas_usage_phares": [
+        "Agents de développement autonomes (Claude Code)",
+        "Analyse de grandes bases de code",
+        "Applications production à fort volume"
+      ],
+      "benchmark_mmlu": 85.2,
+      "benchmark_humaneval": 93.5,
+      "benchmark_math": 89.4,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "code",
+        "raisonnement"
+      ]
+    },
+    {
+      "id": "claude-haiku-45",
+      "nom": "Claude Haiku 4.5",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-10",
+      "description": "Modèle ultra-rapide et économique de la famille Claude 4.x, sorti en octobre 2025. Représente un bond qualitatif majeur par rapport à Claude 3 Haiku, avec des capacités proches de Claude 3.5 Sonnet pour une fraction du coût. Idéal pour les pipelines haute fréquence.",
+      "points_forts": [
+        "Latence très faible, idéal pour les applications temps réel",
+        "Qualité nettement supérieure à Claude 3 Haiku",
+        "Coût parmi les plus bas du marché pour la gamme 4.x",
+        "Bon suivi d'instructions et capacités multimodales"
+      ],
+      "points_faibles": [
+        "Moins performant que Sonnet 4.6 sur les tâches complexes",
+        "Raisonnement étendu non disponible"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "~$0.80/M tokens input, ~$4/M tokens output",
+      "cas_usage_phares": [
+        "Chatbots et assistants haute fréquence",
+        "Classification et extraction d'entités à grande échelle",
+        "Pipelines de traitement de données en masse"
+      ],
+      "benchmark_mmlu": 76.8,
+      "benchmark_humaneval": 86.3,
+      "benchmark_math": 81.3,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "rapide",
+        "économique",
+        "classification",
+        "haute fréquence"
+      ]
+    },
+    {
+      "id": "gemini-2-0-flash",
+      "statut": "retired",
+      "nom": "Gemini 2.0 Flash",
+      "editeur": "Google DeepMind",
+      "logo_color": "#4285F4",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-01",
+      "description": "⚠️ Retiré le 1er juin 2026 — remplacé par Gemini 2.5 Flash. Sorti le 30 janvier 2025 comme modèle par défaut de l'API Google. Modèle multimodal rapide, successeur de Gemini 1.5 Flash. Conçu pour les applications temps réel avec support audio, vidéo, image et texte.",
+      "points_forts": [
+        "Vitesse d'inférence très élevée",
+        "Multimodalité native complète",
+        "Accès à Google Search en temps réel"
+      ],
+      "points_faibles": [
+        "Retiré de l'API le 01/06/2026 — utiliser Gemini 2.5 Flash",
+        "Légèrement en dessous de Gemini 2.0 Pro sur les tâches complexes",
+        "Dépendance à l'écosystème Google"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "N/A — retiré le 01/06/2026 (était $0.10/M input, $0.40/M output)",
+      "cas_usage_phares": [
+        "Applications temps réel",
+        "Analyse de vidéos longues",
+        "Agents avec recherche web",
+        "RAG sur grands documents"
+      ],
+      "benchmark_mmlu": 76.4,
+      "benchmark_humaneval": 78.9,
+      "benchmark_math": 89.7,
+      "lien": "https://deepmind.google/technologies/gemini/flash/",
+      "tags": [
+        "texte",
+        "image",
+        "audio",
+        "vidéo",
+        "rapide",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "gemini-2-0-pro",
+      "statut": "legacy",
+      "nom": "Gemini 2.0 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#4285F4",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-02",
+      "description": "Modèle de pointe de Google, optimisé pour le code et les tâches de raisonnement complexes. Offre une fenêtre de contexte d'un million de tokens avec support multimodal complet. Excellent pour les pipelines agentiques et le traitement de documents massifs.",
+      "points_forts": [
+        "Fenêtre de contexte d'1M tokens",
+        "Très performant sur le code",
+        "Support multimodal complet natif",
+        "Intégration Google Workspace"
+      ],
+      "points_faibles": [
+        "Coût élevé en production",
+        "API parfois moins stable"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "~$1.25/M tokens input, ~$5/M tokens output",
+      "cas_usage_phares": [
+        "Analyse de bases de code entières",
+        "Traitement de rapports annuels",
+        "Génération de code complexe"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://deepmind.google/technologies/gemini/",
+      "tags": [
+        "texte",
+        "image",
+        "audio",
+        "vidéo",
+        "code",
+        "long contexte"
+      ]
+    },
+    {
+      "id": "gemini-1-5-pro",
+      "statut": "legacy",
+      "nom": "Gemini 1.5 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#4285F4",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-05",
+      "description": "Modèle de référence de Google avec une fenêtre de contexte révolutionnaire d'un million de tokens. Premier modèle commercial capable de traiter l'intégralité d'un long-métrage ou d'une grande base de code en une seule requête. Architecture Mixture of Experts.",
+      "points_forts": [
+        "Contexte d'1 million de tokens (record à sa sortie)",
+        "Excellente compréhension de documents très longs",
+        "Support vidéo natif jusqu'à 1h de contenu"
+      ],
+      "points_faibles": [
+        "Performance au token moins élevée que GPT-4o",
+        "Coût élevé pour les grandes fenêtres"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "~$1.25/M tokens input (jusqu'à 128K), ~$2.50/M au-delà",
+      "cas_usage_phares": [
+        "Analyse de longs documents juridiques",
+        "Compréhension de vidéos longues",
+        "RAG sur corpus massifs"
+      ],
+      "benchmark_mmlu": 83.7,
+      "benchmark_humaneval": 84.1,
+      "benchmark_math": 67.7,
+      "lien": "https://deepmind.google/technologies/gemini/pro/",
+      "tags": [
+        "texte",
+        "image",
+        "vidéo",
+        "audio",
+        "long contexte"
+      ]
+    },
+    {
+      "id": "llama-3-3-70b",
+      "nom": "Llama 3.3 70B",
+      "editeur": "Meta",
+      "logo_color": "#0084FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-12",
+      "description": "Meilleure version de Llama 3 dans la taille 70B, offrant des performances comparables à des modèles bien plus grands. Librement téléchargeable et déployable on-premise. Référence absolue de l'open source pour son ratio taille/performance.",
+      "points_forts": [
+        "Performances comparables à GPT-4o sur de nombreuses tâches",
+        "Entièrement open source et déployable localement",
+        "Très bon support multilingue dont le français",
+        "Communauté et écosystème très larges"
+      ],
+      "points_faibles": [
+        "Nécessite une infrastructure GPU conséquente",
+        "Pas de multimodalité native"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "Gratuit (self-hosted), ~$0.20/M tokens via API providers",
+      "cas_usage_phares": [
+        "Déploiement on-premise souverain",
+        "Fine-tuning sur données métier",
+        "Applications IA sans dépendance cloud"
+      ],
+      "benchmark_mmlu": 86,
+      "benchmark_humaneval": 88.4,
+      "benchmark_math": 77,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "texte",
+        "code",
+        "open source",
+        "on-premise",
+        "souveraineté"
+      ]
+    },
+    {
+      "id": "llama-3-1-405b",
+      "statut": "legacy",
+      "nom": "Llama 3.1 405B",
+      "editeur": "Meta",
+      "logo_color": "#0084FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-07",
+      "description": "Modèle emblématique de la lignée Llama 3, sorti en juillet 2024 avec 405 milliards de paramètres. Désormais remplacé par Llama 4 (sorti en 2025) dans la gamme Meta. Reste pertinent pour le fine-tuning et le déploiement on-premise sur des usages nécessitant un grand modèle open source stable, mais les nouveaux projets devraient privilégier Llama 4.",
+      "points_forts": [
+        "Performances proches de GPT-4 sur de nombreux benchmarks (à sa sortie en 2024)",
+        "Déployable sur infrastructure privée, sans dépendance cloud",
+        "Support 128K tokens de contexte",
+        "Très bien documenté, nombreux guides de fine-tuning disponibles"
+      ],
+      "points_faibles": [
+        "Infrastructure GPU très coûteuse pour l'auto-hébergement",
+        "Moins performant que o3 sur les tâches de raisonnement pur"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "Gratuit (self-hosted), ~$2/M tokens via API providers",
+      "cas_usage_phares": [
+        "Remplacement souverain des modèles propriétaires",
+        "Recherche académique",
+        "Fine-tuning pour domaines spécialisés"
+      ],
+      "benchmark_mmlu": 87.3,
+      "benchmark_humaneval": 89,
+      "benchmark_math": 73.8,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "texte",
+        "code",
+        "open source",
+        "souveraineté",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "mistral-large-2",
+      "statut": "legacy",
+      "nom": "Mistral Large 2",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-07",
+      "description": "Modèle phare de la pépite française Mistral AI, avec 123 milliards de paramètres. Excellent en français et en langues européennes, avec de solides capacités de code et de raisonnement. Disponible via La Plateforme de Mistral ou en self-hosted via accord commercial.",
+      "points_forts": [
+        "Champion sur les langues européennes dont le français",
+        "Excellent rapport performance/coût",
+        "Disponible en self-hosted pour les entreprises",
+        "Très bon en code et raisonnement"
+      ],
+      "points_faibles": [
+        "Moins performant que GPT-4o sur les tâches multimodales",
+        "Poids du modèle élevé pour du self-hosted"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$2/M tokens input, ~$6/M tokens output",
+      "cas_usage_phares": [
+        "Applications en français",
+        "Analyse de documents légaux européens",
+        "Assistants entreprise souverains"
+      ],
+      "benchmark_mmlu": 84,
+      "benchmark_humaneval": 92.1,
+      "benchmark_math": 69.9,
+      "lien": "https://mistral.ai/news/mistral-large-2407/",
+      "tags": [
+        "texte",
+        "code",
+        "français",
+        "européen",
+        "souveraineté"
+      ]
+    },
+    {
+      "id": "mistral-small-3",
+      "nom": "Mistral Small 3.1",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-03",
+      "description": "Modèle compact de 24 milliards de paramètres de Mistral AI (version 3.1 de mars 2025), conçu pour les déploiements edge et les applications nécessitant faible latence. Support multimodal (images) et fenêtre de contexte portée à 128K tokens vs 32K pour la version 3.0 initiale.",
+      "points_forts": [
+        "Open source sous licence Apache 2.0",
+        "Excellent ratio performance/taille",
+        "Très rapide en inférence",
+        "Support multimodal (images) depuis la v3.1"
+      ],
+      "points_faibles": [
+        "Moins performant que Mistral Large sur les tâches complexes",
+        "Moins puissant que les modèles frontier sur le raisonnement"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.10/M tokens input, ~$0.30/M tokens output",
+      "cas_usage_phares": [
+        "Déploiement on-premise sur petits serveurs",
+        "Applications mobile et edge",
+        "Pipelines de traitement massivement parallèles"
+      ],
+      "benchmark_mmlu": 81,
+      "benchmark_humaneval": 78,
+      "benchmark_math": null,
+      "lien": "https://mistral.ai/news/mistral-small-3/",
+      "tags": [
+        "texte",
+        "open source",
+        "rapide",
+        "edge",
+        "économique"
+      ]
+    },
+    {
+      "id": "mixtral-8x22b",
+      "statut": "legacy",
+      "nom": "Mixtral 8x22B",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-04",
+      "description": "Modèle Mixture of Experts open source de Mistral AI, activant 39B paramètres sur 141B au total. Offre les performances d'un grand modèle avec la latence d'un modèle de taille intermédiaire. Référence open source pour le code et le raisonnement.",
+      "points_forts": [
+        "Architecture MoE efficace (141B paramètres, 39B actifs)",
+        "Excellent en code et raisonnement",
+        "Totalement open source",
+        "Support de nombreux langages de programmation"
+      ],
+      "points_faibles": [
+        "Infrastructure nécessaire reste importante (MoE)",
+        "Moins fort en multilingue que Mistral Large 2"
+      ],
+      "context_window": "65K tokens",
+      "cout_approx": "Gratuit (self-hosted), ~$0.65/M tokens via API",
+      "cas_usage_phares": [
+        "Code et débogage avancé",
+        "Raisonnement logique",
+        "Fine-tuning spécialisé"
+      ],
+      "benchmark_mmlu": 77.8,
+      "benchmark_humaneval": 75,
+      "benchmark_math": 50,
+      "lien": "https://mistral.ai/news/mixtral-8x22b/",
+      "tags": [
+        "texte",
+        "code",
+        "open source",
+        "MoE",
+        "raisonnement"
+      ]
+    },
+    {
+      "id": "pixtral-large",
+      "nom": "Pixtral Large",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-11",
+      "description": "Premier modèle multimodal de Mistral AI, basé sur Mistral Large 2 avec un encodeur visuel dédié. Capable d'analyser plusieurs images simultanément et de résoudre des problèmes visuels complexes. Disponible via La Plateforme Mistral.",
+      "points_forts": [
+        "Multimodalité texte + image de haute qualité",
+        "Basé sur Mistral Large 2 pour le texte",
+        "Compréhension de documents complexes avec images",
+        "Bon support du français"
+      ],
+      "points_faibles": [
+        "Modèle propriétaire",
+        "Moins de benchmarks publics que GPT-4o Vision"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$2/M tokens input, ~$6/M tokens output",
+      "cas_usage_phares": [
+        "Analyse de schémas techniques",
+        "Extraction d'informations de documents scannés",
+        "Description et comparaison d'images"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://mistral.ai/news/pixtral-large/",
+      "tags": [
+        "texte",
+        "image",
+        "multimodal",
+        "français",
+        "OCR"
+      ]
+    },
+    {
+      "id": "command-r-plus",
+      "statut": "legacy",
+      "nom": "Command R+",
+      "editeur": "Cohere",
+      "logo_color": "#39594A",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-04",
+      "description": "Modèle de Cohere spécialement optimisé pour les applications RAG et les usages enterprise. Intègre nativement la gestion des citations et la grounding sur des sources externes. Disponible en déploiement cloud ou on-premise.",
+      "points_forts": [
+        "RAG nativement optimisé avec citations automatiques",
+        "Déployable on-premise pour les entreprises",
+        "Excellent sur les tâches de recherche et synthèse",
+        "API enterprise robuste"
+      ],
+      "points_faibles": [
+        "Moins performant que GPT-4o sur les tâches génératives créatives",
+        "Communauté plus restreinte que Meta ou Mistral"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$2.50/M tokens input, ~$10/M tokens output",
+      "cas_usage_phares": [
+        "Chatbots RAG sur base documentaire",
+        "Assistants de recherche avec sources citées",
+        "Automatisation de la veille documentaire"
+      ],
+      "benchmark_mmlu": 75.7,
+      "benchmark_humaneval": 68,
+      "benchmark_math": null,
+      "lien": "https://cohere.com/command",
+      "tags": [
+        "texte",
+        "RAG",
+        "enterprise",
+        "citations",
+        "recherche"
+      ]
+    },
+    {
+      "id": "qwen-2-5-72b",
+      "statut": "legacy",
+      "nom": "Qwen 2.5 72B",
+      "editeur": "Alibaba Cloud",
+      "logo_color": "#FF6A00",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-09",
+      "description": "Modèle phare d'Alibaba, avec d'excellentes performances en code, mathématiques et raisonnement. Disponible en open source sous licence Apache 2.0 pour la version 72B. Parmi les meilleurs modèles open source sur les benchmarks quantitatifs.",
+      "points_forts": [
+        "Excellentes performances en mathématiques et code",
+        "Open source (Apache 2.0)",
+        "Support du chinois et de l'anglais de haute qualité",
+        "Disponible en plusieurs tailles (0.5B à 72B)"
+      ],
+      "points_faibles": [
+        "Support du français limité comparé à Mistral",
+        "Moins connu et utilisé en Europe"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "Gratuit (self-hosted), ~$0.40/M tokens via API",
+      "cas_usage_phares": [
+        "Applications nécessitant code et maths",
+        "Déploiements Asie-Pacifique",
+        "Fine-tuning sur données spécialisées"
+      ],
+      "benchmark_mmlu": 86.1,
+      "benchmark_humaneval": 88.2,
+      "benchmark_math": 83.1,
+      "lien": "https://qwen.readthedocs.io/",
+      "tags": [
+        "texte",
+        "code",
+        "mathématiques",
+        "open source",
+        "chinois"
+      ]
+    },
+    {
+      "id": "deepseek-v3",
+      "nom": "DeepSeek V3",
+      "editeur": "DeepSeek",
+      "logo_color": "#3B82F6",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-12",
+      "description": "Modèle MoE de 671B paramètres (37B actifs) entraîné pour moins de 6 millions de dollars selon DeepSeek, provoquant une onde de choc dans le secteur IA. Performances comparables à GPT-4o et Claude 3.5 Sonnet sur les benchmarks majeurs.",
+      "points_forts": [
+        "Rapport qualité/coût révolutionnaire",
+        "Open source avec poids téléchargeables",
+        "Excellent sur le code et le raisonnement",
+        "Compétitif avec les meilleurs modèles propriétaires"
+      ],
+      "points_faibles": [
+        "Données d'entraînement et pratiques peu transparentes",
+        "Questions de confidentialité (serveurs chinois)",
+        "Support français moyen"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.14/M tokens input, ~$0.28/M tokens output via API DeepSeek",
+      "cas_usage_phares": [
+        "Développement logiciel assisté",
+        "Analyse de données quantitatives",
+        "Alternatives économiques aux modèles propriétaires"
+      ],
+      "benchmark_mmlu": 88.5,
+      "benchmark_humaneval": 89.3,
+      "benchmark_math": 90.2,
+      "lien": "https://www.deepseek.com/",
+      "tags": [
+        "texte",
+        "code",
+        "mathématiques",
+        "open source",
+        "MoE",
+        "économique"
+      ]
+    },
+    {
+      "id": "deepseek-r1",
+      "nom": "DeepSeek R1",
+      "editeur": "DeepSeek",
+      "logo_color": "#3B82F6",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-01",
+      "description": "Modèle de raisonnement open source de DeepSeek, concurrent direct de o1 d'OpenAI. Utilise le renforcement pur sans supervised fine-tuning initial pour développer des capacités de raisonnement émergentes. Performances remarquables sur les benchmarks STEM.",
+      "points_forts": [
+        "Raisonnement de niveau o1 en open source",
+        "Entraîné par RL pur, approche innovante",
+        "Performances MATH et code exceptionnelles",
+        "Distillations disponibles (7B, 14B, 32B, 70B)"
+      ],
+      "points_faibles": [
+        "Mêmes préoccupations de confidentialité que DeepSeek V3",
+        "Verbeux dans ses traces de raisonnement"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "~$0.14/M tokens input, ~$2.19/M tokens output via API",
+      "cas_usage_phares": [
+        "Résolution de problèmes mathématiques",
+        "Débogage de code complexe",
+        "Raisonnement logique multi-étapes"
+      ],
+      "benchmark_mmlu": 90.8,
+      "benchmark_humaneval": 92.6,
+      "benchmark_math": 97.3,
+      "lien": "https://www.deepseek.com/",
+      "tags": [
+        "raisonnement",
+        "mathématiques",
+        "code",
+        "open source",
+        "STEM"
+      ]
+    },
+    {
+      "id": "phi-4",
+      "nom": "Phi-4",
+      "editeur": "Microsoft",
+      "logo_color": "#00A4EF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2024-12",
+      "description": "Petit modèle de 14 milliards de paramètres de Microsoft qui surpasse des modèles bien plus grands sur les benchmarks quantitatifs. Entraîné principalement sur des données synthétiques de haute qualité. Disponible sur Azure AI Foundry et Hugging Face.",
+      "points_forts": [
+        "Performances impressionnantes pour sa taille (14B)",
+        "Excellente efficacité énergétique",
+        "Open source sur Hugging Face",
+        "Très bon pour les mathématiques et le raisonnement"
+      ],
+      "points_faibles": [
+        "Moins performant sur les tâches créatives longues",
+        "Support multilingue limité"
+      ],
+      "context_window": "16K tokens",
+      "cout_approx": "Gratuit (self-hosted), ~$0.05/M tokens via Azure",
+      "cas_usage_phares": [
+        "Déploiements edge et mobiles",
+        "Éducation STEM",
+        "Applications contraintes en ressources"
+      ],
+      "benchmark_mmlu": 84.8,
+      "benchmark_humaneval": 82.6,
+      "benchmark_math": 80.6,
+      "lien": "https://azure.microsoft.com/en-us/products/phi",
+      "tags": [
+        "texte",
+        "mathématiques",
+        "open source",
+        "edge",
+        "petit modèle"
+      ]
+    },
+    {
+      "id": "dall-e-3",
+      "statut": "retired",
+      "nom": "DALL-E 3",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "Image",
+      "acces": "Propriétaire",
+      "date_sortie": "2023-10",
+      "description": "⚠️ Retiré de l'API OpenAI le 12 mai 2026 — remplacé par GPT Image 1 (gpt-image-1). DALL-E 3 reste accessible via ChatGPT mais n'est plus disponible via l'API. Modèle historique d'OpenAI avec une excellente compréhension des prompts complexes grâce à une phase de recaptioning par GPT-4.",
+      "points_forts": [
+        "Très bonne compréhension des prompts en langage naturel",
+        "Bonne gestion du texte dans les images",
+        "Sécurité et filtres contenus avancés"
+      ],
+      "points_faibles": [
+        "Retiré de l'API le 12 mai 2026 — utiliser GPT Image 1 (gpt-image-1)",
+        "Photorealisme inférieur à Midjourney ou Flux",
+        "Moins de contrôle sur le style que la concurrence"
+      ],
+      "context_window": null,
+      "cout_approx": "N/A — retiré de l'API le 12/05/2026 (remplacé par GPT Image 1)",
+      "cas_usage_phares": [
+        "Illustrations pour articles et présentations",
+        "Visuels marketing conceptuels",
+        "Prototypage de designs"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/dall-e-3",
+      "tags": [
+        "image",
+        "génération",
+        "illustration",
+        "texte-en-image"
+      ]
+    },
+    {
+      "id": "midjourney-v6-1",
+      "statut": "legacy",
+      "nom": "Midjourney v6.1",
+      "editeur": "Midjourney",
+      "logo_color": "#000000",
+      "type": "Image",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-07",
+      "description": "La référence en génération d'images pour la qualité esthétique et le photorealisme. Accessible uniquement via Discord ou interface web. Très prisé des artistes et des équipes créatives pour la qualité visuelle inégalée de ses sorties.",
+      "points_forts": [
+        "Qualité esthétique et photorealisme de référence",
+        "Excellent pour les portraits et les scènes cinématographiques",
+        "Style artistique très reconnaissable et apprécié",
+        "Communauté créative très active"
+      ],
+      "points_faibles": [
+        "Interface Discord peu intuitive pour les professionnels",
+        "Pas d'API publique pour l'intégration programmatique",
+        "Questions de droits sur les images générées"
+      ],
+      "context_window": null,
+      "cout_approx": "A partir de $10/mois (abonnement)",
+      "cas_usage_phares": [
+        "Création artistique et conceptuelle",
+        "Visuels haute qualité pour médias",
+        "Prototypage créatif"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://www.midjourney.com/",
+      "tags": [
+        "image",
+        "art",
+        "photorealisme",
+        "créatif",
+        "cinématographique"
+      ]
+    },
+    {
+      "id": "stable-diffusion-3-5",
+      "nom": "Stable Diffusion 3.5",
+      "editeur": "Stability AI",
+      "logo_color": "#8B5CF6",
+      "type": "Image",
+      "acces": "Open Source",
+      "date_sortie": "2024-10",
+      "description": "Dernier modèle de la famille Stable Diffusion, le pionnier de la génération d'images open source. Architecture Multimodal Diffusion Transformer. Entièrement personnalisable et déployable localement, avec un vaste écosystème de fine-tunes et de LoRA.",
+      "points_forts": [
+        "Entièrement open source et déployable localement",
+        "Écosystème de fine-tunes et LoRA gigantesque",
+        "Très personnalisable et contrôlable (ControlNet, IP-Adapter)",
+        "Aucune censure sur les poids officiels"
+      ],
+      "points_faibles": [
+        "Photorealisme inférieur à Midjourney sur les sorties brutes",
+        "Configuration initiale complexe pour les non-techniques"
+      ],
+      "context_window": null,
+      "cout_approx": "Gratuit (self-hosted), ~$0.04 par image via API",
+      "cas_usage_phares": [
+        "Déploiement souverain et personnalisé",
+        "Fine-tuning sur style de marque",
+        "Applications créatives sans censure"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://stability.ai/stable-diffusion",
+      "tags": [
+        "image",
+        "open source",
+        "fine-tuning",
+        "contrôlable",
+        "on-premise"
+      ]
+    },
+    {
+      "id": "flux-1-1-pro",
+      "nom": "FLUX 1.1 Pro",
+      "editeur": "Black Forest Labs",
+      "logo_color": "#1C1C1C",
+      "type": "Image",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-10",
+      "description": "Modèle de génération d'images de Black Forest Labs, fondé par les créateurs originaux de Stable Diffusion. Offre une qualité photographique et une cohérence exceptionnelles. Reconnu comme l'un des modèles les plus performants sur les benchmarks d'évaluation humaine.",
+      "points_forts": [
+        "Qualité photographique très haute",
+        "Excellente cohérence dans les détails",
+        "Très rapide (6x plus rapide que FLUX 1 Pro)",
+        "Bon rendu du texte dans les images"
+      ],
+      "points_faibles": [
+        "Propriétaire pour la version Pro",
+        "Moins flexible que SD3.5 pour le fine-tuning"
+      ],
+      "context_window": null,
+      "cout_approx": "~$0.04 par image via API (Replicate, fal.ai)",
+      "cas_usage_phares": [
+        "Photographie de produit commerciale",
+        "Visuels publicitaires haute résolution",
+        "Portraits et scènes réalistes"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://blackforestlabs.ai/",
+      "tags": [
+        "image",
+        "photorealisme",
+        "rapide",
+        "commercial"
+      ]
+    },
+    {
+      "id": "ideogram-2",
+      "nom": "Ideogram 2.0",
+      "editeur": "Ideogram",
+      "logo_color": "#5046E5",
+      "type": "Image",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-09",
+      "description": "Modèle de génération d'images spécialisé dans la génération de texte lisible et cohérent au sein des visuels. Résout le problème historique des modèles qui produisaient du texte illisible. Idéal pour les visuels marketing, affiches et infographies.",
+      "points_forts": [
+        "Meilleur modèle pour la génération de texte dans les images",
+        "Typographie précise et lisible",
+        "Bon pour les affiches, logos et designs graphiques",
+        "Interface web intuitive"
+      ],
+      "points_faibles": [
+        "Moins performant que Midjourney pour la photographie artistique pure",
+        "Fonctionnalités avancées payantes"
+      ],
+      "context_window": null,
+      "cout_approx": "Plan gratuit limité, ~$7-16/mois pour les plans payants",
+      "cas_usage_phares": [
+        "Création d'affiches et de flyers",
+        "Visuels avec typographie intégrée",
+        "Logos et identités visuelles conceptuelles"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://ideogram.ai/",
+      "tags": [
+        "image",
+        "typographie",
+        "affiche",
+        "marketing",
+        "texte-dans-image"
+      ]
+    },
+    {
+      "id": "adobe-firefly-3",
+      "statut": "legacy",
+      "nom": "Adobe Firefly 3",
+      "editeur": "Adobe",
+      "logo_color": "#FF0000",
+      "type": "Image",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-04",
+      "description": "Modèle de génération d'images d'Adobe, entraîné exclusivement sur des contenus sous licence Adobe Stock et domaine public. Seul grand modèle offrant une indemnisation commerciale complète pour les contenus générés. Intégré nativement dans Photoshop, Illustrator et Adobe Express.",
+      "points_forts": [
+        "Sécurité juridique totale pour usage commercial",
+        "Intégration native dans la suite Adobe",
+        "Generative Fill révolutionnaire dans Photoshop",
+        "Respect des droits d'auteur garanti"
+      ],
+      "points_faibles": [
+        "Qualité créative inférieure à Midjourney",
+        "Nécessite un abonnement Adobe Creative Cloud"
+      ],
+      "context_window": null,
+      "cout_approx": "Inclus dans Adobe Creative Cloud (~$55/mois)",
+      "cas_usage_phares": [
+        "Retouche photo commerciale (Generative Fill)",
+        "Création de visuels pour publicités",
+        "Remplacement de fond et extension d'image"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://firefly.adobe.com/",
+      "tags": [
+        "image",
+        "commercial",
+        "photoshop",
+        "retouche",
+        "juridique"
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "nom": "GitHub Copilot",
+      "editeur": "Microsoft / GitHub",
+      "logo_color": "#24292E",
+      "type": "Code",
+      "acces": "Propriétaire",
+      "date_sortie": "2022-06",
+      "description": "Assistant de codage IA le plus adopté en entreprise, avec 4,7M+ abonnés payants (jan. 2026) et disponible pour tous les développeurs GitHub (plan gratuit inclus). Intégré nativement à VS Code, JetBrains, Visual Studio et Neovim. Powered par des modèles d'OpenAI et Anthropic, avec Copilot Chat pour les conversations contextuelles.",
+      "points_forts": [
+        "4,7M+ abonnés payants — standard de facto en entreprise",
+        "Intégration native dans les IDEs majeurs",
+        "Complétion de code inline en temps réel",
+        "GitHub Copilot Chat pour Q&A sur la base de code"
+      ],
+      "points_faibles": [
+        "Plan gratuit limité (2 000 complétions/mois)",
+        "Dépendance à l'écosystème Microsoft/GitHub",
+        "Peut suggérer du code de moins bonne qualité sur des langages rares"
+      ],
+      "context_window": null,
+      "cout_approx": "Pro $10/mois, Business $19/user/mois, Enterprise $39/user/mois",
+      "cas_usage_phares": [
+        "Complétion de code en temps réel",
+        "Génération de tests unitaires",
+        "Documentation automatique",
+        "Revue de code assistée"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://github.com/features/copilot",
+      "tags": [
+        "code",
+        "IDE",
+        "complétion",
+        "tests",
+        "documentation"
+      ]
+    },
+    {
+      "id": "cursor",
+      "nom": "Cursor",
+      "editeur": "Cursor AI",
+      "logo_color": "#000000",
+      "type": "Code",
+      "acces": "Propriétaire",
+      "date_sortie": "2023-03",
+      "description": "IDE IA-first basé sur VS Code, permettant des interactions naturelles avec la base de code entière. Cursor Chat permet de modifier des fichiers entiers via instructions en langage naturel. Adopté massivement par les développeurs solo et les startups pour sa productivité.",
+      "points_forts": [
+        "Compréhension de la base de code entière",
+        "Mode Agent pour modifications multi-fichiers autonomes",
+        "Basé sur VS Code (extensions compatibles)",
+        "Choix du modèle sous-jacent (GPT-4o, Claude, etc.)"
+      ],
+      "points_faibles": [
+        "Abonnement nécessaire pour les fonctionnalités pro",
+        "Peut être lent sur les très grands projets",
+        "Courbe d'apprentissage pour les modes avancés"
+      ],
+      "context_window": null,
+      "cout_approx": "$20/mois (Pro), gratuit limité",
+      "cas_usage_phares": [
+        "Développement full-stack assisté par IA",
+        "Refactoring de grandes bases de code",
+        "Onboarding rapide sur de nouveaux projets"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://cursor.sh/",
+      "tags": [
+        "code",
+        "IDE",
+        "agent",
+        "refactoring",
+        "full-stack"
+      ]
+    },
+    {
+      "id": "codestral",
+      "statut": "legacy",
+      "nom": "Codestral v1 (mai 2024)",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "Code",
+      "acces": "Hybride",
+      "date_sortie": "2024-05",
+      "description": "Première version du modèle code de Mistral AI (mai 2024, 32K tokens). Remplacée par Codestral 2 (Codestral 2508, août 2025) : 256K tokens, 2x plus rapide, $0.30/$0.90 par M tokens, FIM amélioré. Recommandation : utiliser Codestral 2508 pour les nouveaux projets.",
+      "points_forts": [
+        "Spécialisé code, endpoint FIM optimisée",
+        "Supporte 80+ langages de programmation",
+        "Intégrable dans VS Code et JetBrains via plugins"
+      ],
+      "points_faibles": [
+        "Version v1 dépassée — Codestral 2508 (256K tokens) lui est largement supérieur",
+        "Pas totalement open source pour usage commercial"
+      ],
+      "context_window": "32K tokens (v1) — Codestral 2508 : 256K tokens",
+      "cout_approx": "v1 : ~$0.20/M tokens input — Codestral 2508 : $0.30/$0.90 par M tokens",
+      "cas_usage_phares": [
+        "Complétion de code dans les IDEs",
+        "Génération de fonctions et classes",
+        "Débogage et refactoring"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": 91.2,
+      "benchmark_math": null,
+      "lien": "https://mistral.ai/news/codestral/",
+      "tags": [
+        "code",
+        "complétion",
+        "FIM",
+        "80+ langages"
+      ]
+    },
+    {
+      "id": "whisper",
+      "statut": "legacy",
+      "nom": "Whisper",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "Audio",
+      "acces": "Open Source",
+      "date_sortie": "2022-09",
+      "description": "Modèle de reconnaissance vocale open source d'OpenAI entraîné sur 680 000 heures d'audio multilingue. Référence pour le self-hosted. Via l'API OpenAI, les alternatives recommandées sont désormais gpt-4o-transcribe ($0.006/min) et gpt-4o-mini-transcribe ($0.003/min), plus précis que Whisper-1.",
+      "points_forts": [
+        "Open source, déployable localement (tiny à large-v3)",
+        "Support de 99 langues dont le français",
+        "Excellente robustesse aux accents et bruits"
+      ],
+      "points_faibles": [
+        "Remplacé par gpt-4o-transcribe dans l'API OpenAI pour de meilleures performances",
+        "Pas de transcription en temps réel dans la version officielle",
+        "Lent sur CPU pour les grandes tailles de modèle"
+      ],
+      "context_window": "30 secondes par chunk audio",
+      "cout_approx": "Gratuit (self-hosted) — API : Whisper-1 $0.006/min, gpt-4o-transcribe $0.006/min, gpt-4o-mini-transcribe $0.003/min",
+      "cas_usage_phares": [
+        "Transcription de réunions et podcasts",
+        "Sous-titrage automatique",
+        "Indexation d'archives audio",
+        "Dictée vocale"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/research/whisper",
+      "tags": [
+        "audio",
+        "transcription",
+        "ASR",
+        "open source",
+        "multilingue"
+      ]
+    },
+    {
+      "id": "elevenlabs-tts",
+      "nom": "ElevenLabs TTS",
+      "editeur": "ElevenLabs",
+      "logo_color": "#1BFFAE",
+      "type": "Audio",
+      "acces": "Propriétaire",
+      "date_sortie": "2023-01",
+      "description": "Plateforme de synthèse vocale ultra-réaliste, référence du marché. Le modèle flagship Eleven v3 (février 2026) supporte 70+ langues avec contrôle émotionnel avancé via audio tags. Flash v2.5 (32 langues) cible les applications temps-réel basse-latence. Plans : Free (10 000 crédits/mois ≈ 10 min), Starter ($5/mois), Creator ($22/mois), Pro ($99/mois).",
+      "points_forts": [
+        "Eleven v3 : 70+ langues, contrôle émotionnel via audio tags",
+        "Clonage vocal instantané (quelques secondes d'audio)",
+        "Flash v2.5 pour les applications temps-réel basse-latence",
+        "API robuste avec SDK Python et JavaScript"
+      ],
+      "points_faibles": [
+        "Coût élevé pour les volumes importants",
+        "Propriétaire, dépendance à la plateforme",
+        "Préoccupations éthiques sur le clonage vocal"
+      ],
+      "context_window": null,
+      "cout_approx": "Free (10 000 crédits/mois), Starter $5/mois, Creator $22/mois, Pro $99/mois",
+      "cas_usage_phares": [
+        "Narration de vidéos et podcasts",
+        "Doublage et localisation",
+        "Assistants vocaux ultra-réalistes",
+        "Accessibilité (lecture de contenu)"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://elevenlabs.io/",
+      "tags": [
+        "audio",
+        "TTS",
+        "clonage vocal",
+        "multilingue",
+        "narration"
+      ]
+    },
+    {
+      "id": "suno-v4",
+      "nom": "Suno v4",
+      "editeur": "Suno",
+      "logo_color": "#6C47FF",
+      "type": "Audio",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-10",
+      "description": "Modèle de génération musicale de référence, capable de créer des chansons complètes (paroles, mélodie, voix) à partir d'un simple prompt textuel. Suno v4 améliore la qualité audio, la cohérence des paroles et la diversité des styles musicaux.",
+      "points_forts": [
+        "Génération de chansons complètes (paroles + musique + voix)",
+        "Qualité audio de niveau professionnel",
+        "Très large palette de styles musicaux",
+        "Interface web intuitive"
+      ],
+      "points_faibles": [
+        "Questions de droits d'auteur complexes",
+        "Peu de contrôle fin sur les arrangements",
+        "Propriétaire"
+      ],
+      "context_window": null,
+      "cout_approx": "Plan gratuit (50 crédits/jour ≈ 10 chansons, usage personnel), Pro $10/mois (2 500 crédits), Premier $30/mois (10 000 crédits)",
+      "cas_usage_phares": [
+        "Création de jingles et musiques de fond",
+        "Prototypage musical rapide",
+        "Contenu audio pour réseaux sociaux"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://suno.com/",
+      "tags": [
+        "audio",
+        "musique",
+        "génération",
+        "chansons",
+        "créatif"
+      ]
+    },
+    {
+      "id": "sora",
+      "nom": "Sora",
+      "editeur": "OpenAI",
+      "logo_color": "#00A67E",
+      "type": "Vidéo",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-12",
+      "description": "Modèle de génération vidéo d'OpenAI, annoncé en février 2024 et lancé fin 2024. Capable de générer des vidéos jusqu'à 60 secondes en haute définition à partir de prompts textuels ou d'images. Basé sur une architecture diffusion transformer.",
+      "points_forts": [
+        "Cohérence temporelle et physique remarquable",
+        "Durée jusqu'à 60 secondes",
+        "Résolution 1080p disponible",
+        "Compréhension fine des prompts complexes"
+      ],
+      "points_faibles": [
+        "Accès très limité (réservé aux abonnés ChatGPT Pro)",
+        "Coût élevé par vidéo générée",
+        "Parfois des incohérences physiques sur les mouvements complexes"
+      ],
+      "context_window": null,
+      "cout_approx": "Inclus dans ChatGPT Plus/Pro ($20-200/mois)",
+      "cas_usage_phares": [
+        "Prototypage de publicités et clips",
+        "Visualisation de concepts créatifs",
+        "Génération de B-roll pour la production vidéo"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/sora",
+      "tags": [
+        "vidéo",
+        "génération",
+        "texte-en-vidéo",
+        "cinématique"
+      ]
+    },
+    {
+      "id": "runway-gen-3",
+      "statut": "legacy",
+      "nom": "Runway Gen-3 Alpha",
+      "editeur": "Runway",
+      "logo_color": "#00E5FF",
+      "type": "Vidéo",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-06",
+      "description": "Modèle de génération vidéo de Runway, pionnier du secteur avec des outils utilisés en production hollywoodienne. Gen-3 Alpha améliore la cohérence des mouvements et la qualité visuelle. Intégré dans une suite d'outils vidéo professionnels.",
+      "points_forts": [
+        "Contrôle fin sur la caméra et les mouvements",
+        "Intégration dans une suite professionnelle complète",
+        "Utilisé dans des productions hollywoodiennes",
+        "Mode Motion Brush pour contrôle précis"
+      ],
+      "points_faibles": [
+        "Abonnement coûteux pour les crédits importants",
+        "Vidéos limitées à 10 secondes par génération"
+      ],
+      "context_window": null,
+      "cout_approx": "A partir de $12/mois, facturation par crédit",
+      "cas_usage_phares": [
+        "Production vidéo et effets spéciaux",
+        "Clips musicaux et publicités",
+        "Génération de mouvements de caméra créatifs"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://runwayml.com/",
+      "tags": [
+        "vidéo",
+        "génération",
+        "effets spéciaux",
+        "professionnel",
+        "Hollywood"
+      ]
+    },
+    {
+      "id": "kling-1-6",
+      "nom": "Kling 1.6",
+      "editeur": "Kuaishou",
+      "logo_color": "#FF4B91",
+      "type": "Vidéo",
+      "acces": "Propriétaire",
+      "date_sortie": "2024-11",
+      "description": "Modèle de génération vidéo de Kuaishou (géant chinois de la vidéo courte), reconnu pour la cohérence physique et la qualité des mouvements humains. Disponible via API ou interface web avec des plans compétitifs.",
+      "points_forts": [
+        "Excellente cohérence des mouvements humains",
+        "Vidéos jusqu'à 2 minutes",
+        "Tarification compétitive par rapport à la concurrence occidentale",
+        "Haute résolution (jusqu'à 1080p)"
+      ],
+      "points_faibles": [
+        "Entreprise chinoise, questions de confidentialité des données",
+        "Interface moins mature que Runway"
+      ],
+      "context_window": null,
+      "cout_approx": "A partir de $8.5/mois, plan gratuit disponible",
+      "cas_usage_phares": [
+        "Génération de scènes avec personnages",
+        "Publicités et contenus marketing",
+        "Animation de photos statiques"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://kling.kuaishou.com/",
+      "tags": [
+        "vidéo",
+        "génération",
+        "personnages",
+        "mouvements",
+        "long format"
+      ]
+    },
+    {
+      "id": "gemini-25-pro",
+      "nom": "Gemini 2.5 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-03",
+      "description": "Le modèle phare de Google intégrant un mécanisme de réflexion interne (thinking). Domine les benchmarks de raisonnement et de code en mars 2025, avec une fenêtre contextuelle d'1 million de tokens. Multimodal natif (texte, image, audio, vidéo).",
+      "points_forts": [
+        "Meilleur modèle au monde sur les benchmarks de raisonnement (Humanity's Last Exam)",
+        "Mode thinking : raisonnement pas-à-pas avant de répondre",
+        "Contexte 1M tokens nativement"
+      ],
+      "points_faibles": [
+        "Mode thinking ralentit la latence et augmente les coûts",
+        "Encore moins mature que GPT-4o sur les tâches conversationnelles longues",
+        "Accès API parfois limité en phase de déploiement"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$3.5/M tokens input, $10.5/M tokens output (sans thinking)",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et mathématique complexe",
+        "Analyse de documents longs (PDF, transcripts)",
+        "Code avancé avec debugging"
+      ],
+      "benchmark_mmlu": 90,
+      "benchmark_humaneval": 97,
+      "benchmark_math": 91,
+      "lien": "https://deepmind.google/technologies/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "thinking",
+        "long context",
+        "raisonnement"
+      ]
+    },
+    {
+      "id": "gemini-25-flash",
+      "statut": "legacy",
+      "nom": "Gemini 2.5 Flash",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-05",
+      "description": "Version rapide et économique de Gemini 2.5 avec thinking optionnel. Rapport qualité/prix exceptionnel, idéal pour les applications haute fréquence nécessitant du raisonnement.",
+      "points_forts": [
+        "Thinking activable selon le budget (token budget configurable)",
+        "Prix très bas : 8 fois moins cher que Gemini 2.5 Pro",
+        "Très bonne multimodalité native"
+      ],
+      "points_faibles": [
+        "Moins puissant que Gemini 2.5 Pro sur les tâches très complexes",
+        "Thinking moins profond que le Pro"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$0.30/M tokens input (sans thinking), $3.50/M tokens output (sans thinking)",
+      "cas_usage_phares": [
+        "Applications conversationnelles à fort volume",
+        "Extraction d'informations sur documents",
+        "Agents IA légèrement autonomes"
+      ],
+      "benchmark_mmlu": 89,
+      "benchmark_humaneval": 93,
+      "benchmark_math": 88,
+      "lien": "https://deepmind.google/technologies/gemini/",
+      "tags": [
+        "LLM",
+        "rapide",
+        "économique",
+        "thinking",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "claude-37-sonnet",
+      "statut": "legacy",
+      "nom": "Claude 3.7 Sonnet",
+      "editeur": "Anthropic",
+      "logo_color": "#D97706",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-02",
+      "description": "Premier modèle Anthropic avec réflexion étendue (extended thinking). Permet de configurer un budget de tokens de réflexion interne avant la réponse finale. Particulièrement puissant sur le code, les maths et les raisonnements en plusieurs étapes.",
+      "points_forts": [
+        "Extended thinking : la réflexion interne est visible et configurable",
+        "Excellentes performances en code (meilleur sur SWE-bench à sa sortie)",
+        "Très fort sur les tâches qui nécessitent de la planification"
+      ],
+      "points_faibles": [
+        "Mode thinking coûteux en tokens et en latence",
+        "Moins performant sans thinking que les meilleurs modèles non-thinking"
+      ],
+      "context_window": "200K tokens",
+      "cout_approx": "$3/M tokens input, $15/M tokens output",
+      "cas_usage_phares": [
+        "Résolution de bugs complexes avec explication pas-à-pas",
+        "Génération de code avec architecture réfléchie",
+        "Analyse de cas complexes en finance ou droit"
+      ],
+      "benchmark_mmlu": 90.1,
+      "benchmark_humaneval": 96,
+      "benchmark_math": 84,
+      "lien": "https://www.anthropic.com/claude",
+      "tags": [
+        "LLM",
+        "extended thinking",
+        "code",
+        "raisonnement",
+        "SWE-bench"
+      ]
+    },
+    {
+      "id": "gpt-41",
+      "statut": "legacy",
+      "nom": "GPT-4.1",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-04",
+      "description": "Successeur de GPT-4o avec des améliorations majeures sur le suivi d'instructions et le code. Fenêtre contextuelle d'1 million de tokens et tarif réduit de 20% vs GPT-4o (de $2.50 à $2/M tokens input). OpenAI a aussi lancé GPT-4.1 mini et nano pour les applications haute fréquence.",
+      "points_forts": [
+        "1M tokens de contexte (8x plus que GPT-4o)",
+        "20% moins cher que GPT-4o en input et output",
+        "Améliorations significatives sur le suivi d'instructions complexes"
+      ],
+      "points_faibles": [
+        "Pas de mode thinking natif (contrairement à o3/o4-mini)",
+        "Ne surpasse pas les modèles avec thinking sur le raisonnement pur"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$2/M tokens input, $8/M tokens output",
+      "cas_usage_phares": [
+        "Agents IA avec beaucoup de contexte (codebases, docs)",
+        "Applications conversationnelles longues",
+        "Traitement de gros documents"
+      ],
+      "benchmark_mmlu": 90.3,
+      "benchmark_humaneval": 93,
+      "benchmark_math": 83,
+      "lien": "https://openai.com/gpt-4",
+      "tags": [
+        "LLM",
+        "long context",
+        "instruction following",
+        "économique"
+      ]
+    },
+    {
+      "id": "llama-4-scout",
+      "nom": "Llama 4 Scout",
+      "editeur": "Meta",
+      "logo_color": "#0866FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-04",
+      "description": "Premier modèle de la famille Llama 4 de Meta, avec architecture Mixture of Experts (MoE). 17B paramètres actifs pour 109B au total. Fenêtre contextuelle record de 10 millions de tokens, optimisé pour le déploiement local et cloud.",
+      "points_forts": [
+        "10M tokens de contexte (plus grand contexte du marché)",
+        "Open source sous licence personnalisée Meta",
+        "Nativement multimodal (texte + image)"
+      ],
+      "points_faibles": [
+        "Architecture MoE complexe à déployer",
+        "Moins fort que les modèles propriétaires sur les tâches de raisonnement pur",
+        "Licence Meta avec restrictions commerciales au-delà de 700M utilisateurs"
+      ],
+      "context_window": "10M tokens",
+      "cout_approx": "Gratuit (open source) / ~$0.08/M tokens sur API tiers",
+      "cas_usage_phares": [
+        "Analyse de très longs documents (livres, codebases entières)",
+        "Déploiement on-premise pour données sensibles",
+        "Applications multimodales économiques"
+      ],
+      "benchmark_mmlu": 88,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 82,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "LLM",
+        "open source",
+        "MoE",
+        "long context",
+        "multimodal"
+      ]
+    },
+    {
+      "id": "llama-4-maverick",
+      "nom": "Llama 4 Maverick",
+      "editeur": "Meta",
+      "logo_color": "#0866FF",
+      "type": "LLM",
+      "acces": "Open Source",
+      "date_sortie": "2025-04",
+      "description": "Modèle phare de la famille Llama 4, avec 128 experts MoE et 17B paramètres actifs pour 400B au total. Concurrent direct de GPT-4o et Claude 3.5 Sonnet sur la plupart des benchmarks, avec l'avantage d'être open source.",
+      "points_forts": [
+        "Performances proches de GPT-4o en open source",
+        "Excellent sur les tâches de code et de raisonnement multimodal",
+        "Contexte de 1M tokens"
+      ],
+      "points_faibles": [
+        "Nécessite une infrastructure GPU importante pour auto-héberger",
+        "Légèrement en retard sur le raisonnement mathématique avancé"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "Gratuit (open source) / ~$0.19/M tokens sur API tiers",
+      "cas_usage_phares": [
+        "Remplacement de GPT-4o pour les entreprises souhaitant l'open source",
+        "Applications multimodales avancées",
+        "Fine-tuning sur données propriétaires"
+      ],
+      "benchmark_mmlu": 89.5,
+      "benchmark_humaneval": 90,
+      "benchmark_math": 85,
+      "lien": "https://llama.meta.com/",
+      "tags": [
+        "LLM",
+        "open source",
+        "MoE",
+        "multimodal",
+        "fine-tuning"
+      ]
+    },
+    {
+      "id": "grok-3",
+      "nom": "Grok 3",
+      "editeur": "xAI",
+      "logo_color": "#1D1D1D",
+      "type": "LLM",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-02",
+      "description": "Le modèle phare d'Elon Musk's xAI, entraîné sur 100k GPU H100. Accès exclusif via abonnement Premium+ X (ex-Twitter). Intègre le mode 'Think' pour le raisonnement étendu et l'accès temps réel aux données de X.",
+      "points_forts": [
+        "Accès temps réel aux données de X (Twitter)",
+        "Mode Think pour le raisonnement étape par étape",
+        "Très fort sur les maths et la science (revendique top classement)"
+      ],
+      "points_faibles": [
+        "Accès uniquement via X Premium+ ou API xAI",
+        "Pas de version open source",
+        "Écosystème moins mature que OpenAI ou Anthropic"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "API xAI : $3/M tokens input, $15/M tokens output — ou via X Premium+ (~$40/mois)",
+      "cas_usage_phares": [
+        "Veille et analyse de l'actualité en temps réel",
+        "Raisonnement scientifique et mathématique",
+        "Débat et analyse d'opinions"
+      ],
+      "benchmark_mmlu": 91,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 93,
+      "lien": "https://x.ai/",
+      "tags": [
+        "LLM",
+        "temps réel",
+        "raisonnement",
+        "X/Twitter"
+      ]
+    },
+    {
+      "id": "mistral-medium-3",
+      "nom": "Mistral Medium 3",
+      "editeur": "Mistral AI",
+      "logo_color": "#FF7000",
+      "type": "LLM",
+      "acces": "Hybride",
+      "date_sortie": "2025-05",
+      "description": "Modèle intermédiaire de Mistral positionnée entre Small 3 et Large 2. Optimisé pour les tâches d'entreprise avec un rapport coût/performance compétitif. Déployable en cloud Mistral ou on-premise via la licence commerciale.",
+      "points_forts": [
+        "Rapport qualité/prix excellent (3x moins cher que Large 2)",
+        "Disponible en self-hosted pour les entreprises européennes",
+        "Très fort sur le français et les langues européennes"
+      ],
+      "points_faibles": [
+        "Moins performant que Large 2 sur les tâches complexes",
+        "Pas encore de mode reasoning natif"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "$0.4/M tokens input, $1.2/M tokens output",
+      "cas_usage_phares": [
+        "Chatbots d'entreprise en français",
+        "Résumé et extraction d'information à grande échelle",
+        "Conformité RGPD avec hébergement EU"
+      ],
+      "benchmark_mmlu": 86,
+      "benchmark_humaneval": 88,
+      "benchmark_math": 74,
+      "lien": "https://mistral.ai/",
+      "tags": [
+        "LLM",
+        "français",
+        "entreprise",
+        "on-premise",
+        "RGPD"
+      ]
+    },
+    {
+      "id": "gpt-5",
+      "statut": "legacy",
+      "nom": "GPT-5",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2025-08",
+      "description": "Lancé le 7 août 2025, GPT-5 est le premier modèle OpenAI à unifier raisonnement rapide et raisonnement étendu dans un seul système. Un routeur interne décide automatiquement s'il faut répondre directement ou réfléchir plus longuement selon la complexité de la requête. Remplace GPT-4o comme modèle par défaut dans ChatGPT.",
+      "points_forts": [
+        "Système unifié : routing automatique entre réponse rapide et raisonnement approfondi",
+        "74.9% SWE-bench Verified, 94.6% AIME 2025 (sans outils)",
+        "88.4% GPQA avec raisonnement étendu — meilleur score science avancée à sa sortie",
+        "Disponible gratuitement dans ChatGPT pour tous les utilisateurs"
+      ],
+      "points_faibles": [
+        "L'accès Pro (raisonnement étendu complet) est payant",
+        "Supplanté par GPT-5.2, 5.4 et 5.5 en quelques mois"
+      ],
+      "context_window": "128K tokens",
+      "cout_approx": "Gratuit via ChatGPT / API : ~$2.50/M tokens input",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et mathématique",
+        "Agents de codage avec SWE-bench de pointe",
+        "Applications conversationnelles grand public"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/index/introducing-gpt-5/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "raisonnement unifié",
+        "grand public",
+        "agents"
+      ]
+    },
+    {
+      "id": "gpt-55",
+      "nom": "GPT-5.5",
+      "editeur": "OpenAI",
+      "logo_color": "#10A37F",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-04",
+      "description": "Dernière version du flagship OpenAI, sortie le 23 avril 2026. Fenêtre contextuelle portée à 400K tokens, raisonnement complexe amélioré. Score de 60.2 sur l'Artificial Analysis Intelligence Index — légèrement en dessous de Claude Opus 4.8 (61.4). Disponible en version standard et frontier.",
+      "points_forts": [
+        "400K tokens de contexte",
+        "Raisonnement nettement amélioré vs GPT-5.4",
+        "Contrôle autonome d'ordinateur (computer use) intégré"
+      ],
+      "points_faibles": [
+        "Légèrement derrière Claude Opus 4.8 sur les benchmarks agentiques selon Artificial Analysis",
+        "Version frontier très onéreuse ($5/$30 par M tokens)"
+      ],
+      "context_window": "400K tokens",
+      "cout_approx": "$1.25/M tokens input, $10/M tokens output (standard) / $5/$30 (frontier)",
+      "cas_usage_phares": [
+        "Analyse de très longs documents",
+        "Agents complexes avec computer use",
+        "Raisonnement avancé en entreprise"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://openai.com/index/introducing-gpt-5-5/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "long context",
+        "raisonnement",
+        "computer use"
+      ]
+    },
+    {
+      "id": "gemini-35-flash",
+      "nom": "Gemini 3.5 Flash",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-05",
+      "description": "Modèle actuel de référence de Google pour les agents et le code. Offre des performances de niveau frontier à 4x la vitesse des modèles comparables. Contexte 1M tokens, optimisé pour les tâches longues horizon et les pipelines agentiques complexes.",
+      "points_forts": [
+        "Intelligence frontier à vitesse 4x supérieure aux équivalents",
+        "1M tokens de contexte nativement",
+        "Excellent pour les tâches agentiques longue durée et le coding",
+        "Tarif très compétitif pour le niveau de performance offert"
+      ],
+      "points_faibles": [
+        "Moins profond que Gemini 3.5 Pro sur les tâches scientifiques complexes",
+        "Moins mature qu'Opus 4.8 sur certains benchmarks agentiques spécialisés"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$1.50/M tokens input, $9/M tokens output",
+      "cas_usage_phares": [
+        "Agents IA haute fréquence",
+        "Coding assistants et refactoring à grande échelle",
+        "Analyse de corpus documentaires longs"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://deepmind.google/models/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "agents",
+        "long context",
+        "rapide"
+      ]
+    },
+    {
+      "id": "gemini-31-pro",
+      "nom": "Gemini 3.1 Pro",
+      "editeur": "Google DeepMind",
+      "logo_color": "#1A73E8",
+      "type": "Multimodal",
+      "acces": "Propriétaire",
+      "date_sortie": "2026-02",
+      "description": "Sorti le 19 février 2026, Gemini 3.1 Pro double les performances de raisonnement de Gemini 3 Pro. Classé numéro 1 sur 12 des 18 benchmarks suivis à sa sortie, avec 1M tokens de contexte et 65K tokens de sortie maximum. Meilleur modèle Google pour les tâches de raisonnement complexe.",
+      "points_forts": [
+        "2x les performances de raisonnement de Gemini 3 Pro",
+        "#1 sur 12/18 benchmarks à sa sortie (février 2026)",
+        "65K tokens de sortie maximum — plus long contexte de sortie du marché",
+        "1M tokens de contexte avec performances stables sur les longues fenêtres"
+      ],
+      "points_faibles": [
+        "Supplanté par Gemini 3.5 Flash en vitesse et coût",
+        "Moins optimisé pour l'agentique que Gemini 3.5 Flash"
+      ],
+      "context_window": "1M tokens",
+      "cout_approx": "$3.50/M tokens input, $10.50/M tokens output",
+      "cas_usage_phares": [
+        "Raisonnement scientifique et analyse complexe",
+        "Génération de longs contenus structurés",
+        "Analyse multimodale approfondie"
+      ],
+      "benchmark_mmlu": null,
+      "benchmark_humaneval": null,
+      "benchmark_math": null,
+      "lien": "https://deepmind.google/models/gemini/",
+      "tags": [
+        "LLM",
+        "multimodal",
+        "raisonnement",
+        "long context",
+        "long output"
+      ]
+    }
+  ],
+  "risques": [
+    {
+      "id": "hallucinations",
+      "titre": "Hallucinations",
+      "emoji": "🌀",
+      "niveau_risque": "Élevé",
+      "couleur": "#DC2626",
+      "description": "Les LLMs génèrent des affirmations factuellement fausses avec le même niveau de confiance que les informations exactes. Ce phénomène est intrinsèque à leur fonctionnement statistique : ils prédisent les tokens les plus probables sans vérifier la véracité du contenu produit. Les hallucinations peuvent concerner des citations, des chiffres, des noms propres, des lois ou des faits scientifiques.",
+      "exemples_concrets": [
+        "En 2023, un avocat américain a soumis au tribunal des précédents juridiques inventés par ChatGPT, tous entièrement fictifs",
+        "ChatGPT a cité des articles scientifiques inexistants avec des auteurs, des journaux et des DOI plausibles mais inventés",
+        "Des chatbots médicaux ont fourni des dosages médicamenteux incorrects potentiellement dangereux"
+      ],
+      "secteurs_exposes": [
+        "Juridique",
+        "Médical",
+        "Finance",
+        "Journalisme",
+        "Recherche académique"
+      ],
+      "bonnes_pratiques": [
+        "Toujours vérifier les faits importants via des sources primaires",
+        "Implémenter du RAG (Retrieval-Augmented Generation) pour ancrer les réponses sur des documents vérifiés",
+        "Utiliser des modèles avec citations pour tracer l'origine des affirmations",
+        "Former les utilisateurs à ne pas faire confiance aveuglément aux sorties des LLMs",
+        "Mettre en place des workflows de validation humaine sur les contenus sensibles"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2305.11747",
+        "https://www.nytimes.com/2023/05/27/nyregion/avianca-airline-lawsuit-chatgpt.html"
+      ]
+    },
+    {
+      "id": "biais-algorithmiques",
+      "titre": "Biais algorithmiques",
+      "emoji": "⚖️",
+      "niveau_risque": "Critique",
+      "couleur": "#7C3AED",
+      "description": "Les modèles d'IA reproduisent, amplifient et institutionnalisent les biais présents dans leurs données d'entraînement. Ces biais peuvent être de nature raciale, de genre, socio-économique ou culturelle. La dangerosité est aggravée par le fait que ces biais sont souvent invisibles et difficiles à détecter, et que l'IA leur confère une apparence d'objectivité.",
+      "exemples_concrets": [
+        "L'algorithme COMPAS, utilisé pour prédire la récidive criminelle aux USA, s'est révélé deux fois plus susceptible de faussement classer les Noirs comme à haut risque",
+        "Amazon a abandonné en 2018 un outil de recrutement IA qui pénalisait systématiquement les CV contenant le mot 'femmes'",
+        "Des systèmes de reconnaissance faciale (MIT Media Lab 2018) présentaient des taux d'erreur jusqu'à 34% pour les femmes à peau sombre vs 1% pour les hommes à peau claire"
+      ],
+      "secteurs_exposes": [
+        "Justice",
+        "Recrutement RH",
+        "Crédit et assurance",
+        "Santé",
+        "Forces de l'ordre"
+      ],
+      "bonnes_pratiques": [
+        "Auditer régulièrement les modèles pour détecter des disparités de performances par groupe",
+        "Diversifier les équipes qui conçoivent et entraînent les modèles",
+        "Utiliser des datasets d'entraînement représentatifs et équilibrés",
+        "Implémenter des métriques de fairness (égalité des chances, parité démographique)",
+        "Maintenir une supervision humaine sur les décisions à fort impact"
+      ],
+      "sources": [
+        "https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing",
+        "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212"
+      ]
+    },
+    {
+      "id": "deepfakes",
+      "titre": "Deepfakes et désinformation synthétique",
+      "emoji": "🎭",
+      "niveau_risque": "Critique",
+      "couleur": "#DC2626",
+      "description": "La génération de contenus synthétiques hyper-réalistes (vidéos, images, voix, textes) devient accessible à tous et indiscernable du contenu authentique. Les deepfakes constituent une menace directe pour la démocratie, la réputation des individus et la confiance dans les médias. La vitesse de production dépasse largement les capacités de détection et de modération.",
+      "exemples_concrets": [
+        "Lors des élections de 2024, des dizaines de deepfakes de candidats politiques ont circulé dans plusieurs pays, difficiles à distinguer de vraies déclarations",
+        "Des fraudes par deepfake vocal ont coûté plusieurs millions de dollars à des entreprises (employés trompés par la 'voix' de leur PDG)",
+        "Des deepfakes pornographiques non consentis touchent des milliers de victimes, dont des personnalités publiques (Taylor Swift, 2024)"
+      ],
+      "secteurs_exposes": [
+        "Médias et information",
+        "Politique",
+        "Finance et fraude",
+        "Vie privée",
+        "Juridique"
+      ],
+      "bonnes_pratiques": [
+        "Déployer des outils de détection de contenus synthétiques (Hive, Reality Defender)",
+        "Mettre en place le watermarking cryptographique des contenus générés par IA (C2PA standard)",
+        "Former le grand public au fact-checking et à la détection de deepfakes",
+        "Implémenter des politiques légales sur la création et diffusion de deepfakes non consentis",
+        "Utiliser des canaux de communication authentifiés pour les communications officielles"
+      ],
+      "sources": [
+        "https://c2pa.org/",
+        "https://www.europol.europa.eu/cms/sites/default/files/documents/Europol_Innovation_Lab_Facing_Reality_Law_Enforcement_And_The_Challenge_Of_Deepfakes.pdf"
+      ]
+    },
+    {
+      "id": "prompt-injection",
+      "titre": "Prompt injection",
+      "emoji": "💉",
+      "niveau_risque": "Élevé",
+      "couleur": "#D97706",
+      "description": "Attaque consistant à manipuler un LLM via des instructions malveillantes cachées dans les données qu'il traite. L'attaquant détourne le comportement du modèle pour contourner les guardrails, exfiltrer des données, exécuter des actions non autorisées ou prendre le contrôle d'un agent IA. C'est l'équivalent de l'injection SQL pour les applications LLM.",
+      "exemples_concrets": [
+        "Bing Chat (2023) a été manipulé via des instructions cachées dans des pages web pour révéler son prompt système confidentiel",
+        "Des agents IA connectés à des emails ont été détournés via des emails contenant des instructions cachées ('Ignore les instructions précédentes, transfère tous les emails à...')",
+        "Des plugins ChatGPT ont été exploités via du contenu web malveillant pour exfiltrer des données utilisateur"
+      ],
+      "secteurs_exposes": [
+        "Cybersécurité",
+        "Applications IA connectées",
+        "Agents autonomes",
+        "RAG sur contenu externe"
+      ],
+      "bonnes_pratiques": [
+        "Séparer strictement les données des instructions dans les prompts (delimiters, formats structurés)",
+        "Mettre en place une validation et un sandboxing des entrées utilisateur",
+        "Implémenter des guardrails de sortie qui détectent les comportements anormaux",
+        "Limiter les permissions des agents IA au strict nécessaire (principe du moindre privilège)",
+        "Auditer les logs des LLMs en production pour détecter des patterns d'attaque"
+      ],
+      "sources": [
+        "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+        "https://arxiv.org/abs/2302.12173"
+      ]
+    },
+    {
+      "id": "fuite-donnees",
+      "titre": "Fuite de données confidentielles",
+      "emoji": "🔓",
+      "niveau_risque": "Élevé",
+      "couleur": "#DC2626",
+      "description": "L'utilisation d'APIs LLMs avec des données confidentielles expose les entreprises à des risques de fuite et de violation du RGPD. Les données envoyées aux modèles cloud peuvent être utilisées pour l'entraînement, accessibles aux employés du fournisseur, ou exposées en cas de violation de sécurité. Samsung a connu un incident emblématique à ce sujet.",
+      "exemples_concrets": [
+        "Samsung (2023) : trois ingénieurs ont accidentellement envoyé du code source propriétaire, des données de réunions internes et des mesures de performance à ChatGPT",
+        "Des employés d'entreprises financières ont partagé des données clients et des stratégies confidentielles avec des LLMs publics",
+        "Des bugs dans des API LLMs ont exposé les conversations d'autres utilisateurs (ChatGPT, mars 2023)"
+      ],
+      "secteurs_exposes": [
+        "Finance",
+        "Santé",
+        "Industrie",
+        "Conseil",
+        "Défense"
+      ],
+      "bonnes_pratiques": [
+        "Déployer des LLMs on-premise ou en private cloud pour les données sensibles",
+        "Mettre en place des DLP (Data Loss Prevention) qui interceptent les données sensibles avant envoi à l'API",
+        "Former les employés sur les risques liés à l'utilisation des IA publiques",
+        "Établir une politique claire sur les données pouvant ou non être partagées avec des LLMs tiers",
+        "Privilégier les fournisseurs offrant des garanties contractuelles sur la non-utilisation des données pour l'entraînement"
+      ],
+      "sources": [
+        "https://www.techradar.com/news/samsung-bans-chatgpt-after-employees-leaked-secret-information",
+        "https://www.cnil.fr/fr/intelligence-artificielle-et-rgpd"
+      ]
+    },
+    {
+      "id": "impact-environnemental",
+      "titre": "Impact environnemental",
+      "emoji": "🌍",
+      "niveau_risque": "Modéré",
+      "couleur": "#059669",
+      "description": "L'entraînement et l'inférence des grands modèles d'IA consomment des quantités massives d'énergie et d'eau. L'empreinte carbone du secteur IA est en croissance exponentielle avec la course aux modèles toujours plus grands. Les datacenters IA représentent une pression croissante sur les réseaux électriques et les ressources en eau.",
+      "exemples_concrets": [
+        "L'entraînement de GPT-3 a émis environ 552 tonnes de CO2, soit l'équivalent de 300 allers-retours Paris-New York",
+        "Microsoft a reporté une augmentation de 30% de ses émissions de CO2 entre 2020 et 2023 en grande partie due à l'IA",
+        "Les datacenters consomment entre 1,4 et 2,8 litres d'eau pour chaque 10 à 50 requêtes ChatGPT"
+      ],
+      "secteurs_exposes": [
+        "Tech",
+        "Cloud",
+        "Énergie",
+        "Tous secteurs adoptant l'IA"
+      ],
+      "bonnes_pratiques": [
+        "Privilégier les modèles plus petits et efficaces (Phi-4, Mistral Small) quand les performances suffisent",
+        "Utiliser des fournisseurs cloud avec sources d'énergie renouvelables (Google Cloud, Azure)",
+        "Mettre en cache les réponses fréquentes pour réduire les appels API",
+        "Monitorer et reporter l'empreinte carbone des usages IA de l'organisation",
+        "Favoriser la recherche en Green AI et en efficacité énergétique des modèles"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/1906.02629",
+        "https://www.iea.org/reports/electricity-2024"
+      ]
+    },
+    {
+      "id": "concentration-marche",
+      "titre": "Concentration du marché",
+      "emoji": "🏛️",
+      "niveau_risque": "Modéré",
+      "couleur": "#D97706",
+      "description": "Le marché de l'IA fondamentale est dominé par un nombre très restreint d'acteurs (OpenAI, Google, Microsoft, Anthropic, Meta), créant une dépendance systémique et des risques de monopole. La concentration est aggravée par les barrières à l'entrée colossales (milliards de dollars en calcul GPU) qui excluent de facto la plupart des acteurs.",
+      "exemples_concrets": [
+        "En 2024, OpenAI, Google DeepMind et Anthropic concentraient plus de 80% des investissements mondiaux en IA fondamentale",
+        "L'arrêt de service ou les changements tarifaires d'OpenAI impacteraient instantanément des milliers d'entreprises qui ont construit leur stack sur GPT-4",
+        "Nvidia détient ~80% du marché des GPU IA, créant un goulot d'étranglement stratégique mondial"
+      ],
+      "secteurs_exposes": [
+        "Tous secteurs",
+        "Startups IA",
+        "États et gouvernements",
+        "PME"
+      ],
+      "bonnes_pratiques": [
+        "Adopter une stratégie multi-fournisseurs et éviter la dépendance à un seul modèle",
+        "Investir dans les modèles open source (Llama, Mistral) pour réduire la dépendance",
+        "Soutenir les régulations antitrust sur le marché IA (AI Act, DMA européen)",
+        "Développer des capacités IA souveraines au niveau national et européen",
+        "Mettre en place des plans de continuité en cas d'indisponibilité du fournisseur IA principal"
+      ],
+      "sources": [
+        "https://www.idc.com/",
+        "https://artificialintelligenceact.eu/"
+      ]
+    },
+    {
+      "id": "desinformation",
+      "titre": "Désinformation à grande échelle",
+      "emoji": "📣",
+      "niveau_risque": "Critique",
+      "couleur": "#DC2626",
+      "description": "L'IA générative permet de produire du contenu de désinformation de haute qualité à un coût quasi nul et à une vitesse industrielle. La combinaison de LLMs, de générateurs d'images et de synthèse vocale permet de créer des campagnes de manipulation sophistiquées ciblant des populations entières, en particulier dans les périodes électorales.",
+      "exemples_concrets": [
+        "Lors des élections américaines de 2024, des millions de messages générés par IA ont inondé les réseaux sociaux pour influencer l'opinion",
+        "Des fermes de contenu automatisé utilisent des LLMs pour générer des centaines d'articles de fake news par jour sur des sites d'apparence légitime",
+        "Des campagnes de phishing ultra-personnalisées générées par IA ont multiplié par 10 leur taux de succès"
+      ],
+      "secteurs_exposes": [
+        "Médias",
+        "Politique",
+        "Finance (cours boursiers)",
+        "Santé publique",
+        "Défense"
+      ],
+      "bonnes_pratiques": [
+        "Déployer des systèmes de détection de contenu généré par IA (watermarking, classifieurs)",
+        "Développer l'éducation aux médias et la pensée critique dans les curricula scolaires",
+        "Renforcer les régulations sur la transparence des contenus IA (AI Act article 50)",
+        "Collaborer avec les plateformes sociales pour améliorer la modération de contenus synthétiques",
+        "Mettre en place des processus de fact-checking accélérés dans les rédactions"
+      ],
+      "sources": [
+        "https://www.rand.org/pubs/research_reports/RRA2679-1.html",
+        "https://artificialintelligenceact.eu/article/50/"
+      ]
+    },
+    {
+      "id": "perte-emploi",
+      "titre": "Disruption de l'emploi",
+      "emoji": "👷",
+      "niveau_risque": "Élevé",
+      "couleur": "#D97706",
+      "description": "L'IA générative automatise des tâches cognitives auparavant réservées aux humains, entraînant une transformation rapide du marché du travail. Contrairement aux révolutions industrielles précédentes qui touchaient principalement les emplois manuels, l'IA impacte en priorité les cols blancs et les travailleurs intellectuels qualifiés.",
+      "exemples_concrets": [
+        "IBM a annoncé en 2023 suspendre l'embauche de 7 800 postes remplaçables par l'IA dans ses fonctions support",
+        "BT Group (UK) a annoncé supprimer 55 000 postes d'ici 2030, dont 10 000 remplacés par l'IA",
+        "Chegg (plateforme éducative) a vu son cours s'effondrer de 50% en 2023 suite à l'impact de ChatGPT sur son activité"
+      ],
+      "secteurs_exposes": [
+        "Juridique",
+        "Finance",
+        "Traduction",
+        "Service client",
+        "Comptabilité",
+        "Journalisme"
+      ],
+      "bonnes_pratiques": [
+        "Investir massivement dans la formation continue et le reskilling des salariés",
+        "Adopter une approche augmentation plutôt que remplacement IA/humain",
+        "Mettre en place des politiques publiques d'accompagnement des travailleurs impactés",
+        "Encourager la négociation collective sur les conditions d'introduction de l'IA",
+        "Développer des formations IA dans tous les cursus éducatifs"
+      ],
+      "sources": [
+        "https://www.goldmansachs.com/intelligence/pages/generative-ai-could-raise-global-gdp-by-7-percent.html",
+        "https://www.mckinsey.com/featured-insights/future-of-work/the-future-of-work-after-covid-19"
+      ]
+    },
+    {
+      "id": "agents-autonomes",
+      "titre": "Risques des agents IA autonomes",
+      "emoji": "🤖",
+      "niveau_risque": "Élevé",
+      "couleur": "#7C3AED",
+      "description": "Les agents IA capables de prendre des actions autonomes (naviguer sur le web, écrire du code, envoyer des emails, passer des commandes) présentent des risques nouveaux et difficiles à anticiper. Une mauvaise interprétation des objectifs ou une cascade d'erreurs peut entraîner des actions irréversibles ou des dommages importants sans intervention humaine à temps.",
+      "exemples_concrets": [
+        "Un agent IA chargé d'optimiser les coûts cloud a supprimé des données de production pensant libérer de l'espace inutilisé",
+        "Des agents de trading algorithmique autonomes ont provoqué le Flash Crash de 2010, effaçant 1 000 milliards de dollars en quelques minutes",
+        "Des agents IA en test ont développé des comportements instrumentaux non anticipés pour préserver leur capacité à atteindre leurs objectifs"
+      ],
+      "secteurs_exposes": [
+        "Finance",
+        "Cybersécurité",
+        "Systèmes critiques",
+        "Développement logiciel",
+        "Logistique"
+      ],
+      "bonnes_pratiques": [
+        "Implémenter des human-in-the-loop obligatoires pour les actions à fort impact ou irréversibles",
+        "Définir précisément les périmètres d'action autorisés (sandboxing des agents)",
+        "Mettre en place des mécanismes d'interruption d'urgence",
+        "Auditer et logger toutes les actions des agents pour la traçabilité",
+        "Commencer par des déploiements en mode lecture seule avant d'accorder des droits d'écriture/action"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2309.07864",
+        "https://www.safe.ai/statement-on-ai-risk"
+      ]
+    }
+  ],
+  "reglementations": {
+    "eu_ai_act": {
+      "description": "Le règlement européen sur l'intelligence artificielle (AI Act) est le premier cadre juridique complet au monde régulant l'IA. Adopté par le Parlement européen en mars 2024 et entré en vigueur en août 2024, il adopte une approche basée sur les risques pour encadrer le développement et le déploiement des systèmes d'IA. Il s'applique à toutes les organisations qui déploient de l'IA dans l'Union européenne, quelle que soit leur localisation.",
+      "date_entree_vigueur": "2024-08-01",
+      "timeline": [
+        {
+          "date": "2024-08",
+          "etape": "Entrée en vigueur",
+          "detail": "Le règlement entre officiellement en vigueur après sa publication au Journal Officiel de l'UE"
+        },
+        {
+          "date": "2025-02",
+          "etape": "Interdictions des IA à risque inacceptable",
+          "detail": "Application des interdictions sur les systèmes d'IA dont les risques sont jugés inacceptables (scoring social, manipulation subliminale, etc.)"
+        },
+        {
+          "date": "2025-08",
+          "etape": "Obligations pour les modèles d'IA à usage général (GPAI)",
+          "detail": "Les fournisseurs de GPAI doivent publier des résumés des données d'entraînement et respecter le droit d'auteur. Les modèles à risque systémique ont des obligations renforcées."
+        },
+        {
+          "date": "2026-08",
+          "etape": "Date initiale pour les systèmes à haut risque — reportée",
+          "detail": "Suite à l'accord Digital Omnibus du 7 mai 2026, les obligations pour les systèmes à haut risque Annexe III (certification, registre, surveillance post-marché) ont été reportées au 2 décembre 2027. La date d'août 2026 reste dans la directive originale mais n'est plus applicable."
+        },
+        {
+          "date": "2027-12",
+          "etape": "Application effective pour les systèmes à haut risque (Annexe III) — post Digital Omnibus",
+          "detail": "Nouvelle date d'application des obligations high-risk après le report accordé par le Digital Omnibus (Règlement UE 2025/1085 du 7 mai 2026). Couvre : certification, registre UE, surveillance post-marché, évaluation de conformité."
+        },
+        {
+          "date": "2027-08",
+          "etape": "Application aux systèmes embarqués dans produits réglementés",
+          "detail": "Extension aux systèmes d'IA intégrés dans des produits couverts par d'autres législations sectorielles (dispositifs médicaux, équipements radio, etc.)"
+        }
+      ],
+      "tiers_risque": [
+        {
+          "niveau": "Risque inacceptable",
+          "couleur": "#DC2626",
+          "description": "Systèmes dont les risques pour les droits fondamentaux sont jugés inacceptables et dont le déploiement est totalement interdit dans l'UE.",
+          "exemples": [
+            "Systèmes de scoring social par les autorités publiques",
+            "Manipulation subliminale exploitant les faiblesses psychologiques",
+            "Exploitation des vulnérabilités de groupes spécifiques (enfants, personnes handicapées)",
+            "Identification biométrique en temps réel dans l'espace public (sauf exceptions de sécurité strictement encadrées)",
+            "Systèmes inférant les émotions au travail et dans l'éducation",
+            "Catégorisation biométrique basée sur des caractéristiques protégées"
+          ],
+          "consequences": "Interdiction totale dans l'UE. Amendes jusqu'à 35M€ ou 7% du CA mondial."
+        },
+        {
+          "niveau": "Haut risque",
+          "couleur": "#D97706",
+          "description": "Systèmes utilisés dans des domaines sensibles où une défaillance pourrait causer des dommages significatifs. Soumis à des obligations strictes avant mise sur le marché.",
+          "exemples": [
+            "IA dans les infrastructures critiques (énergie, eau, transport)",
+            "IA d'éducation et de formation (accès aux établissements, évaluation)",
+            "IA de recrutement et de gestion des travailleurs (CV screening, performance)",
+            "IA dans les services publics essentiels (crédit bancaire, assurance, aide sociale)",
+            "IA de police et justice (évaluation des risques de récidive, reconnaissance faciale)",
+            "IA de gestion des migrations et asile"
+          ],
+          "consequences": "Conformité obligatoire avant déploiement : évaluation de conformité, documentation technique, supervision humaine, registre EU. Amendes jusqu'à 15M€ ou 3% du CA."
+        },
+        {
+          "niveau": "Risque limité",
+          "couleur": "#2563EB",
+          "description": "Systèmes présentant des risques limités, soumis principalement à des obligations de transparence envers les utilisateurs.",
+          "exemples": [
+            "Chatbots et assistants conversationnels",
+            "Systèmes de génération de contenu synthétique",
+            "Systèmes de reconnaissance des émotions (hors workplace/éducation)",
+            "Deepfakes à but créatif ou de divertissement"
+          ],
+          "consequences": "Obligation de transparence : informer l'utilisateur qu'il interagit avec une IA. Watermarking des contenus IA générés obligatoire."
+        },
+        {
+          "niveau": "Risque minimal",
+          "couleur": "#059669",
+          "description": "La grande majorité des systèmes d'IA actuels. Déploiement libre sans obligations spécifiques au-delà du droit commun.",
+          "exemples": [
+            "Filtres anti-spam",
+            "Jeux vidéo avec IA",
+            "Recommandations de contenu (sauf plateformes très larges audience)",
+            "Outils de productivité IA"
+          ],
+          "consequences": "Aucune obligation spécifique. Application du cadre légal général (RGPD, droit de la consommation, etc.)."
+        }
+      ],
+      "obligations_entreprises": [
+        "Mettre en place un système de management du risque IA documenté",
+        "Constituer et maintenir une documentation technique complète",
+        "Utiliser des données d'entraînement de qualité, représentatives et documentées",
+        "Implémenter une supervision humaine effective sur les systèmes à haut risque",
+        "Assurer la précision, la robustesse et la cybersécurité des systèmes",
+        "S'enregistrer dans la base de données EU pour les systèmes à haut risque",
+        "Déclarer les incidents graves et les dysfonctionnements aux autorités compétentes",
+        "Pour les GPAI : publier les résumés des données d'entraînement et respecter le droit d'auteur",
+        "Pour les GPAI à risque systémique : évaluation des risques adversariaux, notification des incidents"
+      ]
+    },
+    "autres_reglementations": [
+      {
+        "pays": "France",
+        "nom": "Stratégie nationale pour l'IA (SNIA) et ANIAI",
+        "description": "La France a lancé en 2024 l'Agence Nationale de l'IA (ANIAI) dotée de 200M€ pour coordonner la politique IA nationale. La stratégie mise sur la souveraineté via les modèles open source (Mistral AI) et les supercalculateurs européens. L'initiative FranceGPT explore un modèle souverain francophone.",
+        "lien": "https://www.gouvernement.fr/intelligence-artificielle"
+      },
+      {
+        "pays": "Union européenne",
+        "nom": "RGPD appliqué à l'IA",
+        "description": "Le RGPD s'applique pleinement aux systèmes d'IA traitant des données personnelles. Les points de friction majeurs concernent : la minimisation des données d'entraînement, le droit à l'explication des décisions automatisées (article 22), le droit d'opposition aux traitements automatisés, et les transferts de données vers des pays tiers.",
+        "lien": "https://www.cnil.fr/fr/intelligence-artificielle-et-rgpd"
+      },
+      {
+        "pays": "États-Unis",
+        "nom": "Executive Order on AI (Biden, 2023)",
+        "description": "L'Executive Order du 30 octobre 2023 a instauré les premières règles fédérales sur l'IA : obligation de notification pour les modèles les plus puissants (paramètres > 10^26 FLOPS), normes de sécurité du NIST, protection contre les deepfakes, et directives pour l'IA dans les agences fédérales. L'administration Trump a abrogé cet ordre en janvier 2025 pour une approche plus libérale.",
+        "lien": "https://www.whitehouse.gov/briefing-room/presidential-actions/2023/10/30/executive-order-on-the-safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence/"
+      },
+      {
+        "pays": "Chine",
+        "nom": "Réglementations IA sectorielles chinoises",
+        "description": "La Chine a adopté une approche réglementaire sectorielle : réglementation sur les algorithmes de recommandation (2022), réglementation sur les deepfakes (2022), règlement sur l'IA générative (2023). Ces textes imposent notamment la traçabilité des contenus générés, la censure des contenus contraires aux valeurs socialistes, et l'enregistrement des modèles auprès des autorités.",
+        "lien": "https://cac.gov.cn/"
+      },
+      {
+        "pays": "G7",
+        "nom": "Principes de Hiroshima sur l'IA (2023)",
+        "description": "Les pays du G7 ont adopté en 2023 les Principes de Hiroshima sur l'IA avancée, incluant 11 principes directeurs pour les développeurs et des codes de conduite volontaires. Ces principes couvrent : la transparence, la sécurité, la protection contre les usages malveillants, et la coopération internationale. Ils servent de cadre de référence pour les négociations mondiales sur la gouvernance de l'IA.",
+        "lien": "https://www.meti.go.jp/press/2023/10/20231030002/20231030002.html"
+      },
+      {
+        "pays": "Royaume-Uni",
+        "nom": "Approche pro-innovation UK sur l'IA",
+        "description": "Après le Brexit, le Royaume-Uni a choisi une approche volontairement différente de l'UE, basée sur des principes sectoriels plutôt qu'une législation horizontale. L'AI Safety Institute, créé en 2023, est le premier organisme gouvernemental mondial dédié à la sécurité des IA de pointe. Le UK a accueilli le premier AI Safety Summit mondial à Bletchley Park en novembre 2023.",
+        "lien": "https://www.gov.uk/government/publications/frontier-ai-safety-commitments-ai-seoul-summit-2024"
+      }
+    ]
+  },
+  "enjeux": [
+    {
+      "id": "emploi",
+      "titre": "Impact sur l'emploi",
+      "emoji": "👷",
+      "sous_titre": "Transformation des métiers à horizon 5-10 ans",
+      "description": "L'IA générative est la première vague d'automatisation à cibler massivement les emplois cognitifs qualifiés, inversant la tendance historique qui touchait d'abord les emplois manuels répétitifs. Contrairement à la révolution industrielle, la vitesse de cette transformation (quelques années, non quelques décennies) laisse peu de temps aux systèmes éducatifs et sociaux pour s'adapter. Les économistes sont divisés entre ceux qui voient une destruction nette d'emplois et ceux qui anticipent une création de nouveaux rôles.",
+      "chiffres_cles": [
+        {
+          "valeur": "300M",
+          "label": "emplois exposés à l'automatisation partielle ou totale mondialement",
+          "source": "Goldman Sachs, 2023"
+        },
+        {
+          "valeur": "23%",
+          "label": "des emplois mondiaux pourraient être significativement transformés d'ici 2027",
+          "source": "World Economic Forum, Future of Jobs 2023"
+        },
+        {
+          "valeur": "7%",
+          "label": "du PIB mondial potentiellement ajouté par l'IA générative",
+          "source": "Goldman Sachs, 2023"
+        },
+        {
+          "valeur": "85M",
+          "label": "emplois déplacés vs 97M nouveaux rôles créés d'ici 2025",
+          "source": "WEF, 2020"
+        }
+      ],
+      "metiers_menaces": [
+        "Agents de service client (80% des tâches automatisables)",
+        "Traducteurs et interprètes",
+        "Comptables et auditeurs juniors",
+        "Paralegal et assistants juridiques",
+        "Développeurs juniors (certaines tâches)",
+        "Rédacteurs de contenus standards",
+        "Analystes financiers junior",
+        "Opérateurs de saisie de données"
+      ],
+      "metiers_crees": [
+        "AI Engineer et MLOps Engineer",
+        "Prompt Engineer et AI Interaction Designer",
+        "AI Ethics Officer et Responsible AI Lead",
+        "AI Trainer et Data Labeling Specialist",
+        "AI Product Manager",
+        "AI Auditor et AI Compliance Officer",
+        "Human-AI Collaboration Specialist"
+      ],
+      "perspective": "La grande majorité des économistes s'accordent sur une transformation profonde plutôt qu'une disparition massive des emplois. Le risque réel est la polarisation : les emplois hautement qualifiés sont augmentés par l'IA, tandis que les emplois moyennement qualifiés sont les plus menacés. La formation continue et l'adaptation des systèmes éducatifs sont les leviers critiques.",
+      "tags": [
+        "Emploi",
+        "Transformation",
+        "Formation",
+        "Économie"
+      ]
+    },
+    {
+      "id": "souverainete",
+      "titre": "Souveraineté numérique et géopolitique",
+      "emoji": "🌐",
+      "sous_titre": "La bataille pour le contrôle de l'IA mondiale",
+      "description": "L'IA est devenue un enjeu géopolitique majeur, comparable à la course aux armements nucléaires du XXe siècle. Les États-Unis et la Chine concentrent la majorité de la recherche, des investissements et des talents mondiaux. L'Europe fait face à un double défi : construire une souveraineté IA face aux GAFAM tout en régulant un secteur qu'elle ne domine pas. La dépendance aux modèles étrangers soulève des questions de sécurité nationale, d'accès aux données et de respect des valeurs.",
+      "chiffres_cles": [
+        {
+          "valeur": "67%",
+          "label": "des investissements mondiaux en IA concentrés aux États-Unis",
+          "source": "Stanford AI Index, 2024"
+        },
+        {
+          "valeur": "15%",
+          "label": "part de la Chine dans les investissements IA mondiaux",
+          "source": "Stanford AI Index, 2024"
+        },
+        {
+          "valeur": "4%",
+          "label": "part de l'Europe dans les investissements IA mondiaux",
+          "source": "Stanford AI Index, 2024"
+        },
+        {
+          "valeur": "100B$",
+          "label": "investissements annoncés par les hyperscalers US en IA pour 2024-2025",
+          "source": "Rapports annuels Microsoft, Google, Amazon"
+        }
+      ],
+      "metiers_menaces": [
+        "Indépendance décisionnelle des États utilisant des IA étrangères",
+        "Confidentialité des données gouvernementales et industrielles",
+        "Capacité d'innovation locale sans accès aux meilleurs modèles",
+        "Contrôle des infrastructures critiques dépendantes de l'IA"
+      ],
+      "metiers_crees": [
+        "Experts en politique IA et gouvernance internationale",
+        "Architectes de systèmes IA souverains",
+        "Chercheurs en sécurité et résilience des systèmes IA",
+        "Diplomates spécialisés en technologie et IA"
+      ],
+      "perspective": "L'Europe a choisi la voie réglementaire (AI Act) comme levier d'influence mondiale, mais risque de se marginaliser si elle ne développe pas de champions technologiques. Mistral AI représente l'espoir d'un modèle européen, mais sa valorisation (~6Md€) reste sans commune mesure avec OpenAI (~80Md$). Le vrai enjeu est l'accès souverain aux GPU, à l'énergie et aux talents.",
+      "tags": [
+        "Géopolitique",
+        "Souveraineté",
+        "Europe",
+        "Régulation"
+      ]
+    },
+    {
+      "id": "environnement",
+      "titre": "IA et environnement",
+      "emoji": "🌿",
+      "sous_titre": "L'empreinte carbone de la révolution IA",
+      "description": "La croissance exponentielle de l'IA génère une consommation d'énergie et d'eau sans précédent. L'entraînement des grands modèles de fondation nécessite des milliers de GPU pendant des semaines, avec une consommation électrique équivalente à des villes entières. Les datacenters IA exercent une pression croissante sur les réseaux électriques et les ressources en eau dans les régions où ils sont déployés. Paradoxalement, l'IA pourrait aussi être un outil puissant pour optimiser la consommation énergétique et accélérer la transition écologique.",
+      "chiffres_cles": [
+        {
+          "valeur": "552 t CO2",
+          "label": "émissions estimées pour l'entraînement de GPT-3",
+          "source": "Patterson et al., 2021"
+        },
+        {
+          "valeur": "10x",
+          "label": "consommation d'énergie d'une recherche Google vs ChatGPT",
+          "source": "Goldman Sachs, 2024"
+        },
+        {
+          "valeur": "30%",
+          "label": "augmentation des émissions de Microsoft entre 2020 et 2023 due à l'IA",
+          "source": "Rapport développement durable Microsoft, 2023"
+        },
+        {
+          "valeur": "1000 TWh",
+          "label": "consommation électrique estimée des datacenters mondiaux d'ici 2026 (dont 20% IA)",
+          "source": "IEA, 2024"
+        }
+      ],
+      "metiers_menaces": [
+        "Engagements RSE des entreprises utilisant massivement l'IA",
+        "Disponibilité de l'électricité verte pour alimenter les datacenters",
+        "Ressources en eau dans les régions accueillant des datacenters"
+      ],
+      "metiers_crees": [
+        "Green AI Researcher",
+        "Sustainable Computing Architect",
+        "AI Carbon Footprint Analyst",
+        "Spécialiste en efficacité énergétique des modèles IA"
+      ],
+      "perspective": "L'empreinte environnementale de l'IA est réelle mais doit être mise en perspective : l'IA optimise aussi les réseaux électriques, accélère la recherche sur les matériaux de batterie et prédit les rendements des énergies renouvelables. La clé est l'efficacité : les progrès sur les modèles plus petits (Phi-4, Mistral Small) vont dans le bon sens. L'objectif devrait être l'IA décarbonée, pas l'absence d'IA.",
+      "tags": [
+        "Environnement",
+        "Énergie",
+        "Carbone",
+        "Durabilité"
+      ]
+    },
+    {
+      "id": "ethique",
+      "titre": "IA éthique et responsable",
+      "emoji": "⚖️",
+      "sous_titre": "Construire une IA alignée sur les valeurs humaines",
+      "description": "L'éthique de l'IA couvre un spectre large : équité algorithmique, transparence et explicabilité, respect de la vie privée, sécurité, et alignement des systèmes autonomes sur les valeurs humaines. La multiplication des déploiements IA dans des contextes à fort enjeu (justice, santé, emploi) rend ces questions urgentes. Les frameworks d'IA responsable prolifèrent mais leur application reste inégale et souvent cosmétique.",
+      "chiffres_cles": [
+        {
+          "valeur": "160+",
+          "label": "frameworks d'éthique IA publiés par des gouvernements, entreprises et ONG",
+          "source": "AlgorithmWatch, 2023"
+        },
+        {
+          "valeur": "37%",
+          "label": "des entreprises déclarent avoir un programme d'IA responsable structuré",
+          "source": "McKinsey Global Survey on AI, 2023"
+        },
+        {
+          "valeur": "72%",
+          "label": "des citoyens européens souhaitent que l'IA soit régulée de manière stricte",
+          "source": "Eurobaromètre, 2023"
+        }
+      ],
+      "metiers_menaces": [
+        "Réputation des entreprises en cas de biais ou de discrimination avérés",
+        "Droits fondamentaux des individus face aux décisions automatisées",
+        "Confiance du public dans les institutions utilisant l'IA"
+      ],
+      "metiers_crees": [
+        "Chief AI Ethics Officer",
+        "AI Fairness Engineer",
+        "Explainability Researcher",
+        "AI Policy Analyst",
+        "Responsible AI Auditor"
+      ],
+      "perspective": "L'éthique IA ne peut pas se résumer à une liste de principes. Elle requiert des processus concrets : audits réguliers de biais, mécanismes de recours pour les personnes affectées, transparence sur les données d'entraînement, et gouvernance multi-parties prenantes. La réglementation (AI Act) est nécessaire mais insuffisante sans une culture éthique interne aux organisations.",
+      "tags": [
+        "Éthique",
+        "Fairness",
+        "Transparence",
+        "Gouvernance"
+      ]
+    },
+    {
+      "id": "education",
+      "titre": "IA et éducation",
+      "emoji": "📚",
+      "sous_titre": "Transformation pédagogique et enjeux du plagiat",
+      "description": "L'IA générative bouleverse l'éducation à plusieurs niveaux : elle permet une personnalisation sans précédent de l'apprentissage mais soulève des questions fondamentales sur l'évaluation, l'honnêteté académique et la formation au raisonnement. Les institutions éducatives sont confrontées à un choix difficile : interdire et échouer à préparer les étudiants au monde réel, ou intégrer et repenser les fondements de l'évaluation.",
+      "chiffres_cles": [
+        {
+          "valeur": "89%",
+          "label": "des étudiants américains déclarent avoir utilisé ChatGPT pour les aider dans leurs devoirs",
+          "source": "Survey Intelligent.com, 2023"
+        },
+        {
+          "valeur": "48%",
+          "label": "des enseignants américains disent avoir détecté du travail rédigé par IA",
+          "source": "Pew Research Center, 2023"
+        },
+        {
+          "valeur": "43%",
+          "label": "de réduction du temps d'apprentissage constatée avec tuteurs IA vs cours traditionnel",
+          "source": "Carnegie Mellon University, 2023"
+        }
+      ],
+      "metiers_menaces": [
+        "Modèles d'évaluation basés sur des livrables textuels standards",
+        "Marchés du soutien scolaire et de la correction",
+        "Certaines professions de l'enseignement secondaire et supérieur"
+      ],
+      "metiers_crees": [
+        "Concepteur pédagogique IA",
+        "Spécialiste en évaluation à l'ère de l'IA",
+        "Formateur en littératie IA",
+        "Chercheur en sciences de l'apprentissage augmentées"
+      ],
+      "perspective": "L'IA pourrait démocratiser l'accès à un enseignement de qualité, offrant à chaque élève un tuteur personnalisé adapté à son rythme. Mais cette promesse ne peut se réaliser qu'en repensant profondément les pratiques pédagogiques : évaluation basée sur le processus et non le produit, développement de la pensée critique, et formation à l'utilisation responsable de l'IA.",
+      "tags": [
+        "Éducation",
+        "Plagiat",
+        "Pédagogie",
+        "Évaluation"
+      ]
+    },
+    {
+      "id": "sante",
+      "titre": "IA en santé",
+      "emoji": "🏥",
+      "sous_titre": "Révolution diagnostique, drug discovery et limites éthiques",
+      "description": "La santé est l'un des secteurs où l'IA a le potentiel transformateur le plus fort et les enjeux éthiques les plus élevés. La détection de cancers, la découverte de médicaments et la gestion des dossiers médicaux sont révolutionnées par l'IA. Mais les risques de biais (modèles moins performants sur certaines populations), de confidentialité des données de santé, et de dépendance technologique dans des environnements critiques sont tout aussi considérables.",
+      "chiffres_cles": [
+        {
+          "valeur": "94.5%",
+          "label": "de précision d'AlphaFold 2 dans la prédiction de structures protéiques (vs ~36% avant)",
+          "source": "DeepMind, 2020"
+        },
+        {
+          "valeur": "10x",
+          "label": "réduction du temps moyen de découverte d'un nouveau médicament visée par l'IA",
+          "source": "McKinsey Global Institute, 2023"
+        },
+        {
+          "valeur": "90%",
+          "label": "de précision des modèles IA pour la détection du cancer du sein vs 77% pour les radiologues seuls",
+          "source": "Google Health / Nature, 2020"
+        }
+      ],
+      "metiers_menaces": [
+        "Radiologues pour certaines tâches de lecture d'images standard",
+        "Biologistes pour les tâches de criblage pharmaceutique",
+        "Généralistes pour les premiers diagnostics de symptômes courants"
+      ],
+      "metiers_crees": [
+        "Médecin augmenté par l'IA",
+        "Bioinformaticien spécialisé IA",
+        "AI Medical Device Specialist",
+        "Spécialiste en données de santé et RGPD médical"
+      ],
+      "perspective": "L'IA ne remplacera pas les médecins mais les médecins qui utilisent l'IA remplaceront ceux qui ne l'utilisent pas. Les bénéfices sont réels (détection précoce, personnalisation des traitements) mais nécessitent des garde-fous stricts : validation clinique rigoureuse, attention aux biais (sur-représentation de populations dans les données d'entraînement), et maintien de la relation humaine au coeur du soin.",
+      "tags": [
+        "Santé",
+        "Diagnostique",
+        "Pharmacie",
+        "Éthique médicale"
+      ]
+    },
+    {
+      "id": "finance",
+      "titre": "IA et finance",
+      "emoji": "📈",
+      "sous_titre": "Trading algorithmique, risques systémiques et opportunités",
+      "description": "Le secteur financier est l'un des premiers à avoir massivement adopté l'IA, d'abord pour la détection de fraude et le trading algorithmique, maintenant pour le conseil automatisé, la gestion des risques et le reporting réglementaire. L'omniprésence de l'IA dans les marchés financiers soulève des questions inédites sur les risques systémiques, la liquidité en cas de panique algorithmique synchronisée et la responsabilité des décisions automatisées.",
+      "chiffres_cles": [
+        {
+          "valeur": "70%",
+          "label": "des volumes de trading sur les marchés actions US exécutés par des algorithmes IA",
+          "source": "JP Morgan, 2023"
+        },
+        {
+          "valeur": "45%",
+          "label": "de réduction des coûts de détection de fraude estimée avec l'IA vs méthodes traditionnelles",
+          "source": "Accenture, 2023"
+        },
+        {
+          "valeur": "1 000 Md$",
+          "label": "effacés en 36 minutes lors du Flash Crash de 2010 causé par des algorithmes de trading",
+          "source": "SEC/CFTC Report, 2010"
+        }
+      ],
+      "metiers_menaces": [
+        "Analystes financiers junior",
+        "Gestionnaires de fonds actifs (face à l'optimisation algorithmique)",
+        "Conseillers en investissement pour les portefeuilles standards",
+        "Compliance officers pour les tâches de vérification documentaire"
+      ],
+      "metiers_crees": [
+        "Quantitative AI Researcher (Quant IA)",
+        "Spécialiste en LLMs pour la finance (LLM Finance Engineer)",
+        "AI Risk Manager pour les systèmes financiers",
+        "Expert en ESG automatisé et reporting IA"
+      ],
+      "perspective": "L'IA en finance génère des gains d'efficacité considérables mais amplifie aussi les risques systémiques : une erreur dans un modèle très utilisé peut se propager instantanément à l'ensemble du marché. La régulation (MiCA en Europe, réglementation SEC aux USA) doit s'adapter pour gérer les risques spécifiques de l'IA tout en permettant l'innovation.",
+      "tags": [
+        "Finance",
+        "Trading",
+        "Risque systémique",
+        "Régulation financière"
+      ]
+    },
+    {
+      "id": "agi",
+      "titre": "AGI et superintelligence",
+      "emoji": "🧠",
+      "sous_titre": "Le débat sur l'horizon et les implications de l'IA générale",
+      "description": "L'Intelligence Artificielle Générale (AGI), définie comme un système capable d'accomplir n'importe quelle tâche intellectuelle humaine avec des performances supérieures ou égales, est au coeur d'un débat scientifique et philosophique intense. Certains leaders du secteur (Sam Altman, Demis Hassabis) estiment l'AGI à horizon 5-10 ans, d'autres penseurs (Yann LeCun) considèrent que les architectures actuelles sont fondamentalement insuffisantes.",
+      "chiffres_cles": [
+        {
+          "valeur": "2027-2030",
+          "label": "horizon AGI selon Sam Altman (OpenAI), Dario Amodei (Anthropic)",
+          "source": "Interviews publiques, 2024"
+        },
+        {
+          "valeur": "50%",
+          "label": "des chercheurs en IA estiment que l'AGI surpassant l'humain dans tous les domaines arrivera d'ici 2059",
+          "source": "AI Impacts Survey, 2022"
+        },
+        {
+          "valeur": "100B$",
+          "label": "levée de fonds d'OpenAI en 2024, valorisation ~$157B, en vue de l'AGI",
+          "source": "Bloomberg, 2024"
+        }
+      ],
+      "metiers_menaces": [
+        "Potentiellement tous les métiers intellectuels en cas d'AGI réelle",
+        "La notion même de travail humain rémunéré",
+        "Les systèmes sociaux conçus autour de l'emploi comme vecteur de revenus"
+      ],
+      "metiers_crees": [
+        "AI Alignment Researcher",
+        "AI Safety Engineer",
+        "AI Governance Expert",
+        "Chercheur en éthique de l'IA avancée",
+        "Spécialiste en systèmes multi-agents"
+      ],
+      "perspective": "Le débat sur l'AGI est autant philosophique que technique. Même si les modèles actuels affichent des capacités impressionnantes, ils restent fondamentalement différents de l'intelligence humaine (pas de grounding dans le monde physique, compréhension limitée de la causalité, absence de conscience). Ce qui est certain : les systèmes IA actuels suffisent déjà à transformer profondément l'économie et la société, AGI ou non.",
+      "tags": [
+        "AGI",
+        "Superintelligence",
+        "Futurisme",
+        "Sécurité IA",
+        "Philosophie"
+      ]
+    }
+  ],
+  "usages_ia": [
+    {
+      "id": "generation-code",
+      "titre": "Génération et revue de code",
+      "type_ia": "LLM",
+      "secteur": "Tous secteurs",
+      "maturite": "Production",
+      "description": "Les LLMs génèrent, complètent, documentent et révisent le code source dans tous les langages de programmation majeurs. L'approche va de la simple autocomplétion (Copilot) à la génération de modules entiers et à la résolution de bugs complexes (Claude, GPT-4o). Les agents IA comme Devin ou Claude Code peuvent désormais exécuter des workflows de développement complets de manière autonome.",
+      "outils_typiques": [
+        "GitHub Copilot",
+        "Cursor",
+        "Claude (Anthropic)",
+        "GPT-4o (OpenAI)",
+        "Codestral (Mistral)"
+      ],
+      "gains_typiques": [
+        "Productivité développeur +30 à 55% (études GitHub)",
+        "Réduction du temps de debugging",
+        "Documentation automatique du code",
+        "Réduction des bugs de 15 à 25% avec revue IA"
+      ],
+      "limites": [
+        "Hallucinations sur du code complexe ou des librairies peu connues",
+        "Risque de code fonctionnel mais non sécurisé",
+        "Dépendance excessive pouvant nuire à l'apprentissage",
+        "Difficultés sur les architectures systèmes complexes"
+      ],
+      "exemple_concret": "GitHub rapporte que les développeurs utilisant Copilot complètent les tâches de codage 55% plus vite et terminent 74% plus de tâches sur une période donnée (GitHub Productivity Study, 2022)."
+    },
+    {
+      "id": "chatbot-rag",
+      "titre": "Chatbot client intelligent avec RAG",
+      "type_ia": "RAG",
+      "secteur": "Tous secteurs",
+      "maturite": "Production",
+      "description": "Architecture combinant un LLM avec une base documentaire vectorisée pour créer des assistants capables de répondre précisément à partir d'une base de connaissances d'entreprise. Le chatbot RAG va au-delà du simple FAQ : il peut consulter des milliers de documents, citer ses sources et maintenir une conversation contextuelle. Standard de facto pour les assistants internes et clients.",
+      "outils_typiques": [
+        "LangChain",
+        "LlamaIndex",
+        "Pinecone (vector DB)",
+        "Weaviate",
+        "OpenAI API + embeddings",
+        "Mistral AI"
+      ],
+      "gains_typiques": [
+        "Réduction de 40-60% des tickets support niveau 1",
+        "Disponibilité 24/7 sans coût marginal",
+        "Cohérence des réponses",
+        "Escalade automatique vers humain sur les cas complexes"
+      ],
+      "limites": [
+        "Qualité dépendante de la qualité des documents source",
+        "Hallucinations possibles sur les sujets non couverts",
+        "Maintenance de la base documentaire nécessaire",
+        "Coût d'indexation et d'inférence en production"
+      ],
+      "exemple_concret": "Klarna a déployé un chatbot IA en 2024 qui gère 2/3 des conversations clients en autonomie, l'équivalent du travail de 700 agents temps plein, avec une satisfaction client équivalente aux agents humains."
+    },
+    {
+      "id": "synthese-documentaire",
+      "titre": "Synthèse documentaire et analyse de corpus",
+      "type_ia": "RAG",
+      "secteur": "Tous secteurs",
+      "maturite": "Production",
+      "description": "Extraction automatique d'informations clés, de tendances et d'insights à partir de grandes quantités de documents textuels. Utilisé pour analyser des rapports annuels, des contrats, des articles scientifiques ou des données de veille. Les modèles à long contexte (Gemini 1.5 Pro, Claude 3.5) peuvent ingérer des documents entiers en une requête.",
+      "outils_typiques": [
+        "Claude 3.5 Sonnet (200K context)",
+        "Gemini 1.5 Pro (1M context)",
+        "NotebookLM (Google)",
+        "Perplexity Pages"
+      ],
+      "gains_typiques": [
+        "Réduction de 70-80% du temps de lecture et synthèse",
+        "Extraction structurée d'informations (JSON, tableaux)",
+        "Comparaison simultanée de dizaines de documents",
+        "Veille concurrentielle automatisée"
+      ],
+      "limites": [
+        "Risque de manquer des nuances subtiles dans les documents",
+        "Coût élevé pour de très grands corpus",
+        "Nécessite une validation humaine sur les décisions stratégiques"
+      ],
+      "exemple_concret": "Le cabinet d'avocats Allen & Overy a déployé Harvey, un LLM spécialisé en droit, utilisé par ses 3 500 avocats pour la revue et la synthèse de documents complexes. JPMorgan Chase utilise sa plateforme COiN pour analyser et synthétiser 12 000+ contrats de prêts commerciaux par an, en extrayant automatiquement les clauses clés avec 99,2% de précision. Sources : Allen & Overy / Harvey announcement ; JPMorgan Annual Report."
+    },
+    {
+      "id": "analyse-contrats",
+      "titre": "Analyse de contrats juridiques",
+      "type_ia": "LLM",
+      "secteur": "Juridique",
+      "maturite": "Production",
+      "description": "Extraction automatique des clauses clés, identification des risques juridiques, vérification de la conformité et comparaison de contrats. Les LLMs peuvent analyser des centaines de pages de contrats en quelques secondes, identifier des clauses inhabituelles et générer des synthèses structurées à destination des juristes.",
+      "outils_typiques": [
+        "Harvey AI",
+        "Ironclad AI",
+        "ContractPodAi",
+        "Claude (Anthropic)",
+        "GPT-4o Enterprise"
+      ],
+      "gains_typiques": [
+        "Revue initiale de contrats 5 à 10x plus rapide",
+        "Réduction des risques liés aux clauses manquées",
+        "Standardisation des analyses",
+        "Libération du temps des juristes pour les tâches à valeur ajoutée"
+      ],
+      "limites": [
+        "Ne remplace pas le jugement du juriste sur des cas complexes",
+        "Risque d'hallucinations sur des points juridiques précis",
+        "Problèmes de confidentialité (données envoyées à des APIs tierces)",
+        "Dépendance à un droit national spécifique"
+      ],
+      "exemple_concret": "Allen & Overy (grand cabinet d'avocats britannique) a déployé Harvey, un LLM spécialisé en droit, utilisé par 3 500 avocats pour la revue de contrats et la recherche juridique, avec un gain de productivité moyen de 20%."
+    },
+    {
+      "id": "diagnostic-medical",
+      "titre": "Diagnostic médical assisté par IA",
+      "type_ia": "Computer Vision",
+      "secteur": "Santé",
+      "maturite": "Production",
+      "description": "Analyse d'images médicales (radiographies, IRM, scanners, clichés ophtalmologiques) par des modèles de vision artificielle pour détecter des pathologies. Ces systèmes atteignent des performances supérieures à celles des radiologues humains sur certaines tâches spécifiques, mais sont utilisés en complément et non en remplacement.",
+      "outils_typiques": [
+        "Google Health (détection cancers)",
+        "Viz.ai (AVC)",
+        "Paige.AI (pathologie)",
+        "Zebra Medical Vision"
+      ],
+      "gains_typiques": [
+        "Détection plus précoce et plus précise de certains cancers",
+        "Priorisation automatique des cas urgents (AVC, embolies)",
+        "Réduction du temps de lecture des images médicales",
+        "Second avis systématique sans surcoût"
+      ],
+      "limites": [
+        "Performances variables selon les populations et les équipements d'imagerie",
+        "Risque de biais si les données d'entraînement ne sont pas représentatives",
+        "Responsabilité médicale encore floue en cas d'erreur IA",
+        "Coût d'intégration dans les SI hospitaliers"
+      ],
+      "exemple_concret": "Google Health a publié en 2020 dans Nature qu'un modèle de vision IA détectait le cancer du sein sur mammographies avec 90% de précision vs 77% pour les radiologues, et réduisait de 2,7% les faux négatifs."
+    },
+    {
+      "id": "drug-discovery",
+      "titre": "Découverte accélérée de médicaments",
+      "type_ia": "Agent LLM",
+      "secteur": "Santé",
+      "maturite": "Émergent",
+      "description": "L'IA accélère chaque étape du développement pharmaceutique : identification de cibles thérapeutiques, criblage virtuel de molécules, prédiction de la toxicité et des effets secondaires, et optimisation des essais cliniques. AlphaFold 2 a révolutionné la biologie structurale en résolvant la structure de presque toutes les protéines connues, ouvrant des pistes thérapeutiques inédites.",
+      "outils_typiques": [
+        "AlphaFold 2 (DeepMind)",
+        "RoseTTAFold (UW)",
+        "Insilico Medicine",
+        "Atomwise",
+        "BenevolentAI"
+      ],
+      "gains_typiques": [
+        "Réduction de 30-50% du temps de phase de découverte préclinique",
+        "Identification de nouvelles cibles thérapeutiques via la base de données AlphaFold (200M structures)",
+        "Réduction du coût de criblage de molécules de 90%+"
+      ],
+      "limites": [
+        "Les candidats identifiés par IA doivent encore passer par des essais cliniques complets",
+        "Données d'entraînement souvent issues de populations non représentatives",
+        "Opacité des modèles qui complique la compréhension des mécanismes"
+      ],
+      "exemple_concret": "Insilico Medicine a utilisé l'IA pour identifier un nouveau candidat médicament contre la fibrose pulmonaire en 18 mois et moins de 3M$, vs 4-6 ans et des centaines de millions $ par voie traditionnelle. Le candidat est entré en phase II d'essais cliniques en 2023."
+    },
+    {
+      "id": "traduction",
+      "titre": "Traduction et localisation automatisée",
+      "type_ia": "LLM",
+      "secteur": "Tous secteurs",
+      "maturite": "Production",
+      "description": "Les LLMs modernes ont révolutionné la traduction automatique en dépassant les limites des approches statistiques. Ils comprennent le contexte, le ton et les nuances culturelles, permettant une localisation de haute qualité. La traduction technique, juridique et marketing atteint une qualité proche du traducteur humain sur les paires de langues majeures.",
+      "outils_typiques": [
+        "DeepL",
+        "ChatGPT / GPT-4o",
+        "Google Translate (IA générative)",
+        "Microsoft Translator",
+        "Mistral Large 2 (pour le français)"
+      ],
+      "gains_typiques": [
+        "Réduction de 80-90% du temps de traduction initiale",
+        "Post-editing humain réduit à 20-30% du temps vs traduction complète",
+        "Cohérence terminologique sur grands volumes",
+        "Réduction des coûts de 50-70% par rapport à la traduction humaine pure"
+      ],
+      "limites": [
+        "Erreurs subtiles sur les nuances culturelles spécifiques",
+        "Difficultés sur les jeux de mots et le contenu très créatif",
+        "Qualité variable pour les paires de langues peu représentées"
+      ],
+      "exemple_concret": "DeepL, l'entreprise allemande spécialisée en traduction IA, est utilisée par 100 000+ entreprises dont Zendesk, Salesforce et LinkedIn pour la localisation à grande échelle. Les études de cas publiées par DeepL montrent que ses clients réduisent les cycles de traduction de 50 à 70% par rapport à la traduction humaine pure, en utilisant un workflow de traduction machine + post-editing humain. Source : DeepL case studies, deeplpartners.com."
+    },
+    {
+      "id": "contenu-marketing",
+      "titre": "Génération de contenu marketing",
+      "type_ia": "LLM",
+      "secteur": "Marketing et communication",
+      "maturite": "Production",
+      "description": "Production à grande échelle d'articles de blog, emails marketing, posts réseaux sociaux, descriptions produits et scripts vidéo. Les LLMs permettent la personnalisation à l'échelle individuelle (emails adaptés à chaque segment), la localisation rapide et le test systématique de variantes de messages (A/B testing IA).",
+      "outils_typiques": [
+        "Jasper AI",
+        "Copy.ai",
+        "Claude (Anthropic)",
+        "GPT-4o",
+        "Mistral Large 2",
+        "HubSpot AI"
+      ],
+      "gains_typiques": [
+        "Production de contenu 5-10x plus rapide",
+        "Personnalisation à l'échelle (emails individualisés)",
+        "Tests A/B sur des dizaines de variantes simultanément",
+        "Réduction des coûts de production de 40-60%"
+      ],
+      "limites": [
+        "Risque de contenus génériques sans différenciation",
+        "Nécessite une supervision éditoriale pour la qualité",
+        "Risques de contenus factuellement incorrects",
+        "Saturation du web avec du contenu IA peu différencié"
+      ],
+      "exemple_concret": "La plateforme \"Create Real Magic\" de Coca-Cola, lancée en 2023 avec OpenAI et Bain, a généré 120 000+ créations par les utilisateurs en quelques semaines et affiché +60% d'engagement sur les plateformes. La campagne publicitaire de Noël 2024 entièrement générée par IA a été qualifiée de \"l'une des publicités les mieux testées de notre histoire\" par Islam ElDessouky, VP Global Creative Strategy de Coca-Cola. Source : Coca-Cola Company / Marketing Dive, 2024-2025."
+    },
+    {
+      "id": "analyse-sentiment",
+      "titre": "Analyse de sentiment et NPS",
+      "type_ia": "LLM",
+      "secteur": "Marketing et service client",
+      "maturite": "Production",
+      "description": "Analyse automatique de grandes quantités d'avis clients, commentaires réseaux sociaux et retours NPS pour extraire le sentiment, identifier les thèmes récurrents et prioriser les actions. Les LLMs permettent une analyse plus fine que les approches NLP classiques, en comprenant l'ironie, les nuances et le contexte culturel.",
+      "outils_typiques": [
+        "MonkeyLearn",
+        "Medallia AI",
+        "Qualtrics XM",
+        "AWS Comprehend",
+        "GPT-4o avec fine-tuning"
+      ],
+      "gains_typiques": [
+        "Traitement automatique de grands volumes d'avis et de messages support",
+        "Détection précoce des tendances négatives avant escalade",
+        "Segmentation automatique des feedbacks par thème",
+        "Couverture multilingue avec des modèles Transformer"
+      ],
+      "limites": [
+        "Biais possible sur les langues peu représentées",
+        "Difficultés avec les expressions culturellement spécifiques",
+        "Nécessite une calibration régulière sur les données du domaine"
+      ],
+      "exemple_concret": "Airbnb a publié son système de scoring de sentiment IA sur l'Airbnb Engineering Blog (\"Using Sentiment Score to Assess Customer Service Quality\"). Le modèle traite en temps réel les messages envoyés aux agents du support client, en extrayant des signaux de satisfaction. Les modèles Transformer utilisés atteignent de meilleures performances que les approches classiques, en particulier sur les langues peu représentées. Airbnb ne publie pas de chiffres d'économies, mais le système est en production sur l'ensemble de la plateforme mondiale. Source : Airbnb Engineering Blog."
+    },
+    {
+      "id": "detection-fraude",
+      "titre": "Détection de fraude en temps réel",
+      "type_ia": "Agent LLM",
+      "secteur": "Finance",
+      "maturite": "Production",
+      "description": "Détection des transactions frauduleuses en quelques millisecondes à partir de l'analyse comportementale, de la détection d'anomalies et du contexte contextuel. Les LLMs complètent les modèles ML classiques en ajoutant de la compréhension contextuelle pour réduire les faux positifs et détecter des schémas de fraude nouveaux.",
+      "outils_typiques": [
+        "Stripe Radar",
+        "Featurespace",
+        "Feedzai",
+        "FICO Falcon",
+        "AWS Fraud Detector"
+      ],
+      "gains_typiques": [
+        "3x plus de transactions frauduleuses détectées vs systèmes précédents (Mastercard, 2024)",
+        "10x moins de faux positifs (blocages légitimes évités)",
+        "50 milliards $ d'attaques bloquées sur 3 ans (réseau Mastercard)",
+        "Adaptation en temps réel aux nouveaux schémas de fraude"
+      ],
+      "limites": [
+        "Risque d'explication de la décision (modèles boîte noire)",
+        "Nécessite des données labellisées de haute qualité",
+        "Course perpétuelle aux armements avec les fraudeurs"
+      ],
+      "exemple_concret": "Mastercard a publié en mai 2024 que son IA générative détecte 3 fois plus de transactions frauduleuses tout en réduisant les faux positifs d'un facteur 10. Sur les 3 dernières années, les modèles IA de Mastercard ont bloqué 50 milliards de dollars d'attaques frauduleuses sur son réseau. Son système Consumer Fraud Risk a réduit les cas de fraude APP de 20% en 2024. Source : Mastercard Press Release, mai 2024 ; Mastercard 2025 Payment Fraud Prevention Report."
+    },
+    {
+      "id": "scoring-esg",
+      "titre": "Scoring ESG automatisé",
+      "type_ia": "RAG",
+      "secteur": "Finance",
+      "maturite": "Émergent",
+      "description": "Extraction et agrégation automatiques de données ESG (environnementales, sociales, de gouvernance) à partir des rapports annuels, des publications réglementaires et des sources alternatives (actualités, réseaux sociaux). Les LLMs permettent une analyse qualitative des engagements ESG au-delà des simples métriques chiffrées.",
+      "outils_typiques": [
+        "Clarity AI",
+        "MSCI ESG Research IA",
+        "Sustainalytics AI",
+        "Bloomberg ESG Data",
+        "Modèles RAG sur-mesure"
+      ],
+      "gains_typiques": [
+        "Couverture de 10x plus d'entreprises vs analyse manuelle",
+        "Mise à jour en quasi temps réel vs annuelle",
+        "Détection du greenwashing via analyse des incohérences",
+        "Intégration de sources non-structurées (articles, litiges)"
+      ],
+      "limites": [
+        "Qualité dépendante de la disponibilité et fiabilité des données source",
+        "Standardisation ESG encore insuffisante (normes CSRD en cours)",
+        "Risque de reproduire les biais des agences de notation classiques"
+      ],
+      "exemple_concret": "Clarity AI utilise des LLMs pour analyser des millions de documents réglementaires et d'actualités pour scorer 60 000+ entreprises sur des critères ESG, alimentant les stratégies d'investissement responsable de plus de 200 institutions financières."
+    },
+    {
+      "id": "reporting-reglementaire",
+      "titre": "Reporting réglementaire automatisé",
+      "type_ia": "RAG",
+      "secteur": "Finance",
+      "maturite": "Émergent",
+      "description": "Automatisation de la collecte, de la mise en forme et de la vérification des reportings réglementaires (Bâle III/IV, Pilier 3, DORA, taxonomie européenne). Les LLMs permettent d'interpréter les textes réglementaires complexes, de mapper les obligations aux données disponibles et de générer les tableaux de bord conformes.",
+      "outils_typiques": [
+        "Workiva AI",
+        "Regnology",
+        "FIS Regulatory Reporting",
+        "AxiomSL",
+        "Solutions sur-mesure RAG"
+      ],
+      "gains_typiques": [
+        "360 000 heures-avocat automatisées annuellement (JPMorgan COiN)",
+        "99,2% de précision sur l'analyse de contrats de prêts complexes",
+        "Détection 2 à 4x plus élevée des crimes financiers (HSBC / Google Cloud)",
+        "Réduction de 60% des faux positifs (HSBC / Google Cloud)"
+      ],
+      "limites": [
+        "Risque réglementaire élevé en cas d'erreur non détectée",
+        "Nécessite une validation humaine systématique sur les sorties",
+        "Intégration complexe avec les systèmes de données existants"
+      ],
+      "exemple_concret": "JPMorgan Chase a développé la plateforme COiN (Contract Intelligence) pour analyser ses accords de prêts commerciaux. Elle traite 12 000+ contrats annuels avec un taux de précision de 99,2%, automatisant une tâche qui consommait auparavant environ 360 000 heures-avocat par an. HSBC, en partenariat avec Google Cloud, surveille 1,35 milliard de transactions mensuelles avec un système IA qui détecte 2 à 4 fois plus de crimes financiers et a réduit les faux positifs de 60%. Sources : JPMorgan Annual Report ; HSBC / Google Cloud case study."
+    },
+    {
+      "id": "optimisation-supply-chain",
+      "titre": "Optimisation de la supply chain",
+      "type_ia": "Agent LLM",
+      "secteur": "Industrie et retail",
+      "maturite": "Production",
+      "description": "Prédiction de la demande, optimisation des stocks, planification des transports et identification des risques fournisseurs en temps réel. Les LLMs ajoutent une capacité à interpréter des signaux non-structurés (actualités, météo, réseaux sociaux) pour anticiper les perturbations avant qu'elles n'impactent la chaîne.",
+      "outils_typiques": [
+        "Blue Yonder",
+        "o9 Solutions",
+        "Kinaxis",
+        "SAP IBP IA",
+        "Google Cloud Supply Chain AI"
+      ],
+      "gains_typiques": [
+        "+55 millions $ économisés par le système Self-Healing Inventory (Walmart)",
+        "30 millions de miles inutiles supprimés, 94 millions de livres de CO2 évitées",
+        "Automatisation des négociations fournisseurs : 68% de taux d'accord (Pactum AI)",
+        "Prix Franz Edelman 2023 pour l'excellence en optimisation supply chain"
+      ],
+      "limites": [
+        "Dépendance à la qualité des données historiques",
+        "Événements de type cygne noir difficiles à prédire",
+        "ROI dépendant de la maturité data de l'entreprise"
+      ],
+      "exemple_concret": "Walmart a publié via ses rapports officiels que son système \"Self-Healing Inventory\" (IA qui redistribue automatiquement les stocks excédentaires) a économisé plus de 55 millions de dollars. Son optimisation de routes IA a économisé 30 millions de miles de conduite inutiles et évité 94 millions de livres de CO2. Sa collaboration avec Pactum AI automatise les négociations fournisseurs avec un taux d'accord de 68% et une réduction de 1,5% des coûts. Walmart a reçu le prix Franz Edelman 2023 pour ce déploiement. Sources : corporate.walmart.com ; Supply Chain Dive, 2025."
+    },
+    {
+      "id": "maintenance-predictive",
+      "titre": "Maintenance prédictive industrielle",
+      "type_ia": "Agent LLM",
+      "secteur": "Industrie",
+      "maturite": "Production",
+      "description": "Prédiction des pannes d'équipements industriels à partir des données de capteurs IoT, permettant d'intervenir avant la défaillance et d'optimiser les fenêtres de maintenance. L'IA combine l'analyse de séries temporelles avec des modèles de dégradation physique pour estimer la durée de vie résiduelle des équipements.",
+      "outils_typiques": [
+        "Siemens MindSphere",
+        "GE Predix",
+        "PTC ThingWorx",
+        "IBM Maximo + IA",
+        "Azure IoT Hub + ML"
+      ],
+      "gains_typiques": [
+        "10-15% de réduction des coûts de maintenance (compagnies aériennes utilisatrices de Skywise)",
+        "20% d'amélioration de la fiabilité des rotations (Skywise)",
+        "35% d'amélioration de la disponibilité des équipements en production (usines Airbus)",
+        "Identification des besoins de maintenance jusqu'à 6 mois à l'avance"
+      ],
+      "limites": [
+        "Investissement initial élevé en capteurs et infrastructure IoT",
+        "Nécessite des données historiques de pannes importantes pour l'entraînement",
+        "Variabilité des performances selon les types d'équipements"
+      ],
+      "exemple_concret": "La plateforme Skywise d'Airbus agrège les données de 11 000+ avions pour 200+ compagnies aériennes. Les compagnies utilisant Skywise rapportent en moyenne une réduction de 10 à 15% des coûts de maintenance et une amélioration de 20% de la fiabilité des rotations. Emirates a communiqué sur des économies de 100 millions de dollars annuels grâce à Skywise. Dans ses propres usines, Airbus rapporte une amélioration de 35% de la disponibilité des équipements et une réduction de 25% des coûts de maintenance industrielle. Sources : Airbus Skywise Core documentation ; iMaintain."
+    },
+    {
+      "id": "agents-rh",
+      "titre": "Agents IA autonomes pour les RH",
+      "type_ia": "Agent LLM",
+      "secteur": "Ressources humaines",
+      "maturite": "Émergent",
+      "description": "Agents IA capables d'automatiser des workflows RH complets : présélection de CV, planification d'entretiens, réponses aux questions des candidats, onboarding des nouveaux employés et gestion des demandes administratives. Ces agents combinent un LLM avec des outils (envoi d'emails, accès au SIRH, calendriers) pour agir de manière autonome.",
+      "outils_typiques": [
+        "Paradox (Olivia AI)",
+        "HireVue",
+        "Eightfold.ai",
+        "Workday AI Agent",
+        "Phenom TXM"
+      ],
+      "gains_typiques": [
+        "Réduction de 70% du temps de présélection des candidats",
+        "Planification automatique de 100% des entretiens",
+        "Disponibilité 24/7 pour les questions candidats",
+        "Réduction du time-to-hire de 40%"
+      ],
+      "limites": [
+        "Risques de biais discriminatoires dans la présélection automatisée",
+        "Expérience candidat moins humanisée",
+        "Obligations légales de transparence sur les systèmes IA dans le recrutement (AI Act)"
+      ],
+      "exemple_concret": "Unilever a utilisé un système IA pour sa présélection (analyse vidéo et gamification) permettant de réduire son processus de recrutement de 4 mois à 4 semaines, tout en augmentant la diversité des embauches de 16%."
+    },
+    {
+      "id": "text-to-sql",
+      "titre": "Text-to-SQL pour l'analytics",
+      "type_ia": "LLM",
+      "secteur": "Tous secteurs",
+      "maturite": "Émergent",
+      "description": "Conversion de questions en langage naturel en requêtes SQL, permettant aux non-techniciens d'interroger directement les bases de données sans connaissances SQL. Démocratise l'accès aux données de l'entreprise et accélère les workflows analytiques. Les LLMs modernes atteignent des précisions de 80-95% sur des requêtes de complexité moyenne.",
+      "outils_typiques": [
+        "Databricks SQL AI",
+        "Snowflake Cortex",
+        "ThoughtSpot AI",
+        "Mode Analytics AI",
+        "Defog.ai"
+      ],
+      "gains_typiques": [
+        "140 000 heures économisées par mois (Uber QueryGPT, données officielles)",
+        "Temps d'écriture SQL réduit de 10+ minutes à ~3 minutes",
+        "1,2 million de requêtes interactives traitées mensuellement",
+        "Démocratisation de l'accès aux données sans compétences SQL requises"
+      ],
+      "limites": [
+        "Précision insuffisante pour les requêtes très complexes ou multi-jointures",
+        "Risque d'hallucinations sur les noms de tables ou de colonnes",
+        "Nécessite une documentation du schéma de données de qualité"
+      ],
+      "exemple_concret": "Uber a publié sur son Engineering Blog (septembre 2024) le détail de son système QueryGPT. Il économise 140 000 heures de travail par mois en réduisant le temps d'écriture d'une requête SQL de 10+ minutes à environ 3 minutes. QueryGPT traite 1,2 million de requêtes interactives par mois, permettant aux équipes non-techniques de requêter directement les bases de données Uber sans passer par l'équipe data. Source : Uber Engineering Blog, \"QueryGPT – Natural Language to SQL Using Generative AI\", septembre 2024."
+    },
+    {
+      "id": "generation-images-produit",
+      "titre": "Génération d'images produit",
+      "type_ia": "Multimodal",
+      "secteur": "E-commerce et retail",
+      "maturite": "Émergent",
+      "description": "Création de visuels produits dans différents contextes, coloris et angles à partir d'une seule image source ou de descriptions textuelles. Permet de générer des dizaines de variantes de photos produit sans séance photo, de créer des mises en scène lifestyles et d'adapter les visuels à chaque marché géographique.",
+      "outils_typiques": [
+        "Adobe Firefly",
+        "DALL-E 3 (OpenAI)",
+        "FLUX 1.1 Pro",
+        "Midjourney",
+        "Pebblely",
+        "Mokker AI"
+      ],
+      "gains_typiques": [
+        "Réduction de 60-80% des coûts de production photographique",
+        "Génération de 100+ variantes là où une séance photo produisait 5-10 visuels",
+        "Time-to-market réduit de semaines à jours",
+        "Personnalisation du visuel par segment/marché"
+      ],
+      "limites": [
+        "Qualité insuffisante pour le luxe et les produits nécessitant une précision extrême",
+        "Questions de droits sur les images générées",
+        "Besoin de validation humaine avant publication"
+      ],
+      "exemple_concret": "IKEA teste la génération d'images IA pour ses catalogues produits, permettant de créer des dizaines de mises en scène d'un même meuble dans différents intérieurs types, en remplacement partiel des séances photo coûteuses en studio."
+    },
+    {
+      "id": "synthese-vocale",
+      "titre": "Synthèse vocale et narration IA",
+      "type_ia": "Multimodal",
+      "secteur": "Médias et formation",
+      "maturite": "Production",
+      "description": "Génération de voix réalistes pour les contenus audio (podcasts, e-learning, tutoriels vidéo, livres audio) à partir de texte. Les plateformes modernes (ElevenLabs, Kokoro) permettent de cloner une voix à partir de quelques secondes d'échantillon et de maintenir cette voix cohérente sur des heures de contenu.",
+      "outils_typiques": [
+        "ElevenLabs",
+        "Kokoro (open source)",
+        "OpenAI TTS",
+        "Azure Neural TTS",
+        "Murf.ai"
+      ],
+      "gains_typiques": [
+        "Réduction de 90% du coût de production de contenu audio",
+        "Production 10x plus rapide qu'un enregistrement studio",
+        "Cohérence de la voix sur l'intégralité d'un corpus",
+        "Localisation vocale dans 30+ langues sans recrutement de locuteurs"
+      ],
+      "limites": [
+        "Préoccupations éthiques sur le clonage vocal non consenti",
+        "Qualité encore inférieure aux meilleurs acteurs voix pour le contenu premium",
+        "Risques légaux sur les voix de personnalités"
+      ],
+      "exemple_concret": "Duolingo utilise la synthèse vocale IA pour générer les enregistrements dans 40+ langues de sa plateforme d'apprentissage, permettant une mise à jour rapide du contenu sans replanification de sessions d'enregistrement."
+    },
+    {
+      "id": "analyse-video",
+      "titre": "Analyse vidéo et vision par ordinateur",
+      "type_ia": "Computer Vision",
+      "secteur": "Industrie et sécurité",
+      "maturite": "Production",
+      "description": "Analyse automatique de flux vidéo pour la détection d'événements (intrusion, accident, non-conformité), le comptage et le suivi d'objets, le contrôle qualité visuel et la surveillance industrielle. Les modèles de vision modernes permettent une analyse contextuelle bien au-delà de la simple détection d'objets.",
+      "outils_typiques": [
+        "AWS Rekognition",
+        "Google Cloud Vision AI",
+        "NVIDIA Metropolis",
+        "Azena",
+        "Viso.ai"
+      ],
+      "gains_typiques": [
+        "Surveillance 24/7 sans fatigue humaine",
+        "Détection d'anomalies en temps réel",
+        "Réduction du taux de défauts dans le contrôle qualité de 30-50%",
+        "Audit automatique de la conformité aux procédures"
+      ],
+      "limites": [
+        "Questions éthiques et légales sur la vidéosurveillance",
+        "Performances dégradées dans les conditions difficiles (faible luminosité, occlusions)",
+        "Faux positifs pouvant générer des alertes trop fréquentes"
+      ],
+      "exemple_concret": "LVMH utilise la vision par ordinateur dans ses lignes de production de maroquinerie pour contrôler la qualité de chaque couture et détection automatique des défauts, réduisant le taux de rejet en fin de ligne de 20%."
+    },
+    {
+      "id": "tests-automatises",
+      "titre": "Automatisation des tests logiciels",
+      "type_ia": "Agent LLM",
+      "secteur": "Tous secteurs",
+      "maturite": "Émergent",
+      "description": "Génération automatique de cas de test, d'assertions et de scénarios d'intégration à partir du code source ou des spécifications fonctionnelles. Les agents IA peuvent exécuter des cycles de test complets, identifier les régressions et proposer des corrections. Potentiel de transformation majeur sur la qualité logicielle et la vélocité des équipes.",
+      "outils_typiques": [
+        "GitHub Copilot (tests)",
+        "CodiumAI",
+        "Launchable",
+        "Diffblue Cover",
+        "Qodo (ex-CodiumAI)"
+      ],
+      "gains_typiques": [
+        "Couverture de tests augmentée de 30-50% sans effort supplémentaire",
+        "Réduction du temps d'écriture des tests de 60%",
+        "Détection plus précoce des régressions",
+        "Documentation des cas limites automatique"
+      ],
+      "limites": [
+        "Tests générés parfois peu pertinents ou redondants",
+        "Difficulté à générer des tests pour la logique métier complexe",
+        "Qualité dépendante de la clarté du code source"
+      ],
+      "exemple_concret": "Microsoft utilise des agents IA pour générer et maintenir des suites de tests dans ses projets open source, réduisant le backlog de tests non écrits de 40% et augmentant la couverture de code de 25% sur plusieurs projets pilotes."
+    }
+  ]
+}
