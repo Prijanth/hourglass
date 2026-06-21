@@ -193,7 +193,7 @@ export default function ActualitesPage() {
                 <h2 style={{ fontFamily: "var(--font-display)", fontSize: 26, fontWeight: 800, lineHeight: 1.2, letterSpacing: "-0.03em", marginBottom: 12, maxWidth: 620 }}>
                   {filteredFeatured.title}
                 </h2>
-                <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.65, maxWidth: 580, marginBottom: 20 }}>
+                <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.65, maxWidth: 580, marginBottom: 20, display: "-webkit-box", WebkitLineClamp: 4, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                   {filteredFeatured.excerpt}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -238,7 +238,7 @@ export default function ActualitesPage() {
                       <span style={{ fontSize: 12, color: "var(--faint)", flexShrink: 0 }}>{a.readTime}</span>
                     </div>
                     <h2 style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 700, lineHeight: 1.3 }}>{a.title}</h2>
-                    <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.65, flex: 1 }}>{a.excerpt}</p>
+                    <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.65, flex: 1, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{a.excerpt}</p>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid var(--border)" }}>
                       <span style={{ fontSize: 12, color: "var(--faint)" }}>{fmtDate(a.date)}</span>
                       <span style={{ fontSize: 13, color: CATEGORY_ACCENT[a.categoryColor] ?? "var(--indigo-light)", fontWeight: 700 }}>Lire →</span>
