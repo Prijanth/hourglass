@@ -2537,6 +2537,15 @@ const DIFF_COLORS: Record<string, { bg: string; color: string }> = {
   "Avancé":       { bg: "#FFF1F2", color: "#BE123C" },
 };
 
+function detectOutputType(output: string): { label: string; bg: string; color: string } {
+  const hasCode = output.includes("```");
+  const textOutside = output.replace(/```[\s\S]*?```/g, "").trim();
+  const hasText = textOutside.length > 100;
+  if (!hasCode) return { label: "Texte", bg: "#F0FDF4", color: "#15803D" };
+  if (hasText)  return { label: "Code + Texte", bg: "#EFF6FF", color: "#1D4ED8" };
+  return { label: "Code", bg: "#1E293B", color: "#94A3B8" };
+}
+
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
   function handleCopy() {
@@ -2570,8 +2579,9 @@ const ALL_AGENT_CATS = ["Toutes", ...Array.from(new Set(AGENTS.map(a => a.catego
 
 function AgentCard({ agent }: { agent: typeof AGENTS[number] }) {
   const [open, setOpen] = useState(false);
-  const cat  = CAT_COLORS[agent.categorie]  ?? { bg: "#F8FAFC", color: "#475569", border: "#E2E8F0" };
-  const diff = DIFF_COLORS[agent.difficulte] ?? { bg: "#F8FAFC", color: "#475569" };
+  const cat        = CAT_COLORS[agent.categorie]  ?? { bg: "#F8FAFC", color: "#475569", border: "#E2E8F0" };
+  const diff       = DIFF_COLORS[agent.difficulte] ?? { bg: "#F8FAFC", color: "#475569" };
+  const outputType = detectOutputType(agent.exemple_output);
 
   return (
     <div className="card" style={{ padding: 0, overflow: "hidden", display: "flex", flexDirection: "column" }}>
@@ -2588,6 +2598,7 @@ function AgentCard({ agent }: { agent: typeof AGENTS[number] }) {
           <div style={{ display: "flex", flexDirection: "column", gap: 4, flexShrink: 0, alignItems: "flex-end" }}>
             <span style={{ padding: "2px 8px", borderRadius: 100, fontSize: 10, fontWeight: 600, background: cat.bg, color: cat.color, border: `1px solid ${cat.border}` }}>{agent.categorie}</span>
             <span style={{ padding: "2px 8px", borderRadius: 100, fontSize: 10, fontWeight: 600, background: diff.bg, color: diff.color }}>{agent.difficulte}</span>
+            <span style={{ padding: "2px 8px", borderRadius: 100, fontSize: 10, fontWeight: 700, background: outputType.bg, color: outputType.color, fontFamily: "var(--font-mono)" }}>↳ {outputType.label}</span>
           </div>
         </div>
         <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
@@ -2628,13 +2639,13 @@ function AgentCard({ agent }: { agent: typeof AGENTS[number] }) {
             </pre>
           </div>
           <div>
-            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#0E7490", marginBottom: 6 }}>Exemple d&apos;input</p>
+            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#0E7490", marginBottom: 6 }}>Tu demandes</p>
             <div style={{ padding: "9px 12px", background: "var(--surface-2)", borderRadius: 8, borderLeft: "3px solid var(--teal)" }}>
               <p style={{ fontSize: 12, color: "var(--text)", lineHeight: 1.6, margin: 0 }}>{agent.exemple_input}</p>
             </div>
           </div>
           <div>
-            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#15803D", marginBottom: 6 }}>Exemple d&apos;output (extrait)</p>
+            <p style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#15803D", marginBottom: 6 }}>Claude génère</p>
             <div style={{ background: "#F0FDF4", borderRadius: 8, borderLeft: "3px solid #BBF7D0", padding: "9px 12px" }}>
               <pre style={{ margin: 0, fontSize: 11, color: "#166534", fontFamily: "var(--font-mono)", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>
                 {agent.exemple_output}
@@ -2680,6 +2691,26 @@ export default function AgentsPage() {
           </div>
         </div>
       </section>
+
+      {/* Intro pédagogique */}
+      <div style={{ background: "var(--surface-2)", borderBottom: "1px solid var(--border)", padding: "18px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
+          <p style={{ fontSize: 12, fontWeight: 800, color: "var(--text)", textTransform: "uppercase", letterSpacing: "0.08em", flexShrink: 0, marginRight: 8 }}>Comment ça marche ?</p>
+          {([
+            { num: "1", label: "Choisis un agent", desc: "Chaque carte est un expert Claude spécialisé (code, rapport, email...)" },
+            { num: "2", label: "Copie le prompt", desc: 'Clique "Copier le prompt" — c\'est le cerveau de l\'agent' },
+            { num: "3", label: "Colle dans Claude", desc: "Parle-lui : il se comporte comme un vrai spécialiste du domaine" },
+          ] as const).map(step => (
+            <div key={step.num} style={{ display: "flex", gap: 8, alignItems: "flex-start", flex: "1 1 220px" }}>
+              <span style={{ width: 20, height: 20, borderRadius: "50%", background: "var(--indigo)", color: "#fff", fontSize: 10, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{step.num}</span>
+              <div>
+                <p style={{ fontSize: 12.5, fontWeight: 700, color: "var(--text)", margin: 0, lineHeight: 1.3 }}>{step.label}</p>
+                <p style={{ fontSize: 11.5, color: "var(--muted)", margin: 0, lineHeight: 1.4 }}>{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Filtres catégorie sticky */}
       <div style={{ position: "sticky", top: 58, zIndex: 30, background: "rgba(248,250,252,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "12px 24px" }}>
