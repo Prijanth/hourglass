@@ -102,7 +102,7 @@
         "Résolution de problèmes STEM",
         "Code et débogage avec vision"
       ],
-      "benchmark_mmlu": 90.0,
+      "benchmark_mmlu": 90,
       "benchmark_humaneval": 98.2,
       "benchmark_math": 97.5,
       "lien": "https://openai.com/o4-mini",
@@ -313,47 +313,6 @@
       ]
     },
     {
-      "id": "gemini-2-0-flash",
-      "statut": "retired",
-      "nom": "Gemini 2.0 Flash",
-      "editeur": "Google DeepMind",
-      "logo_color": "#4285F4",
-      "type": "Multimodal",
-      "acces": "Propriétaire",
-      "date_sortie": "2025-01",
-      "description": "⚠️ Retiré le 1er juin 2026 — remplacé par Gemini 2.5 Flash. Sorti le 30 janvier 2025 comme modèle par défaut de l'API Google. Modèle multimodal rapide, successeur de Gemini 1.5 Flash. Conçu pour les applications temps réel avec support audio, vidéo, image et texte.",
-      "points_forts": [
-        "Vitesse d'inférence très élevée",
-        "Multimodalité native complète",
-        "Accès à Google Search en temps réel"
-      ],
-      "points_faibles": [
-        "Retiré de l'API le 01/06/2026 — utiliser Gemini 2.5 Flash",
-        "Légèrement en dessous de Gemini 2.0 Pro sur les tâches complexes",
-        "Dépendance à l'écosystème Google"
-      ],
-      "context_window": "1M tokens",
-      "cout_approx": "N/A — retiré le 01/06/2026 (était $0.10/M input, $0.40/M output)",
-      "cas_usage_phares": [
-        "Applications temps réel",
-        "Analyse de vidéos longues",
-        "Agents avec recherche web",
-        "RAG sur grands documents"
-      ],
-      "benchmark_mmlu": 76.4,
-      "benchmark_humaneval": 78.9,
-      "benchmark_math": 89.7,
-      "lien": "https://deepmind.google/technologies/gemini/flash/",
-      "tags": [
-        "texte",
-        "image",
-        "audio",
-        "vidéo",
-        "rapide",
-        "multimodal"
-      ]
-    },
-    {
       "id": "gemini-2-0-pro",
       "statut": "legacy",
       "nom": "Gemini 2.0 Pro",
@@ -460,7 +419,7 @@
       "benchmark_mmlu": 86,
       "benchmark_humaneval": 88.4,
       "benchmark_math": 77,
-      "lien": "https://llama.meta.com/",
+      "lien": "https://developer.meta.com/ai/",
       "tags": [
         "texte",
         "code",
@@ -499,7 +458,7 @@
       "benchmark_mmlu": 87.3,
       "benchmark_humaneval": 89,
       "benchmark_math": 73.8,
-      "lien": "https://llama.meta.com/",
+      "lien": "https://developer.meta.com/ai/",
       "tags": [
         "texte",
         "code",
@@ -622,44 +581,6 @@
         "open source",
         "MoE",
         "raisonnement"
-      ]
-    },
-    {
-      "id": "pixtral-large",
-      "nom": "Pixtral Large",
-      "editeur": "Mistral AI",
-      "logo_color": "#FF7000",
-      "type": "Multimodal",
-      "acces": "Propriétaire",
-      "date_sortie": "2024-11",
-      "description": "Premier modèle multimodal de Mistral AI, basé sur Mistral Large 2 avec un encodeur visuel dédié. Capable d'analyser plusieurs images simultanément et de résoudre des problèmes visuels complexes. Disponible via La Plateforme Mistral.",
-      "points_forts": [
-        "Multimodalité texte + image de haute qualité",
-        "Basé sur Mistral Large 2 pour le texte",
-        "Compréhension de documents complexes avec images",
-        "Bon support du français"
-      ],
-      "points_faibles": [
-        "Modèle propriétaire",
-        "Moins de benchmarks publics que GPT-4o Vision"
-      ],
-      "context_window": "128K tokens",
-      "cout_approx": "~$2/M tokens input, ~$6/M tokens output",
-      "cas_usage_phares": [
-        "Analyse de schémas techniques",
-        "Extraction d'informations de documents scannés",
-        "Description et comparaison d'images"
-      ],
-      "benchmark_mmlu": null,
-      "benchmark_humaneval": null,
-      "benchmark_math": null,
-      "lien": "https://mistral.ai/news/pixtral-large/",
-      "tags": [
-        "texte",
-        "image",
-        "multimodal",
-        "français",
-        "OCR"
       ]
     },
     {
@@ -857,44 +778,6 @@
       ]
     },
     {
-      "id": "dall-e-3",
-      "statut": "retired",
-      "nom": "DALL-E 3",
-      "editeur": "OpenAI",
-      "logo_color": "#00A67E",
-      "type": "Image",
-      "acces": "Propriétaire",
-      "date_sortie": "2023-10",
-      "description": "⚠️ Retiré de l'API OpenAI le 12 mai 2026 — remplacé par GPT Image 1 (gpt-image-1). DALL-E 3 reste accessible via ChatGPT mais n'est plus disponible via l'API. Modèle historique d'OpenAI avec une excellente compréhension des prompts complexes grâce à une phase de recaptioning par GPT-4.",
-      "points_forts": [
-        "Très bonne compréhension des prompts en langage naturel",
-        "Bonne gestion du texte dans les images",
-        "Sécurité et filtres contenus avancés"
-      ],
-      "points_faibles": [
-        "Retiré de l'API le 12 mai 2026 — utiliser GPT Image 1 (gpt-image-1)",
-        "Photorealisme inférieur à Midjourney ou Flux",
-        "Moins de contrôle sur le style que la concurrence"
-      ],
-      "context_window": null,
-      "cout_approx": "N/A — retiré de l'API le 12/05/2026 (remplacé par GPT Image 1)",
-      "cas_usage_phares": [
-        "Illustrations pour articles et présentations",
-        "Visuels marketing conceptuels",
-        "Prototypage de designs"
-      ],
-      "benchmark_mmlu": null,
-      "benchmark_humaneval": null,
-      "benchmark_math": null,
-      "lien": "https://openai.com/dall-e-3",
-      "tags": [
-        "image",
-        "génération",
-        "illustration",
-        "texte-en-image"
-      ]
-    },
-    {
       "id": "midjourney-v6-1",
       "statut": "legacy",
       "nom": "Midjourney v6.1",
@@ -963,7 +846,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://stability.ai/stable-diffusion",
+      "lien": "https://stability.ai/stable-image",
       "tags": [
         "image",
         "open source",
@@ -1001,7 +884,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://blackforestlabs.ai/",
+      "lien": "https://bfl.ai/models",
       "tags": [
         "image",
         "photorealisme",
@@ -1427,7 +1310,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://kling.kuaishou.com/",
+      "lien": "https://klingai.com/",
       "tags": [
         "vidéo",
         "génération",
@@ -1616,7 +1499,7 @@
       "benchmark_mmlu": 88,
       "benchmark_humaneval": 88,
       "benchmark_math": 82,
-      "lien": "https://llama.meta.com/",
+      "lien": "https://developer.meta.com/ai/",
       "tags": [
         "LLM",
         "open source",
@@ -1653,7 +1536,7 @@
       "benchmark_mmlu": 89.5,
       "benchmark_humaneval": 90,
       "benchmark_math": 85,
-      "lien": "https://llama.meta.com/",
+      "lien": "https://developer.meta.com/ai/",
       "tags": [
         "LLM",
         "open source",
