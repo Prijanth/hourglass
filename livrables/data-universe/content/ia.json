@@ -31,7 +31,7 @@
       "benchmark_mmlu": 88.7,
       "benchmark_humaneval": 90.2,
       "benchmark_math": 76.6,
-      "lien": "https://openai.com/gpt-4o",
+      "lien": "https://developers.openai.com/api/docs/models/gpt-4o",
       "tags": [
         "texte",
         "image",
@@ -69,7 +69,7 @@
       "benchmark_mmlu": 91.6,
       "benchmark_humaneval": 81.3,
       "benchmark_math": 96.7,
-      "lien": "https://openai.com/o3",
+      "lien": "https://developers.openai.com/api/docs/models/o3",
       "tags": [
         "raisonnement",
         "mathématiques",
@@ -105,7 +105,7 @@
       "benchmark_mmlu": 90,
       "benchmark_humaneval": 98.2,
       "benchmark_math": 97.5,
-      "lien": "https://openai.com/o4-mini",
+      "lien": "https://developers.openai.com/api/docs/models/o4-mini",
       "tags": [
         "raisonnement",
         "code",
@@ -265,7 +265,7 @@
       "benchmark_mmlu": 85.2,
       "benchmark_humaneval": 93.5,
       "benchmark_math": 89.4,
-      "lien": "https://www.anthropic.com/claude",
+      "lien": "https://www.anthropic.com/claude/sonnet",
       "tags": [
         "LLM",
         "multimodal",
@@ -303,7 +303,7 @@
       "benchmark_mmlu": 76.8,
       "benchmark_humaneval": 86.3,
       "benchmark_math": 81.3,
-      "lien": "https://www.anthropic.com/claude",
+      "lien": "https://www.anthropic.com/claude/haiku",
       "tags": [
         "LLM",
         "rapide",
@@ -342,7 +342,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://deepmind.google/technologies/gemini/",
+      "lien": "https://deepmind.google/models/gemini/",
       "tags": [
         "texte",
         "image",
@@ -381,7 +381,7 @@
       "benchmark_mmlu": 83.7,
       "benchmark_humaneval": 84.1,
       "benchmark_math": 67.7,
-      "lien": "https://deepmind.google/technologies/gemini/pro/",
+      "lien": "https://deepmind.google/models/gemini/",
       "tags": [
         "texte",
         "image",
@@ -1116,7 +1116,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://openai.com/research/whisper",
+      "lien": "https://developers.openai.com/api/docs/models/whisper-1",
       "tags": [
         "audio",
         "transcription",
@@ -1348,7 +1348,7 @@
       "benchmark_mmlu": 90,
       "benchmark_humaneval": 97,
       "benchmark_math": 91,
-      "lien": "https://deepmind.google/technologies/gemini/",
+      "lien": "https://deepmind.google/models/gemini/pro/",
       "tags": [
         "LLM",
         "multimodal",
@@ -1386,7 +1386,7 @@
       "benchmark_mmlu": 89,
       "benchmark_humaneval": 93,
       "benchmark_math": 88,
-      "lien": "https://deepmind.google/technologies/gemini/",
+      "lien": "https://deepmind.google/models/gemini/",
       "tags": [
         "LLM",
         "rapide",
@@ -1462,7 +1462,7 @@
       "benchmark_mmlu": 90.3,
       "benchmark_humaneval": 93,
       "benchmark_math": 83,
-      "lien": "https://openai.com/gpt-4",
+      "lien": "https://developers.openai.com/api/docs/models/gpt-4.1",
       "tags": [
         "LLM",
         "long context",
@@ -1724,7 +1724,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://deepmind.google/models/gemini/",
+      "lien": "https://deepmind.google/models/gemini/flash/",
       "tags": [
         "LLM",
         "multimodal",
@@ -1762,7 +1762,7 @@
       "benchmark_mmlu": null,
       "benchmark_humaneval": null,
       "benchmark_math": null,
-      "lien": "https://deepmind.google/models/gemini/",
+      "lien": "https://deepmind.google/models/gemini/pro/",
       "tags": [
         "LLM",
         "multimodal",
