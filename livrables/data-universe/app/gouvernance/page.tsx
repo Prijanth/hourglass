@@ -93,38 +93,115 @@ const PILLARS = [
 const REGLEMENTAIRE = [
   {
     label: "RGPD",
-    desc: "Données personnelles, consentement, durées de conservation, droit à l'oubli. Applicable depuis 2018.",
+    domain: "Privacy",
+    desc: "Données personnelles, consentement, durées de conservation, droit à l'oubli. Applicable depuis 2018 dans toute l'UE.",
     concept: "rgpd-data",
     urgency: "En vigueur",
     color: "#BE123C",
   },
   {
     label: "AI Act (UE)",
+    domain: "Intelligence artificielle",
     desc: "Obligations selon le niveau de risque du système IA. Watermarking des contenus dès décembre 2026.",
     concept: "ai-act-europeen",
-    urgency: "Décembre 2026",
+    urgency: "Déc. 2026",
     color: "#7C3AED",
   },
   {
-    label: "BCBS 239",
-    desc: "Agrégation des données de risque pour les banques systémiques. Lineage et reporting < 24h.",
-    concept: "bcbs-239",
+    label: "DSA",
+    domain: "Plateformes digitales",
+    desc: "Digital Services Act : modération des contenus, transparence algorithmique et accès aux données pour les chercheurs. Obligatoire pour les très grandes plateformes.",
+    concept: "dsa-digital-services-act",
     urgency: "En vigueur",
     color: "#0E7490",
   },
   {
+    label: "DMA",
+    domain: "Plateformes digitales",
+    desc: "Digital Markets Act : interopérabilité obligatoire pour les gatekeepers (Google, Apple, Meta, Amazon). Accès aux données des plateformes pour les concurrents.",
+    concept: "dma-digital-markets-act",
+    urgency: "En vigueur",
+    color: "#7C3AED",
+  },
+  {
+    label: "NIS2",
+    domain: "Cybersécurité",
+    desc: "Directive UE sur la cybersécurité : signalement des incidents sous 24h, gestion des risques cyber, responsabilité des dirigeants. Transposée en droit français.",
+    concept: "nis2-cybersecurite",
+    urgency: "En vigueur",
+    color: "#BE123C",
+  },
+  {
+    label: "DORA",
+    domain: "Finance & numérique",
+    desc: "Digital Operational Resilience Act : résilience numérique du secteur financier. Tests de pénétration obligatoires (TLPT), gestion des risques ICT tiers, reporting d'incidents.",
+    concept: "dora-resilience-numerique",
+    urgency: "Janv. 2025",
+    color: "#B45309",
+  },
+  {
+    label: "Data Act (UE)",
+    domain: "Partage de données",
+    desc: "Accès et partage des données issues des objets connectés et services associés. Droits de portabilité étendus, obligations de partage B2B et B2G (vers les administrations).",
+    concept: "data-act-europeen",
+    urgency: "Sept. 2025",
+    color: "#0E7490",
+  },
+  {
+    label: "CSRD",
+    domain: "Durabilité",
+    desc: "Corporate Sustainability Reporting Directive : reporting extra-financier obligatoire selon les normes ESRS. Couvre toutes les grandes entreprises et PME cotées de l'UE.",
+    concept: "csrd-reporting-durabilite",
+    urgency: "En vigueur",
+    color: "#15803D",
+  },
+  {
     label: "Taxonomie ESG",
-    desc: "Classification des activités économiques durables. Reporting obligatoire pour les grandes entreprises.",
+    domain: "Finance durable",
+    desc: "Classification des activités économiques durables. Reporting obligatoire pour les grandes entreprises et établissements financiers de l'UE.",
     concept: "taxonomie-esg",
     urgency: "En vigueur",
     color: "#15803D",
   },
   {
+    label: "HDS",
+    domain: "Santé",
+    desc: "Hébergement de Données de Santé : certification ANS obligatoire en France pour tout hébergeur de données personnelles de santé. 6 activités certifiées.",
+    concept: "hds-donnees-sante",
+    urgency: "En vigueur",
+    color: "#BE123C",
+  },
+  {
+    label: "EHDS",
+    domain: "Santé",
+    desc: "European Health Data Space : espace européen des données de santé. Usage secondaire des données (recherche, IA médicale) sous contrôle des patients. Adopté en 2025.",
+    concept: "ehds-sante-europe",
+    urgency: "2025–2027",
+    color: "#BE123C",
+  },
+  {
+    label: "BCBS 239",
+    domain: "Finance",
+    desc: "Agrégation des données de risque pour les banques systémiques. Lineage et reporting consolidé en moins de 24h.",
+    concept: "bcbs-239",
+    urgency: "En vigueur",
+    color: "#0E7490",
+  },
+  {
     label: "Pilier 3",
-    desc: "Reporting de discipline de marché Bâle III/IV. Publication trimestrielle des risques.",
+    domain: "Finance",
+    desc: "Reporting de discipline de marché Bâle III/IV. Publication trimestrielle des risques, exigences de fonds propres et exposition.",
     concept: "pilier-3-reporting",
     urgency: "En vigueur",
     color: "#B45309",
+  },
+  {
+    label: "CCPA / CPRA",
+    domain: "Privacy (USA)",
+    desc: "California Consumer Privacy Act : droits des résidents californiens sur leurs données (accès, effacement, opposition). S'applique aux entreprises françaises qui traitent des données de clients californiens.",
+    concept: "ccpa-californie",
+    urgency: "En vigueur",
+    color: "#7C3AED",
   },
 ];
 
@@ -181,7 +258,7 @@ export default function GouvernancePage() {
           <div style={{ display: "flex", gap: 28, flexWrap: "wrap" }}>
             {[
               { n: "4", l: "piliers de gouvernance" },
-              { n: "5", l: "réglementations couvertes" },
+              { n: "14", l: "réglementations couvertes" },
               { n: "4", l: "niveaux de maturité" },
             ].map(({ n, l }) => (
               <div key={l}>
@@ -318,8 +395,9 @@ export default function GouvernancePage() {
             {REGLEMENTAIRE.map(r => (
               <Link key={r.label} href={`/concepts/${r.concept}`} style={{ textDecoration: "none" }}>
                 <div className="card" style={{ padding: "18px 22px", display: "flex", alignItems: "center", gap: 16, transition: "box-shadow 0.15s" }}>
-                  <div style={{ width: 56, flexShrink: 0 }}>
-                    <span style={{ fontFamily: "var(--font-display)", fontSize: 13, fontWeight: 800, color: r.color }}>{r.label}</span>
+                  <div style={{ width: 80, flexShrink: 0 }}>
+                    <span style={{ fontFamily: "var(--font-display)", fontSize: 13, fontWeight: 800, color: r.color, display: "block" }}>{r.label}</span>
+                    <span style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>{(r as Record<string, unknown>)["domain"] as string}</span>
                   </div>
                   <div style={{ flex: 1 }}>
                     <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.55 }}>{r.desc}</p>
