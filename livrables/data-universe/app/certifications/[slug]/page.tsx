@@ -213,12 +213,13 @@ export default async function CertificationPage({ params }: { params: Promise<{ 
                   { label: "Documentation officielle", desc: `Guide officiel de l'examen ${cert.organisme}`, href: cert.lien_officiel, tag: "Gratuit", tagColor: "#0E7490" },
                   { label: `Udemy — Cours ${cert.nom}`, desc: "Formation pratique avec labs et examens blancs", href: `https://www.udemy.com/courses/search/?q=${encodeURIComponent(cert.nom)}`, tag: "Externe", tagColor: "#7C3AED" },
                   { label: "Udemy — Examens pratiques", desc: "Questions d'entraînement en conditions réelles", href: `https://www.udemy.com/courses/search/?q=${encodeURIComponent(cert.nom + " practice test")}`, tag: "Externe", tagColor: "#7C3AED" },
+                  { label: "Amazon — Livres de préparation", desc: `Ouvrages et guides pour réussir ${cert.nom}`, href: `https://www.amazon.fr/s?k=${encodeURIComponent(cert.nom + " certification")}&tag=dataunivers02-21`, tag: "Affilié", tagColor: "#B45309" },
                 ].map(({ label, desc, href, tag, tagColor }) => (
                   <ResourceLink key={label} href={href} label={label} desc={desc} tag={tag} tagColor={tagColor} />
                 ))}
               </div>
               <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 14, lineHeight: 1.6 }}>
-                Les liens &ldquo;Externe&rdquo; ouvrent des recherches Udemy. Data Universe ne perçoit pas de commission sur ces liens.
+                Les liens &ldquo;Externe&rdquo; ouvrent des recherches Udemy. Les liens &ldquo;Affilié&rdquo; sont des liens Amazon partenaires : si tu achètes via ces liens, Data Universe touche une petite commission sans coût supplémentaire pour toi.
               </p>
             </div>
 
