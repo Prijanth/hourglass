@@ -21,6 +21,9 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Data Universe — La référence data & IA en français",
   description: "Actualités, glossaire, métiers et formations sur la data et l'intelligence artificielle. Le hub francophone de la communauté data.",
+  other: {
+    "impact-site-verification": "4c8c3f82-d25d-46a6-8ed0-2bcf8a58a6b9",
+  },
 };
 
 const themeScript = `
