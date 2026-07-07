@@ -2,14 +2,14 @@
   "certifications": [
     {
       "id": "microsoft-azure-openai",
-      "nom": "AI-050 �\u001c Develop Generative AI Solutions with Azure OpenAI",
+      "nom": "AI-050 – Develop Generative AI Solutions with Azure OpenAI",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Machine Learning",
       "outil": "Azure OpenAI",
       "niveau": "Intermédiaire",
       "duree_prep": "30-50h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification Microsoft sur le développement d'applications IA générative avec Azure OpenAI Service. Couvre l'utilisation des modèles GPT-4, DALL-E et Embeddings via Azure OpenAI, la construction de solutions RAG avec Azure AI Search et les bonnes pratiques de sécurité.",
       "competences": [
@@ -38,7 +38,7 @@
       "outil": "AIOps",
       "niveau": "Intermédiaire",
       "duree_prep": "40-60h",
-      "cout": "~600�\u001a�",
+      "cout": "~600€",
       "validite": "3 ans",
       "description": "Certification sur l'application de l'IA et du ML aux opérations IT (AIOps). Couvre l'automatisation des opérations, la détection d'anomalies IT, l'analyse des logs, et l'intégration IA dans les processus ITSM. Utile pour les équipes DataOps.",
       "competences": [
@@ -124,7 +124,7 @@
       "outil": "Apache Flink",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification sur Apache Flink couvrant les APIs DataStream et Table, la gestion du state et des checkpoints, le traitement des événements avec event time et watermarks, et le déploiement sur Kubernetes ou YARN.",
       "competences": [
@@ -153,7 +153,7 @@
       "outil": "Apache Airflow",
       "niveau": "Avancé",
       "duree_prep": "60-100h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "2 ans",
       "description": "Certification avancée Astronomer sur le développement de DAGs complexes avec Airflow 2.x. Couvre les TaskFlow API, les dynamic task mapping, les Dataset-driven scheduling, les sensors, les hooks custom et les patterns de DAGs résilients.",
       "competences": [
@@ -211,7 +211,7 @@
       "outil": "Apache Airflow",
       "niveau": "Débutant",
       "duree_prep": "30-50h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "2 ans",
       "description": "Certification Airflow d'entrée pour valider la maîtrise des fondamentaux : création de DAGs simples, opérateurs de base (PythonOperator, BashOperator), gestion des dépendances, Variables et Connections, et UI Airflow. Point de départ recommandé avant la certification DAG Authoring avancée.",
       "competences": [
@@ -239,7 +239,7 @@
       "outil": "Jira",
       "niveau": "Intermédiaire",
       "duree_prep": "40-80h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les administrateurs Jira (Jira Software, Jira Service Management). Utile pour les Product Owners et chefs de projet data qui gèrent des instances Jira pour leurs équipes. Couvre la configuration des projets, les workflows, les permissions et les dashboards.",
       "competences": [
@@ -262,14 +262,14 @@
     },
     {
       "id": "aws-advanced-networking-specialty",
-      "nom": "AWS Certified Advanced Networking �\u001c Specialty",
+      "nom": "AWS Certified Advanced Networking – Specialty",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "120-180h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification pour les experts réseau sur AWS. Couvre les architectures réseau complexes : VPC avancé, Direct Connect, Transit Gateway, Route 53, CloudFront, et les interconnexions on-premise vers AWS.",
       "competences": [
@@ -298,7 +298,7 @@
       "outil": "AWS",
       "niveau": "Débutant",
       "duree_prep": "20-40h",
-      "cout": "~100�\u001a�",
+      "cout": "~100€",
       "validite": "3 ans",
       "description": "Nouvelle certification AWS (2024) pour les profils non techniques qui souhaitent comprendre l'IA générative, les LLMs et les services IA d'AWS. Couvre Amazon Bedrock, les concepts fondamentaux de l'IA générative et l'IA responsable.",
       "competences": [
@@ -328,7 +328,7 @@
       "outil": "AWS AI",
       "niveau": "Débutant",
       "duree_prep": "40-80h",
-      "cout": "~100�\u001a�",
+      "cout": "~100€",
       "validite": "3 ans",
       "description": "Nouvelle certification AWS (2024) pour les professionnels voulant valider leurs connaissances fondamentales en IA et ML sur AWS. Couvre les concepts IA/ML, les services AWS pour l'IA (Bedrock, SageMaker, Rekognition) et l'IA responsable. Destinée aux profils non-techniques.",
       "competences": [
@@ -356,7 +356,7 @@
       "outil": "AWS",
       "niveau": "Débutant",
       "duree_prep": "40-60h",
-      "cout": "~100�\u001a�",
+      "cout": "~100€",
       "validite": "3 ans",
       "description": "La porte d'entrée à l'écosystème AWS. Couvre les concepts fondamentaux du cloud, les services AWS principaux, la facturation et la sécurité de base.",
       "competences": [
@@ -376,14 +376,14 @@
     },
     {
       "id": "aws-data-engineer-associate",
-      "nom": "AWS Certified Data Engineer �\u001c Associate",
+      "nom": "AWS Certified Data Engineer – Associate",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "3 ans",
       "description": "Valide les compétences pour concevoir, construire, sécuriser et maintenir des pipelines de données analytiques sur AWS. Couvre S3, Glue, Redshift, Athena, Lake Formation.",
       "competences": [
@@ -403,14 +403,14 @@
     },
     {
       "id": "aws-database-specialty",
-      "nom": "AWS Certified Database �\u001c Specialty",
+      "nom": "AWS Certified Database – Specialty",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification spécialisée pour les experts en bases de données AWS. Couvre le choix et l'optimisation des services de bases de données AWS : RDS, Aurora, DynamoDB, Redshift, ElastiCache, Neptune, DocumentDB.",
       "competences": [
@@ -432,14 +432,14 @@
     },
     {
       "id": "aws-developer-associate",
-      "nom": "AWS Certified Developer �\u001c Associate",
+      "nom": "AWS Certified Developer – Associate",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "3 ans",
       "description": "Certification pour les développeurs qui créent et déploient des applications sur AWS. Couvre les services serverless (Lambda, API Gateway, DynamoDB), le SDK AWS et les bonnes pratiques de développement cloud.",
       "competences": [
@@ -461,14 +461,14 @@
     },
     {
       "id": "aws-devops-engineer-professional",
-      "nom": "AWS Certified DevOps Engineer �\u001c Professional",
+      "nom": "AWS Certified DevOps Engineer – Professional",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification avancée pour les ingénieurs DevOps opérant sur AWS. Couvre les pratiques CI/CD (CodePipeline, CodeBuild), l'infrastructure as code (CloudFormation, CDK), le monitoring avancé et l'automatisation des opérations à grande échelle.",
       "competences": [
@@ -491,16 +491,16 @@
     {
       "id": "aws-ml-specialty",
       "statut": "retired",
-      "nom": "AWS Certified Machine Learning �\u001c Specialty (MLS-C01)",
+      "nom": "AWS Certified Machine Learning – Specialty (MLS-C01)",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Machine Learning",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "120-200h",
-      "cout": "~280�\u001a� (300 USD)",
+      "cout": "~280€ (300 USD)",
       "validite": "3 ans",
-      "description": "�a�️ Certification retirée le 31 mars 2026. Les certifications de remplacement recommandées par AWS sont : AWS Certified Machine Learning Engineer �\u001c Associate (MLA-C01) pour les praticiens ML, et AWS Certified AI Practitioner (AIF-C01) pour les fondamentaux IA/ML. Les certifications actives obtenues avant le 31 mars 2026 restent valables jusqu'à leur date d'expiration.",
+      "description": "�a�️ Certification retirée le 31 mars 2026. Les certifications de remplacement recommandées par AWS sont : AWS Certified Machine Learning Engineer – Associate (MLA-C01) pour les praticiens ML, et AWS Certified AI Practitioner (AIF-C01) pour les fondamentaux IA/ML. Les certifications actives obtenues avant le 31 mars 2026 restent valables jusqu'à leur date d'expiration.",
       "competences": [
         "Feature engineering",
         "Sélection et entraînement de modèles ML",
@@ -519,14 +519,14 @@
     },
     {
       "id": "aws-ml-engineer-associate",
-      "nom": "AWS Certified Machine Learning Engineer �\u001c Associate",
+      "nom": "AWS Certified Machine Learning Engineer – Associate",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Machine Learning",
       "outil": "AWS",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "3 ans",
       "description": "Nouvelle certification AWS (2024) qui valide la capacité à déployer et opérer des modèles ML en production sur AWS. Accent fort sur MLOps, SageMaker Pipelines, le monitoring de modèles et l'automatisation du cycle ML.",
       "competences": [
@@ -548,14 +548,14 @@
     },
     {
       "id": "aws-security-specialty",
-      "nom": "AWS Certified Security �\u001c Specialty",
+      "nom": "AWS Certified Security – Specialty",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification pour les experts en sécurité AWS. Couvre la gestion des identités et accès (IAM), le chiffrement (KMS), la détection des menaces (GuardDuty, Security Hub), la conformité et la protection des données sensibles.",
       "competences": [
@@ -577,14 +577,14 @@
     },
     {
       "id": "aws-solutions-architect-associate",
-      "nom": "AWS Certified Solutions Architect �\u001c Associate",
+      "nom": "AWS Certified Solutions Architect – Associate",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "3 ans",
       "description": "Certification très reconnue sur le marché. Valide la capacité à concevoir des architectures cloud résilientes, performantes et économiques sur AWS.",
       "competences": [
@@ -605,14 +605,14 @@
     },
     {
       "id": "aws-solutions-architect-professional",
-      "nom": "AWS Certified Solutions Architect �\u001c Professional",
+      "nom": "AWS Certified Solutions Architect – Professional",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Avancé",
       "duree_prep": "200-300h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Le sommet des certifications AWS. Valide la capacité à concevoir des architectures cloud complexes, hybrides et multi-comptes à grande échelle. Prérequis : Solutions Architect Associate et plusieurs années d'expérience AWS.",
       "competences": [
@@ -634,14 +634,14 @@
     },
     {
       "id": "aws-sysops-administrator-associate",
-      "nom": "AWS Certified SysOps Administrator �\u001c Associate",
+      "nom": "AWS Certified SysOps Administrator – Associate",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "3 ans",
       "description": "Valide la capacité à opérer, déployer et maintenir des charges de travail sur AWS. Couvre la gestion des instances EC2, la haute disponibilité, la reprise d'activité, la sécurité et la facturation AWS.",
       "competences": [
@@ -663,14 +663,14 @@
     },
     {
       "id": "aws-kinesis-streaming",
-      "nom": "AWS Certified: Data Analytics �\u001c Specialty (DAS-C01)",
+      "nom": "AWS Certified: Data Analytics – Specialty (DAS-C01)",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Data Engineering",
       "outil": "AWS Analytics",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification de spécialité AWS pour les architectes et ingénieurs analytics. Couvre l'ensemble de la stack analytics AWS : Kinesis (streaming), Glue (ETL), Athena (requêtes), Redshift (data warehouse), EMR (Spark/Hadoop), Lake Formation et QuickSight.",
       "competences": [
@@ -692,14 +692,14 @@
     },
     {
       "id": "aws-certified-sap-on-aws",
-      "nom": "AWS Certified: SAP on AWS �\u001c Specialty",
+      "nom": "AWS Certified: SAP on AWS – Specialty",
       "organisme": "Amazon Web Services",
       "logo_color": "#FF9900",
       "categorie": "Cloud",
       "outil": "AWS / SAP",
       "niveau": "Avancé",
       "duree_prep": "150-250h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification de spécialité pour les architectes et ingénieurs qui déploient des systèmes SAP (S/4HANA, BW/4HANA) sur AWS. Valide la compréhension des exigences SAP (sizing, HANA), les services AWS adaptés et les meilleures pratiques de migration.",
       "competences": [
@@ -720,14 +720,14 @@
     },
     {
       "id": "informs-cap",
-      "nom": "CAP �\u001c Certified Analytics Professional",
+      "nom": "CAP – Certified Analytics Professional",
       "organisme": "INFORMS",
       "logo_color": "#003478",
       "categorie": "Analytics",
       "outil": "Généraliste",
       "niveau": "Avancé",
       "duree_prep": "200-300h",
-      "cout": "~695�\u001a�",
+      "cout": "~695€",
       "validite": "3 ans",
       "description": "La certification analytics la plus prestigieuse, délivrée par l'Institut for Operations Research and Management Sciences. Valide un cycle analytique complet (du problème à la décision) et une expérience significative (3 ans requis). Reconnue internationalement dans la communauté analytics professionnelle.",
       "competences": [
@@ -757,7 +757,7 @@
       "outil": "Généraliste",
       "niveau": "Intermédiaire",
       "duree_prep": "150-200h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification internationale reconnue en gestion des données, basée sur le DMBOK (Data Management Body of Knowledge). Couvre les 11 domaines de la gestion des données : gouvernance, qualité, architecture, modélisation, stockage, sécurité, intégration, documents, data warehousing, metadata, master data.",
       "competences": [
@@ -780,14 +780,14 @@
     },
     {
       "id": "iapp-cipm",
-      "nom": "CIPM �\u001c Certified Information Privacy Manager",
+      "nom": "CIPM – Certified Information Privacy Manager",
       "organisme": "IAPP (International Association of Privacy Professionals)",
       "logo_color": "#0066CC",
       "categorie": "Gouvernance",
       "outil": "RGPD",
       "niveau": "Avancé",
       "duree_prep": "120-180h",
-      "cout": "~550�\u001a�",
+      "cout": "~550€",
       "validite": "2 ans",
       "description": "Complément du CIPP/E, orienté management opérationnel de la vie privée. Couvre la création et le pilotage d'un programme de protection des données en entreprise : budget, équipe, outils, processus et reporting.",
       "competences": [
@@ -809,14 +809,14 @@
     },
     {
       "id": "iapp-cippe",
-      "nom": "CIPP/E �\u001c Certified Information Privacy Professional Europe",
+      "nom": "CIPP/E – Certified Information Privacy Professional Europe",
       "organisme": "IAPP (International Association of Privacy Professionals)",
       "logo_color": "#0066CC",
       "categorie": "Gouvernance",
       "outil": "RGPD",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~550�\u001a�",
+      "cout": "~550€",
       "validite": "2 ans",
       "description": "La référence mondiale de la certification en protection des données personnelles en Europe. Couvre le cadre légal européen (RGPD, ePrivacy), les droits des personnes, les transferts internationaux, les responsabilités DPO et les pratiques de conformité.",
       "competences": [
@@ -897,14 +897,14 @@
     },
     {
       "id": "cks-kubernetes-security",
-      "nom": "CKS �\u001c Certified Kubernetes Security Specialist",
+      "nom": "CKS – Certified Kubernetes Security Specialist",
       "organisme": "Linux Foundation / CNCF",
       "logo_color": "#326CE5",
       "categorie": "Infrastructure",
       "outil": "Kubernetes",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~395�\u001a�",
+      "cout": "~395€",
       "validite": "2 ans",
       "description": "La certification la plus avancée Kubernetes, focalisée sur la sécurité des clusters. Prérequis : CKA obligatoire. Couvre le hardening des clusters, la sécurité réseau, les politiques OPA/Gatekeeper, la détection de menaces et les bonnes pratiques de sécurité cloud-native.",
       "competences": [
@@ -933,7 +933,7 @@
       "outil": "Cloudera CDP",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~300�\u001a�",
+      "cout": "~300€",
       "validite": "3 ans",
       "description": "Certification Cloudera pour les analystes data travaillant sur CDP. Valide la capacité à écrire des requêtes SQL complexes avec HiveQL et Impala, à travailler avec des données semi-structurées (JSON, Parquet) et à utiliser les outils d'analyse Cloudera.",
       "competences": [
@@ -961,7 +961,7 @@
       "outil": "Cloudera CDP",
       "niveau": "Avancé",
       "duree_prep": "150-250h",
-      "cout": "~400�\u001a�",
+      "cout": "~400€",
       "validite": "3 ans",
       "description": "Certification phare de Cloudera pour les ingénieurs data travaillant sur la Cloudera Data Platform (CDP). Valide la maîtrise de Spark, Hive, Impala, HDFS, Kafka sur la plateforme Cloudera. Très demandée dans les grands groupes utilisant des clusters Hadoop legacy.",
       "competences": [
@@ -1019,7 +1019,7 @@
       "outil": "Généraliste",
       "niveau": "Débutant",
       "duree_prep": "60-90h",
-      "cout": "~246�\u001a�",
+      "cout": "~246€",
       "validite": "3 ans",
       "description": "Certification vendor-neutral d'entrée en données. Couvre la collecte et transformation des données, l'analyse statistique, la visualisation et les bases de la gouvernance. Reconnue par les recruteurs comme première certification data.",
       "competences": [
@@ -1106,7 +1106,7 @@
       "outil": "Apache Kafka",
       "niveau": "Avancé",
       "duree_prep": "120-180h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "2 ans",
       "description": "Certification pour les opérateurs d'infrastructure Kafka. Valide la capacité à déployer, configurer, surveiller et maintenir des clusters Kafka en production : tuning des performances, haute disponibilité, Tiered Storage, Kafka Connect et Schema Registry.",
       "competences": [
@@ -1164,7 +1164,7 @@
       "outil": "Apache Spark",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Version mise à jour 2024 de la certification Spark Developer Associate. Couvre les nouvelles fonctionnalités Spark 3.x : AQE (Adaptive Query Execution), Delta Lake natif, Spark Connect et les améliorations du SQL Engine. Valide la maîtrise de PySpark et Spark SQL.",
       "competences": [
@@ -1277,7 +1277,7 @@
       "outil": "Databricks Delta Live Tables",
       "niveau": "Intermédiaire",
       "duree_prep": "40-60h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification sur Delta Live Tables (DLT), le framework déclaratif Databricks pour construire des pipelines de données fiables. DLT gère automatiquement les dépendances, le retry, la qualité des données et le monitoring. La certification valide la maîtrise du développement de pipelines DLT.",
       "competences": [
@@ -1449,7 +1449,7 @@
       "outil": "Dataiku DSS",
       "niveau": "Avancé",
       "duree_prep": "60-100h",
-      "cout": "~450�\u001a�",
+      "cout": "~450€",
       "validite": "2 ans",
       "description": "Certification avancée Dataiku couvrant les fonctionnalités ML poussées : AutoML, feature engineering avancé, ensembles de modèles, déploiement d'API, monitoring du drift, et intégration Python/R personnalisée dans Dataiku DSS.",
       "competences": [
@@ -1762,7 +1762,7 @@
       "outil": "dbt",
       "niveau": "Avancé",
       "duree_prep": "40-80h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification avancée dbt Labs sur l'architecture dbt Mesh : gestion des dépendances inter-projets, contrats de données, accès public/privé/protégé des modèles, et versioning. Essentielle pour les grandes organisations utilisant dbt à l'échelle.",
       "competences": [
@@ -1790,7 +1790,7 @@
       "outil": "LangChain / OpenAI API",
       "niveau": "Intermédiaire",
       "duree_prep": "40-80h",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Cours pratique sur le développement d'applications LLM avec LangChain. Couvre le prompt engineering, les chaînes LangChain, les agents, RAG et les memory patterns. L'un des cours les plus populaires de Coursera en 2024.",
       "competences": [
@@ -1819,7 +1819,7 @@
       "outil": "MLflow / TFX",
       "niveau": "Avancé",
       "duree_prep": "80-120h (8 semaines)",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Spécialisation en 4 cours sur les meilleures pratiques MLOps : data collection, feature engineering, model deployment et monitoring. Avec Andrew Ng. Très pratique et orientée production.",
       "competences": [
@@ -1847,7 +1847,7 @@
       "outil": "Python / TensorFlow",
       "niveau": "Avancé",
       "duree_prep": "160-200h (16 semaines à temps partiel)",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Spécialisation en 4 cours par Andrew Ng et Younes Bensouda Mourri. Couvre le NLP du traitement de séquences classique (RNN, LSTM) aux Transformers et BERT. La référence pour apprendre le NLP professionnel.",
       "competences": [
@@ -1869,14 +1869,14 @@
     },
     {
       "id": "azure-ml-engineer-dp100",
-      "nom": "DP-100 �\u001c Azure Data Scientist Associate (mise à jour 2024)",
+      "nom": "DP-100 – Azure Data Scientist Associate (mise à jour 2024)",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Machine Learning",
       "outil": "Azure Machine Learning",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification data scientist Azure mise à jour pour inclure Azure ML v2 (SDK Python), MLflow sur Azure ML, Azure ML Designer et les nouvelles fonctionnalités d'IA responsable. Valide la conception et l'implémentation de solutions ML de bout en bout sur Azure.",
       "competences": [
@@ -1898,14 +1898,14 @@
     },
     {
       "id": "azure-synapse-analytics",
-      "nom": "DP-203 �\u001c Azure Data Engineer Associate (Azure Synapse)",
+      "nom": "DP-203 – Azure Data Engineer Associate (Azure Synapse)",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Data Engineering",
       "outil": "Azure Synapse Analytics",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification data engineering Azure de référence. Valide la conception et l'implémentation de pipelines de données sur Azure : Azure Data Factory, Azure Synapse Analytics, Azure Databricks, Azure Stream Analytics et Azure Data Lake Storage Gen2.",
       "competences": [
@@ -1927,14 +1927,14 @@
     },
     {
       "id": "microsoft-dp300-database",
-      "nom": "DP-300 �\u001c Azure Database Administrator Associate",
+      "nom": "DP-300 – Azure Database Administrator Associate",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Data Engineering",
       "outil": "Azure SQL",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification pour les administrateurs de bases de données Azure. Couvre Azure SQL Database, SQL Managed Instance, Azure PostgreSQL et Azure MySQL. Valide la gestion, la sécurité et l'optimisation des performances des bases de données Azure.",
       "competences": [
@@ -1955,14 +1955,14 @@
     },
     {
       "id": "azure-fabric-analytics-engineer",
-      "nom": "DP-600 �\u001c Fabric Analytics Engineer Associate",
+      "nom": "DP-600 – Fabric Analytics Engineer Associate",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Analytics",
       "outil": "Microsoft Fabric",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification Microsoft Fabric orientée analytics : implémentation et gestion des solutions analytiques dans Fabric. Couvre les lakehouses Fabric, les data warehouses, les notebooks Spark, Power BI intégré et les pipelines de données Fabric.",
       "competences": [
@@ -1984,14 +1984,14 @@
     },
     {
       "id": "azure-dp700-fabric",
-      "nom": "DP-700 �\u001c Microsoft Fabric Data Engineer Associate",
+      "nom": "DP-700 – Microsoft Fabric Data Engineer Associate",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Data Engineering",
       "outil": "Microsoft Fabric",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Nouvelle certification Microsoft (2024) dédiée à Microsoft Fabric. Valide la capacité à construire des solutions analytics sur la plateforme unifiée Fabric : ingestion, transformation, stockage sur OneLake et création de data warehouses Fabric.",
       "competences": [
@@ -2020,7 +2020,7 @@
       "outil": "Elasticsearch / Kibana",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~400�\u001a�",
+      "cout": "~400€",
       "validite": "3 ans",
       "description": "Certification Elastic pour les analystes travaillant avec la stack ELK (Elasticsearch, Logstash, Kibana). Valide la capacité à construire des visualisations Kibana, à analyser des logs et métriques, et à créer des dashboards opérationnels.",
       "competences": [
@@ -2106,7 +2106,7 @@
       "outil": "Fivetran",
       "niveau": "Intermédiaire",
       "duree_prep": "20-40h",
-      "cout": "~150�\u001a�",
+      "cout": "~150€",
       "validite": "2 ans",
       "description": "Certification Fivetran validant la maîtrise de la plateforme d'ingestion automatisée. Couvre la configuration des connecteurs, la gestion des schémas et transformations, et les bonnes pratiques pour automatiser les pipelines EL vers les data warehouses.",
       "competences": [
@@ -2134,7 +2134,7 @@
       "outil": "GitHub Actions",
       "niveau": "Intermédiaire",
       "duree_prep": "30-50h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "3 ans",
       "description": "Certification GitHub sur GitHub Actions, la plateforme CI/CD intégrée à GitHub. Indispensable pour les équipes data qui utilisent GitHub Actions pour automatiser les tests dbt, les déploiements de modèles ML et les pipelines de données.",
       "competences": [
@@ -2247,7 +2247,7 @@
       "outil": "Looker",
       "niveau": "Intermédiaire",
       "duree_prep": "40-60h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification officielle Google pour les business analysts utilisant Looker (anciennement Looker Studio Pro). Valide la création d'explorations, de dashboards, la maîtrise du LookML et l'analyse self-service avec Looker.",
       "competences": [
@@ -2276,7 +2276,7 @@
       "outil": "Google Cloud / Looker",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification GCP dédiée aux ingénieurs BI travaillant sur BigQuery et Looker. Valide la capacité à concevoir et déployer des solutions BI scalables sur GCP : modélisation de données dans BigQuery, LookML pour le semantic layer, et intégration avec les outils de visualisation.",
       "competences": [
@@ -2304,7 +2304,7 @@
       "outil": "Google Cloud Run",
       "niveau": "Intermédiaire",
       "duree_prep": "40-60h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification Google sur Cloud Run, la plateforme serverless pour les conteneurs. Utile pour les data engineers qui déploient des APIs ML, des workflows de traitement ou des microservices data en serverless sur GCP.",
       "competences": [
@@ -2332,7 +2332,7 @@
       "outil": "Généraliste",
       "niveau": "Débutant",
       "duree_prep": "180-240h (6 mois à temps partiel)",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Certificat professionnel Google très populaire pour débuter en data analytics. Couvre le processus d'analyse de données de A à Z : collecte, nettoyage (Spreadsheets, SQL, R), analyse et visualisation (Tableau, R). Accessible sans expérience préalable.",
       "competences": [
@@ -2360,7 +2360,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "La certification GCP la plus reconnue sur le marché. Valide la capacité à concevoir des architectures cloud complètes et robustes sur Google Cloud, intégrant les services data, IA et DevOps.",
       "competences": [
@@ -2389,7 +2389,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les développeurs qui créent des applications cloud-native sur GCP. Couvre les architectures serverless (Cloud Functions, Cloud Run), les microservices et l'intégration des APIs Google Cloud.",
       "competences": [
@@ -2418,7 +2418,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les experts réseau sur GCP. Couvre les architectures réseau avancées : VPC, Cloud Interconnect, Cloud VPN, Cloud Load Balancing et la mise en place de réseaux hybrides.",
       "competences": [
@@ -2447,7 +2447,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les experts sécurité sur GCP. Couvre la gestion des identités (IAM, Cloud Identity), la protection des données (CMEK, DLP), la conformité et la détection des menaces.",
       "competences": [
@@ -2476,7 +2476,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification très prisée sur le marché. Valide la capacité à concevoir et construire des systèmes de traitement de données sur GCP, notamment avec BigQuery, Dataflow, Dataproc et Pub/Sub.",
       "competences": [
@@ -2504,7 +2504,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les experts en bases de données sur GCP. Couvre la conception, le déploiement et la migration de bases de données sur Google Cloud : Cloud SQL, Spanner, Bigtable, Firestore et AlloyDB.",
       "competences": [
@@ -2533,7 +2533,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les ingénieurs DevOps/SRE sur GCP. Couvre les pratiques CI/CD avec Cloud Build, la gestion des conteneurs avec GKE, l'observabilité avec Cloud Operations Suite et l'infrastructure as code.",
       "competences": [
@@ -2562,7 +2562,7 @@
       "outil": "GCP",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Couvre la conception, le build et la mise en production de systèmes ML sur GCP. Accent fort sur Vertex AI, le MLOps et l'IA responsable.",
       "competences": [
@@ -2590,7 +2590,7 @@
       "outil": "Google Workspace",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les administrateurs Google Workspace (anciennement G Suite). Couvre la gestion des utilisateurs, la sécurité, la migration des données et les politiques d'administration. Utile pour les équipes data dans les organisations Google-centric.",
       "competences": [
@@ -2676,7 +2676,7 @@
       "outil": "HashiCorp Vault",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~70�\u001a�",
+      "cout": "~70€",
       "validite": "2 ans",
       "description": "Certification sur HashiCorp Vault, la solution de référence pour la gestion des secrets en infrastructure cloud-native. Couvre l'authentification, l'autorisation, les secrets engines (KV, PKI, AWS, database) et les politiques de sécurité.",
       "competences": [
@@ -2732,7 +2732,7 @@
       "outil": "Python / PyTorch / TensorFlow",
       "niveau": "Intermédiaire",
       "duree_prep": "250-350h",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Programme IBM en 6 cours couvrant le machine learning appliqué et le deep learning. Inclut PyTorch, Keras, TensorFlow, les CNNs, les RNNs et le déploiement de modèles via Flask et IBM Watson. Très pratique avec de nombreux labs.",
       "competences": [
@@ -2790,7 +2790,7 @@
       "outil": "Python / SQL / Spark",
       "niveau": "Intermédiaire",
       "duree_prep": "300-400h",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Programme IBM en 12 cours couvrant tout le stack du data engineering : Python, SQL, bases de données relationnelles et NoSQL, Big Data (Hadoop/Spark), data warehousing et pipelines ETL. Très complet pour débuter en data engineering.",
       "competences": [
@@ -2848,7 +2848,7 @@
       "outil": "Python / Watson",
       "niveau": "Débutant",
       "duree_prep": "300-400h (10 mois à temps partiel)",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Programme de 10 cours IBM couvrant tout le cycle data science : Python, SQL, visualisation, machine learning, deep learning et IBM Watson. L'un des programmes les plus complets de Coursera pour démarrer en data science.",
       "competences": [
@@ -2877,7 +2877,7 @@
       "outil": "Informatica MDM",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~350�\u001a�",
+      "cout": "~350€",
       "validite": "2 ans",
       "description": "Certification pour les développeurs spécialisés dans la Master Data Management (MDM) d'Informatica. Valide la capacité à concevoir, implémenter et administrer des hubs de données maîtres pour gérer les référentiels client, produit, fournisseur.",
       "competences": [
@@ -2905,7 +2905,7 @@
       "outil": "Informatica PowerCenter",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~350�\u001a�",
+      "cout": "~350€",
       "validite": "2 ans",
       "description": "Certification pour les développeurs ETL sur Informatica PowerCenter, l'outil d'intégration de données leader en entreprise. Très demandée dans les secteurs bancaire, assurance et industrie qui utilisent PowerCenter depuis 20+ ans.",
       "competences": [
@@ -2933,7 +2933,7 @@
       "outil": "Looker",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "2 ans",
       "description": "Certification pour les développeurs LookML (le langage de modélisation Looker). Valide la capacité à définir le semantic layer dans Looker : views, explores, dimensions, mesures, joins et paramétrage. Looker est la référence en semantic layer cloud-native.",
       "competences": [
@@ -2962,7 +2962,7 @@
       "outil": "Python / SQL",
       "niveau": "Débutant",
       "duree_prep": "200-280h (7 mois)",
-      "cout": "~50�\u001a�/mois Coursera",
+      "cout": "~50€/mois Coursera",
       "validite": "Permanente",
       "description": "Programme Meta couvrant les compétences analytiques utilisées chez Meta : SQL, Python, statistiques, A/B testing, visualisation de données et interprétation des résultats business. Particulièrement utile pour les profils analytics dans les entreprises tech.",
       "competences": [
@@ -2990,7 +2990,7 @@
       "outil": "Azure",
       "niveau": "Débutant",
       "duree_prep": "20-30h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Introduction aux concepts de l'IA et des services Azure AI. Idéale pour les profils non techniques qui veulent comprendre les capacités de l'IA Azure : Azure OpenAI, Azure Cognitive Services, IA responsable.",
       "competences": [
@@ -3019,7 +3019,7 @@
       "outil": "Azure",
       "niveau": "Débutant",
       "duree_prep": "20-40h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Introduction aux concepts fondamentaux des données dans le cloud Azure. Couvre les bases de données relationnelles et non-relationnelles, l'analytique data et les services Azure associés. Idéale avant de se spécialiser en DP-203 ou PL-300.",
       "competences": [
@@ -3047,7 +3047,7 @@
       "outil": "Azure",
       "niveau": "Débutant",
       "duree_prep": "20-40h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification d'entrée de gamme sur Azure. Idéale pour comprendre les concepts fondamentaux du cloud Microsoft : services, sécurité, conformité et tarification.",
       "competences": [
@@ -3073,7 +3073,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification fondamentale pour les administrateurs Azure. Couvre la gestion des ressources Azure, des réseaux virtuels, des machines virtuelles, de l'identité et de la sécurité. Prérequis recommandé avant AZ-305.",
       "competences": [
@@ -3102,7 +3102,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification pour les ingénieurs qui implémentent des solutions IA avec les services cognitifs Azure. Couvre Vision (Computer Vision, Face API), Langage (Azure OpenAI, Language Service), Parole (Speech Service) et les bots (Bot Framework).",
       "competences": [
@@ -3131,7 +3131,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification de référence pour les Data Engineers sur Azure. Couvre la conception et l'implémentation de solutions data avec Azure Data Factory, Synapse Analytics, Databricks et Data Lake.",
       "competences": [
@@ -3159,7 +3159,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Valide les compétences pour concevoir et implémenter des solutions de data science avec Azure Machine Learning. Couvre le cycle complet MLOps sur Azure.",
       "competences": [
@@ -3186,7 +3186,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification pour les administrateurs de bases de données sur Azure. Couvre Azure SQL Database, Azure SQL Managed Instance, SQL Server sur Azure VM, ainsi que les aspects performance, sécurité et haute disponibilité.",
       "competences": [
@@ -3215,7 +3215,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification pour les développeurs qui créent des applications cloud-native sur Azure. Couvre Azure Functions, Azure App Service, la gestion des messages (Service Bus, Event Hub) et l'intégration des services cognitifs.",
       "competences": [
@@ -3244,7 +3244,7 @@
       "outil": "Azure",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification expert pour les ingénieurs DevOps sur Azure. Couvre Azure DevOps (Pipelines, Repos, Boards, Artifacts), GitHub Actions, les stratégies de déploiement et l'observabilité des applications en production.",
       "competences": [
@@ -3273,7 +3273,7 @@
       "outil": "Power BI",
       "niveau": "Avancé",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification avancée pour les analystes BI travaillant à grande échelle avec Power BI Premium et Azure Synapse Analytics. Couvre les grands modèles sémantiques, les Direct Lake datasets (Fabric), les déploiements automatisés et la gouvernance avancée.",
       "competences": [
@@ -3302,7 +3302,7 @@
       "outil": "Azure",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification Azure la plus reconnue pour les architectes. Valide la capacité à concevoir des solutions Azure complètes intégrant infrastructure, données, IA et sécurité. Prérequis : AZ-104.",
       "competences": [
@@ -3331,7 +3331,7 @@
       "outil": "Azure",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Nouvelle certification Microsoft (2024) sur Microsoft Fabric, la plateforme analytique unifiée qui remplace Azure Synapse, Power BI Premium et Azure Data Factory. Couvre OneLake, les Lakehouses Fabric, les pipelines et la gouvernance via Purview.",
       "competences": [
@@ -3360,7 +3360,7 @@
       "outil": "Power BI",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification de référence pour les Data Analysts travaillant avec Power BI. Couvre la modélisation de données (DAX, star schema), la création de rapports interactifs et la sécurité (RLS). Très demandée dans les entreprises utilisant la suite Microsoft.",
       "competences": [
@@ -3389,7 +3389,7 @@
       "outil": "MicroStrategy",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "3 ans",
       "description": "Certification pour les analystes utilisateurs de MicroStrategy, la plateforme BI enterprise très utilisée dans les grandes banques et groupes industriels. Couvre la création de rapports, dashboards, et l'exploitation des métriques et attributs MicroStrategy.",
       "competences": [
@@ -3533,7 +3533,7 @@
       "outil": "CUDA / TensorFlow",
       "niveau": "Intermédiaire",
       "duree_prep": "8-16h",
-      "cout": "~30-150�\u001a�",
+      "cout": "~30-150€",
       "validite": "Non spécifiée",
       "description": "Certificat pratique du NVIDIA Deep Learning Institute. Couvre l'entraînement de réseaux de neurones sur GPU NVIDIA, l'optimisation des modèles pour la production et les frameworks TensorFlow/PyTorch sur CUDA. Formation orientée pratique sur des GPU NVIDIA réels dans le cloud.",
       "competences": [
@@ -3561,7 +3561,7 @@
       "outil": "OpenAI API",
       "niveau": "Intermédiaire",
       "duree_prep": "20-40h",
-      "cout": "~100�\u001a�",
+      "cout": "~100€",
       "validite": "2 ans",
       "description": "Certification OpenAI validant la maîtrise des APIs GPT-4, DALL-E, Whisper et Embeddings. Couvre l'utilisation avancée du function calling, la gestion des tokens et des coûts, le fine-tuning, les assistants API et les bonnes pratiques de sécurité.",
       "competences": [
@@ -3590,7 +3590,7 @@
       "outil": "Oracle Analytics Cloud",
       "niveau": "Débutant",
       "duree_prep": "40-60h",
-      "cout": "~245�\u001a�",
+      "cout": "~245€",
       "validite": "Permanente",
       "description": "Certification entry-level Oracle Analytics Cloud. Couvre la navigation dans OAC, la création de visualisations, les projets et datasets, ainsi que les fonctionnalités de ML intégrées. Utile dans les organisations Oracle-centric.",
       "competences": [
@@ -3618,7 +3618,7 @@
       "outil": "Oracle Database",
       "niveau": "Avancé",
       "duree_prep": "200-300h",
-      "cout": "~245�\u001a� (par examen, 2 requis)",
+      "cout": "~245€ (par examen, 2 requis)",
       "validite": "Permanente",
       "description": "La certification DBA Oracle la plus reconnue. Valide la maîtrise avancée de Oracle Database 19c : architecture, stockage, sécurité, backup/recovery, performance tuning et haute disponibilité (RAC, Data Guard).",
       "competences": [
@@ -3669,14 +3669,14 @@
     },
     {
       "id": "prometheus-certified-associate",
-      "nom": "PCA �\u001c Prometheus Certified Associate",
+      "nom": "PCA – Prometheus Certified Associate",
       "organisme": "Linux Foundation / CNCF",
       "logo_color": "#E6522C",
       "categorie": "Infrastructure",
       "outil": "Prometheus",
       "niveau": "Débutant",
       "duree_prep": "40-60h",
-      "cout": "~250�\u001a�",
+      "cout": "~250€",
       "validite": "2 ans",
       "description": "Certification fondamentale sur Prometheus, la solution de monitoring cloud-native standard. Couvre l'instrumentation, les métriques, les alertes et les dashboards Grafana. Très utile pour les équipes DataOps qui doivent monitorer leurs pipelines.",
       "competences": [
@@ -3697,14 +3697,14 @@
     },
     {
       "id": "python-institute-pcap",
-      "nom": "PCAP �\u001c Certified Associate in Python Programming",
+      "nom": "PCAP – Certified Associate in Python Programming",
       "organisme": "Python Institute",
       "logo_color": "#3776AB",
       "categorie": "Data Engineering",
       "outil": "Python",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~295�\u001a�",
+      "cout": "~295€",
       "validite": "Permanente",
       "description": "Certification vendor-neutral qui valide la maîtrise intermédiaire de Python : structures de données, POO, exceptions, modules, packages, et les fondamentaux de la programmation. Reconnue dans l'industrie comme preuve de compétences Python solides.",
       "competences": [
@@ -3726,14 +3726,14 @@
     },
     {
       "id": "python-institute-pcpp1",
-      "nom": "PCPP1 �\u001c Certified Professional in Python Programming 1",
+      "nom": "PCPP1 – Certified Professional in Python Programming 1",
       "organisme": "Python Institute",
       "logo_color": "#3776AB",
       "categorie": "Data Engineering",
       "outil": "Python",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~195�\u001a�",
+      "cout": "~195€",
       "validite": "Permanente",
       "description": "Certification avancée Python couvrant les aspects professionnels : métaclasses, descripteurs, decorators avancés, concurrence (threading, multiprocessing, asyncio), réseau et bases de données depuis Python.",
       "competences": [
@@ -3754,14 +3754,14 @@
     },
     {
       "id": "microsoft-pl300-powerbi",
-      "nom": "PL-300 �\u001c Microsoft Power BI Data Analyst Associate",
+      "nom": "PL-300 – Microsoft Power BI Data Analyst Associate",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Analytics",
       "outil": "Power BI",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "La certification Power BI de référence. Valide la capacité à préparer les données (Power Query), modéliser (DAX, relations), visualiser (rapports et dashboards) et déployer des solutions Power BI en entreprise. Très recherchée sur le marché.",
       "competences": [
@@ -3783,14 +3783,14 @@
     },
     {
       "id": "microsoft-pl900",
-      "nom": "PL-900 �\u001c Microsoft Power Platform Fundamentals",
+      "nom": "PL-900 – Microsoft Power Platform Fundamentals",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Analytics",
       "outil": "Microsoft Power Platform",
       "niveau": "Débutant",
       "duree_prep": "20-40h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification fondamentale sur la Power Platform Microsoft (Power BI, Power Apps, Power Automate, Power Virtual Agents). Idéale pour comprendre les capacités de la suite et identifier les cas d'usage métier.",
       "competences": [
@@ -3877,7 +3877,7 @@
       "outil": "Qlik Sense",
       "niveau": "Avancé",
       "duree_prep": "100-150h",
-      "cout": "~200�\u001a�",
+      "cout": "~200€",
       "validite": "3 ans",
       "description": "Certification pour les administrateurs Qlik Sense en charge du déploiement, de la configuration et de la maintenance des environnements Qlik Sense Enterprise. Couvre la sécurité, les licences, les connecteurs et l'optimisation des performances.",
       "competences": [
@@ -3986,14 +3986,14 @@
     },
     {
       "id": "sap-analytics-cloud-associate",
-      "nom": "SAP Certified Application Associate �\u001c SAP Analytics Cloud",
+      "nom": "SAP Certified Application Associate – SAP Analytics Cloud",
       "organisme": "SAP",
       "logo_color": "#0FAAFF",
       "categorie": "Outils Data",
       "outil": "SAP Analytics Cloud",
       "niveau": "Intermédiaire",
       "duree_prep": "60-100h",
-      "cout": "~500�\u001a�",
+      "cout": "~500€",
       "validite": "Permanente",
       "description": "Certification officielle SAP pour SAP Analytics Cloud (SAC). Valide la création de stories analytiques, de planifications et de modèles prédictifs dans SAP Analytics Cloud. Très demandée dans les environnements SAP ERP.",
       "competences": [
@@ -4015,14 +4015,14 @@
     },
     {
       "id": "sap-bw4hana",
-      "nom": "SAP Certified Associate �\u001c SAP BW/4HANA",
+      "nom": "SAP Certified Associate – SAP BW/4HANA",
       "organisme": "SAP",
       "logo_color": "#0070F2",
       "categorie": "Analytics",
       "outil": "SAP BW/4HANA",
       "niveau": "Intermédiaire",
       "duree_prep": "100-150h",
-      "cout": "~500�\u001a�",
+      "cout": "~500€",
       "validite": "Permanente",
       "description": "Certification SAP sur BW/4HANA, la solution de data warehousing SAP sur la base HANA. Très demandée dans les grands groupes industriels et distribués qui utilisent SAP comme système de gestion. Couvre la modélisation, l'intégration des données et le reporting.",
       "competences": [
@@ -4043,14 +4043,14 @@
     },
     {
       "id": "sap-hana-associate",
-      "nom": "SAP Certified Technology Associate �\u001c SAP HANA",
+      "nom": "SAP Certified Technology Associate – SAP HANA",
       "organisme": "SAP",
       "logo_color": "#0FAAFF",
       "categorie": "Data Engineering",
       "outil": "SAP HANA",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~500�\u001a�",
+      "cout": "~500€",
       "validite": "Permanente",
       "description": "Certification sur la base de données in-memory SAP HANA. Couvre l'administration, la modélisation de données, les vues de calcul (Calculation Views) et le développement SQL/SQLScript dans SAP HANA. Indispensable dans les environnements SAP.",
       "competences": [
@@ -4079,7 +4079,7 @@
       "outil": "SAS",
       "niveau": "Avancé",
       "duree_prep": "200-300h",
-      "cout": "~250�\u001a� par exam",
+      "cout": "~250€ par exam",
       "validite": "Permanente",
       "description": "Certification SAS de haut niveau couvrant les techniques d'analytics avancé : régression, arbres de décision, clustering, time series, et design of experiments avec SAS Enterprise Guide, SAS/STAT et SAS/ML. Très demandée dans les secteurs bancaire et assurance.",
       "competences": [
@@ -4213,14 +4213,14 @@
     },
     {
       "id": "microsoft-sc900",
-      "nom": "SC-900 �\u001c Microsoft Security, Compliance and Identity Fundamentals",
+      "nom": "SC-900 – Microsoft Security, Compliance and Identity Fundamentals",
       "organisme": "Microsoft",
       "logo_color": "#00A4EF",
       "categorie": "Gouvernance",
       "outil": "Microsoft Azure",
       "niveau": "Débutant",
       "duree_prep": "20-40h",
-      "cout": "~165�\u001a�",
+      "cout": "~165€",
       "validite": "Permanente",
       "description": "Certification fondamentale Microsoft sur la sécurité, la conformité et l'identité dans le cloud. Aborde les concepts de confiance zéro, IAM Azure Active Directory, Microsoft Purview pour la gouvernance des données et Microsoft Sentinel pour la sécurité.",
       "competences": [
@@ -4277,7 +4277,7 @@
       "outil": "Snowflake",
       "niveau": "Avancé",
       "duree_prep": "80-120h",
-      "cout": "~375�\u001a�",
+      "cout": "~375€",
       "validite": "2 ans",
       "description": "Certification avancée Snowflake focalisée sur l'optimisation des coûts de la plateforme. Très pertinente quand les factures Snowflake s'envolent. Couvre le rightsizing des virtual warehouses, le query optimization, la gestion des auto-suspend/auto-resume et les stratégies de compression.",
       "competences": [
@@ -4393,7 +4393,7 @@
       "outil": "Snowflake",
       "niveau": "Avancé",
       "duree_prep": "60-100h",
-      "cout": "~375�\u001a�",
+      "cout": "~375€",
       "validite": "2 ans",
       "description": "Certification Snowflake spécialisée dans le Data Sharing et la Snowflake Marketplace. Valide la maîtrise du partage de données en temps réel entre organisations Snowflake, des Data Clean Rooms et de la monétisation des données via la Marketplace.",
       "competences": [
@@ -4451,7 +4451,7 @@
       "outil": "Snowflake",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~175�\u001a�",
+      "cout": "~175€",
       "validite": "2 ans",
       "description": "Version 2024 mise à jour de la certification SnowPro Core, intégrant les nouvelles fonctionnalités Snowflake : Hybrid Tables (UNISTORE pour le transactionnel), Snowflake Cortex (LLM natif), Snowpark Container Services, et Document AI. La base requise avant toute certification SnowPro Advanced.",
       "competences": [
@@ -4480,7 +4480,7 @@
       "outil": "Splunk",
       "niveau": "Débutant",
       "duree_prep": "30-50h",
-      "cout": "~125�\u001a�",
+      "cout": "~125€",
       "validite": "3 ans",
       "description": "Certification d'entrée sur Splunk, la plateforme de référence pour l'analyse de logs et données machine. Couvre la recherche, les rapports, les alertes et les tableaux de bord de base. Indispensable pour les équipes SOC, IT Ops et DataOps qui utilisent Splunk.",
       "competences": [
@@ -4508,7 +4508,7 @@
       "outil": "Splunk",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~125�\u001a�",
+      "cout": "~125€",
       "validite": "3 ans",
       "description": "Certification pour les administrateurs Splunk chargés de déployer, configurer et maintenir des clusters Splunk Enterprise. Couvre l'architecture distribuée, la gestion des index, la licence et la haute disponibilité.",
       "competences": [
@@ -4565,7 +4565,7 @@
       "outil": "Tableau",
       "niveau": "Avancé",
       "duree_prep": "150-200h",
-      "cout": "~250�\u001a�",
+      "cout": "~250€",
       "validite": "2 ans",
       "description": "La certification Tableau la plus avancée pour les data scientists. Couvre Tableau Prep Builder pour la préparation des données, les statistiques avancées dans Tableau (cluster analysis, forecasting, tableau extensions R/Python), et l'intégration avec les plateformes ML.",
       "competences": [
@@ -4649,7 +4649,7 @@
       "outil": "Talend",
       "niveau": "Intermédiaire",
       "duree_prep": "80-120h",
-      "cout": "~250�\u001a�",
+      "cout": "~250€",
       "validite": "2 ans",
       "description": "Certification pour les développeurs Talend spécialisés dans l'intégration de données cloud. Valide la maîtrise de Talend Studio et Talend Cloud pour concevoir des pipelines d'intégration fiables entre sources cloud et on-premise.",
       "competences": [

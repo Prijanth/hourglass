@@ -1,10 +1,6 @@
 "use client";
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import articles from "@/content/articles.json";
-import outils from "@/content/outils.json";
-import metiers from "@/content/metiers.json";
-import glossaire from "@/content/glossaire.json";
 
 type Result = {
   type: "article" | "outil" | "metier" | "glossaire";
@@ -12,33 +8,6 @@ type Result = {
   description: string;
   href: string;
 };
-
-const ALL_RESULTS: Result[] = [
-  ...articles.map(a => ({
-    type: "article" as const,
-    title: a.title,
-    description: a.excerpt,
-    href: `/actualites/${a.slug}`,
-  })),
-  ...outils.map(o => ({
-    type: "outil" as const,
-    title: o.name,
-    description: o.tagline,
-    href: `/outils/${o.slug}`,
-  })),
-  ...metiers.map(m => ({
-    type: "metier" as const,
-    title: m.title,
-    description: m.tagline,
-    href: `/metiers/${m.slug}`,
-  })),
-  ...(glossaire as { term: string; definition: string }[]).map(g => ({
-    type: "glossaire" as const,
-    title: g.term,
-    description: g.definition.length > 90 ? g.definition.slice(0, 90) + "…" : g.definition,
-    href: `/glossaire?q=${encodeURIComponent(g.term)}`,
-  })),
-];
 
 const TYPE_LABEL: Record<string, string> = {
   article: "Article",
@@ -62,23 +31,49 @@ const QUICK_LINKS = [
 ];
 
 export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const [query, setQuery]       = useState("");
+  const [query, setQuery]     = useState("");
+  const [results, setResults] = useState<Result[]>([]);
   const [selected, setSelected] = useState(0);
+  const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const router   = useRouter();
 
-  const results = useMemo<Result[]>(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return [];
-    return ALL_RESULTS.filter(r =>
-      r.title.toLowerCase().includes(q) ||
-      r.description.toLowerCase().includes(q)
-    ).slice(0, 8);
+  // Recherche avec debounce 300ms + annulation des requêtes en vol
+  useEffect(() => {
+    const q = query.trim();
+    if (!q || q.length < 2) {
+      setResults([]);
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+    const controller = new AbortController();
+
+    const timer = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`, {
+          signal: controller.signal,
+        });
+        const data: Result[] = await res.json();
+        setResults(data);
+      } catch (err) {
+        if ((err as Error).name !== "AbortError") setResults([]);
+      } finally {
+        setLoading(false);
+      }
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
   }, [query]);
 
   useEffect(() => {
     if (open) {
       setQuery("");
+      setResults([]);
       setSelected(0);
       setTimeout(() => inputRef.current?.focus(), 60);
     }
@@ -129,9 +124,15 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
 
           {/* Input */}
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderBottom: "1px solid #F1F5F9" }}>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round">
-              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-            </svg>
+            {loading ? (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2" strokeLinecap="round" style={{ flexShrink: 0, animation: "spin 0.8s linear infinite" }}>
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+              </svg>
+            ) : (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" style={{ flexShrink: 0 }}>
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+            )}
             <input
               ref={inputRef}
               value={query}
@@ -194,10 +195,10 @@ export function GlobalSearch({ open, onClose }: { open: boolean; onClose: () => 
                 </div>
               ))}
             </div>
-          ) : query.trim() ? (
+          ) : query.trim() && !loading ? (
             <div style={{ padding: "36px 16px", textAlign: "center", color: "#94A3B8" }}>
               <div style={{ fontSize: 28, marginBottom: 8 }}>🔍</div>
-              <p style={{ fontSize: 14 }}>Aucun résultat pour « {query} »</p>
+              <p style={{ fontSize: 14 }}>Aucun résultat pour « {query} »</p>
             </div>
           ) : (
             <div style={{ padding: "16px" }}>

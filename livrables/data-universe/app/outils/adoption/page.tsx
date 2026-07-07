@@ -604,15 +604,14 @@ export default function AdoptionPage() {
             letterSpacing: "-0.02em",
             marginBottom: 10,
           }}>
-            Vous cherchez à comparer des outils en détail ?
+            Vous cherchez à explorer les outils en détail ?
           </h2>
           <p style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.65, marginBottom: 26 }}>
-            Explorez nos comparatifs détaillés, les fiches outil, et l&apos;écosystème data complet
+            Explorez les fiches détaillées des outils et l&apos;écosystème data complet
             pour faire le meilleur choix pour votre organisation.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
             <a href="/outils" className="btn-primary">🛠️ Toutes les fiches outils</a>
-            <a href="/comparatifs" className="btn-secondary">⚖️ Comparatifs détaillés</a>
             <a href="/ecosystem" className="btn-secondary">🗺️ Voir l&apos;écosystème</a>
           </div>
         </div>

@@ -16,7 +16,7 @@ export default function MentionsLegalesPage() {
       <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
         Mentions légales
       </h1>
-      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 19 juin 2026</p>
+      <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 48 }}>Dernière mise à jour : 26 juin 2026</p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
 
@@ -25,12 +25,13 @@ export default function MentionsLegalesPage() {
             1. Éditeur du site
           </h2>
           <div style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            <p>Le site <strong>Data Universe.fr</strong> est édité par :</p>
+            <p>Le site <strong>data-universe.fr</strong> est édité par un particulier domicilié en France.</p>
             <br />
-            <p><strong>Prijanth Seevaratnam</strong></p>
-            <p>Particulier</p>
-            <p>Montry, 77 Seine-et-Marne, France</p>
-            <p>Email : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)" }}>contact@data-universe.fr</a></p>
+            <p>
+              Conformément à l&apos;article 6 III 2° de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l&apos;économie numérique (LCEN), les coordonnées complètes de l&apos;éditeur sont tenues à disposition par l&apos;hébergeur du site (voir section 2 ci-dessous), qui les communique sur demande des autorités compétentes.
+            </p>
+            <br />
+            <p>Email de contact : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)" }}>contact@data-universe.fr</a></p>
           </div>
         </section>
 
@@ -52,7 +53,7 @@ export default function MentionsLegalesPage() {
             3. Propriété intellectuelle
           </h2>
           <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8 }}>
-            L&apos;ensemble du contenu de ce site (textes, articles, données, graphiques, design) est la propriété exclusive de Prijanth Seevaratnam, sauf mention contraire. Toute reproduction, distribution ou utilisation, même partielle, sans autorisation écrite préalable est interdite.
+            L&apos;ensemble du contenu de ce site (textes, articles, données, graphiques, design) est la propriété exclusive de l&apos;éditeur, sauf mention contraire. Toute reproduction, distribution ou utilisation, même partielle, sans autorisation écrite préalable est interdite.
           </p>
         </section>
 

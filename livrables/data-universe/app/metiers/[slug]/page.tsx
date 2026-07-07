@@ -190,7 +190,6 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
                 En un coup d&apos;œil
               </p>
               {[
-                { label: "Salaire", value: `${m.salaryMin}–${m.salaryMax} ${m.salaryUnit}` },
                 { label: "Remote", value: m.remoteRate },
                 { label: "Demande", value: m.demand },
               ].map(({ label, value }) => (
@@ -235,30 +234,6 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
             </div>
           </div>
 
-          {/* Fourchettes salariales */}
-          <div className="card" style={{ padding: "28px 26px" }}>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>
-              Fourchettes salariales en France
-            </h2>
-            <p style={{ fontSize: 12, color: "#94A3B8", marginBottom: 20 }}>
-              Chiffres bruts annuels, marché parisien. En province, comptez 15–25 % de moins selon la ville et le secteur.
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {[
-                { label: "Junior (Paris)", value: m.salaryJuniorParis, color: "#0E7490", bg: "#F0FDFA", border: "#A7F3D0" },
-                { label: "Senior 5+ ans (Paris)", value: m.salaryParisSenior, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE" },
-              ].filter(r => r.value).map(({ label, value, color, bg, border }) => (
-                <div key={label} style={{ padding: "12px 16px", borderRadius: 10, background: bg, border: `1px solid ${border}` }}>
-                  <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.07em", color, marginBottom: 4 }}>{label}</p>
-                  <p style={{ fontSize: 15, fontWeight: 700, color: "#0F172A" }}>{value}</p>
-                </div>
-              ))}
-            </div>
-            <p style={{ fontSize: 11.5, color: "#94A3B8", marginTop: 14, lineHeight: 1.6 }}>
-              ESN / Cabinet : tarifs généralement 10–20 % inférieurs aux postes en entreprise directe. Sources : enquêtes Syntec, Glassdoor FR, offres observées.
-            </p>
-          </div>
-
           {/* Certifications recommandées */}
           <div className="card" style={{ padding: "28px 26px" }}>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 800, color: "#0F172A", marginBottom: 18 }}>
@@ -284,33 +259,6 @@ export default async function MetierPage({ params }: { params: Promise<{ slug: s
               Toutes les certifications →
             </Link>
           </div>
-
-          {/* Journée type */}
-          {(m as { journee_type?: { time: string; activity: string }[] }).journee_type?.length && (() => {
-            const jt = (m as { journee_type: { time: string; activity: string }[] }).journee_type;
-            return (
-              <div className="card" style={{ padding: "28px 26px" }}>
-                <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>
-                  Une journée type de {m.title}
-                </h2>
-                <p style={{ fontSize: 13, color: "#94A3B8", marginBottom: 22 }}>
-                  En poste dans une équipe data mid-size — varie selon la structure et le secteur.
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 0, position: "relative" }}>
-                  <div style={{ position: "absolute", left: 47, top: 0, bottom: 0, width: 2, background: "linear-gradient(180deg, #7C3AED, #06B6D4)", borderRadius: 1, opacity: 0.25 }} />
-                  {jt.map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16, paddingBottom: i < jt.length - 1 ? 18 : 0 }}>
-                      <div style={{ flexShrink: 0, width: 56, textAlign: "right" }}>
-                        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11.5, fontWeight: 700, color: "#7C3AED" }}>{item.time}</span>
-                      </div>
-                      <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#7C3AED", flexShrink: 0, marginTop: 3, border: "2px solid #F5F3FF", position: "relative", zIndex: 1 }} />
-                      <p style={{ fontSize: 13.5, color: "#334155", lineHeight: 1.6, flex: 1 }}>{item.activity}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })()}
 
           {/* Trajectoire */}
           <div style={{ background: "linear-gradient(135deg, #EDE9FE 0%, #F0F9FF 100%)", borderRadius: 16, padding: "28px 26px", border: "1px solid #DDD6FE" }}>

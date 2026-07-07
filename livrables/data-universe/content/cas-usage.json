@@ -137,7 +137,7 @@
         "VaR 99% plus précise : backtesting sur 10 ans montre 1.1% d'exceedances vs 2.4% avec la méthode historique",
         "Meilleure allocation de capital réglementaire (Pilier 2 Bâle III) : -8% de capital alloué",
         "CVaR (Conditional VaR / Expected Shortfall) calculable, exigé par FRTB",
-        "Temps de calcul : 4h â†’ 4min grâce à Dask"
+        "Temps de calcul : 4h → 4min grâce à Dask"
       ],
       "points_cles": [
         "La modélisation des copules (structure de dépendance entre actifs) est plus importante que le choix de la distribution marginale",
@@ -207,7 +207,7 @@
       "probleme": "Une chaîne de 80 restaurants collectait des milliers d'avis en ligne chaque mois mais n'avait pas la capacité de les analyser systématiquement. Les décisions de menu et de formation des équipes se prenaient sans données qualitatives structurées.",
       "solution": "Pipeline mensuel qui collecte les avis Google, TripAdvisor et The Fork via API, les classe par établissement et par thème (cuisine, service, ambiance, prix, propreté) via un modèle de topic modeling (BERTopic), puis analyse le sentiment par thème. Un dashboard Tableau compare les établissements entre eux et dans le temps.",
       "resultats": [
-        "Identification de 3 plats récurrents dans les commentaires négatifs â†’ retirés de la carte â†’ note Google +0.3 étoiles",
+        "Identification de 3 plats récurrents dans les commentaires négatifs → retirés de la carte → note Google +0.3 étoiles",
         "Corrélation forte détectée : les restaurants avec manager nommé dans les avis positifs ont un NPS 12 points supérieur",
         "Réponses aux avis automatisées sur les templates détectés (attente, propreté) : gain 2h/semaine par restaurant",
         "Benchmark hebdomadaire automatique vs 3 concurrents géolocalisés par restaurant"
@@ -244,7 +244,7 @@
       "resultats": [
         "Découverte : 'manque de perspectives d'évolution' était le thème #1 (31% des mentions), devant 'rémunération' (22%)",
         "Corrélation forte : les départs dans les 18 premiers mois venaient massivement du management de proximité (thème 'feedback manager')",
-        "Plan d'action ciblé sur 3 leviers â†’ turnover réduit de 24% à 19% en 18 mois",
+        "Plan d'action ciblé sur 3 leviers → turnover réduit de 24% à 19% en 18 mois",
         "ROI estimé : 1.8M€ (coût de remplacement moyen d'un profil data : 15K€)"
       ],
       "points_cles": [
@@ -312,7 +312,7 @@
         "Looker",
         "Segment"
       ],
-      "probleme": "Un groupe retail omnicanal (web + 350 magasins) ne comprenait pas les parcours réels de ses clients entre les canaux. Il supposait que web et magasin étaient deux segments séparés alors qu'il avait en réalité des parcours complexes (renseignement web â†’ achat magasin, click & collect, retours croisés).",
+      "probleme": "Un groupe retail omnicanal (web + 350 magasins) ne comprenait pas les parcours réels de ses clients entre les canaux. Il supposait que web et magasin étaient deux segments séparés alors qu'il avait en réalité des parcours complexes (renseignement web → achat magasin, click & collect, retours croisés).",
       "solution": "Unification des identités client entre tous les touchpoints via un CDP (Customer Data Platform). Analyse de séquences sur les 18 derniers mois : identification des parcours types (12 archétypes distincts), attribution des conversions selon la séquence réelle. A/B tests sur les parcours avec le plus fort potentiel d'amélioration.",
       "resultats": [
         "Découverte : 38% des achats en ligne étaient précédés d'une visite magasin non tracée",
@@ -352,8 +352,8 @@
       "solution": "Modèle de prédiction du succès en Phase III basé sur : les données précliniques (efficacité animale, toxicologie), les résultats des phases I et II (efficacité dose-réponse, profil de sécurité), les publications scientifiques sur le mécanisme d'action (BioBERT), et le pipeline compétitif de la maladie cible. Résultats présentés avec incertitude (intervalles de confiance bayésiens).",
       "resultats": [
         "Précision de prédiction du succès Phase III : 71% (vs 52% en expertise humaine seule)",
-        "2 molécules arrêtées en Phase II sur recommandation du modèle â†’ économie estimée 120M€",
-        "Reclassification de 3 molécules sous-évaluées â†’ accélération de leur développement",
+        "2 molécules arrêtées en Phase II sur recommandation du modèle → économie estimée 120M€",
+        "Reclassification de 3 molécules sous-évaluées → accélération de leur développement",
         "Outil adopté par 4 comités de revue R&D sur les 6 ciblés"
       ],
       "points_cles": [
@@ -384,11 +384,11 @@
         "FastAPI",
         "PostgreSQL"
       ],
-      "probleme": "Une équipe de 25 data engineers passait 40% de son temps sur des tâches répétitives : écrire des tests dbt, documenter des colonnes, créer des modèles YAML de data contracts, convertir des queries SQL entre dialects (Snowflake â†’ BigQuery). Ces tâches étaient nécessaires mais peu créatives.",
+      "probleme": "Une équipe de 25 data engineers passait 40% de son temps sur des tâches répétitives : écrire des tests dbt, documenter des colonnes, créer des modèles YAML de data contracts, convertir des queries SQL entre dialects (Snowflake → BigQuery). Ces tâches étaient nécessaires mais peu créatives.",
       "solution": "Extension VS Code et slash-commands intégrées dans dbt Cloud qui utilisent Claude pour : générer automatiquement les tests dbt depuis le schéma, rédiger les descriptions de colonnes en analysant les données sample, convertir les queries SQL entre dialects, suggérer les data contracts depuis les modèles existants.",
       "resultats": [
-        "Temps sur tâches répétitives : 40% â†’ 18% du temps des data engineers",
-        "Couverture de tests dbt : 23% â†’ 71% des colonnes testées",
+        "Temps sur tâches répétitives : 40% → 18% du temps des data engineers",
+        "Couverture de tests dbt : 23% → 71% des colonnes testées",
         "Documentation : de 15% à 89% des modèles documentés",
         "Satisfaction équipe (NPS) : +34 points"
       ],
@@ -426,14 +426,14 @@
       "solution": "Chatbot RAG : la documentation produit, les CGU et la FAQ sont indexées dans Pinecone via des embeddings OpenAI. Chaque question client est transformée en vecteur, les passages pertinents sont récupérés et fournis à Claude comme contexte. Les réponses citent les sources précises. Les agents humains gardent la main sur les cas complexes.",
       "resultats": [
         "Taux de résolution au premier contact : 71% vs 48% (questions standards)",
-        "Temps de traitement moyen : 4min â†’ 1min30",
+        "Temps de traitement moyen : 4min → 1min30",
         "CSAT : 4.2/5 sur les interactions gérées par le chatbot",
         "Réduction du volume de contacts répétitifs : -28%"
       ],
       "points_cles": [
         "La définition du périmètre du chatbot (ce sur quoi il répond, ce qu'il escalade) était plus importante que la performance technique",
         "Les réponses avec citations de sources rassuraient les clients et réduisaient les contestations",
-        "Un feedback loop (ðŸ™‚/ðŸ˜ž sur chaque réponse) permettait d'identifier les lacunes de la base de connaissances"
+        "Un feedback loop (🙂/😞 sur chaque réponse) permettait d'identifier les lacunes de la base de connaissances"
       ]
     },
     {
@@ -497,7 +497,7 @@
       "probleme": "Une banque calculait ses ratios de fonds propres Bâle III (CET1, Tier 1, Leverage Ratio) avec un processus semi-manuel dans Excel impliquant 8 personnes pendant 5 jours en fin de mois. Les erreurs de consolidation étaient fréquentes et le délai de reporting à la BCE dépassait les obligations légales.",
       "solution": "Automatisation complète via un pipeline dbt sur Snowflake : ingestion des expositions depuis les systèmes de gestion de risques, calcul des pondérations selon les règles CRR2 (standardisé et IRB), agrégation par type d'exposition et entité légale, calcul des ratios et génération automatique des tableaux COREP. Chaque règle de calcul est testée et documentée dans dbt.",
       "resultats": [
-        "Délai de reporting : 5 jours â†’ 1 jour",
+        "Délai de reporting : 5 jours → 1 jour",
         "Suppression des erreurs de consolidation (validation automatique des règles métier)",
         "Capacité de calcul en J+1 (vs J+5) permettant des simulations de stress test intrajournalières",
         "Audit TRIM facilité : toutes les règles de calcul sont documentées et traçables dans dbt"
@@ -535,9 +535,9 @@
       "probleme": "Un groupe bancaire produisait ses 35 templates Pilier 3 trimestriels en 25 jours ouvrés avec 15 personnes impliquées. Le processus était largement manuel (Excel + requêtes SQL ad hoc non versionées), générant des risques d'erreur, des difficultés de réconciliation et une incapacité à répondre rapidement aux demandes ad hoc du régulateur.",
       "solution": "Plateforme de reporting réglementaire en architecture Medallion sur Snowflake : Bronze (données sources agrégées en temps réel), Silver (données de gestion normalisées, réconciliées avec la comptabilité), Gold (tables reportings conformes aux templates EBA). dbt orchestre 180 modèles SQL testés et documentés. Great Expectations valide 600 règles de qualité. Airflow pilote les dépendances. Power BI génère les templates EBA.",
       "resultats": [
-        "Délai de production Pilier 3 : 25 jours â†’ 8 jours ouvrés (-68%)",
+        "Délai de production Pilier 3 : 25 jours → 8 jours ouvrés (-68%)",
         "Erreurs détectées par le régulateur : 0 sur 4 trimestres consécutifs",
-        "Effort humain de production : 15 personnes × 25 jours â†’ 5 personnes × 8 jours (-73%)",
+        "Effort humain de production : 15 personnes × 25 jours → 5 personnes × 8 jours (-73%)",
         "Capacité ad hoc : n'importe quel cut des données disponible en 2 heures vs 2 semaines avant"
       ],
       "points_cles": [
@@ -652,7 +652,7 @@
         "Temps libéré pour les gestionnaires RH : 2 jours/semaine redirectionnés vers des missions à valeur ajoutée"
       ],
       "points_cles": [
-        "La définition des cas d'escalade était critique : questions sur des situations personnelles, conflits, licenciements â†’ toujours un humain",
+        "La définition des cas d'escalade était critique : questions sur des situations personnelles, conflits, licenciements → toujours un humain",
         "Le modèle répondait « je ne suis pas sûr » pour les questions ambiguës, avec un lien vers le contact RH : stratégie de confiance bien reçue",
         "La mise à jour des documents (dès qu'un accord est signé) nécessitait une procédure de reindexation déclenchée par les RH en 5 minutes"
       ]
@@ -721,7 +721,7 @@
       "solution": "OCR sur les courriers papier numérisés, puis classification CamemBERT en 22 catégories (urbanisme, social, fiscalité, voirie, état civil, etc.) et en niveau de priorité. Routage automatique vers le service compétent dans le GED (Gestion Electronique de Documents). Les pièces jointes (plans, photos) sont aussi analysées pour confirmer la catégorie.",
       "resultats": [
         "Précision de classification : 89% sur les 22 catégories",
-        "Temps de tri moyen : 2 jours â†’ 4 heures",
+        "Temps de tri moyen : 2 jours → 4 heures",
         "Réduction de 3 ETP sur le secrétariat (redéployés sur des missions citoyennes)",
         "Détection automatique des courriers urgents (délais légaux) avec alerte"
       ],
@@ -867,8 +867,8 @@
       "solution": "Architecture streaming : événements réseau ingérés via Kafka, agrégés en fenêtres de 5 minutes par Flink. Isolation Forest entraîné sur 6 mois d'historique par type d'équipement détecte les anomalies multivariées (corrélation latence + erreurs + débit). Un moteur de corrélation d'alertes (AIOps) regroupe les anomalies liées en incidents uniques. Alertes PagerDuty envoyées avec contexte et équipements voisins affectés.",
       "resultats": [
         "Faux positifs réduits de 75% à 18% (-57 points)",
-        "MTTD (Mean Time To Detect) : 18 minutes â†’ 4 minutes (-78%)",
-        "MTTR (Mean Time To Repair) : 45 minutes â†’ 28 minutes (-38%)",
+        "MTTD (Mean Time To Detect) : 18 minutes → 4 minutes (-78%)",
+        "MTTR (Mean Time To Repair) : 45 minutes → 28 minutes (-38%)",
         "SLA clients respectés : 99.95% vs 99.87% avant"
       ],
       "points_cles": [
@@ -1119,7 +1119,7 @@
       "solution": "DenseNet-121 fine-tuné sur ChestX-Ray14 (120 000 radiographies annotées par des radiologues) détecte 14 pathologies. Un module de priorisation de file d'attente : les radios avec probabilité élevée de pathologie urgente sont remontées en tête de liste. Le modèle sert de 'second regard' aux radiologues, pas de remplacement.",
       "resultats": [
         "AUC-ROC de 0.89 sur la détection des 14 pathologies sur dataset de test",
-        "Délai de lecture des cas urgents : 4h â†’ 45min",
+        "Délai de lecture des cas urgents : 4h → 45min",
         "Zéro pneumothorax critique manqué depuis le déploiement (18 mois)",
         "Temps de lecture total réduit de 18% (second regard confirme rapidement les cas normaux)"
       ],
@@ -1154,9 +1154,9 @@
       "probleme": "Le SOC d'un groupe industriel interceptait 2 000 emails suspects par jour, dont 85% de faux positifs. Les phishings ciblés (spear-phishing) avec URL légitimes et texte personnalisé passaient les filtres classiques (blacklists, règles Bayésiennes) dans 23% des cas.",
       "solution": "Pipeline multi-modèles : BERT analyse le texte du corps de l'email (tonalité urgente, demande d'action suspecte), un modèle sépare extrait les URLs et les vérifie (âge du domaine, certificat SSL, whois), et un modèle comportemental analyse les métadonnées (expéditeur inhabituel, heure d'envoi). Un modèle de fusion combine les 3 scores.",
       "resultats": [
-        "Taux de détection du phishing ciblé : 23% manqués â†’ 4% manqués",
+        "Taux de détection du phishing ciblé : 23% manqués → 4% manqués",
         "Faux positifs réduits de 85% à 12%",
-        "Temps d'investigation par alerte : 25min â†’ 6min",
+        "Temps d'investigation par alerte : 25min → 6min",
         "3 campagnes APT bloquées en 6 mois"
       ],
       "points_cles": [
@@ -1336,7 +1336,7 @@
       "resultats": [
         "Automatisation à 91% des factures (9% routées vers validation humaine)",
         "Taux d'erreur sur les factures traitées automatiquement : 0.4% vs 3% manuel",
-        "Délai de traitement : 2 jours â†’ 4 heures",
+        "Délai de traitement : 2 jours → 4 heures",
         "Économie : 9.2 ETP redéployés sur des activités à valeur ajoutée"
       ],
       "points_cles": [
@@ -1406,10 +1406,10 @@
       "probleme": "Une banque d'investissement avait centralisé toutes ses données dans une seule équipe data de 40 personnes qui servait 15 domaines métier (trading, risque, conformité, retail). L'équipe data était bottleneck permanent : délais de 3-6 mois pour de nouveaux pipelines, faible qualité perçue par les métiers, et turnover élevé.",
       "solution": "Migration vers une architecture Data Mesh : chaque domaine métier devient propriétaire et producteur de ses data products. L'équipe centrale data devient 'plateforme' et fournit l'infrastructure (Databricks + Unity Catalog + dbt), les standards (data contracts, métriques de qualité obligatoires) et le catalogue centralisé. Les domaines ont leur propre budget cloud et leurs propres équipes data.",
       "resultats": [
-        "Délai moyen de livraison d'un nouveau pipeline : 3-6 mois â†’ 2-4 semaines",
-        "Nombre de data products actifs : 12 â†’ 87 en 18 mois",
-        "Satisfaction des domaines métier (enquête interne) : 2.9/5 â†’ 4.1/5",
-        "Turnover équipe data : 35% â†’ 18% (les data engineers retrouvent de l'autonomie)"
+        "Délai moyen de livraison d'un nouveau pipeline : 3-6 mois → 2-4 semaines",
+        "Nombre de data products actifs : 12 → 87 en 18 mois",
+        "Satisfaction des domaines métier (enquête interne) : 2.9/5 → 4.1/5",
+        "Turnover équipe data : 35% → 18% (les data engineers retrouvent de l'autonomie)"
       ],
       "points_cles": [
         "La gouvernance fédérée (standards communs, audit central, liberté d'implémentation) est plus difficile à mettre en place que la technique",
@@ -1442,8 +1442,8 @@
       "probleme": "Un gestionnaire de réseau électrique devait inspecter 85 000 km de lignes haute tension chaque année. L'inspection humaine par hélicoptère coûtait 45M€/an et ne permettait d'inspecter chaque pylône que tous les 3 ans en moyenne.",
       "solution": "Drones autonomes capturant des images 4K de chaque pylône. YOLOv8 fine-tuné sur 80 000 images annotées détecte 15 types d'anomalies (corrosion, écarteur cassé, nid d'oiseau, isolateur fissuré). Les anomalies sont géolocalisées, classées par sévérité et intégrées dans le GMAO (Gestion de Maintenance Assistée par Ordinateur) pour planification.",
       "resultats": [
-        "Coût d'inspection : 45M€ â†’ 18M€/an (-60%)",
-        "Fréquence d'inspection : tous les 3 ans â†’ annuelle",
+        "Coût d'inspection : 45M€ → 18M€/an (-60%)",
+        "Fréquence d'inspection : tous les 3 ans → annuelle",
         "Taux de détection des anomalies critiques : 94% vs 78% inspection humaine",
         "Réduction des coupures non planifiées : -33%"
       ],
@@ -1549,9 +1549,9 @@
         "React"
       ],
       "probleme": "Un cabinet de recrutement IT recevait 800 CV par jour pour 200 offres actives. Les recruteurs passaient 30% de leur temps à faire le matching CV/poste manuellement. Beaucoup de bons candidats étaient ignorés car leur CV ne contenait pas les mots-clés exacts des offres.",
-      "solution": "Sentence-BERT encode chaque CV et chaque offre en vecteurs 768 dimensions. La similarité cosinus entre le vecteur d'un CV et tous les vecteurs d'offres identifie les meilleures correspondances sémantiques (même si les termes sont différents : 'développement logiciel' â‰ˆ 'software engineering'). Un second modèle note la compatibilité sur des critères structurés (expérience, lieu).",
+      "solution": "Sentence-BERT encode chaque CV et chaque offre en vecteurs 768 dimensions. La similarité cosinus entre le vecteur d'un CV et tous les vecteurs d'offres identifie les meilleures correspondances sémantiques (même si les termes sont différents : 'développement logiciel' ≈ 'software engineering'). Un second modèle note la compatibilité sur des critères structurés (expérience, lieu).",
       "resultats": [
-        "Temps de présélection par poste : 4h â†’ 45min (-81%)",
+        "Temps de présélection par poste : 4h → 45min (-81%)",
         "Taux de passage en entretien des candidats proposés : 38% vs 22% avant",
         "Diversité des candidats présentés : +34% (moins de biais mots-clés)",
         "NPS candidats : +21 points (feedback plus rapide)"
@@ -1590,9 +1590,9 @@
       "solution": "Pipeline MLOps complet : DVC pour le versioning des données, MLflow pour le tracking des expériences et le model registry, GitHub Actions pour CI/CD (test automatique, build Docker, déploiement Kubernetes), Evidently AI pour le monitoring de data drift et de performance, alertes Grafana en cas de dégradation.",
       "resultats": [
         "Zéro incident de modèle dégradé non détecté depuis le déploiement",
-        "Délai de déploiement d'une nouvelle version : 3 semaines â†’ 2 jours",
+        "Délai de déploiement d'une nouvelle version : 3 semaines → 2 jours",
         "Data drift détecté automatiquement en moyenne 4 jours après apparition",
-        "Temps des data scientists sur les opérations : 35% â†’ 12% (focus sur la modélisation)"
+        "Temps des data scientists sur les opérations : 35% → 12% (focus sur la modélisation)"
       ],
       "points_cles": [
         "L'adoption de DVC a été la plus difficile : les data scientists devaient changer leurs habitudes",
@@ -1630,7 +1630,7 @@
         "Gini amélioré de 58 à 74 (performance de discrimination)",
         "Conformité TRIM validée par la BCE lors de l'inspection 2024",
         "Réduction du taux de défaut sur les nouveaux crédits accordés : -18%",
-        "Temps de décision automatisé pour les dossiers standards : 4h â†’ 45min"
+        "Temps de décision automatisé pour les dossiers standards : 4h → 45min"
       ],
       "points_cles": [
         "La BCE exige que tout modèle haut risque ait une documentation complète des choix de modélisation et des tests de robustesse",
@@ -1666,7 +1666,7 @@
         "87% des contenus violents supprimés en moins de 30 secondes",
         "Réduction de 71% de la charge de modération humaine",
         "Taux de faux positifs (suppression injustifiée) : 1.8%",
-        "Temps moyen de résolution des signalements : 4h â†’ 45min"
+        "Temps moyen de résolution des signalements : 4h → 45min"
       ],
       "points_cles": [
         "Le contexte est déterminant en NLP : 'c'est une bombe cette soirée !' vs une vraie menace — le modèle devait apprendre ces nuances",
@@ -1774,7 +1774,7 @@
       "probleme": "Les juristes et compliance officers d'un groupe bancaire international passaient 40% de leur temps à rechercher et interpréter des textes réglementaires (directives européennes, instructions ACPR, normes EBA) répartis sur des centaines de documents mis à jour fréquemment. Les risques de conformité liés à des textes manqués ou mal interprétés étaient significatifs.",
       "solution": "Architecture RAG sur un corpus de 8 000 documents réglementaires (CRR, CRD, SFDR, DORA, MiCA, AML directives, circulaires ACPR/BNB). Les documents sont découpés par article/paragraphe, vectorisés, et indexés dans Azure AI Search avec métadonnées riches (date, régulateur, thématique). GPT-4 génère des réponses avec citations exactes et numéros d'articles. Un graph de dépendances entre articles permet de naviguer dans les textes liés.",
       "resultats": [
-        "Temps de recherche réglementaire : 45 minutes â†’ 5 minutes (-89%)",
+        "Temps de recherche réglementaire : 45 minutes → 5 minutes (-89%)",
         "Précision des réponses validée par les juristes seniors : 88%",
         "100% des réponses livrées avec citations sources vérifiables",
         "Adoption : 92% des juristes utilisent le système quotidiennement après 3 mois"
@@ -1885,8 +1885,8 @@
       "solution": "Problème de transport/affectation modélisé comme un programme linéaire (PuLP). Objectif : minimiser le coût total de transport. Contraintes : capacité de chaque entrepôt, couverture de chaque magasin, temps de livraison maximum garanti. Résolution en 3 minutes pour l'ensemble des 8×420 combinaisons.",
       "resultats": [
         "Réduction des coûts de transport : -14% soit 3.8M€/an",
-        "Taux de service J+1 : 91% â†’ 96%",
-        "Temps de génération du plan d'affectation : 3 semaines â†’ 3 heures",
+        "Taux de service J+1 : 91% → 96%",
+        "Temps de génération du plan d'affectation : 3 semaines → 3 heures",
         "Simulation de 12 scénarios alternatifs (ex: fermeture d'un entrepôt) en 1 journée"
       ],
       "points_cles": [
@@ -1920,8 +1920,8 @@
       "probleme": "Une chaîne de distribution en gros gérait 80 000 références avec des délais d'approvisionnement variables (2 à 12 semaines). Les règles de réapprovisionnement statiques (point de commande fixe) conduisaient à 8% de ruptures et 15% de surstock simultanément.",
       "solution": "Agent de reinforcement learning entraîné en simulation : l'agent apprend à décider quotidiennement pour chaque référence la quantité à commander en optimisant le revenu net (ventes réalisées - coûts de stockage - coûts de rupture). L'environnement de simulation reproduit les aléas de demande et les délais fournisseurs.",
       "resultats": [
-        "Taux de rupture : 8% â†’ 3.2%",
-        "Taux de surstock : 15% â†’ 9%",
+        "Taux de rupture : 8% → 3.2%",
+        "Taux de surstock : 15% → 9%",
         "BFR (Besoin en Fonds de Roulement) réduit de 12M€",
         "Revenu annuel en hausse de 4.8M€ (ventes récupérées sur les ruptures)"
       ],
@@ -2028,7 +2028,7 @@
       "resultats": [
         "Kilométrage total réduit de 18%",
         "Carburant économisé : 23 000€/mois",
-        "Temps de dispatching : 2h â†’ 15 minutes",
+        "Temps de dispatching : 2h → 15 minutes",
         "Taux de livraisons dans les créneaux promis : 94% vs 78%"
       ],
       "points_cles": [
@@ -2064,8 +2064,8 @@
       "resultats": [
         "Temps de trajet réduit de 30% à 19% du temps de travail",
         "Nombre d'interventions par technicien par jour : +18%",
-        "Temps de planification : 3h â†’ 20min",
-        "Taux de respect des créneaux clients : 74% â†’ 89%"
+        "Temps de planification : 3h → 20min",
+        "Taux de respect des créneaux clients : 74% → 89%"
       ],
       "points_cles": [
         "La précision des durées d'intervention (prédites par ML) était plus importante que la précision du routage pour le gain final",
@@ -2100,7 +2100,7 @@
       "resultats": [
         "Kilométrage total réduit de 22%",
         "Carburant économisé : 31 000€/mois",
-        "Temps de dispatching : 2h30 â†’ 18 minutes",
+        "Temps de dispatching : 2h30 → 18 minutes",
         "Taux de livraisons dans les créneaux promis : 96% vs 82%",
         "Empreinte carbone du réseau : -19%"
       ],
@@ -2243,7 +2243,7 @@
       "probleme": "Un CHU planifiait manuellement les plannings de 2 000 infirmiers sur 45 services. La planification mensuelle prenait 10 jours-cadres par mois, générait des inégalités perçues dans la distribution des gardes difficiles, et respectait difficilement toutes les contraintes réglementaires (RTT, repos minimum entre gardes).",
       "solution": "Optimiseur basé sur le VRP (Nurse Scheduling Problem) via Google OR-Tools. Contraintes : Code du travail (repos 11h consécutives, max 48h/semaine), compétences requises par service, équité des nuits/week-ends entre agents, préférences déclarées des agents (jusqu'à 3 demandes par mois), continuité de soins. Résolution en 20 minutes.",
       "resultats": [
-        "Temps de planification : 10j/mois â†’ 2j/mois",
+        "Temps de planification : 10j/mois → 2j/mois",
         "Conformité 100% aux contraintes légales (vs 94% avant)",
         "Satisfaction des équipes : NPS interne +28 points",
         "Réduction des heures supplémentaires imprévues : -31%"
@@ -2425,7 +2425,7 @@
       "probleme": "Un club de rugby professionnel avait 18 blessures musculaires majeures par saison (ischio-jambiers, quadriceps) entraînant en moyenne 6 semaines d'absence par blessure. Le staff médical ne pouvait surveiller que grossièrement la charge d'entraînement.",
       "solution": "Chaque joueur porte un GPS + accéléromètre pendant les entraînements. Le modèle XGBoost calcule quotidiennement un 'risk score' en comparant la charge d'entraînement actuelle (distance, intensité, accélération) à la charge habituelle sur les 4 semaines précédentes (Acute:Chronic Workload Ratio). Au-dessus d'un seuil, le staff médical est alerté.",
       "resultats": [
-        "Blessures musculaires majeures : 18 â†’ 8 par saison (-55%)",
+        "Blessures musculaires majeures : 18 → 8 par saison (-55%)",
         "Semaines d'absence économisées : 60 par saison",
         "ROI estimé : 1.2M€ (coûts médicaux + performances en matchs)",
         "Prédiction 3 à 5 jours avant la blessure dans 72% des cas"
@@ -2505,7 +2505,7 @@
         "Économie opérationnelle : 8M€/an (optimisation de la composition des trains)"
       ],
       "points_cles": [
-        "La prévision hiérarchique (national â†’ ligne â†’ O/D) permettait d'assurer la cohérence entre les niveaux (somme des O/D = total ligne)",
+        "La prévision hiérarchique (national → ligne → O/D) permettait d'assurer la cohérence entre les niveaux (somme des O/D = total ligne)",
         "Les grèves étaient le principal facteur de perturbation : un mécanisme de correction post-événement recalibrait les modèles après chaque grève",
         "L'intégration des données de recherche de billets (avant achat) améliorait la prévision à court terme (J+3 à J+14)"
       ]
@@ -2573,7 +2573,7 @@
       "probleme": "Un club de football professionnel dépensait 30M€/an en transferts et salaires de joueurs avec un taux de 'mauvais' transferts (joueur sous-performant les attentes) de 40%. L'évaluation reposait trop sur le ressenti et les statistiques basiques.",
       "solution": "Modèle de prédiction de la performance future d'un joueur basé sur ses données StatsBomb (xG, pression, actions défensives, cartes de chaleur positionnelles), son âge et son historique de progression. Un second modèle prédit la valeur marchande (croissance ou déclin) à 2 ans. Le tout est combiné dans un score de recommandation d'achat par profil de poste.",
       "resultats": [
-        "Taux de 'bons' transferts (performance â‰¥ attentes) : de 60% à 78% en 2 saisons",
+        "Taux de 'bons' transferts (performance ≥ attentes) : de 60% à 78% en 2 saisons",
         "Économie estimée sur la base de marché : 8-12M€ par saison",
         "Découverte de 3 joueurs sous-cotés (achetés 40% sous leur valeur marchande prédite)",
         "Validation : AUC-ROC de 0.79 sur la prédiction de performance à 2 ans sur données historiques"
@@ -3071,7 +3071,7 @@
       "probleme": "Une plateforme de streaming vidéo constatait que 72% des sessions se terminaient sans que l'utilisateur ait commencé à regarder un contenu (paralysis of choice). Le catalogue de 50 000 contenus était trop vaste pour une navigation manuelle efficace.",
       "solution": "Architecture Two-Tower : un encodeur utilisateur (historique de visionnage, ratings, profil démographique) et un encodeur contenu (genre, acteurs, synopsis, durée) produisent des embeddings compatibles. La similarité cosinus identifie les contenus les plus pertinents pour chaque utilisateur. Le modèle est servi via Vertex AI Matching Engine pour des recommandations en moins de 100ms.",
       "resultats": [
-        "Taux de démarrage d'un contenu dans les 5 premières minutes : 28% â†’ 61%",
+        "Taux de démarrage d'un contenu dans les 5 premières minutes : 28% → 61%",
         "Durée moyenne de session : +34%",
         "Churn mensuel réduit de 4.2% à 3.1%",
         "CTR sur les recommandations personnalisées vs carousels éditoriaux : ×3.8"
@@ -3436,9 +3436,9 @@
       "solution": "Segmentation comportementale basée sur les transactions des 12 derniers mois : fréquence d'utilisation des différents services (virement, chèque, carte, mobile), diversification des produits détenus, saisonnalité des dépenses, comportement épargne. K-Means (k=8) avec réduction dimensionnelle UMAP pour visualisation. Mise à jour mensuelle.",
       "resultats": [
         "8 segments comportementaux identifiés (vs 6 statiques), avec des profils très différenciés",
-        "Taux de conversion des campagnes ciblées : 3.2% â†’ 8.7%",
+        "Taux de conversion des campagnes ciblées : 3.2% → 8.7%",
         "ROI des campagnes marketing : ×2.8",
-        "Découverte : segment 'digitaux insatisfaits' (fort usage app + soldes faibles) = forte propension churn â†’ action préventive"
+        "Découverte : segment 'digitaux insatisfaits' (fort usage app + soldes faibles) = forte propension churn → action préventive"
       ],
       "points_cles": [
         "La normalisation des features est critique pour K-Means : un virement de 10 000€ ne doit pas noyer la fréquence de paiement carte",
@@ -3542,7 +3542,7 @@
         "AWS IoT Core"
       ],
       "probleme": "Un réseau de 120 capteurs de qualité de l'air déployés dans une métropole générait 2 To de données par mois. Les alertes déclenchées sur des seuils fixes généraient 70% de faux positifs (pics momentanés, erreurs capteurs) et les problèmes persistants de pollution n'étaient pas détectés rapidement.",
-      "solution": "Pipeline IoT : capteurs MQTT â†’ AWS IoT Core â†’ InfluxDB. Un modèle Prophet apprend la saisonnalité horaire et hebdomadaire de chaque capteur. La détection d'anomalies compare les valeurs actuelles à la prévision (écart > 3Ïƒ pendant > 15 minutes = vraie anomalie). Un LSTM multivarié prédit les pics de pollution à 4h pour prévenir les populations.",
+      "solution": "Pipeline IoT : capteurs MQTT → AWS IoT Core → InfluxDB. Un modèle Prophet apprend la saisonnalité horaire et hebdomadaire de chaque capteur. La détection d'anomalies compare les valeurs actuelles à la prévision (écart > 3Ïƒ pendant > 15 minutes = vraie anomalie). Un LSTM multivarié prédit les pics de pollution à 4h pour prévenir les populations.",
       "resultats": [
         "Faux positifs d'alertes réduits de 70% à 12%",
         "Détection des épisodes de pollution prolongés : 94% de rappel",
@@ -3624,7 +3624,7 @@
       ],
       "points_cles": [
         "Le contrainte d'acceptabilité sociale imposait un plafond : le prix ne pouvait pas dépasser 3x le tarif de base, même en période de forte demande",
-        "La latence end-to-end du système (demande â†’ calcul â†’ affichage) devait être < 5 secondes pour les bornes d'entrée",
+        "La latence end-to-end du système (demande → calcul → affichage) devait être < 5 secondes pour les bornes d'entrée",
         "Les événements non planifiés (matchs annoncés au dernier moment) nécessitaient un mécanisme d'override manuel par les opérateurs"
       ]
     },
@@ -3728,10 +3728,10 @@
       "probleme": "L'équipe conformité d'une banque devait surveiller quotidiennement les publications de la BCE, l'EBA, l'ESMA, l'AMF et le ACPR. 3 juristes dédiés passaient 60% de leur temps à lire et synthétiser des textes réglementaires pour identifier les changements impactant les activités de la banque.",
       "solution": "Pipeline RAG quotidien : scraping des sites officiels des régulateurs, indexation dans Pinecone, puis analyse par Claude qui identifie les nouveaux textes, les compare aux précédentes versions, extrait les points d'impact pour chaque métier de la banque, et génère une newsletter réglementaire hebdomadaire résumant les évolutions majeures avec les actions requises.",
       "resultats": [
-        "Temps de veille : 60% du temps de 3 juristes â†’ 15% de leur temps",
+        "Temps de veille : 60% du temps de 3 juristes → 15% de leur temps",
         "Couverture réglementaire étendue à 12 régulateurs vs 5 auparavant",
         "Zéro texte réglementaire impactant manqué depuis le déploiement (18 mois)",
-        "Délai de traitement d'une publication : 48h â†’ 4h"
+        "Délai de traitement d'une publication : 48h → 4h"
       ],
       "points_cles": [
         "La précision sur les textes réglementaires requérait des citations sources systématiques pour la validation humaine",
@@ -3762,7 +3762,7 @@
         "OTA APIs"
       ],
       "probleme": "Un groupe hôtelier de 35 établissements ajustait ses prix manuellement une fois par semaine. Il manquait des opportunités de hausses de prix lors d'événements (salons, concerts) et vendait à des tarifs élevés quand l'occupancy stagnait.",
-      "solution": "Modèle de prévision d'occupancy à 90 jours (LightGBM avec features : événements locaux, historique, OTB — On the Books). Règles de pricing dynamique : si prévision > 90% â†’ +25% tarif, si < 50% à J-15 â†’ -20% pour stimuler la demande. Les prix sont mis à jour 4 fois par jour via les APIs Channel Manager.",
+      "solution": "Modèle de prévision d'occupancy à 90 jours (LightGBM avec features : événements locaux, historique, OTB — On the Books). Règles de pricing dynamique : si prévision > 90% → +25% tarif, si < 50% à J-15 → -20% pour stimuler la demande. Les prix sont mis à jour 4 fois par jour via les APIs Channel Manager.",
       "resultats": [
         "RevPAR (Revenue Per Available Room) +22% en 12 mois",
         "Occupancy cible de 82% atteinte vs 74% l'année précédente",

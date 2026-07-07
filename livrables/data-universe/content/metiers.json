@@ -597,11 +597,11 @@
       "VP Engineering"
     ],
     "daily_tasks": [
-      "D?finir les patterns d'architecture (Lakehouse, Data Mesh) et les standards technologiques",
-      "Auditer et valider les designs de pipelines et mod?les de donn?es propos?s par les ?quipes",
+      "Définir les patterns d'architecture (Lakehouse, Data Mesh) et les standards technologiques",
+      "Auditer et valider les designs de pipelines et modèles de données proposés par les équipes",
       "Choisir et ?valuer les outils data (data warehouse, orchestrateur, catalogue)",
-      "Collaborer avec les ?quipes s?curit? et RGPD pour d?finir les politiques de gouvernance",
-      "R?diger des ADR (Architecture Decision Records) et documenter les choix techniques"
+      "Collaborer avec les équipes sécurité et RGPD pour définir les politiques de gouvernance",
+      "Rédiger des ADR (Architecture Decision Records) et documenter les choix techniques"
     ],
     "journee_type": [
       {
@@ -673,10 +673,10 @@
       "CTO"
     ],
     "daily_tasks": [
-      "Conduire des RFC (Request for Comments) pour les d?cisions d'architecture transverses",
-      "D?finir les standards de qualit? code et pipeline (tests, monitoring, alertes)",
+      "Conduire des RFC (Request for Comments) pour les décisions d'architecture transverses",
+      "Définir les standards de qualité code et pipeline (tests, monitoring, alertes)",
       "Mentorer les ?quipes Data Engineers junior et mid sur les bonnes pratiques",
-      "R?soudre les incidents complexes de production affectant plusieurs ?quipes",
+      "Résoudre les incidents complexes de production affectant plusieurs équipes",
       "Contribuer ? la roadmap technique en alignement avec le produit et les objectifs business"
     ],
     "journee_type": [

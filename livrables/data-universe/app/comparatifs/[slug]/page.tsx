@@ -51,7 +51,7 @@ export default async function ComparatifPage({ params }: { params: Promise<{ slu
   return (
     <>
       {/* Hero */}
-      <div style={{ background: "linear-gradient(180deg, var(--navy-2) 0%, var(--surface) 100%)", borderBottom: "1px solid var(--border)", padding: "48px 24px 44px" }}>
+      <div style={{ background: "linear-gradient(180deg, #0F172A 0%, #1E293B 100%)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "48px 24px 44px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 24, fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
             <Link href="/" style={{ color: "rgba(255,255,255,0.4)" }}>Accueil</Link>
@@ -195,6 +195,35 @@ export default async function ComparatifPage({ params }: { params: Promise<{ slu
             <p style={{ fontSize: 14.5, color: "var(--text)", lineHeight: 1.7 }}>{comparatif.shared_use}</p>
           </div>
         )}
+
+        {/* Méthodologie */}
+        <div style={{ margin: "36px 0 28px", padding: "22px 28px", background: "var(--surface-2)", borderRadius: 14, border: "1px solid var(--border)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+            <span style={{ fontSize: 16 }}>📐</span>
+            <p style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--faint)" }}>Méthodologie de notation</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 16 }}>
+            {[
+              { icon: "📄", label: "Documentation officielle", desc: "Docs, changelogs et benchmarks publiés par les éditeurs." },
+              { icon: "👥", label: "Communauté data", desc: "Retours de praticiens sur Reddit (r/dataengineering), Stack Overflow, GitHub Issues." },
+              { icon: "📊", label: "Benchmarks publics", desc: "TPC-H, TPC-DS, ClickBench et comparaisons indépendantes publiées depuis 2023." },
+              { icon: "🏭", label: "Expérience terrain", desc: "Témoignages et post-mortems d'équipes data en production (blogs tech, conférences)." },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} style={{ display: "flex", gap: 12 }}>
+                <span style={{ fontSize: 18, flexShrink: 0, lineHeight: 1.4 }}>{icon}</span>
+                <div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "var(--text)", marginBottom: 2 }}>{label}</p>
+                  <p style={{ fontSize: 12, color: "var(--muted)", lineHeight: 1.55 }}>{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ padding: "12px 16px", background: "var(--surface)", borderRadius: 10, border: "1px solid var(--border)", fontSize: 12.5, color: "var(--muted)", lineHeight: 1.65 }}>
+            <strong style={{ color: "var(--text)" }}>Grille de notation :</strong> chaque critère est noté de 0 à 100.
+            Le score global est une moyenne pondérée ajustée selon l&apos;importance relative de chaque critère dans les cas d&apos;usage les plus fréquents — il ne résulte pas d&apos;une moyenne arithmétique simple.
+            Les scores sont des <strong style={{ color: "var(--text)" }}>évaluations éditoriales</strong> de l&apos;équipe Data Universe, non sponsorisées. Dernière révision : {new Date(comparatif.date).toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}.
+          </div>
+        </div>
 
         <Link href="/comparatifs" style={{ fontSize: 14, fontWeight: 600, color: "var(--indigo)" }}>← Tous les comparatifs</Link>
       </div>

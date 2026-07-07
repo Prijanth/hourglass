@@ -14,8 +14,7 @@ const SECTIONS = [
   { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "166 certifications AWS, Azure, GCP, Databricks, Snowflake",   color: "#5B21B6", bg: "#F5F3FF" },
   { href: "/cas-usage",      emoji: "💼", title: "Cas d'usage",    desc: "104 projets réels avec stack, solution et résultats mesurés", color: "#C2410C", bg: "#FFF7ED" },
   { href: "/glossaire",      emoji: "📖", title: "Glossaire",      desc: "246 définitions précises avec exemples concrets",              color: "#0E7490", bg: "#ECFEFF" },
-  { href: "/outils",         emoji: "🛠️", title: "Outils",         desc: "Comparatifs honnêtes des plateformes data du marché",          color: "#B45309", bg: "#FFFBEB" },
-  { href: "/comparateur",   emoji: "⚖️", title: "Comparateur",    desc: "Compare jusqu'à 3 outils côte à côte en temps réel",           color: "#7C3AED", bg: "#EDE9FE" },
+  { href: "/outils",         emoji: "🛠️", title: "Outils",         desc: "97 fiches détaillées des plateformes data du marché",          color: "#B45309", bg: "#FFFBEB" },
   { href: "/metiers",        emoji: "👤", title: "Métiers",        desc: "Salaires 2026, compétences requises et trajectoires",          color: "#BE123C", bg: "#FFF1F2" },
   { href: "/toolbox",        emoji: "🧰", title: "Toolbox",        desc: "Snippets, checklists, tips par rôle et ressources d'apprentissage", color: "#15803D", bg: "#F0FDF4" },
   { href: "/communaute",     emoji: "💬", title: "Communauté",     desc: "Questions, réponses et retours d'expérience entre data pros",  color: "#7C3AED", bg: "#EDE9FE" },
@@ -332,13 +331,6 @@ export default function Home() {
                 title: "Certifications avancées",
                 desc: "AWS Professional, GCP Pro, Databricks Expert — les certifs qui valorisent le plus un senior",
                 color: "#5B21B6", bg: "#F5F3FF", border: "#DDD6FE",
-              },
-              {
-                href: "/comparateur",
-                emoji: "⚖️",
-                title: "Comparateur d'outils",
-                desc: "Compare Snowflake vs Databricks, dbt vs Dataform, Airflow vs Prefect côte à côte",
-                color: "#0E7490", bg: "#ECFEFF", border: "#A5F3FC",
               },
             ].map(({ href, emoji, title, desc, color, bg, border }) => (
               <Link key={href} href={href} className="card" style={{ padding: "22px 20px", display: "flex", flexDirection: "column", gap: 12, borderColor: border }}>

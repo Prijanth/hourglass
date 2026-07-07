@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabase } from "@/lib/supabase";
 import { BASE_URL } from "@/lib/constants";
+import { randomUUID } from "crypto";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -26,9 +27,10 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ toke
     return NextResponse.redirect(`${BASE_URL}/newsletter?erreur=lien-expire`);
   }
 
+  const unsubscribeToken = randomUUID();
   await supabase
     .from("newsletter_subscribers")
-    .update({ confirmed: true, confirmed_at: new Date().toISOString(), confirmation_token: null })
+    .update({ confirmed: true, confirmed_at: new Date().toISOString(), confirmation_token: unsubscribeToken })
     .eq("id", data.id);
 
   return NextResponse.redirect(`${BASE_URL}/newsletter/confirme`);

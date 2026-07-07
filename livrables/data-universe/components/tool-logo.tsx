@@ -1,77 +1,154 @@
 "use client";
+import { useState } from "react";
 
-// Outils présents dans Simple Icons (slugs vérifiés)
+// Simple Icons CDN — slugs qui existent (ERR sans 404 = fonctionne en navigateur)
 const SI_MAP: Record<string, string> = {
-  "snowflake":          "snowflake",
-  "databricks":         "databricks",
-  "bigquery":           "googlebigquery",
-  "dbt-core":           "dbt",
-  "dbt-cloud":          "dbt",
-  "airflow":            "apacheairflow",
-  "prefect":            "prefect",
-  "kafka":              "apachekafka",
-  "spark":              "apachespark",
-  "fivetran":           "fivetran",
-  "airbyte":            "airbyte",
-  "power-bi":           "powerbi",
-  "tableau":            "tableau",
-  "looker":             "looker",
-  "metabase":           "metabase",
-  "mlflow":             "mlflow",
-  "hugging-face":       "huggingface",
-  "duckdb":             "duckdb",
-  "pandas":             "pandas",
-  "polars":             "polars",
-  "apache-flink":       "apacheflink",
-  "scikit-learn":       "scikitlearn",
-  "pytorch":            "pytorch",
-  "langchain":          "langchain",
-  "openai-api":         "openai",
-  "wandb":              "weightsandbiases",
-  "grafana":            "grafana",
-  "clickhouse":         "clickhouse",
-  "elasticsearch":      "elasticsearch",
-  "fastapi":            "fastapi",
-  "terraform":          "terraform",
-  "talend":             "talend",
-  "streamlit":          "streamlit",
-  "jupyter":            "jupyter",
-  "qlik-sense":         "qlik",
-  "google-cloud":       "googlecloud",
-  "vertex-ai":          "googlecloud",
-  "dataflow":           "googlecloud",
-  "pubsub":             "googlecloud",
-  "aws":                "amazonaws",
-  "aws-glue":           "amazonaws",
-  "aws-sagemaker":      "amazonaws",
-  "aws-kinesis":        "amazonaws",
-  "amazon-quicksight":  "amazonaws",
-  "azure":              "microsoftazure",
-  "azure-synapse":      "microsoftazure",
-  "azure-data-factory": "microsoftazure",
-  "azure-ml":           "microsoftazure",
-  "microsoft-fabric":   "microsoftfabric",
-  "pinecone":           "pinecone",
-  "weaviate":           "weaviate",
-  "sas-viya":           "sas",
+  // Data Warehouse / Lakehouse
+  "snowflake":            "snowflake",
+  "databricks":           "databricks",
+  "google-bigquery":      "googlebigquery",
+  "clickhouse":           "clickhouse",
+  "delta-lake":           "delta",
+  // Orchestration
+  "apache-airflow":       "apacheairflow",
+  "airflow":              "apacheairflow",
+  "prefect":              "prefect",
+  // Streaming / Messaging
+  "apache-kafka":         "apachekafka",
+  "rabbitmq":             "rabbitmq",
+  // Processing
+  "apache-spark":         "apachespark",
+  "apache-flink":         "apacheflink",
+  "pandas":               "pandas",
+  "polars":               "polars",
+  "duckdb":               "duckdb",
+  "trino":                "trino",
+  // Databases
+  "mongodb":              "mongodb",
+  "postgresql":           "postgresql",
+  "redis":                "redis",
+  "elasticsearch":        "elasticsearch",
+  // Integration
+  "airbyte":              "airbyte",
+  "talend":               "talend",
+  // BI / Dataviz
+  "looker":               "looker",
+  "metabase":             "metabase",
+  "grafana":              "grafana",
+  // ML / Frameworks
+  "pytorch":              "pytorch",
+  "tensorflow":           "tensorflow",
+  "scikit-learn":         "scikitlearn",
+  "mlflow":               "mlflow",
+  "hugging-face":         "huggingface",
+  // IA Générative
+  "anthropic":            "anthropic",
+  "langchain":            "langchain",
+  "ollama":               "ollama",
+  // Data Apps
+  "streamlit":            "streamlit",
+  "fastapi":              "fastapi",
+  "jupyter":              "jupyter",
+  "jupyterlab":           "jupyter",
+  // Infra / DevOps
+  "terraform":            "terraform",
+  "docker":               "docker",
+  "kubernetes":           "kubernetes",
+  "pulumi":               "pulumi",
+  // Cloud Providers
+  "gcp":                  "googlecloud",
+  "google-cloud":         "googlecloud",
+  // BI misc
+  "qlik-sense":           "qlik",
+  // MLOps
+  "weights-and-biases":   "weightsandbiases",
 };
 
-// Domaines pour les outils sans Simple Icons → Google Favicons API
+// Domaines → Google Favicons API (outils absents de Simple Icons ou slugs 404)
 const DOMAIN_MAP: Record<string, string> = {
-  "dataiku":            "dataiku.com",
-  "dagster":            "dagster.io",
-  "great-expectations": "greatexpectations.io",
-  "evidently":          "evidentlyai.com",
-  "apache-superset":    "superset.apache.org",
-  "trino":              "trino.io",
-  "apache-iceberg":     "iceberg.apache.org",
-  "chromadb":           "trychroma.com",
-  "llamaindex":         "llamaindex.ai",
-  "kestra":             "kestra.io",
-  "datahub":            "datahubproject.io",
-  "dask":               "dask.org",
-  "redash":             "redash.io",
-  "soda-core":          "soda.io",
+  // dbt (slug "dbt" retourne 404 sur SI)
+  "dbt-core":             "getdbt.com",
+  "dbt-cloud":            "getdbt.com",
+  // Fivetran (slug 404 sur SI)
+  "fivetran":             "fivetran.com",
+  // OpenAI (slug 404 sur SI)
+  "openai":               "openai.com",
+  // Power BI (slugs powerbi et microsoftpowerbi retournent 404 sur SI)
+  "power-bi":             "powerbi.microsoft.com",
+  // Tableau (slug 404 sur SI)
+  "tableau":              "tableau.com",
+  // SAS (slug 404 sur SI)
+  "sas-viya":             "sas.com",
+  // Amazon / AWS (aucun slug AWS n'existe sur SI)
+  "aws":                  "aws.amazon.com",
+  "amazon-kinesis":       "aws.amazon.com",
+  "amazon-redshift":      "aws.amazon.com",
+  "amazon-sagemaker":     "aws.amazon.com",
+  "aws-sagemaker":        "aws.amazon.com",
+  // Microsoft Azure (slug microsoftazure retourne 404 sur SI)
+  "azure":                "azure.microsoft.com",
+  "azure-ml":             "azure.microsoft.com",
+  "azure-machine-learning": "azure.microsoft.com",
+  // Google Cloud services
+  "google-vertex-ai":     "cloud.google.com",
+  "vertex-ai":            "cloud.google.com",
+  // Microsoft
+  "microsoft-fabric":     "microsoft.com",
+  "microsoft-purview":    "microsoft.com",
+  // Vector DBs (slugs 404 sur SI)
+  "pinecone":             "pinecone.io",
+  "weaviate":             "weaviate.io",
+  // Analytics (slugs 404 sur SI)
+  "amplitude":            "amplitude.com",
+  "segment":              "segment.com",
+  // Orchestration
+  "dagster":              "dagster.io",
+  "astronomer":           "astronomer.io",
+  "kestra":               "kestra.io",
+  "mage-ai":              "mage.ai",
+  // Data Quality / Observabilité
+  "great-expectations":   "greatexpectations.io",
+  "monte-carlo":          "montecarlodata.com",
+  "soda":                 "soda.io",
+  "evidently":            "evidentlyai.com",
+  // Data Governance / Catalog
+  "datahub":              "datahubproject.io",
+  "alation":              "alation.com",
+  "collibra":             "collibra.com",
+  // Formats Lakehouse
+  "apache-iceberg":       "iceberg.apache.org",
+  "apache-hudi":          "hudi.apache.org",
+  // BI
+  "apache-superset":      "superset.apache.org",
+  "lightdash":            "lightdash.com",
+  "looker-studio":        "lookerstudio.google.com",
+  "redash":               "redash.io",
+  "evidence":             "evidence.dev",
+  // Data Engineering
+  "dask":                 "dask.org",
+  "altimate-code":        "altimate.ai",
+  // ML Platform
+  "dataiku":              "dataiku.com",
+  "hopsworks":            "hopsworks.ai",
+  "metaflow":             "metaflow.org",
+  "feast":                "feast.dev",
+  "ray":                  "ray.io",
+  // MLOps
+  "langfuse":             "langfuse.com",
+  // IA Générative
+  "mistral":              "mistral.ai",
+  "chromadb":             "trychroma.com",
+  "llamaindex":           "llamaindex.ai",
+  "dspy":                 "dspy.ai",
+  "gradio":               "gradio.app",
+  "qdrant":               "qdrant.tech",
+  "vllm":                 "vllm.ai",
+  // Integration
+  "census":               "getcensus.com",
+  // Monitoring
+  "datadog":              "datadoghq.com",
+  // Misc
+  "optuna":               "optuna.org",
 };
 
 function faviconUrl(domain: string, sz = 128) {
@@ -89,17 +166,16 @@ export function ToolLogo({
   name: string;
   size?: number;
 }) {
-  const siSlug  = SI_MAP[slug];
-  const domain  = DOMAIN_MAP[slug];
+  const [failed, setFailed] = useState(false);
 
-  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const target = e.currentTarget;
-    target.style.display = "none";
-    const span = document.createElement("span");
-    span.textContent = emoji;
-    span.style.fontSize = `${Math.round(size * 0.78)}px`;
-    target.parentNode?.insertBefore(span, target.nextSibling);
-  };
+  const siSlug = SI_MAP[slug];
+  const domain = DOMAIN_MAP[slug];
+
+  const emojiSize = Math.round(size * 0.78);
+
+  if (failed || (!siSlug && !domain)) {
+    return <span style={{ fontSize: emojiSize, lineHeight: 1 }}>{emoji}</span>;
+  }
 
   if (siSlug) {
     return (
@@ -109,23 +185,19 @@ export function ToolLogo({
         width={size}
         height={size}
         style={{ objectFit: "contain", display: "block" }}
-        onError={handleError}
+        onError={() => setFailed(true)}
       />
     );
   }
 
-  if (domain) {
-    return (
-      <img
-        src={faviconUrl(domain, 128)}
-        alt={`${name} logo`}
-        width={size}
-        height={size}
-        style={{ objectFit: "contain", display: "block", borderRadius: 4 }}
-        onError={handleError}
-      />
-    );
-  }
-
-  return <span style={{ fontSize: Math.round(size * 0.78) }}>{emoji}</span>;
+  return (
+    <img
+      src={faviconUrl(domain!, 128)}
+      alt={`${name} logo`}
+      width={size}
+      height={size}
+      style={{ objectFit: "contain", display: "block", borderRadius: 4 }}
+      onError={() => setFailed(true)}
+    />
+  );
 }

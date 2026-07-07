@@ -29,20 +29,17 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: "/metiers",                  label: "Métiers data",          desc: "Salaires 2026 et trajectoires" },
       { href: "/cdo",                      label: "CDO / Directeur Data",  desc: "Frameworks stratégiques, KPIs, 100 jours" },
-      { href: "/calculateur-salaire",      label: "Calculateur salaire",   desc: "Estime ta progression salariale" },
       { href: "/certifications",           label: "Certifications",        desc: "166 AWS, Azure, GCP, Databricks" },
       { href: "/certifications/roadmap",   label: "Roadmap certifications",desc: "Dans quel ordre passer tes certifs ?" },
       { href: "/formations",               label: "Formations",            desc: "Ressources pour progresser" },
       { href: "/debuter",                  label: "Débuter en data",       desc: "Parcours guidé pour débutants" },
-      { href: "/entretiens/data-analyst",  label: "Préparer l'entretien DA", desc: "SQL, cas pratiques, statistiques" },
+      { href: "/entretiens",               label: "Réussir son entretien", desc: "Guide complet tous rôles data — SQL, Python, ML, cas pratiques" },
     ],
   },
   {
     label: "Outils",
     items: [
-      { href: "/outils",          label: "Outils & plateformes", desc: "88 outils data — Snowflake, Databricks, dbt" },
-      { href: "/comparatifs",    label: "Comparatifs",          desc: "21 face-à-face objectifs entre outils" },
-      { href: "/comparateur",    label: "Comparateur",          desc: "Compare jusqu'à 3 outils en temps réel" },
+      { href: "/outils",          label: "Outils & plateformes", desc: "97 outils data — Snowflake, Databricks, dbt" },
       { href: "/ecosystem",      label: "Modern Data Stack",    desc: "Carte visuelle de l'écosystème data" },
       { href: "/outils/adoption",label: "Adoption par secteur", desc: "Quels outils dans quelle industrie ?" },
       { href: "/toolbox",        label: "Toolbox",              desc: "Snippets et checklists par rôle" },
