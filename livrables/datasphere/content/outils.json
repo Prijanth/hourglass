@@ -10064,5 +10064,102 @@
         "description": "Metaflow orchestre l'entraînement hebdomadaire d'un modèle de recommandation : extraction features S3 → entraînement PyTorch distribué sur GPU → évaluation → push vers SageMaker endpoint."
       }
     ]
+  },
+  {
+    "slug": "ducklake",
+    "name": "DuckLake",
+    "tagline": "Le format lakehouse qui stocke les métadonnées en SQL plutôt qu'en fichiers",
+    "category": "Lakehouse / Table Format",
+    "emoji": "🦆",
+    "website": "https://ducklake.select",
+    "pricing": "Open source gratuit — intégration native dans DuckDB v1.5.2+",
+    "free_tier": true,
+    "open_source": true,
+    "learning_curve": "Intermédiaire",
+    "description": "DuckLake est un format lakehouse open source créé par l'équipe DuckDB, dont la v1.0 production-ready est sortie en avril 2026. Sa particularité fondamentale : contrairement à Apache Iceberg ou Delta Lake qui stockent les métadonnées dans des fichiers sur l'objet store, DuckLake stocke les métadonnées dans une base de données SQL (SQLite, PostgreSQL, ou DuckDB lui-même). Cette approche résout le problème des 'petits fichiers' (small files problem) inhérent aux formats classiques, et offre des transactions ACID multi-tables natives.",
+    "features": [
+      "Métadonnées en base SQL (SQLite, PostgreSQL, DuckDB) au lieu de fichiers",
+      "ACID transactionnel multi-tables",
+      "Accès concurrent natif",
+      "Data inlining pour les petites updates/deletes",
+      "COUNT(*) via metadata-only (8x–258x plus rapide)",
+      "Compatibilité Iceberg (lecture/écriture)",
+      "Support types geometry et variant",
+      "Clients : DuckDB, Apache Spark, Trino, DataFusion, Pandas",
+      "Extension DuckDB ducklake (top-10 des extensions par téléchargements)",
+      "Backward-compatibility garantie depuis v1.0"
+    ],
+    "pros": [
+      "Résout le small files problem nativement sans compaction manuelle",
+      "Performances COUNT(*) jusqu'à 258x supérieures à Iceberg (metadata-only queries)",
+      "Configuration simple : une ligne SQL pour créer un lakehouse",
+      "Intégration native et transparente dans DuckDB",
+      "100% open source (MIT)",
+      "Compatible Iceberg pour la migration depuis l'existant",
+      "Transactions multi-tables ACID réelles, pas simulées"
+    ],
+    "cons": [
+      "Écosystème encore jeune vs Iceberg (standard de facto en 2026)",
+      "Dépendance à une base SQL externe en production (PostgreSQL recommandé)",
+      "Support Spark encore moins mature que les connecteurs Iceberg natifs",
+      "v1.1 attendue seulement en septembre 2026 — certains patterns encore en évolution"
+    ],
+    "best_for": "Data engineers qui utilisent DuckDB au cœur de leur stack analytique, équipes cherchant une alternative plus simple à Iceberg pour des architectures de taille moyenne, et projets qui démarrent sans héritage Iceberg.",
+    "not_for": "Grandes architectures Hadoop-first avec investissement lourd dans Iceberg/Hive Metastore, ou équipes Spark-first sans DuckDB dans leur stack.",
+    "pieges_prod": [
+      "Catalog PostgreSQL obligatoire en production multi-utilisateurs : DuckDB comme catalog ne supporte pas l'accès concurrent depuis plusieurs processus. En production, utiliser PostgreSQL ou SQLite (mono-processus uniquement).",
+      "Migration depuis Iceberg : la compatibilité lecture Iceberg est disponible, mais la migration complète de tables existantes vers DuckLake nécessite un re-ingestion ou un script de conversion — ne pas supposer une migration transparente.",
+      "Taille du catalog SQL : pour des lakehouses avec des milliards de fichiers, le catalog PostgreSQL peut devenir un goulot d'étranglement. Prévoir du monitoring sur la taille des tables de métadonnées."
+    ],
+    "alternatives": [
+      "apache-iceberg",
+      "delta-lake",
+      "duckdb"
+    ],
+    "score": {
+      "performance": 90,
+      "facilite": 85,
+      "ecosysteme": 60,
+      "cout": 98,
+      "support": 70
+    },
+    "tags": [
+      "open-source",
+      "lakehouse",
+      "table-format",
+      "duckdb",
+      "sql",
+      "analytics",
+      "acid"
+    ],
+    "launched": "2026",
+    "use_cases": [
+      {
+        "titre": "Lakehouse analytique léger avec DuckDB",
+        "description": "Une équipe data remplace son setup Iceberg + Hive Metastore par DuckLake + PostgreSQL comme catalog. Les tables Parquet restent sur S3, mais les métadonnées sont dans PostgreSQL. DuckDB interroge nativement le lakehouse sans cluster Spark."
+      },
+      {
+        "titre": "Pipeline dbt + DuckLake sans warehouse managé",
+        "description": "Les analytics engineers utilisent dbt Core avec DuckDB comme adapter. DuckLake fournit la couche de versioning et de lineage des tables Parquet résultantes, permettant du time travel et de l'audit sans coût de licence warehouse."
+      },
+      {
+        "titre": "Migration depuis Iceberg vers un format SQL-native",
+        "description": "Une équipe lit ses tables Iceberg existantes via la compatibilité DuckLake-Iceberg, transforme les données dans DuckDB, et écrit dans des tables DuckLake natives pour bénéficier des performances metadata-only en lecture."
+      }
+    ],
+    "formations": [
+      {
+        "name": "Getting Started with DuckLake",
+        "provider": "MotherDuck",
+        "type": "Guide officiel",
+        "prix": "Gratuit"
+      },
+      {
+        "name": "DuckLake Documentation officielle",
+        "provider": "DuckDB",
+        "type": "Documentation",
+        "prix": "Gratuit"
+      }
+    ]
   }
 ]
