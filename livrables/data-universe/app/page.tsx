@@ -3,6 +3,7 @@ import articles from "@/content/articles.json";
 import metiers from "@/content/metiers.json";
 import { fmtDate } from "@/lib/date-utils";
 import { HomeSkillsChart, HomeTrendsChart } from "./home-charts";
+import { PourVous } from "@/components/pour-vous";
 
 const CAT_COLORS: Record<string, string> = {
   indigo: "badge-indigo", teal: "badge-teal", amber: "badge-amber", rose: "badge-rose",
@@ -170,6 +171,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── POUR VOUS (si historique localStorage) ──────── */}
+      <PourVous />
 
       {/* ── TICKER ───────────────────────────────────────── */}
       <div aria-hidden="true" style={{ background: "#FAFBFF", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0", padding: "10px 0", overflow: "hidden" }}>

@@ -5,6 +5,7 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { BackToTop } from "@/components/back-to-top";
 import { CookieBanner } from "@/components/cookie-banner";
+import { PageTracker } from "@/components/page-tracker";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#contenu-principal" className="skip-link">
           Aller au contenu principal
         </a>
+        <PageTracker />
         <Nav />
         <div id="contenu-principal" style={{ flex: 1 }}>{children}</div>
         <BackToTop />
