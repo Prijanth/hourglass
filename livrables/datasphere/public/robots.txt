@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /api/
-Disallow: /_next/
-
-Sitemap: https://data-universe.fr/sitemap.xml

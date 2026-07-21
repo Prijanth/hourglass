@@ -10,7 +10,7 @@ const CAT_COLORS: Record<string, string> = {
 
 const SECTIONS = [
   { href: "/ia",             emoji: "🧠", title: "Intelligence IA", desc: "Modèles, risques, AI Act, enjeux — tout sur l'IA en français",  color: "#BE123C", bg: "#FFF1F2" },
-  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "134 concepts ML, Cloud et Gouvernance expliqués simplement",   color: "#7C3AED", bg: "#EDE9FE" },
+  { href: "/concepts",       emoji: "📚", title: "Encyclopédie",   desc: "143 concepts ML, Cloud et Gouvernance expliqués simplement",   color: "#7C3AED", bg: "#EDE9FE" },
   { href: "/certifications", emoji: "🎓", title: "Certifications", desc: "166 certifications AWS, Azure, GCP, Databricks, Snowflake",   color: "#5B21B6", bg: "#F5F3FF" },
   { href: "/cas-usage",      emoji: "💼", title: "Cas d'usage",    desc: "104 projets réels avec stack, solution et résultats mesurés", color: "#C2410C", bg: "#FFF7ED" },
   { href: "/glossaire",      emoji: "📖", title: "Glossaire",      desc: "246 définitions précises avec exemples concrets",              color: "#0E7490", bg: "#ECFEFF" },
@@ -87,7 +87,7 @@ export default function Home() {
               <div style={{ display: "flex", gap: 36, marginTop: 48, paddingTop: 36, borderTop: "1px solid #DDD6FE" }}>
                 {[
                   { n: "166",  l: "certifications" },
-                  { n: "134",  l: "concepts" },
+                  { n: "143",  l: "concepts" },
                   { n: "104",  l: "cas d'usage" },
                   { n: "246",  l: "termes" },
                 ].map(({ n, l }) => (
@@ -122,8 +122,8 @@ export default function Home() {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", borderRadius: 14, overflow: "hidden", border: "1px solid #F1F5F9", marginBottom: 18 }}>
                 {[
                   { n: "166",  l: "certifications", emoji: "🎓", href: "/certifications", color: "#7C3AED" },
-                  { n: "134",  l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
-                  { n: "88",   l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
+                  { n: "143",  l: "concepts",        emoji: "🧠", href: "/concepts",       color: "#0891B2" },
+                  { n: "97",   l: "outils",          emoji: "🛠️", href: "/outils",         color: "#B45309" },
                   { n: "47",   l: "agents IA",       emoji: "🤖", href: "/agents",         color: "#6D28D9" },
                   { n: "246",  l: "termes",          emoji: "📖", href: "/glossaire",      color: "#0F766E" },
                   { n: "104",  l: "cas d'usage",     emoji: "💼", href: "/cas-usage",      color: "#C2410C" },
