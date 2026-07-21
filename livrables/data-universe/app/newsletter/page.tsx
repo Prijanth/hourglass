@@ -381,7 +381,10 @@ SELECT * FROM {{ ref('stg_events') }}
               {/* Footer email */}
               <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #F1F5F9", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
                 <div style={{ fontSize: 12, fontWeight: 800, color: "#7C3AED" }}>Data Universe</div>
-                <div style={{ fontSize: 11, color: "#94A3B8" }}>data-universe.fr · Se désabonner</div>
+                <div style={{ fontSize: 11, color: "#94A3B8" }}>
+                  data-universe.fr &nbsp;·&nbsp;
+                  <a href="/newsletter/desabonnement" style={{ color: "#94A3B8", textDecoration: "underline" }}>Se désabonner</a>
+                </div>
               </div>
             </div>
           </div>
