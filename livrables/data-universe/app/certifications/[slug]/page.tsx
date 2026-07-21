@@ -32,6 +32,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+const QUIZ_BY_OUTIL: Record<string, string> = {
+  "AWS":      "aws-data-services",
+  "Azure":    "azure-data-services",
+  "GCP":      "gcp-bigquery",
+  "Databricks": "databricks-delta",
+  "Snowflake": "snowflake",
+  "dbt":      "dbt-analytics",
+  "Power BI": "powerbi-fondamentaux",
+};
+
 const OUTIL_COLORS: Record<string, { text: string; bg: string; border: string }> = {
   AWS:         { text: "#FF9900", bg: "rgba(255,153,0,0.08)",  border: "rgba(255,153,0,0.2)" },
   Azure:       { text: "#0078D4", bg: "rgba(0,120,212,0.08)",  border: "rgba(0,120,212,0.2)" },
@@ -295,11 +305,35 @@ export default async function CertificationPage({ params }: { params: Promise<{ 
               </p>
             </div>
 
+            {/* Quiz de préparation */}
+            {QUIZ_BY_OUTIL[cert.outil] && (
+              <div className="card" style={{ padding: "22px 22px" }}>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.09em", color: "#94A3B8", marginBottom: 14 }}>
+                  Tester ses connaissances
+                </p>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 14 }}>
+                  <span style={{ fontSize: 26, flexShrink: 0 }}>🧠</span>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>Quiz {cert.outil}</p>
+                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.55 }}>
+                      Questions d&apos;entraînement pour évaluer ton niveau avant l&apos;examen.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href={`/quiz/${QUIZ_BY_OUTIL[cert.outil]}`}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, padding: "10px 16px", borderRadius: 10, background: "#EDE9FE", color: "#6D28D9", fontWeight: 700, fontSize: 13.5, textDecoration: "none", border: "1.5px solid #DDD6FE" }}
+                >
+                  Démarrer le quiz →
+                </Link>
+              </div>
+            )}
+
             {/* Données vérifiées */}
-            <div style={{ padding: "14px 16px", borderRadius: 10, background: "#F8FAFC", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 15 }}>🔄</span>
-              <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5 }}>
-                <strong style={{ color: "#475569" }}>Fiche mise à jour :</strong> coût, durée et compétences vérifiés sur le site officiel {cert.organisme} — juin 2026.
+            <div style={{ padding: "14px 16px", borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 15 }}>✅</span>
+              <p style={{ fontSize: 12, color: "#166534", lineHeight: 1.5 }}>
+                <strong>Lien officiel vérifié :</strong> coût, durée et lien vers le site {cert.organisme} vérifiés le {new Date(data.derniere_verification).toLocaleDateString("fr-FR", { month: "long", year: "numeric" })}.
               </p>
             </div>
           </div>

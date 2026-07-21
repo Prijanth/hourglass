@@ -239,6 +239,19 @@ export default function ActualitesPage() {
                     </div>
                     <h2 style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 700, lineHeight: 1.3 }}>{a.title}</h2>
                     <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.65, flex: 1, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{a.excerpt}</p>
+                    {(() => {
+                      const tags = (a as Record<string, unknown>)["tags"] as string[] | undefined;
+                      if (!tags?.length) return null;
+                      return (
+                        <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+                          {tags.slice(0, 3).map(tag => (
+                            <span key={tag} style={{ fontSize: 11, padding: "2px 8px", borderRadius: 100, background: "var(--surface-2)", color: "var(--muted)", border: "1px solid var(--border)", fontWeight: 500 }}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      );
+                    })()}
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 10, borderTop: "1px solid var(--border)" }}>
                       <span style={{ fontSize: 12, color: "var(--faint)" }}>{fmtDate(a.date)}</span>
                       <span style={{ fontSize: 13, color: CATEGORY_ACCENT[a.categoryColor] ?? "var(--indigo-light)", fontWeight: 700 }}>Lire →</span>
