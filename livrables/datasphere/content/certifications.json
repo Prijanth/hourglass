@@ -4782,6 +4782,35 @@
             ],
             "popularite": 65,
             "difficulte": 3
+        },
+        {
+            "id": "snowflake-snowpro-advanced-mlops-engineer",
+            "nom": "SnowPro Advanced: MLOps Engineer",
+            "organisme": "Snowflake",
+            "logo_color": "#29B5E8",
+            "categorie": "Machine Learning",
+            "outil": "Snowflake",
+            "niveau": "Avancé",
+            "duree_prep": "100-150h",
+            "cout": "~375$",
+            "validite": "2 ans",
+            "description": "Nouvelle certification Snowflake (beta lancée juin 2026, GA août 2026) dédiée aux ingénieurs qui opérationnalisent des cycles de vie ML à l'échelle enterprise dans Snowflake. Couvre la préparation des features, l'infrastructure MLOps, le serving de modèles, l'orchestration CI/CD ML et la gouvernance. Prérequis : SnowPro Core actif + 2 ans d'expérience en ML enterprise + 1 an minimum sur Snowflake.",
+            "competences": [
+                "Snowpark ML (entraînement, évaluation et optimisation de modèles)",
+                "Feature Store Snowflake (création, versioning et serving de features)",
+                "Model Registry Snowflake (versioning, déploiement et rollback)",
+                "Orchestration de pipelines CI/CD ML (Tasks, Snowpark Pipelines)",
+                "Monitoring de modèles en production (drift, performance, coûts)",
+                "Gouvernance, sécurité et conformité des workflows ML"
+            ],
+            "lien_officiel": "https://learn.snowflake.com/en/certifications/",
+            "recommandee_pour": [
+                "ML Engineer",
+                "MLOps Engineer",
+                "Data Scientist senior Snowflake"
+            ],
+            "popularite": 55,
+            "difficulte": 4
         }
     ],
     "categories": [
