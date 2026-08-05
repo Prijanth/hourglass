@@ -3,8 +3,16 @@ import outils from "@/content/outils.json";
 import { OutilsGrid } from "@/components/outils-grid";
 
 export const metadata: Metadata = {
-  title: "Outils Data & IA — Comparatifs et fiches détaillées | Data Universe",
-  description: "97 fiches détaillées sur les outils data du marché : Snowflake, Databricks, dbt, Airflow, Spark. Scores, pros/cons et alternatives pour choisir le bon outil.",
+  title: "Outils Data & IA — 97 comparatifs et fiches | Data Universe",
+  description: "Comparez 97 outils data & IA : Snowflake, Databricks, dbt, Airflow, Spark, Kafka, Looker, Power BI. Scores marché, avantages, limites et alternatives — pour choisir sans se tromper.",
+  openGraph: {
+    title: "Outils Data & IA — 97 comparatifs et fiches détaillées",
+    description: "Snowflake, Databricks, dbt, Airflow, Spark — scores, avantages, limites et alternatives pour 97 outils data.",
+    url: "https://data-universe.fr/outils",
+    siteName: "Data Universe",
+    locale: "fr_FR",
+    type: "website",
+  },
 };
 
 export default function OutilsPage() {

@@ -107,7 +107,7 @@ export default async function CertificationPage({ params }: { params: Promise<{ 
           borderBottom: "1px solid #E2E8F0",
         }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 40, alignItems: "start" }}>
+            <div className="cert-hero-grid">
               <div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
                   <span style={{
@@ -194,7 +194,7 @@ export default async function CertificationPage({ params }: { params: Promise<{ 
         </section>
 
         {/* Contenu principal */}
-        <section style={{ maxWidth: 1100, margin: "0 auto", padding: "56px 24px", display: "grid", gridTemplateColumns: "1fr 320px", gap: 40, alignItems: "start" }}>
+        <section className="cert-main-grid">
 
           {/* Colonne principale */}
           <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>

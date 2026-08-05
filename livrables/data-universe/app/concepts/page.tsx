@@ -3,8 +3,16 @@ import data from "@/content/concepts.json";
 import { ConceptsGrid } from "./concepts-grid";
 
 export const metadata: Metadata = {
-  title: "Concepts Data & IA — Encyclopédie | Data Universe",
-  description: `${data.concepts.length} concepts data expliqués simplement : Machine Learning, Cloud, Data Engineering, Gouvernance. Avec exemples concrets et fiches téléchargeables.`,
+  title: "Concepts Data & IA — Encyclopédie 143 fiches | Data Universe",
+  description: `${data.concepts.length} concepts data & IA expliqués simplement : Machine Learning, Data Lake, Feature Store, LLM, Gouvernance, Data Mesh. Avec exemples concrets et niveaux de difficulté.`,
+  openGraph: {
+    title: "Concepts Data & IA — Encyclopédie 143 fiches",
+    description: "Machine Learning, Data Lake, LLM, Data Mesh, Feature Store — 143 concepts data expliqués avec exemples concrets.",
+    url: "https://data-universe.fr/concepts",
+    siteName: "Data Universe",
+    locale: "fr_FR",
+    type: "website",
+  },
 };
 
 export default function ConceptsPage() {

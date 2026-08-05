@@ -28,6 +28,8 @@ const STATIC_ROUTES = [
   { url: "/newsletter",     priority: 0.6,  changeFrequency: "monthly" },
   { url: "/debuter",           priority: 0.85, changeFrequency: "monthly" },
   { url: "/a-propos",          priority: 0.4,  changeFrequency: "monthly" },
+  { url: "/recruteurs",           priority: 0.6,  changeFrequency: "monthly" },
+  { url: "/travailler-avec-nous", priority: 0.6,  changeFrequency: "monthly" },
   { url: "/mentions-legales",  priority: 0.2,  changeFrequency: "yearly"  },
   { url: "/confidentialite",   priority: 0.2,  changeFrequency: "yearly"  },
 ] as const;

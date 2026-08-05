@@ -76,7 +76,7 @@ export function Footer() {
           {/* Ressources */}
           <div>
             <p style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "rgba(255,255,255,0.3)", marginBottom: 14 }}>Ressources</p>
-            {[["Outils", "/outils"], ["Métiers", "/metiers"], ["Formations", "/formations"], ["Jobs", "/jobs"], ["Communauté", "/communaute"]].map(([l, h]) => (
+            {[["Outils", "/outils"], ["Métiers", "/metiers"], ["Formations", "/formations"], ["Jobs", "/jobs"], ["Communauté", "/communaute"], ["Travailler ensemble", "/travailler-avec-nous"]].map(([l, h]) => (
               <Link key={h} href={h} className="footer-link">{l}</Link>
             ))}
           </div>

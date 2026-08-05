@@ -1,5 +1,7 @@
 "use client";
 
+import { trackEvent } from "@/lib/analytics";
+
 type ResourceLinkProps = {
   href: string;
   label: string;
@@ -9,12 +11,21 @@ type ResourceLinkProps = {
 };
 
 export function ResourceLink({ href, label, desc, tag, tagColor }: ResourceLinkProps) {
+  function handleClick() {
+    if (tag === "Affilié") {
+      trackEvent("affiliate_click", { link_label: label, link_url: href, affiliate_type: "amazon" });
+    } else if (tag === "Externe") {
+      trackEvent("affiliate_click", { link_label: label, link_url: href, affiliate_type: "udemy" });
+    }
+  }
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       className="hover-shadow-card"
+      onClick={handleClick}
       style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
         padding: "14px 18px", background: "white", borderRadius: 12,

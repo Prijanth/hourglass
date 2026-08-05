@@ -589,6 +589,88 @@ export default function RecruteursPage() {
         </div>
       </section>
 
+      {/* ── Offres sponsorisées ─────────────────────────────── */}
+      <section style={{ background: "var(--navy)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "72px 24px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <span className="section-label">Visibilité renforcée</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)", fontWeight: 800, color: "var(--text)", marginBottom: 10 }}>
+              Offres sponsorisées
+            </h2>
+            <p style={{ fontSize: 15, color: "var(--muted)", maxWidth: 480, margin: "0 auto", lineHeight: 1.7 }}>
+              Boostez la visibilité de votre offre auprès des profils data qualifiés — sans intermédiaire.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, alignItems: "stretch" }}>
+            {/* Gratuit */}
+            <div className="card" style={{ padding: "30px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
+              <div>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "var(--muted)", marginBottom: 10 }}>Gratuit</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.04em", lineHeight: 1 }}>0 €</p>
+                <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 6 }}>Toujours. Sans engagement.</p>
+              </div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 10, listStyle: "none", padding: 0, flex: 1 }}>
+                {["1 offre visible 30 jours", "Diffusion sur le job board", "Validation sous 24 h"].map(f => (
+                  <li key={f} style={{ display: "flex", gap: 10, fontSize: 14, color: "var(--text-2)", alignItems: "flex-start" }}>
+                    <span style={{ color: "var(--success)", fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                  </li>
+                ))}
+              </ul>
+              <a href="/jobs/deposer" className="btn-secondary" style={{ justifyContent: "center", marginTop: "auto" }}>
+                Publier gratuitement
+              </a>
+            </div>
+
+            {/* Pro */}
+            <div className="card" style={{ padding: "30px 28px", display: "flex", flexDirection: "column", gap: 20, border: "2px solid var(--indigo)", position: "relative" as const, overflow: "hidden" }}>
+              <div style={{ position: "absolute" as const, top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg, var(--indigo), #0EA5E9)" }} />
+              <div style={{ position: "absolute" as const, top: 16, right: 16 }}>
+                <span className="badge badge-indigo">Recommandé</span>
+              </div>
+              <div>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "var(--indigo)", marginBottom: 10 }}>Pro</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.04em", lineHeight: 1 }}>50 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "var(--muted)" }}> HT</span></p>
+                <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 6 }}>Par publication.</p>
+              </div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 10, listStyle: "none", padding: 0, flex: 1 }}>
+                {["1 offre visible 60 jours", "Badge \"Sponsorisé\" en tête de liste", "Mise en avant sur la page jobs", "Diffusion dans la newsletter hebdomadaire"].map(f => (
+                  <li key={f} style={{ display: "flex", gap: 10, fontSize: 14, color: "var(--text-2)", alignItems: "flex-start" }}>
+                    <span style={{ color: "var(--indigo)", fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                  </li>
+                ))}
+              </ul>
+              <a href="mailto:contact@data-universe.fr?subject=Offre sponsorisée Pro — Data Universe" className="btn-primary" style={{ justifyContent: "center", marginTop: "auto" }}>
+                Réserver une place →
+              </a>
+            </div>
+
+            {/* Premium */}
+            <div className="card" style={{ padding: "30px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
+              <div>
+                <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.1em", color: "var(--amber)", marginBottom: 10 }}>Premium</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", fontWeight: 800, color: "var(--text)", letterSpacing: "-0.04em", lineHeight: 1 }}>200 €<span style={{ fontSize: "1rem", fontWeight: 500, color: "var(--muted)" }}> HT</span></p>
+                <p style={{ fontSize: 13, color: "var(--muted)", marginTop: 6 }}>Visibilité maximale sur 3 mois.</p>
+              </div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 10, listStyle: "none", padding: 0, flex: 1 }}>
+                {["Tout le plan Pro", "Offre visible 3 mois", "Logo entreprise sur le job board", "Placement édito dans 1 édition newsletter", "1 rappel dans les 4 semaines suivantes"].map(f => (
+                  <li key={f} style={{ display: "flex", gap: 10, fontSize: 14, color: "var(--text-2)", alignItems: "flex-start" }}>
+                    <span style={{ color: "var(--amber)", fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                  </li>
+                ))}
+              </ul>
+              <a href="mailto:contact@data-universe.fr?subject=Offre sponsorisée Premium — Data Universe" className="btn-secondary" style={{ justifyContent: "center", marginTop: "auto" }}>
+                Contacter l&apos;équipe →
+              </a>
+            </div>
+          </div>
+
+          <p style={{ fontSize: 12, color: "var(--faint)", textAlign: "center", marginTop: 28, lineHeight: 1.6 }}>
+            Paiement par virement ou Stripe. Facturation disponible. Contact : <a href="mailto:contact@data-universe.fr" style={{ color: "var(--indigo)" }}>contact@data-universe.fr</a>
+          </p>
+        </div>
+      </section>
+
       {/* ── CTA final ────────────────────────────────────────── */}
       <section
         style={{

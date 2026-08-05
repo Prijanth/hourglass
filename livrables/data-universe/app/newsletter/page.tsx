@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const THEMES = [
   { emoji: "🤖", titre: "IA & LLMs",         desc: "Les avancées concrètes en IA générative, nouveaux modèles et cas d'usage réels chaque semaine." },
@@ -31,6 +32,7 @@ export default function NewsletterPage() {
       });
       const data = await res.json();
       if (!res.ok) { setError(data.error ?? "Erreur. Réessaie."); return; }
+      trackEvent("newsletter_signup", { niveau, frequence });
       setSubmitted(true);
     } catch {
       setError("Erreur réseau. Réessaie.");
@@ -86,7 +88,7 @@ export default function NewsletterPage() {
 
       {/* Contenu principal */}
       <section style={{ padding: "72px 24px", maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}>
+        <div className="newsletter-form-grid">
           {/* Formulaire */}
           <div>
             <h2 style={{ fontFamily: "var(--font-display)", fontSize: "1.6rem", fontWeight: 800, marginBottom: 8 }}>S&apos;abonner gratuitement</h2>

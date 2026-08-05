@@ -6,8 +6,16 @@ import { SkillsChart } from "@/components/charts/skills-chart";
 import { SalaryChart } from "@/components/charts/salary-chart";
 
 export const metadata: Metadata = {
-  title: "Métiers Data & IA — Compétences et carrières 2026 | Data Universe",
-  description: "Fiches complètes des métiers data & IA : compétences requises, certifications, trajectoires de carrière. Data Engineer, Data Scientist, Analytics Engineer, ML Engineer et plus.",
+  title: "Métiers Data & IA — Compétences, salaires et carrières 2026 | Data Universe",
+  description: "Fiches détaillées des métiers data & IA : salaires, compétences requises, certifications et trajectoires de carrière. Data Engineer, Data Scientist, Analytics Engineer, ML Engineer, Data Analyst.",
+  openGraph: {
+    title: "Métiers Data & IA — Compétences, salaires et carrières 2026",
+    description: "Data Engineer, Data Scientist, ML Engineer — salaires, compétences et certifications pour chaque métier data.",
+    url: "https://data-universe.fr/metiers",
+    siteName: "Data Universe",
+    locale: "fr_FR",
+    type: "website",
+  },
 };
 
 const PROFILES = [
